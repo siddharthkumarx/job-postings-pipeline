@@ -1,0 +1,81 @@
+{
+  "id": "recon-cc-pages-001",
+  "command": "recon-cc-pages",
+  "started_at": "2026-11-03T22:08:32+00:00",
+  "git_sha": "aca8e9785bfe925ad179b4eae707351d0a1a7bbe",
+  "run_id": "41728106935",
+  "runner": "Linux x86_64 py3.12.3",
+  "result": {
+    "CC-MAIN-2026-43 boards.greenhouse.io/*": "http_error HTTP 504",
+    "CC-MAIN-2026-43 job-boards.greenhouse.io/*": {
+      "pages": 5,
+      "pageSize": 5,
+      "blocks": 21
+    },
+    "CC-MAIN-2026-43 jobs.lever.co/*": {
+      "pages": 1,
+      "pageSize": 5,
+      "blocks": 1
+    },
+    "CC-MAIN-2026-43 jobs.ashbyhq.com/*": {
+      "pages": 1,
+      "pageSize": 5,
+      "blocks": 2
+    },
+    "CC-MAIN-2026-39 boards.greenhouse.io/*": {
+      "pages": 1,
+      "pageSize": 5,
+      "blocks": 5
+    },
+    "CC-MAIN-2026-39 job-boards.greenhouse.io/*": {
+      "pages": 5,
+      "pageSize": 5,
+      "blocks": 24
+    },
+    "CC-MAIN-2026-39 jobs.lever.co/*": {
+      "pages": 1,
+      "pageSize": 5,
+      "blocks": 1
+    },
+    "CC-MAIN-2026-39 jobs.ashbyhq.com/*": {
+      "pages": 2,
+      "pageSize": 5,
+      "blocks": 8
+    },
+    "CC-MAIN-2026-34 boards.greenhouse.io/*": {
+      "pages": 2,
+      "pageSize": 5,
+      "blocks": 6
+    },
+    "CC-MAIN-2026-34 job-boards.greenhouse.io/*": {
+      "pages": 5,
+      "pageSize": 5,
+      "blocks": 22
+    },
+    "CC-MAIN-2026-34 jobs.lever.co/*": {
+      "pages": 1,
+      "pageSize": 5,
+      "blocks": 1
+    },
+    "CC-MAIN-2026-34 jobs.ashbyhq.com/*": {
+      "pages": 2,
+      "pageSize": 5,
+      "blocks": 8
+    },
+    "http": {
+      "index.commoncrawl.org": {
+        "requests": 29,
+        "retries": 16,
+        "by_outcome": {
+          "ok": 12,
+          "http_error": 1
+        },
+        "blocked": false,
+        "block_reason": null
+      }
+    }
+  },
+  "status": "ok",
+  "finished_at": "2026-11-03T22:14:36+00:00",
+  "duration_s": 364.5
+}
