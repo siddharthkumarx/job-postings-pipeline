@@ -10,9 +10,9 @@ LIMIT = 50 * 1024 * 1024
 
 
 def main() -> int:
-    files = subprocess.run(
-        ["git", "ls-files", "-z"], check=True, capture_output=True
-    ).stdout.split(b"\0")
+    files = subprocess.run(["git", "ls-files", "-z"], check=True, capture_output=True).stdout.split(
+        b"\0"
+    )
     big = []
     for f in files:
         if not f:
