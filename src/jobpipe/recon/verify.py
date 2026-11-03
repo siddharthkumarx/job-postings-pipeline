@@ -27,7 +27,7 @@ HOST_POLICIES = {
 FIELDS = [
     "provider", "token", "sources", "cc_hits", "yc_name", "outcome", "status", "company_name",
     "jobs", "us_jobs", "non_us_jobs", "unknown_jobs", "tech_jobs", "us_tech_jobs",
-    "remote_jobs", "top_countries", "bytes", "attempts",
+    "remote_jobs", "top_countries", "bytes", "attempts", "elapsed_s",
 ]  # fmt: skip
 
 
@@ -71,7 +71,7 @@ async def verify_one(client: PoliteClient, cand: dict[str, Any]) -> dict[str, An
     row["yc_name"] = cand.get("yc_name", "")
     row.update(
         {"outcome": res.outcome, "status": res.status or "", "bytes": res.bytes,
-         "attempts": res.attempts}
+         "attempts": res.attempts, "elapsed_s": res.elapsed_s}
     )  # fmt: skip
     if res.ok:
         row.update(summarise(provider.name, res.data))

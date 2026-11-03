@@ -175,8 +175,8 @@ class PoliteClient:
         st = self.stats[host]
         sem = self._sems.setdefault(host, asyncio.Semaphore(self._policy(host).concurrency))
         result = FetchResult(url=url, outcome="network_error")
-        started = time.monotonic()
         async with sem:
+            started = time.monotonic()  # time spent fetching, not queueing for the host
             for attempt in range(1, self.max_retries + 2):
                 if st.blocked:
                     result.outcome = "host_blocked"

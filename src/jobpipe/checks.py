@@ -97,7 +97,80 @@ def _recon_verify(params: dict[str, Any], out: Path) -> dict[str, Any]:
     return summary
 
 
+FREE_TEXT_KEYS = {
+    # Greenhouse
+    "content", "metadata", "questions", "location_questions", "compliance",
+    "demographic_questions", "data_compliance", "pay_input_ranges",
+    # Lever
+    "description", "descriptionPlain", "descriptionBody", "descriptionBodyPlain", "lists",
+    "additional", "additionalPlain", "opening", "openingPlain",
+    # Ashby
+    "descriptionHtml", "descriptionSocial",
+}  # fmt: skip
+SYNTHETIC_DESCRIPTION = (
+    "SYNTHETIC FIXTURE TEXT (the real description is never stored). Hybrid: 3 days a week in "
+    "the office. 5+ years of experience. The base salary range is $120,000 - $150,000 per year."
+)
+
+
+def sanitise_job(provider: str, job: dict[str, Any]) -> dict[str, Any]:
+    """Drop free text and employer-defined fields; insert a marked synthetic description."""
+    clean = {k: v for k, v in job.items() if k not in FREE_TEXT_KEYS}
+    if provider == "greenhouse":
+        clean["content"] = SYNTHETIC_DESCRIPTION
+        clean["metadata"] = None
+    elif provider == "lever":
+        clean["descriptionPlain"] = SYNTHETIC_DESCRIPTION
+        clean["lists"] = []
+    else:
+        clean["descriptionPlain"] = SYNTHETIC_DESCRIPTION
+    return clean
+
+
+def _capture_fixtures(params: dict[str, Any], out: Path) -> dict[str, Any]:
+    """Golden fixtures: a few real postings per board, sanitised (see sanitise_job)."""
+    import asyncio
+    import json as _json
+
+    from jobpipe.http import PoliteClient
+    from jobpipe.ingest import HOST_POLICIES
+    from jobpipe.providers import get_provider
+
+    max_jobs = int(params.get("max_jobs", 4))
+    boards = list(params.get("boards") or [])
+
+    async def go() -> dict[str, Any]:
+        written: dict[str, Any] = {}
+        async with PoliteClient(host_policies=HOST_POLICIES) as client:
+            for b in boards:
+                provider = get_provider(b["provider"])
+                res = await client.get_json(
+                    provider.board_url(b["board"]), provider.ingest_params()
+                )
+                if not res.ok:
+                    written[f"{b['provider']}/{b['board']}"] = f"{res.outcome} {res.status}"
+                    continue
+                jobs = provider.jobs(res.data)[:max_jobs]
+                payload: Any
+                if provider.name == "lever":
+                    payload = [sanitise_job("lever", j) for j in jobs]
+                else:
+                    payload = {"jobs": [sanitise_job(provider.name, j) for j in jobs]}
+                    if provider.name == "greenhouse":
+                        payload["meta"] = {"total": len(jobs)}
+                    else:
+                        payload["apiVersion"] = (res.data or {}).get("apiVersion", "1")
+                path = out / "fixtures" / provider.name / f"{b['board']}.json"
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(_json.dumps(payload, indent=2, sort_keys=True) + "\n")
+                written[f"{b['provider']}/{b['board']}"] = len(jobs)
+        return written
+
+    return {"written": asyncio.run(go())}
+
+
 COMMANDS: dict[str, Callable[[dict[str, Any], Path], dict[str, Any]]] = {
+    "capture-fixtures": _capture_fixtures,
     "recon-cc-pages": _recon_cc_pages,
     "recon-harvest": _recon_harvest,
     "recon-verify": _recon_verify,
@@ -123,11 +196,17 @@ def run_request(path: Path) -> int:
     }
     t0 = time.monotonic()
     status = 0
+    steps = req.get("steps") or [{"command": command, "params": req.get("params") or {}}]
     try:
-        fn = COMMANDS.get(command)
-        if fn is None:
-            raise ValueError(f"unknown command {command!r}; allowed: {sorted(COMMANDS)}")
-        meta["result"] = fn(dict(req.get("params") or {}), out)
+        results = []
+        for step in steps:
+            fn = COMMANDS.get(str(step.get("command")))
+            if fn is None:
+                raise ValueError(
+                    f"unknown command {step.get('command')!r}; allowed: {sorted(COMMANDS)}"
+                )
+            results.append(fn(dict(step.get("params") or {}), out))
+        meta["result"] = results[0] if len(results) == 1 else results
         meta["status"] = "ok"
     except Exception as exc:  # the result must be committed even when the check fails
         meta["status"] = "error"

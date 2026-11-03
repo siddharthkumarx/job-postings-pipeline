@@ -85,6 +85,7 @@ def main(argv: list[str] | None = None) -> int:
         from jobpipe.recon import select
 
         harvest = json.loads(args.harvest.read_text())
+        verify_summary = json.loads((args.verify.parent / "summary.json").read_text())
         th = select.Thresholds(
             min_us_share=args.min_us_share,
             min_known_share=args.min_known_share,
@@ -94,10 +95,12 @@ def main(argv: list[str] | None = None) -> int:
         result = select.run(
             args.verify,
             harvest.get("result", {}),
+            verify_summary.get("result", {}),
             [args.harvest.parent.name, args.verify.parent.name],
             args.out_csv,
             args.out_md,
             th,
+            dropped_csv=args.verify.parent / "dropped.csv",
         )
         print(json.dumps(result, indent=2))
         return 0
