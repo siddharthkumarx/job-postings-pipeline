@@ -17,6 +17,7 @@ from __future__ import annotations
 import asyncio
 import json
 import re
+import time
 from collections import Counter, defaultdict
 from dataclasses import dataclass, field
 from typing import Any
@@ -154,8 +155,13 @@ async def harvest_common_crawl(
     crawls: list[str],
     max_pages: int,
     log: list[dict[str, Any]],
+    budget_s: float = 3 * 3600,
 ) -> None:
+    deadline = time.monotonic() + budget_s
     for crawl in crawls:
+        if time.monotonic() > deadline:
+            log.append({"crawl": crawl, "skipped": "time budget exhausted"})
+            continue
         endpoint = f"{CC_INDEX}/{crawl}-index"
         for pattern, provider in CC_PATTERNS.items():
             entry: dict[str, Any] = {"crawl": crawl, "pattern": pattern, "pages": 0, "urls": 0}
@@ -173,6 +179,7 @@ async def harvest_common_crawl(
             entry["pages_available"] = total_pages
             hits: Counter[str] = Counter()
             for page in range(min(total_pages, max_pages)):
+                print(f"cc {crawl} {pattern} page {page + 1}/{total_pages}", flush=True)
                 res = await client.get_text(
                     endpoint,
                     {"url": pattern, "output": "json", "fl": "url", "page": str(page)},
@@ -263,7 +270,7 @@ async def harvest_yc(
 
 
 async def harvest(
-    *, crawls: int = 3, max_pages: int = 200, yc_min_team: int = 15
+    *, crawls: int = 3, max_pages: int = 200, yc_min_team: int = 15, budget_minutes: float = 180
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     seeds = SeedSet()
     log: list[dict[str, Any]] = []
@@ -274,7 +281,9 @@ async def harvest(
         except RuntimeError as exc:
             log.append({"source": "commoncrawl", "error": str(exc)})
         if crawl_ids:
-            await harvest_common_crawl(client, seeds, crawl_ids, max_pages, log)
+            await harvest_common_crawl(
+                client, seeds, crawl_ids, max_pages, log, budget_s=budget_minutes * 60
+            )
         await harvest_yc(client, seeds, yc_min_team, log)
         stats = client.stats_summary()
     rows = seeds.rows()

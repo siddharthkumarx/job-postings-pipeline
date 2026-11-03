@@ -100,6 +100,8 @@ async def verify(
             row = await fut
             if row is not None:
                 rows.append(row)
+                if len(rows) % 250 == 0:
+                    print(f"verified {len(rows)}/{len(candidates)}", flush=True)
         stats = client.stats_summary()
     rows.sort(key=lambda r: (r["provider"], str(r["token"]).lower()))
     summary = {
