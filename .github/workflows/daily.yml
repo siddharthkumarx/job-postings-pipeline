@@ -1,0 +1,130 @@
+# Daily pipeline run (docs/architecture.md). Bronze and the warehouse snapshot live in
+# GitHub Release assets; small public outputs are committed to public/.
+name: daily
+
+on:
+  schedule:
+    - cron: "41 7 * * *" # 07:41 UTC, an odd minute to avoid the top-of-hour rush
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: run | backfill | rebuild | release-hold
+        default: run
+        type: choice
+        options: [run, backfill, rebuild, release-hold]
+      date:
+        description: run date for run / release-hold (YYYY-MM-DD, default today UTC)
+        required: false
+      from:
+        description: backfill start date (YYYY-MM-DD)
+        required: false
+      to:
+        description: backfill end date (YYYY-MM-DD)
+        required: false
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: daily-pipeline
+  cancel-in-progress: false
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 75
+    outputs:
+      status: ${{ steps.run.outputs.status }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          python-version: "3.12"
+          enable-cache: true
+      - name: Install
+        run: uv sync --frozen --no-dev
+      - name: Run pipeline
+        id: run
+        timeout-minutes: 60
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          MODE: ${{ inputs.mode || 'run' }}
+          RUN_DATE: ${{ inputs.date }}
+          FROM: ${{ inputs.from }}
+          TO: ${{ inputs.to }}
+        run: |
+          set +e
+          case "$MODE" in
+            run)          uv run --no-sync jobpipe run ${RUN_DATE:+--date "$RUN_DATE"} ;;
+            backfill)     uv run --no-sync jobpipe backfill --from "$FROM" --to "$TO" ;;
+            rebuild)      uv run --no-sync jobpipe rebuild ;;
+            release-hold) uv run --no-sync jobpipe release-hold --date "$RUN_DATE" ;;
+          esac | tee run-output.json
+          code=${PIPESTATUS[0]}
+          case "$code" in 0) s=published ;; 2) s=held ;; *) s=failed ;; esac
+          echo "status=$s" >> "$GITHUB_OUTPUT"
+          echo "Pipeline status: $s (exit $code)" >> "$GITHUB_STEP_SUMMARY"
+          exit 0
+      - name: Commit public outputs
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public
+          if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
+          d=$(python3 -c "import json;print(json.load(open('public/status.json')).get('last_run','?'))")
+          git commit -m "data: run ${d} (${{ steps.run.outputs.status }})"
+          for i in 1 2 3 4; do
+            git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && exit 0
+            sleep $((2 ** i))
+          done
+          exit 1
+      - name: Upload site and run output
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: site-and-run
+          path: |
+            site
+            run-output.json
+          retention-days: 14
+          if-no-files-found: ignore
+      - name: Upload Pages artifact
+        if: steps.run.outputs.status == 'published' && vars.PAGES_ENABLED == 'true'
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: site
+      - name: Alert on held or failed run
+        if: always() && steps.run.outputs.status != 'published'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          STATUS: ${{ steps.run.outputs.status || 'failed' }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh label create pipeline-alert --color E9A93C --description "Daily pipeline held or failed" 2>/dev/null || true
+          body=$(printf 'Status: **%s**\nRun: %s\n\n```json\n%s\n```\n' "$STATUS" "$RUN_URL" "$(head -c 6000 run-output.json 2>/dev/null)")
+          num=$(gh issue list --label pipeline-alert --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then
+            gh issue comment "$num" --body "$body"
+          else
+            gh issue create --title "Pipeline ${STATUS}: $(date -u +%F)" --label pipeline-alert --body "$body"
+          fi
+      - name: Fail the job when not published
+        if: steps.run.outputs.status != 'published'
+        run: exit 1
+
+  pages:
+    # GitHub Pages is switched on only after the repository goes public (set PAGES_ENABLED=true).
+    needs: pipeline
+    if: needs.pipeline.outputs.status == 'published' && vars.PAGES_ENABLED == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
