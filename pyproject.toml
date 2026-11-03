@@ -7,7 +7,11 @@ requires-python = ">=3.12,<3.13"
 license = "MIT"
 authors = [{ name = "Siddharth Kumar" }]
 dependencies = [
+    "dbt-core>=1.12,<1.13",
+    "dbt-duckdb>=1.11,<1.12",
+    "duckdb>=1.4",
     "httpx>=0.28.1,<0.29",
+    "pyarrow>=26,<27",
     "pydantic>=2.14,<3",
     "pyyaml>=6.0.3,<7",
 ]
@@ -48,6 +52,10 @@ python_version = "3.12"
 strict = true
 mypy_path = "src"
 packages = ["jobpipe"]
+
+[[tool.mypy.overrides]]
+module = ["pyarrow", "pyarrow.*", "duckdb", "dbt.*", "huggingface_hub", "huggingface_hub.*"]
+ignore_missing_imports = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

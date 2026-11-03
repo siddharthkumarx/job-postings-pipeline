@@ -160,8 +160,16 @@ class PoliteClient:
     async def get_text(self, url: str, params: dict[str, str] | None = None) -> FetchResult:
         return await self.get(url, params, as_json=False)
 
+    async def get_bytes(self, url: str, params: dict[str, str] | None = None) -> FetchResult:
+        return await self.get(url, params, as_json=False, raw=True)
+
     async def get(
-        self, url: str, params: dict[str, str] | None = None, *, as_json: bool = True
+        self,
+        url: str,
+        params: dict[str, str] | None = None,
+        *,
+        as_json: bool = True,
+        raw: bool = False,
     ) -> FetchResult:
         host = urlsplit(url).hostname or ""
         st = self.stats[host]
@@ -193,7 +201,7 @@ class PoliteClient:
                     result.status = resp.status_code
                     result.bytes = len(resp.content)
                     if resp.status_code == 200 and not as_json:
-                        result.data = resp.text
+                        result.data = resp.content if raw else resp.text
                         result.outcome = "ok"
                         break
                     if resp.status_code == 200:
