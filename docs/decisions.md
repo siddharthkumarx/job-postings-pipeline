@@ -1,6 +1,6 @@
 # Decisions
 
-Status: draft written during step 1 (recon). Step 2 expands it.
+Each decision states what was chosen and why. Add new ones at the end; never renumber.
 
 ## D-001 Sources: official public job-board APIs only (checked 2026-11-03)
 
@@ -56,3 +56,62 @@ See `docs/sources.md` for the funnel. Seed sources:
 | huggingface-hub | 2.4.0 | Apache-2.0 |
 
 GitHub Actions are pinned by commit SHA: actions/checkout v7.0.1, astral-sh/setup-uv v10.3.3.
+
+## D-006 Role taxonomy and seniority (versioned)
+
+- `dbt/seeds/role_taxonomy.csv` lists `taxonomy_version, priority, role_family, pattern` (case-insensitive regex on the title). The lowest priority that matches wins; no match gives `other`. Specific families come before generic ones (e.g. `analytics engineer` before `data analyst` before `analyst`).
+- `dbt/seeds/seniority_rules.csv` lists `taxonomy_version, priority, seniority, pattern`. Levels: `intern`, `junior`, `mid`, `senior`, `staff_principal`, `manager`, `director`, `vp_exec`. No match gives `mid`, with `seniority_source = default`.
+- When the title has no seniority signal, the description hint extracted during ingest (`desc_seniority_hint`, e.g. "5+ years") is used, with `seniority_source = description`.
+- The version is a date string (`2026-11-03`), stored on every silver row (`taxonomy_version`). A change to a seed bumps the version, and `docs/decisions.md` gets a line describing it. A full rebuild re-labels history.
+- The "data roles" mart covers `data_engineer`, `analytics_engineer`, `data_analyst`, `ml_engineer` (`data_scientist` is shown alongside but is not part of the four).
+
+## D-007 Where state lives: GitHub Release assets
+
+- **Bronze (truth)**: one Release per month (`bronze-YYYY-MM`), assets `postings_D.parquet`, `board_runs_D.parquet` and `fx_D.parquet` (D = run date). A re-run replaces that day's assets, so runs are idempotent. Assets are durable, versioned by name, up to 2 GB each, outside git history, and downloadable by anyone once the repo is public.
+- **Warehouse cache**: Release `state`, asset `warehouse.duckdb.zst`, plus `state.json` (last good run date, schema version, list of bronze dates loaded). Uploaded only after a published run, so it always holds the last good build. If it is missing or corrupt, `jobpipe rebuild` replays every bronze asset.
+- **Small public outputs** (`public/runs.jsonl`, `public/status.json`, `public/summary/*.csv`): committed to git by the daily run. They are tiny, diffable, and drive the shields.io badges through raw URLs.
+- Rejected: **git** for bronze (about 5 MB a day would bloat history past 1 GB a year and break the 50 MB per-file rule within months); **Actions cache** as the only store (evicted after 7 days without access, 10 GB cap, not public). The Actions cache is used only to speed up uv.
+
+## D-008 FX reference rates
+
+ECB euro foreign exchange reference rates (https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html), full history file `eurofxref-hist.zip`, fetched on every run and stored as bronze fx. USD per unit of currency X on day d = `USD_rate(d) / X_rate(d)` (both quoted per EUR). A salary converts at the latest ECB business day on or before the posting's `first_seen` date, so a posting keeps a stable USD value. Currencies the ECB does not quote keep `salary_*_usd = null` and `fx_rate_date = null`. The original currency, period and amounts are always kept.
+
+## D-009 Daily run-time budget (< 45 min, Lever at 1 request/s)
+
+To be filled from the recon verify run (request timings per host) and checked against the first real daily runs.
+
+## D-010 Bronze schema and privacy
+
+The Pydantic model `jobpipe.models.Posting` (schema_version 1) is the only shape that reaches disk. Fields are listed in `docs/architecture.md`. Each adapter builds a `Posting` from an explicit allowlist of API fields (no `**raw`), so a new API field never leaks into storage by accident. Description text (Greenhouse `content`, Lever `description*`/`lists`/`additional`, Ashby `description*`) is passed to `jobpipe.extract` in memory, which returns only salary, remote and seniority hints, the SHA-256 hash and the character count. Anything that looks like an email or phone number is never extracted.
+
+## D-011 Lifecycle definitions
+
+- `first_seen` / `last_seen`: first and last run date the posting was listed.
+- A posting is **closed** when it has been missing from **2 consecutive runs in which its board was fetched successfully** (`board_runs.status = ok`). Failed board fetches never count as absences. `closed_on` is the first missing run date. A posting that reappears after closing reopens: the same `posting_key` continues and `reopened_count` increments.
+- `days_open` = `last_seen - first_seen + 1` for closed postings, `run_date - first_seen + 1` for open ones. Postings already open on the first run are flagged `left_censored = true` and excluded from days-open bands.
+- SCD2 tracks `title`, `location_raw` and the salary tuple (min, max, currency, period). A new version starts on the first run date where the tracked hash differs. `valid_to` is exclusive, and `is_current` marks the latest version.
+
+## D-012 Quality gates and holds
+
+- dbt tests (unique, not_null, accepted_values, relationships, plus custom range tests) run in `dbt build`. Any error fails the build, and the run is **held**.
+- Source freshness: bronze `fetched_at` must be < 36 h old (error) or < 26 h (warn).
+- Guards (`jobpipe.guards`), measured against the last published run:
+  - open postings must not change by more than ±35 %;
+  - boards fetched OK ≥ 90 % of tracked boards;
+  - null rate thresholds: `title` 0 %, `job_url` 0 %, `company` 0 %, `location_raw` ≤ 10 %, `role_family` (not null; `other` ≤ 40 %), `country` unknown ≤ 25 %.
+- A held run keeps the last good marts published, appends `status: held` with reasons to `runs.jsonl`, and opens or updates a `pipeline-alert` issue. Its bronze is still stored, because it is raw truth. `jobpipe release-hold --date D` lets a human accept a held run, for example a genuine mass closing.
+- Contracts: public marts use dbt `contract: {enforced: true}` with declared column types; a breaking change needs a new model version (see `docs/data-contracts.md`).
+
+## D-013 Dashboard
+
+Static HTML generated by Python (`jobpipe.site`), with charts drawn as inline SVG at build time, so no client-side charting library or external script is needed. A small inline script only handles tab switching, and the page works without it. Fonts are self-hosted WOFF2 subsets of Instrument Sans and IBM Plex Mono (both SIL OFL 1.1), from the @fontsource npm packages. Colours come from the brief, and every text/background pair is checked for ≥ 4.5:1 contrast in a unit test.
+
+## D-014 Board selection rules (approved 2026-11-03)
+
+Selection runs in `jobpipe.recon.select`:
+1. HTTP 200 with ≥ 1 listed job and ≥ 1 US job.
+2. Mostly US: ≥ 50 % of jobs with a known country are in the US, and the country is known for ≥ 50 % of jobs.
+3. Tech company: ≥ 20 % of titles match the tech-title signal.
+4. Companies only: staffing/recruiting agencies, job aggregators and test/demo boards are dropped (keyword rules plus a reviewed exclusion list in `seeds/exclusions.csv`).
+5. One board per company (normalised company name). The board with more open jobs wins, and the other is listed as dropped ("duplicate of …").
+6. At least 1,000 companies, target ~1,500, all three providers represented.
