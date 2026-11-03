@@ -46,6 +46,8 @@ ignore = ["S101", "RUF001", "RUF003", "PT018"]
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = ["S", "N802"]
 "scripts/**" = ["S603", "S607"]
+# The page template is HTML: long lines are clearer than split strings.
+"src/jobpipe/site/build.py" = ["E501"]
 
 [tool.mypy]
 python_version = "3.12"
