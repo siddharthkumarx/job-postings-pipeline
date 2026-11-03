@@ -1,0 +1,616 @@
+# GENERATED from docs/data-contracts.md by scripts/gen_marts_yml.py: edit the doc, then regenerate.
+version: 2
+models:
+- name: fct_job_postings
+  description: 'One row per posting ever seen: current attributes, lifecycle, SCD2 version count and salary in annual USD.
+    Public; contract enforced.'
+  config:
+    contract:
+      enforced: true
+  data_tests:
+  - expression_is_true:
+      arguments:
+        expression: salary_min is null or salary_min <= salary_max
+  - expression_is_true:
+      arguments:
+        expression: last_seen >= first_seen
+  - expression_is_true:
+      arguments:
+        expression: closed_on is null or closed_on > last_seen
+  columns:
+  - name: posting_key
+    data_type: varchar
+    description: md5 of `provider
+    data_tests:
+    - unique
+    - not_null
+  - name: provider
+    data_type: varchar
+    description: '`greenhouse`, `lever`, `ashby`'
+    data_tests:
+    - not_null
+    - accepted_values:
+        arguments:
+          values: &id001
+          - greenhouse
+          - lever
+          - ashby
+  - name: board
+    data_type: varchar
+    description: board name at the provider
+  - name: company_id
+    data_type: varchar
+    description: FK → dim_company.company_id
+    data_tests:
+    - not_null
+    - relationships:
+        arguments:
+          to: ref('dim_company')
+          field: company_id
+  - name: company_name
+    data_type: varchar
+    description: display name
+    data_tests:
+    - not_null
+  - name: posting_id
+    data_type: varchar
+    description: provider's posting id
+  - name: title
+    data_type: varchar
+    description: current title
+    data_tests:
+    - not_null
+  - name: role_family
+    data_type: varchar
+    description: taxonomy family (see accepted values below)
+    data_tests:
+    - not_null
+    - accepted_values:
+        arguments:
+          values:
+          - software_engineer
+          - data_engineer
+          - analytics_engineer
+          - data_analyst
+          - data_scientist
+          - ml_engineer
+          - devops_sre
+          - security
+          - product_manager
+          - design
+          - qa_test
+          - it_support
+          - hardware_engineer
+          - solutions_engineer
+          - engineering_manager
+          - sales
+          - marketing
+          - customer_success
+          - operations
+          - finance
+          - people_hr
+          - legal
+          - other
+  - name: seniority
+    data_type: varchar
+    description: '`intern`, `junior`, `mid`, `senior`, `staff_principal`, `manager`, `director`, `vp_exec`'
+    data_tests:
+    - not_null
+    - accepted_values:
+        arguments:
+          values:
+          - intern
+          - junior
+          - mid
+          - senior
+          - staff_principal
+          - manager
+          - director
+          - vp_exec
+  - name: seniority_source
+    data_type: varchar
+    description: '`title`, `description`, `default`'
+    data_tests:
+    - accepted_values:
+        arguments:
+          values:
+          - title
+          - description
+          - default
+  - name: department
+    data_type: varchar
+    description: department or team as published
+  - name: location_raw
+    data_type: varchar
+    description: primary location string as published
+  - name: country_code
+    data_type: varchar
+    description: ISO 3166-1 alpha-2, `XX` multi-country region, null unknown
+  - name: state_code
+    data_type: varchar
+    description: US state/territory postal code (US only)
+  - name: city
+    data_type: varchar
+    description: city when identifiable
+  - name: remote_type
+    data_type: varchar
+    description: '`remote`, `hybrid`, `onsite`, `unknown`'
+    data_tests:
+    - not_null
+    - accepted_values:
+        arguments:
+          values:
+          - remote
+          - hybrid
+          - onsite
+          - unknown
+  - name: employment_type
+    data_type: varchar
+    description: '`full_time`, `part_time`, `contract`, `intern`, `temporary`, `unknown`'
+    data_tests:
+    - accepted_values:
+        arguments:
+          values:
+          - full_time
+          - part_time
+          - contract
+          - intern
+          - temporary
+          - unknown
+  - name: salary_min
+    data_type: double
+    description: as published, in `salary_currency` per `salary_period`
+  - name: salary_max
+    data_type: double
+    description: as published
+  - name: salary_currency
+    data_type: varchar
+    description: ISO 4217
+  - name: salary_period
+    data_type: varchar
+    description: '`year`, `month`, `week`, `day`, `hour`'
+    data_tests:
+    - accepted_values:
+        arguments:
+          values:
+          - year
+          - month
+          - week
+          - day
+          - hour
+  - name: salary_min_annual
+    data_type: double
+    description: annualised (hour × 2080, day × 260, week × 52, month × 12)
+  - name: salary_max_annual
+    data_type: double
+    description: annualised
+  - name: salary_min_usd_annual
+    data_type: double
+    description: annualised, in USD at the ECB rate on `fx_rate_date`
+    data_tests:
+    - column_between:
+        arguments:
+          min_value: 10000
+          max_value: 2000000
+  - name: salary_max_usd_annual
+    data_type: double
+    description: as above
+  - name: salary_source
+    data_type: varchar
+    description: '`api`, `description`, null'
+    data_tests:
+    - accepted_values:
+        arguments:
+          values:
+          - api
+          - description
+  - name: fx_rate_date
+    data_type: date
+    description: ECB business day used for USD conversion
+  - name: job_url
+    data_type: varchar
+    description: public posting URL at the provider
+    data_tests:
+    - not_null
+  - name: published_at
+    data_type: timestamp with time zone
+    description: provider's publish/update timestamp when given
+  - name: first_seen
+    data_type: date
+    description: first run date listed
+    data_tests:
+    - not_null
+  - name: last_seen
+    data_type: date
+    description: last run date listed
+    data_tests:
+    - not_null
+  - name: closed_on
+    data_type: date
+    description: first missing run date once closed (2 consecutive successful-fetch absences), else null
+  - name: is_open
+    data_type: boolean
+    description: listed on the latest run
+    data_tests:
+    - not_null
+  - name: days_open
+    data_type: integer
+    description: see D-011
+    data_tests:
+    - not_null
+    - column_between:
+        arguments:
+          min_value: 1
+          max_value: 5000
+  - name: left_censored
+    data_type: boolean
+    description: already open on the first run of the pipeline
+  - name: version_count
+    data_type: integer
+    description: number of SCD2 versions (title/location/salary changes + 1)
+    data_tests:
+    - column_between:
+        arguments:
+          min_value: 1
+          max_value: 100000
+  - name: taxonomy_version
+    data_type: varchar
+    description: version of role/seniority rules applied
+- name: dim_company
+  description: One row per tracked company with the latest fetch status and posting counts. Public; contract enforced.
+  config:
+    contract:
+      enforced: true
+  columns:
+  - name: company_id
+    data_type: varchar
+    description: md5 of `provider
+    data_tests:
+    - unique
+    - not_null
+  - name: company_name
+    data_type: varchar
+    description: display name
+    data_tests:
+    - not_null
+  - name: provider
+    data_type: varchar
+    description: ATS provider of the tracked board
+    data_tests:
+    - not_null
+    - accepted_values:
+        arguments:
+          values: *id001
+  - name: board
+    data_type: varchar
+    description: board name
+  - name: board_url
+    data_type: varchar
+    description: public API URL of the board
+  - name: first_tracked
+    data_type: date
+    description: first run date the board was fetched
+  - name: last_fetch_status
+    data_type: varchar
+    description: '`ok`, `not_found`, `error`, `blocked` on the latest run'
+    data_tests:
+    - accepted_values:
+        arguments:
+          values:
+          - ok
+          - not_found
+          - error
+          - blocked
+  - name: open_postings
+    data_type: integer
+    description: open postings on the latest run
+  - name: open_us_postings
+    data_type: integer
+    description: open postings with country_code = 'US'
+  - name: postings_seen
+    data_type: integer
+    description: all postings ever seen
+- name: mart_weekly_open_roles
+  description: Weekly open / new / closed roles by company, role family, country and US state. Public; contract enforced.
+  config:
+    contract:
+      enforced: true
+  data_tests:
+  - unique_combination:
+      arguments:
+        columns:
+        - week_start
+        - company_id
+        - role_family
+        - country_code
+        - state_code
+  columns:
+  - name: week_start
+    data_type: date
+    description: Monday of the ISO week
+    data_tests:
+    - not_null
+  - name: company_id
+    data_type: varchar
+    description: FK → dim_company
+    data_tests:
+    - not_null
+    - relationships:
+        arguments:
+          to: ref('dim_company')
+          field: company_id
+  - name: role_family
+    data_type: varchar
+    description: taxonomy family
+  - name: country_code
+    data_type: varchar
+    description: '`''''` when unknown'
+  - name: state_code
+    data_type: varchar
+    description: '`''''` when not US / unknown'
+  - name: open_roles
+    data_type: integer
+    description: postings open on the last run of the week
+    data_tests:
+    - column_between:
+        arguments:
+          min_value: 0
+          max_value: 1000000
+  - name: new_roles
+    data_type: integer
+    description: postings with first_seen in the week
+  - name: closed_roles
+    data_type: integer
+    description: postings with closed_on in the week
+- name: mart_days_open_bands
+  description: Distribution of days open for closed postings by role family. Public; contract enforced.
+  config:
+    contract:
+      enforced: true
+  data_tests:
+  - unique_combination:
+      arguments:
+        columns:
+        - role_family
+        - band
+  columns:
+  - name: role_family
+    data_type: varchar
+    description: taxonomy family, plus `all`
+  - name: band
+    data_type: varchar
+    description: '`0-7`, `8-14`, `15-30`, `31-60`, `61-90`, `91+`'
+    data_tests:
+    - accepted_values:
+        arguments:
+          values:
+          - 0-7
+          - 8-14
+          - 15-30
+          - 31-60
+          - 61-90
+          - 91+
+  - name: band_order
+    data_type: integer
+    description: 1..6
+  - name: closed_postings
+    data_type: integer
+    description: count in band
+  - name: share
+    data_type: double
+    description: share within role_family
+    data_tests:
+    - column_between:
+        arguments:
+          min_value: 0
+          max_value: 1
+  - name: median_days_open
+    data_type: double
+    description: median for the role_family (repeated per band)
+- name: mart_salary_bands
+  description: Annual USD salary percentiles for US postings by role family and seniority. Public; contract enforced.
+  config:
+    contract:
+      enforced: true
+  data_tests:
+  - unique_combination:
+      arguments:
+        columns:
+        - role_family
+        - seniority
+  columns:
+  - name: role_family
+    data_type: varchar
+    description: taxonomy family, plus `all`
+    data_tests:
+    - not_null
+  - name: seniority
+    data_type: varchar
+    description: level, plus `all`
+    data_tests:
+    - not_null
+  - name: postings_with_salary
+    data_type: integer
+    description: n
+  - name: p25_usd
+    data_type: double
+    description: 25th percentile of the annual USD midpoint
+  - name: median_usd
+    data_type: double
+    description: median
+  - name: p75_usd
+    data_type: double
+    description: 75th percentile
+  - name: share_with_salary
+    data_type: double
+    description: share of US postings in the group that publish a salary
+- name: mart_hiring_velocity
+  description: Weekly new vs closed postings per company. Public; contract enforced.
+  config:
+    contract:
+      enforced: true
+  data_tests:
+  - unique_combination:
+      arguments:
+        columns:
+        - week_start
+        - company_id
+  columns:
+  - name: week_start
+    data_type: date
+    description: ISO week Monday
+    data_tests:
+    - not_null
+  - name: company_id
+    data_type: varchar
+    description: FK → dim_company
+    data_tests:
+    - not_null
+    - relationships:
+        arguments:
+          to: ref('dim_company')
+          field: company_id
+  - name: new_postings
+    data_type: integer
+    description: first_seen in week
+  - name: closed_postings
+    data_type: integer
+    description: closed_on in week
+  - name: net_change
+    data_type: integer
+    description: new − closed
+  - name: open_at_week_end
+    data_type: integer
+    description: open on the last run of the week
+  - name: velocity
+    data_type: double
+    description: new_postings / nullif(open_at_week_end, 0)
+- name: mart_data_roles
+  description: Posting-level subset of fct_job_postings for data engineer, analytics engineer, data analyst and ML engineer
+    roles. Public; contract enforced.
+  config:
+    contract:
+      enforced: true
+  columns:
+  - name: posting_key
+    data_type: varchar
+    description: md5 of `provider
+    data_tests:
+    - unique
+    - not_null
+  - name: provider
+    data_type: varchar
+    description: '`greenhouse`, `lever`, `ashby`'
+  - name: board
+    data_type: varchar
+    description: board name at the provider
+  - name: company_id
+    data_type: varchar
+    description: FK → dim_company.company_id
+  - name: company_name
+    data_type: varchar
+    description: display name
+  - name: posting_id
+    data_type: varchar
+    description: provider's posting id
+  - name: title
+    data_type: varchar
+    description: current title
+  - name: role_family
+    data_type: varchar
+    description: taxonomy family (see accepted values below)
+    data_tests:
+    - accepted_values:
+        arguments:
+          values:
+          - data_engineer
+          - analytics_engineer
+          - data_analyst
+          - ml_engineer
+  - name: seniority
+    data_type: varchar
+    description: '`intern`, `junior`, `mid`, `senior`, `staff_principal`, `manager`, `director`, `vp_exec`'
+  - name: seniority_source
+    data_type: varchar
+    description: '`title`, `description`, `default`'
+  - name: department
+    data_type: varchar
+    description: department or team as published
+  - name: location_raw
+    data_type: varchar
+    description: primary location string as published
+  - name: country_code
+    data_type: varchar
+    description: ISO 3166-1 alpha-2, `XX` multi-country region, null unknown
+  - name: state_code
+    data_type: varchar
+    description: US state/territory postal code (US only)
+  - name: city
+    data_type: varchar
+    description: city when identifiable
+  - name: remote_type
+    data_type: varchar
+    description: '`remote`, `hybrid`, `onsite`, `unknown`'
+  - name: employment_type
+    data_type: varchar
+    description: '`full_time`, `part_time`, `contract`, `intern`, `temporary`, `unknown`'
+  - name: salary_min
+    data_type: double
+    description: as published, in `salary_currency` per `salary_period`
+  - name: salary_max
+    data_type: double
+    description: as published
+  - name: salary_currency
+    data_type: varchar
+    description: ISO 4217
+  - name: salary_period
+    data_type: varchar
+    description: '`year`, `month`, `week`, `day`, `hour`'
+  - name: salary_min_annual
+    data_type: double
+    description: annualised (hour × 2080, day × 260, week × 52, month × 12)
+  - name: salary_max_annual
+    data_type: double
+    description: annualised
+  - name: salary_min_usd_annual
+    data_type: double
+    description: annualised, in USD at the ECB rate on `fx_rate_date`
+  - name: salary_max_usd_annual
+    data_type: double
+    description: as above
+  - name: salary_source
+    data_type: varchar
+    description: '`api`, `description`, null'
+  - name: fx_rate_date
+    data_type: date
+    description: ECB business day used for USD conversion
+  - name: job_url
+    data_type: varchar
+    description: public posting URL at the provider
+  - name: published_at
+    data_type: timestamp with time zone
+    description: provider's publish/update timestamp when given
+  - name: first_seen
+    data_type: date
+    description: first run date listed
+  - name: last_seen
+    data_type: date
+    description: last run date listed
+  - name: closed_on
+    data_type: date
+    description: first missing run date once closed (2 consecutive successful-fetch absences), else null
+  - name: is_open
+    data_type: boolean
+    description: listed on the latest run
+  - name: days_open
+    data_type: integer
+    description: see D-011
+  - name: left_censored
+    data_type: boolean
+    description: already open on the first run of the pipeline
+  - name: version_count
+    data_type: integer
+    description: number of SCD2 versions (title/location/salary changes + 1)
+  - name: taxonomy_version
+    data_type: varchar
+    description: version of role/seniority rules applied

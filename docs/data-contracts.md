@@ -12,7 +12,7 @@ it if a column's name, order or type drifts from the YAML in
 - **Freshness**: rebuilt by every published daily run (07:41 UTC schedule). `status.json` → `last_run` says when.
 - **Holds**: if a run fails a quality gate, the previous published version stays in place (`runs.jsonl` records `held`).
 - **Keys**: the primary key listed for each table is unique and not null (dbt tests).
-- **Types**: DuckDB types as listed. Dates are UTC calendar dates; money is in the stated currency, annualised as described.
+- **Types**: DuckDB types as listed (TIMESTAMPTZ = timestamp with time zone, UTC). Dates are UTC calendar dates; money is in the stated currency, annualised as described.
 - **Versioning**: adding a nullable column is non-breaking; it is documented here and released. Removing or renaming a column, changing its type or changing its meaning is breaking: it ships as a new dbt model version (`v2`), and the old version is kept for at least 60 days with a deprecation date.
 - **Taxonomy**: `role_family` and `seniority` follow `taxonomy_version` (see `docs/decisions.md` D-006). A taxonomy change re-labels all history at the next rebuild and is announced in `docs/decisions.md`.
 
@@ -50,7 +50,7 @@ One row per posting ever seen. Primary key `posting_key`.
 | salary_source | VARCHAR | `api`, `description`, null |
 | fx_rate_date | DATE | ECB business day used for USD conversion |
 | job_url | VARCHAR | public posting URL at the provider |
-| published_at | TIMESTAMP | provider's publish/update timestamp when given |
+| published_at | TIMESTAMPTZ | provider's publish/update timestamp when given |
 | first_seen | DATE | first run date listed |
 | last_seen | DATE | last run date listed |
 | closed_on | DATE | first missing run date once closed (2 consecutive successful-fetch absences), else null |
