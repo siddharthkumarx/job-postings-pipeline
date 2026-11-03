@@ -1,6 +1,8 @@
 # Live check request. Changing this file on a branch triggers .github/workflows/checks.yml,
 # which runs `jobpipe checks checks/request.yml` and commits checks/results/<id>/.
-id: recon-cc-pages-001
-command: recon-cc-pages
+id: recon-harvest-001
+command: recon-harvest
 params:
-  crawls: 3
+  crawls: 8
+  max_pages: 50
+  yc_min_team: 15
