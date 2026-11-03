@@ -1,0 +1,9 @@
+taxonomy_version,priority,seniority,pattern,exclude_pattern
+2026-11-03,10,intern,(?i)\bintern\b|\binternship\b|\bco-?op\b|\bapprentice,(?i)internal|international
+2026-11-03,20,vp_exec,(?i)\bvp\b|vice president|\bchief\b|\bc[tefio]o\b|\bciso\b|\bhead of\b|\bsvp\b|\bevp\b|\bpresident\b|\bfounding (cto|head)\b,
+2026-11-03,30,director,(?i)\bdirector\b,
+2026-11-03,40,manager,(?i)\bmanager\b|\bmgr\b|\bmanaging\b,(?i)product manager|account manager|program manager|project manager|success manager|community manager|office manager|marketing manager|partner manager|sales manager|manager of sales|campaign manager|event manager|content manager|brand manager
+2026-11-03,50,staff_principal,(?i)\bstaff\b|\bprincipal\b|\bdistinguished\b|\bfellow\b|\barchitect\b,(?i)staff accountant|\bstaffing\b
+2026-11-03,60,senior,(?i)\bsenior\b|\bsr\.?(\b|\s)|\blead\b|\biii\b|\biv\b|\bl5\b|\bl6\b,
+2026-11-03,70,junior,(?i)\bjunior\b|\bjr\.?(\b|\s)|entry[- ]level|\bassociate\b|new grad|\bgraduate\b|early career|\bl2\b|\bl3\b| i$,(?i)associate director|associate general counsel|associate partner
+2026-11-03,80,mid,(?i)\bii\b|\bl4\b|mid[- ]level|\bintermediate\b,

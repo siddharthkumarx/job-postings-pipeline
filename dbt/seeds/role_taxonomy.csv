@@ -1,0 +1,26 @@
+taxonomy_version,priority,role_family,pattern,exclude_pattern
+2026-11-03,5,people_hr,(?i)\brecruit|talent acquisition|\bsourcer\b,
+2026-11-03,8,operations,(?i)\b(technical |engineering )?(program|project) manager\b|\btpm\b,
+2026-11-03,10,engineering_manager,(?i)\b(engineering|software|data|platform|infrastructure|ml|machine learning|ai|security|qa|devops|sre|reliability|backend|frontend|mobile)\b.*\b(manager|director|head|vp)\b|\b(head|director|vp|vice president|svp) of (engineering|data|platform|infrastructure|software|ai|machine learning|security)\b|\bcto\b,(?i)product manager|account manager|customer success|sales
+2026-11-03,20,analytics_engineer,(?i)\banalytics engineer,
+2026-11-03,25,security,(?i)\bsecurity\b|\bappsec\b|\binfosec\b|\bcyber|penetration test|\bsoc analyst|threat (intel|detection|hunt)|\bdetection engineer,(?i)social security
+2026-11-03,30,ml_engineer,"(?i)\b(machine learning|ml|ai|deep learning|llm|nlp|computer vision|mlops|genai|generative ai)\b.{0,20}\b(engineer|developer|architect|researcher|research engineer)\b|\bmle\b|\bai/ml\b",
+2026-11-03,40,data_engineer,(?i)\bdata (platform |infrastructure |warehouse |pipeline |integration )?engineer|\betl (developer|engineer)|\bbig data\b|\bdata architect|\bdata warehouse|\bdatabase engineer|\bdba\b,
+2026-11-03,50,data_scientist,(?i)\bdata scien|\bapplied scientist|\bresearch scientist|\bquantitative research|\bstatistician|\bdecision scientist|\bml scientist|machine learning scientist,
+2026-11-03,60,data_analyst,(?i)\b(data|bi|business intelligence|analytics|product|insights|reporting|marketing|growth|people) analyst\b|\banalytics (lead|manager|specialist|consultant)\b|\bbusiness intelligence\b|\bdata analytics\b,
+2026-11-03,80,devops_sre,(?i)\bdevops\b|site reliability|\bsre\b|\bplatform engineer|\binfrastructure engineer|\bcloud (engineer|architect)|\bsystems engineer|\bproduction engineer|\bkubernetes\b|\brelease engineer|\bbuild engineer|\bnetwork engineer|\bdevsecops\b,
+2026-11-03,90,qa_test,(?i)\bqa\b|quality assurance|\btest (engineer|automation)|\bsdet\b|\bquality engineer|\bautomation tester|\bsoftware tester,
+2026-11-03,100,hardware_engineer,(?i)\bhardware\b|electrical engineer|mechanical engineer|\bfirmware\b|\bembedded\b|\basic\b|\bfpga\b|\brf engineer|\bsilicon\b|\brobotics\b|manufacturing engineer|\bpcb\b|\bavionics\b|\bpropulsion\b,
+2026-11-03,110,solutions_engineer,(?i)\bsolutions? (engineer|architect|consultant)|\bsales engineer|\bforward deployed|\bfield engineer|\bcustomer engineer|\bimplementation engineer|\bsupport engineer|technical account manager|\bpre-?sales\b|\bdeployment engineer|\bintegration engineer,
+2026-11-03,120,software_engineer,(?i)\bsoftware\b|\bdeveloper\b|\bprogrammer\b|\bswe\b|\bsde\b|front[- ]?end|back[- ]?end|full[- ]?stack|\bios\b|\bandroid\b|\bmobile engineer|\bweb engineer|\bapplication engineer|\bgame (engineer|programmer),
+2026-11-03,125,software_engineer,(?i)member of technical staff|\bmts\b|founding engineer|\bengineer\b|\bengineering\b,(?i)sales|marketing|recruit
+2026-11-03,130,product_manager,(?i)\bproduct (manager|owner|lead|management)\b|\bhead of product\b|\b(director|vp|vice president) of product\b|\bgroup product\b|\bchief product,(?i)product marketing
+2026-11-03,140,design,(?i)\bdesigner\b|\bux\b|\bui\b|user research|\bdesign (lead|manager|director|system)|\bhead of design\b|\bcreative director\b,
+2026-11-03,150,it_support,(?i)\bit (support|specialist|administrator|technician|manager|engineer|operations|analyst)\b|help ?desk|service desk|system administrator|sysadmin|desktop support|end user computing,
+2026-11-03,160,sales,(?i)\baccount executive|\bsales\b|business development|\bbdr\b|\bsdr\b|\baccount manager|\bpartnerships?\b|\bcommercial\b|revenue operations|\brevops\b,
+2026-11-03,170,marketing,(?i)marketing|\bgrowth\b|\bcontent\b|\bbrand\b|\bseo\b|communications|public relations|social media|demand gen|\bcopywriter\b|\bevents?\b,
+2026-11-03,180,customer_success,(?i)customer success|customer support|support specialist|customer experience|\bonboarding\b|implementation (manager|specialist|consultant)|technical support|customer service|client success|\bsupport (agent|associate|representative|lead|manager)\b,
+2026-11-03,190,finance,(?i)\bfinance\b|financial|accounting|accountant|controller|\btax\b|treasury|fp&a|payroll|\baudit|billing|\bcfo\b,
+2026-11-03,200,people_hr,(?i)\bpeople\b|human resources|\bhr\b|\bhrbp\b|\bbenefits\b|compensation|\blearning (and|&) development|workplace experience,
+2026-11-03,210,legal,(?i)\blegal\b|counsel|attorney|paralegal|compliance|\bprivacy\b|\bregulatory\b|\bcontracts? manager,
+2026-11-03,220,operations,(?i)operations|chief of staff|\bstrategy\b|office manager|executive assistant|\badministrat|logistics|supply chain|procurement|\bbusiness operations\b|\bfacilities\b|\banalyst\b,

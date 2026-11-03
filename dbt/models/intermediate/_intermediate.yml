@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: int_title_labels
+    description: Distinct titles labelled with role family and title seniority (versioned taxonomy seeds).
+    columns:
+      - name: title
+        data_tests: [unique, not_null]
+      - name: role_family
+        data_tests: [not_null]
+
+  - name: int_locations
+    description: Distinct location strings parsed into country / US state / city (jobpipe.geo).
+    columns:
+      - name: location_key
+        data_tests: [unique, not_null]
+
+  - name: int_postings_daily
+    description: Enriched posting × run date; attr_hash covers the SCD2-tracked attributes.
+    data_tests:
+      - unique_combination:
+          arguments:
+            columns: [posting_key, run_date]
+    columns:
+      - name: role_family
+        data_tests: [not_null]
+      - name: remote_type
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [remote, hybrid, onsite, unknown]
+
+  - name: int_run_calendar
+    description: Run dates with at least one successful board fetch.
+    columns:
+      - name: run_date
+        data_tests: [unique, not_null]
+
+  - name: int_posting_lifecycle
+    description: First/last seen, closed (2 consecutive successful-fetch absences), reopen count, days open.
+    columns:
+      - name: posting_key
+        data_tests: [unique, not_null]
+      - name: days_open
+        data_tests:
+          - not_null
+          - column_between:
+              arguments:
+                min_value: 1
+                max_value: 5000
+
+  - name: int_posting_versions
+    description: SCD2 versions of title, location and salary per posting.
+    data_tests:
+      - expression_is_true:
+          arguments:
+            expression: "valid_to is null or valid_to > valid_from"
+    columns:
+      - name: version_key
+        data_tests: [unique, not_null]

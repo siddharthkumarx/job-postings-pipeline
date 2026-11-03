@@ -1,0 +1,10 @@
+version: 2
+
+seeds:
+  - name: role_taxonomy
+    description: Title → role family rules (RE2 regex, case-insensitive), lowest priority wins. See docs/decisions.md D-006.
+    columns:
+      - name: role_family
+        data_tests: [not_null]
+  - name: seniority_rules
+    description: Title → seniority rules, lowest priority wins; no match falls back to the description hint, then 'mid'.

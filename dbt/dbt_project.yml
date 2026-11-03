@@ -1,0 +1,38 @@
+name: jobs_warehouse
+version: "1.0.0"
+config-version: 2
+profile: jobs
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+target-path: target
+clean-targets: [target, dbt_packages]
+
+vars:
+  # Run-date window processed by incremental models (ISO dates). Empty = every date in bronze.
+  run_from: ""
+  run_to: ""
+  taxonomy_version: "2026-11-03"
+  data_role_families: ["data_engineer", "analytics_engineer", "data_analyst", "ml_engineer"]
+
+seeds:
+  jobs_warehouse:
+    +schema: ref
+    role_taxonomy:
+      +column_types: {taxonomy_version: varchar, priority: integer, role_family: varchar, pattern: varchar, exclude_pattern: varchar}
+    seniority_rules:
+      +column_types: {taxonomy_version: varchar, priority: integer, seniority: varchar, pattern: varchar, exclude_pattern: varchar}
+
+models:
+  jobs_warehouse:
+    staging:
+      +schema: silver
+      +materialized: view
+    intermediate:
+      +schema: history
+      +materialized: table
+    marts:
+      +schema: gold
+      +materialized: table

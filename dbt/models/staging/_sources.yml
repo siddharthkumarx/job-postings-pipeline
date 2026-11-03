@@ -1,0 +1,40 @@
+version: 2
+
+sources:
+  - name: bronze
+    description: >
+      Bronze Parquet written by `jobpipe.ingest` (one file per run date) and
+      the ECB FX file written by `jobpipe.fx`. Locally only the run dates being
+      processed are present; the full history lives in GitHub Release assets.
+    tables:
+      - name: postings
+        description: One row per posting per run (jobpipe.models.Posting). No free text, no personal data.
+        meta:
+          external_location: "read_parquet('{{ env_var('JOBPIPE_DATA', '../data') }}/bronze/postings/*/*.parquet', hive_partitioning = false, union_by_name = true)"
+        loaded_at_field: fetched_at
+        freshness:
+          warn_after: {count: 26, period: hour}
+          error_after: {count: 36, period: hour}
+        columns:
+          - name: provider
+            tests: [not_null]
+          - name: posting_id
+            tests: [not_null]
+          - name: run_date
+            tests: [not_null]
+      - name: board_runs
+        description: One row per tracked board per run with the fetch outcome.
+        meta:
+          external_location: "read_parquet('{{ env_var('JOBPIPE_DATA', '../data') }}/bronze/board_runs/*/*.parquet', hive_partitioning = false, union_by_name = true)"
+        loaded_at_field: fetched_at
+        freshness:
+          warn_after: {count: 26, period: hour}
+          error_after: {count: 36, period: hour}
+      - name: fx_rates
+        description: ECB euro foreign exchange reference rates with a USD cross rate.
+        meta:
+          external_location: "read_parquet('{{ env_var('JOBPIPE_DATA', '../data') }}/bronze/fx/ecb_eurofxref.parquet')"
+      - name: tracked_boards
+        description: The tracked boards chosen by recon (seeds/boards.csv at the repo root).
+        meta:
+          external_location: "read_csv('{{ env_var('JOBPIPE_SEEDS', '../seeds') }}/boards.csv', header = true, all_varchar = true)"

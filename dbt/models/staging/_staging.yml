@@ -1,0 +1,68 @@
+version: 2
+
+models:
+  - name: stg_postings
+    description: Silver postings, one row per posting per run date (deduplicated, cleaned, salary chosen api-first).
+    data_tests:
+      - unique_combination:
+          arguments:
+            columns: [posting_key, run_date]
+    columns:
+      - name: posting_key
+        data_tests: [not_null]
+      - name: company_id
+        data_tests:
+          - not_null
+      - name: provider
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [greenhouse, lever, ashby]
+      - name: title
+        data_tests: [not_null]
+      - name: job_url
+        data_tests: [not_null]
+      - name: workplace_type
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [remote, hybrid, onsite]
+      - name: salary_source
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [api, description]
+      - name: run_date
+        data_tests: [not_null]
+
+  - name: stg_board_runs
+    description: One row per board per run with the fetch outcome.
+    data_tests:
+      - unique_combination:
+          arguments:
+            columns: [company_id, run_date]
+    columns:
+      - name: status
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [ok, not_found, error, blocked, skipped]
+
+  - name: stg_fx_rates
+    description: ECB reference rates with USD per unit of currency.
+    data_tests:
+      - unique_combination:
+          arguments:
+            columns: [rate_date, currency]
+    columns:
+      - name: usd_per_unit
+        data_tests: [not_null]
+
+  - name: stg_tracked_boards
+    description: Tracked boards from recon (seeds/boards.csv).
+    columns:
+      - name: company_id
+        data_tests: [unique, not_null]
+      - name: company_name
+        data_tests: [not_null]

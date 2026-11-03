@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import re
 from collections.abc import Iterable
+from dataclasses import dataclass
 
 US_STATES: dict[str, str] = {
     "AL": "Alabama", "AK": "Alaska", "AZ": "Arizona", "AR": "Arkansas", "CA": "California",
@@ -226,3 +227,77 @@ def job_countries(locations: Iterable[str], hints: Iterable[str] = ()) -> set[st
             if code:
                 out.add(code)
     return out
+
+
+_REMOTE_WORD = re.compile(r"\bremote\b|\banywhere\b|\bwork from home\b|\bwfh\b", re.I)
+_HYBRID_WORD = re.compile(r"\bhybrid\b", re.I)
+_PREFIX = re.compile(
+    r"^\s*(?:remote|hybrid|on[- ]?site|in[- ]office)\s*(?:[-–:,(/]|\bin\b)\s*", re.IGNORECASE
+)
+_PAREN = re.compile(r"\s*\((?:remote|hybrid|on[- ]?site)[^)]*\)\s*", re.IGNORECASE)
+_STATE_SUFFIX = re.compile(
+    r"^(?P<city>[A-Za-zÀ-ÿ .'\-]+?),\s*(?P<st>[A-Z]{2}|[A-Za-z .]+?)"
+    r"(?:,\s*(?:US|USA|United States))?$"
+)
+
+
+@dataclass(frozen=True, slots=True)
+class ParsedLocation:
+    country_code: str | None
+    state_code: str | None
+    city: str | None
+    remote_text: str | None  # "remote" / "hybrid" when the location string says so
+
+
+def parse_location(location: str | None, country_hint: str | None = None) -> ParsedLocation:
+    """Primary location string → country / US state / city (+ remote words)."""
+    text = (location or "").strip()
+    remote_text = None
+    if _HYBRID_WORD.search(text):
+        remote_text = "hybrid"
+    elif _REMOTE_WORD.search(text):
+        remote_text = "remote"
+    first = split_locations(text)[0] if text else ""
+    country = classify_segment(first) if first else None
+    hint = normalize_country_hint(country_hint) if country_hint else None
+    if hint and (country is None or country == NON_US_REGION_CODE):
+        country = hint
+    state = city = None
+    core = _PAREN.sub(" ", _PREFIX.sub("", first)).strip(" -–,")
+    if country == "US" and core:
+        m = _STATE_SUFFIX.match(core)
+        if m:
+            st = m.group("st").strip()
+            code = st if st in US_STATES else US_STATE_NAMES.get(st.lower())
+            if code:
+                state = code
+                city = m.group("city").strip()
+        if state is None:
+            low = core.lower()
+            if low in US_STATE_NAMES:
+                state = US_STATE_NAMES[low]
+            else:
+                for name, code in US_CITIES.items():
+                    if _word(name).search(low):
+                        state = code
+                        city = (
+                            name.split(",")[0].title()
+                            if name
+                            not in (
+                                "nyc",
+                                "bay area",
+                                "sf bay area",
+                                "silicon valley",
+                            )
+                            else None
+                        )
+                        if name in ("nyc", "new york city"):
+                            city = "New York"
+                        break
+        if city and city.lower() in ("remote", "us", "usa", "united states", "anywhere"):
+            city = None
+    elif country and country not in ("US", NON_US_REGION_CODE) and core:
+        head = core.split(",")[0].strip()
+        if head.lower() in NON_US_CITIES:
+            city = head
+    return ParsedLocation(country, state, city, remote_text)
