@@ -37,8 +37,9 @@ ECB reference rates ─► bronze fx Parquet
 
 | Layer | Where | Grain | Built by |
 |---|---|---|---|
-| bronze postings | `data/bronze/postings/run_date=D/provider=P/part-0.parquet`; Release `bronze-YYYY-MM`, asset `postings_D.parquet` | one row per posting per run | `jobpipe.ingest` |
+| bronze postings | `data/bronze/postings/run_date=D/part-0.parquet`; Release `bronze-YYYY-MM`, asset `postings_D.parquet` | one row per posting per run | `jobpipe.ingest` |
 | bronze board log | `data/bronze/board_runs/run_date=D/part-0.parquet`; asset `board_runs_D.parquet` | one row per board per run (status, jobs, latency) | `jobpipe.ingest` |
+| bronze manifest | `data/bronze/manifests/run_date=D.json`; asset `manifest_D.json` | counts, HTTP stats, duration | `jobpipe.ingest` |
 | bronze fx | `data/bronze/fx/ecb_eurofxref.parquet`; asset `fx_D.parquet` | one row per currency per ECB business day | `jobpipe.fx` |
 | silver | `dbt/models/staging/` | posting × run date, parsed | dbt |
 | history | `dbt/models/intermediate/` | posting lifecycle; SCD2 versions | dbt |
@@ -60,7 +61,7 @@ any name, email or phone number.
 
 ## Daily run (`jobpipe run --date D`)
 
-1. **restore state**: download `state/warehouse.duckdb.zst` and `state/state.json` from the `state` Release. If absent or unreadable, `jobpipe rebuild` downloads every bronze asset and replays it.
+1. **restore state**: download `warehouse.duckdb.gz` and `state/state.json` from the `state` Release. If absent or unreadable, `jobpipe rebuild` downloads every bronze asset and replays it.
 2. **ingest**: fetch all boards with the polite client (`docs/decisions.md` D-002), write bronze for D, upload bronze assets (replacing any earlier upload for D, so the run is idempotent).
 3. **fx**: fetch ECB reference rates, write the bronze fx file.
 4. **dbt build**: `dbt build --vars '{run_from: D, run_to: D}'`. Incremental models delete and re-insert the run dates in range; history and marts recompute from silver.
@@ -94,3 +95,45 @@ site/                   built dashboard (gitignored; built in CI)
 docs/                   decisions, sources, contracts, progress, incidents
 .github/workflows/      ci.yml, checks.yml, daily.yml
 ```
+
+## dbt models
+
+| Layer (schema) | Model | Materialisation | Notes |
+|---|---|---|---|
+| silver | `stg_postings` | incremental, delete+insert on `run_date` | dedupe, cleaning, salary chosen api-first |
+| silver | `stg_board_runs` | incremental, delete+insert on `run_date` | fetch outcome per board |
+| silver | `stg_fx_rates`, `stg_tracked_boards` | view | ECB rates; seeds/boards.csv |
+| history | `int_title_labels` | table | taxonomy seeds → role family, title seniority |
+| history | `int_locations` | table (dbt Python model) | `jobpipe.geo.parse_location` |
+| history | `int_postings_daily` | incremental | enriched posting × run date, `attr_hash` |
+| history | `int_run_calendar` | table | run dates with ≥ 1 OK board |
+| history | `int_posting_lifecycle` | table | first/last seen, closed, reopened, days open |
+| history | `int_posting_versions` | table | SCD2 |
+| gold | `fct_job_postings`, `dim_company`, `mart_*` | table, contract enforced | public tables (`docs/data-contracts.md`) |
+
+Seeds (schema `ref`): `role_taxonomy`, `seniority_rules`. Custom generic tests:
+`column_between`, `unique_combination`, `expression_is_true` (`dbt/tests/generic/`).
+
+`dbt/models/marts/_marts.yml` is generated from `docs/data-contracts.md` by
+`scripts/gen_marts_yml.py`; `tests/test_contracts_doc.py` fails when they drift.
+
+## Code map
+
+| Module | Job |
+|---|---|
+| `jobpipe.http` | polite async client (per-host limits, retries, Retry-After, blocks) |
+| `jobpipe.providers.*` | one adapter per provider: URL, params, allowlisted fields |
+| `jobpipe.extract` | in-memory description analysis (salary, remote, seniority, sha256) |
+| `jobpipe.models` | Pydantic `Posting` / `BoardRun`, Parquet schema |
+| `jobpipe.ingest` | fetch all boards → bronze Parquet + manifest |
+| `jobpipe.fx` | ECB reference rates → bronze fx |
+| `jobpipe.geo` | location → country / state / city |
+| `jobpipe.state` | GitHub Release assets: bronze, warehouse snapshot |
+| `jobpipe.warehouse` | dbt runner wrapper |
+| `jobpipe.guards` | run stats + hold rules |
+| `jobpipe.publish` | exports, summary CSVs, runs.jsonl, status.json, badges, HF |
+| `jobpipe.pipeline` | daily / backfill / rebuild / release-hold orchestration |
+| `jobpipe.site` | static dashboard |
+| `jobpipe.recon` | one-off board discovery (harvest, verify, select) |
+| `jobpipe.checks` | live-check runner for Actions |
+| `jobpipe.fixtures` | synthetic bronze for offline dbt builds |
