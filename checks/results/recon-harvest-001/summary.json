@@ -1,0 +1,370 @@
+{
+  "id": "recon-harvest-001",
+  "command": "recon-harvest",
+  "started_at": "2026-11-03T22:15:16+00:00",
+  "git_sha": "d22c57bdf1de7f3eda76f943145aa882c8130eac",
+  "run_id": "41729136819",
+  "runner": "Linux x86_64 py3.12.3",
+  "result": {
+    "crawls": [
+      "CC-MAIN-2026-43",
+      "CC-MAIN-2026-39",
+      "CC-MAIN-2026-34",
+      "CC-MAIN-2026-30",
+      "CC-MAIN-2026-25",
+      "CC-MAIN-2026-21",
+      "CC-MAIN-2026-17",
+      "CC-MAIN-2026-12"
+    ],
+    "candidates": 9904,
+    "by_provider": {
+      "ashby": 3242,
+      "greenhouse": 5670,
+      "lever": 992
+    },
+    "log": [
+      {
+        "crawl": "CC-MAIN-2026-43",
+        "pattern": "boards.greenhouse.io/*",
+        "pages": 1,
+        "urls": 1596,
+        "pages_available": 2,
+        "page_errors": [
+          "0: http_error 504 HTTP 504"
+        ],
+        "tokens": 272
+      },
+      {
+        "crawl": "CC-MAIN-2026-43",
+        "pattern": "job-boards.greenhouse.io/*",
+        "pages": 1,
+        "urls": 13174,
+        "pages_available": 5,
+        "page_errors": [
+          "1: http_error 504 HTTP 504",
+          "2: http_error 504 HTTP 504",
+          "3: http_error 504 HTTP 504",
+          "4: http_error 504 HTTP 504"
+        ],
+        "tokens": 668
+      },
+      {
+        "crawl": "CC-MAIN-2026-43",
+        "pattern": "jobs.lever.co/*",
+        "pages": 1,
+        "urls": 524,
+        "pages_available": 1,
+        "tokens": 266
+      },
+      {
+        "crawl": "CC-MAIN-2026-43",
+        "pattern": "jobs.ashbyhq.com/*",
+        "pages": 0,
+        "urls": 0,
+        "error": "http_error 504 HTTP 504"
+      },
+      {
+        "crawl": "CC-MAIN-2026-39",
+        "pattern": "boards.greenhouse.io/*",
+        "pages": 0,
+        "urls": 0,
+        "pages_available": 1,
+        "page_errors": [
+          "0: http_error 504 HTTP 504"
+        ],
+        "tokens": 0
+      },
+      {
+        "crawl": "CC-MAIN-2026-39",
+        "pattern": "job-boards.greenhouse.io/*",
+        "pages": 0,
+        "urls": 0,
+        "pages_available": 5,
+        "page_errors": [
+          "0: http_error 504 HTTP 504",
+          "1: http_error 504 HTTP 504",
+          "2: http_error 504 HTTP 504",
+          "3: http_error 504 HTTP 504",
+          "4: http_error 504 HTTP 504"
+        ],
+        "tokens": 0
+      },
+      {
+        "crawl": "CC-MAIN-2026-39",
+        "pattern": "jobs.lever.co/*",
+        "pages": 1,
+        "urls": 105,
+        "pages_available": 1,
+        "tokens": 27
+      },
+      {
+        "crawl": "CC-MAIN-2026-39",
+        "pattern": "jobs.ashbyhq.com/*",
+        "pages": 0,
+        "urls": 0,
+        "pages_available": 2,
+        "page_errors": [
+          "0: http_error 504 HTTP 504",
+          "1: http_error 504 HTTP 504"
+        ],
+        "tokens": 0
+      },
+      {
+        "crawl": "CC-MAIN-2026-34",
+        "pattern": "boards.greenhouse.io/*",
+        "pages": 0,
+        "urls": 0,
+        "pages_available": 2,
+        "page_errors": [
+          "0: http_error 504 HTTP 504",
+          "1: http_error 504 HTTP 504"
+        ],
+        "tokens": 0
+      },
+      {
+        "crawl": "CC-MAIN-2026-34",
+        "pattern": "job-boards.greenhouse.io/*",
+        "pages": 0,
+        "urls": 0,
+        "error": "http_error 504 HTTP 504"
+      },
+      {
+        "crawl": "CC-MAIN-2026-34",
+        "pattern": "jobs.lever.co/*",
+        "pages": 0,
+        "urls": 0,
+        "error": "http_error 504 HTTP 504"
+      },
+      {
+        "crawl": "CC-MAIN-2026-34",
+        "pattern": "jobs.ashbyhq.com/*",
+        "pages": 0,
+        "urls": 0,
+        "error": "http_error 504 HTTP 504"
+      },
+      {
+        "crawl": "CC-MAIN-2026-30",
+        "pattern": "boards.greenhouse.io/*",
+        "pages": 0,
+        "urls": 0,
+        "pages_available": 1,
+        "page_errors": [
+          "0: http_error 504 HTTP 504"
+        ],
+        "tokens": 0
+      },
+      {
+        "crawl": "CC-MAIN-2026-30",
+        "pattern": "job-boards.greenhouse.io/*",
+        "pages": 2,
+        "urls": 22822,
+        "pages_available": 5,
+        "page_errors": [
+          "0: http_error 504 HTTP 504",
+          "2: http_error 504 HTTP 504",
+          "3: http_error 504 HTTP 504"
+        ],
+        "tokens": 1525
+      },
+      {
+        "crawl": "CC-MAIN-2026-30",
+        "pattern": "jobs.lever.co/*",
+        "pages": 0,
+        "urls": 0,
+        "error": "http_error 504 HTTP 504"
+      },
+      {
+        "crawl": "CC-MAIN-2026-30",
+        "pattern": "jobs.ashbyhq.com/*",
+        "pages": 0,
+        "urls": 0,
+        "pages_available": 2,
+        "page_errors": [
+          "0: http_error 504 HTTP 504",
+          "1: http_error 504 HTTP 504"
+        ],
+        "tokens": 0
+      },
+      {
+        "crawl": "CC-MAIN-2026-25",
+        "pattern": "boards.greenhouse.io/*",
+        "pages": 0,
+        "urls": 0,
+        "error": "http_error 504 HTTP 504"
+      },
+      {
+        "crawl": "CC-MAIN-2026-25",
+        "pattern": "job-boards.greenhouse.io/*",
+        "pages": 0,
+        "urls": 0,
+        "error": "http_error 504 HTTP 504"
+      },
+      {
+        "crawl": "CC-MAIN-2026-25",
+        "pattern": "jobs.lever.co/*",
+        "pages": 1,
+        "urls": 66,
+        "pages_available": 1,
+        "tokens": 0
+      },
+      {
+        "crawl": "CC-MAIN-2026-25",
+        "pattern": "jobs.ashbyhq.com/*",
+        "pages": 0,
+        "urls": 0,
+        "pages_available": 2,
+        "page_errors": [
+          "0: http_error 504 HTTP 504",
+          "1: http_error 504 HTTP 504"
+        ],
+        "tokens": 0
+      },
+      {
+        "crawl": "CC-MAIN-2026-21",
+        "pattern": "boards.greenhouse.io/*",
+        "pages": 0,
+        "urls": 0,
+        "pages_available": 1,
+        "page_errors": [
+          "0: http_error 504 HTTP 504"
+        ],
+        "tokens": 0
+      },
+      {
+        "crawl": "CC-MAIN-2026-21",
+        "pattern": "job-boards.greenhouse.io/*",
+        "pages": 3,
+        "urls": 38448,
+        "pages_available": 5,
+        "page_errors": [
+          "0: http_error 502 HTTP 502",
+          "4: http_error 504 HTTP 504"
+        ],
+        "tokens": 2640
+      },
+      {
+        "crawl": "CC-MAIN-2026-21",
+        "pattern": "jobs.lever.co/*",
+        "pages": 0,
+        "urls": 0,
+        "error": "http_error 504 HTTP 504"
+      },
+      {
+        "crawl": "CC-MAIN-2026-21",
+        "pattern": "jobs.ashbyhq.com/*",
+        "pages": 1,
+        "urls": 4720,
+        "pages_available": 2,
+        "page_errors": [
+          "0: http_error 504 HTTP 504"
+        ],
+        "tokens": 812
+      },
+      {
+        "crawl": "CC-MAIN-2026-17",
+        "pattern": "boards.greenhouse.io/*",
+        "pages": 1,
+        "urls": 3428,
+        "pages_available": 1,
+        "tokens": 400
+      },
+      {
+        "crawl": "CC-MAIN-2026-17",
+        "pattern": "job-boards.greenhouse.io/*",
+        "pages": 1,
+        "urls": 14292,
+        "pages_available": 4,
+        "page_errors": [
+          "1: http_error 504 HTTP 504",
+          "2: http_error 504 HTTP 504",
+          "3: http_error 504 HTTP 504"
+        ],
+        "tokens": 868
+      },
+      {
+        "crawl": "CC-MAIN-2026-17",
+        "pattern": "jobs.lever.co/*",
+        "pages": 1,
+        "urls": 75,
+        "pages_available": 1,
+        "tokens": 0
+      },
+      {
+        "crawl": "CC-MAIN-2026-17",
+        "pattern": "jobs.ashbyhq.com/*",
+        "pages": 1,
+        "urls": 12513,
+        "pages_available": 2,
+        "page_errors": [
+          "1: http_error 504 HTTP 504"
+        ],
+        "tokens": 2008
+      },
+      {
+        "crawl": "CC-MAIN-2026-12",
+        "pattern": "boards.greenhouse.io/*",
+        "pages": 1,
+        "urls": 850,
+        "pages_available": 1,
+        "tokens": 87
+      },
+      {
+        "crawl": "CC-MAIN-2026-12",
+        "pattern": "job-boards.greenhouse.io/*",
+        "pages": 3,
+        "urls": 21294,
+        "pages_available": 5,
+        "page_errors": [
+          "0: http_error 504 HTTP 504",
+          "3: http_error 504 HTTP 504"
+        ],
+        "tokens": 1637
+      },
+      {
+        "crawl": "CC-MAIN-2026-12",
+        "pattern": "jobs.lever.co/*",
+        "pages": 0,
+        "urls": 0,
+        "error": "http_error 504 HTTP 504"
+      },
+      {
+        "crawl": "CC-MAIN-2026-12",
+        "pattern": "jobs.ashbyhq.com/*",
+        "pages": 2,
+        "urls": 4397,
+        "pages_available": 2,
+        "tokens": 746
+      },
+      {
+        "source": "https://yc-oss.github.io/api/companies/all.json",
+        "companies_total": 6362,
+        "companies_picked": 473,
+        "guess_pairs": 2142
+      }
+    ],
+    "http": {
+      "index.commoncrawl.org": {
+        "requests": 422,
+        "retries": 335,
+        "by_outcome": {
+          "ok": 45,
+          "http_error": 42
+        },
+        "blocked": false,
+        "block_reason": null
+      },
+      "yc-oss.github.io": {
+        "requests": 1,
+        "retries": 0,
+        "by_outcome": {
+          "ok": 1
+        },
+        "blocked": false,
+        "block_reason": null
+      }
+    }
+  },
+  "status": "ok",
+  "finished_at": "2026-11-03T23:47:43+00:00",
+  "duration_s": 5546.5
+}
