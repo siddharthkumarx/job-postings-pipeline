@@ -45,7 +45,10 @@ def run_dbt(
         if status in ("error", "fail", "runtime error"):
             node = getattr(r, "node", None)
             name = getattr(node, "unique_id", "?") if node is not None else "?"
-            failures.append(f"{name}: {status} {getattr(r, 'message', '')}"[:400])
+            msg = str(getattr(r, "message", "") or "")
+            if len(msg) > 700:  # keep the head and the end of a traceback, where the cause is
+                msg = msg[:200] + " … " + msg[-500:]
+            failures.append(f"{name}: {status} {msg}")
     if res.exception is not None:
         failures.append(f"dbt exception: {res.exception}"[:400])
     return DbtResult(bool(res.success) and not failures, failures, counts)

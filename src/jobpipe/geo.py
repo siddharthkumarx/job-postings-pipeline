@@ -257,7 +257,8 @@ def parse_location(location: str | None, country_hint: str | None = None) -> Par
         remote_text = "hybrid"
     elif _REMOTE_WORD.search(text):
         remote_text = "remote"
-    first = split_locations(text)[0] if text else ""
+    parts = split_locations(text)
+    first = parts[0] if parts else ""  # e.g. "-" or " / " split into nothing
     country = classify_segment(first) if first else None
     hint = normalize_country_hint(country_hint) if country_hint else None
     if hint and (country is None or country == NON_US_REGION_CODE):

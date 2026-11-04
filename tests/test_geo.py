@@ -53,3 +53,9 @@ def test_structured_hints_win() -> None:
 def test_parse_location(loc: str, hint: str | None, expected: tuple[object, ...]) -> None:
     p = parse_location(loc, hint)
     assert (p.country_code, p.state_code, p.city, p.remote_text) == expected
+
+
+@pytest.mark.parametrize("loc", ["-", " / ", ";", "|", "—", "  "])
+def test_parse_location_separator_only(loc: str) -> None:
+    p = parse_location(loc)
+    assert (p.country_code, p.state_code, p.city) == (None, None, None)
