@@ -73,8 +73,13 @@ def restore(gh: state.GitHubReleases, paths: Paths, before: date) -> tuple[dict[
     """
     st = state.pull_warehouse(gh, paths.duckdb)
     if st is not None:
-        return st, False
-    log.warning("no warehouse snapshot: rebuilding from bronze assets")
+        problems = state.validate_warehouse(paths.duckdb, list(st.get("bronze_dates", [])))
+        if not problems:
+            return st, False
+        log.warning("warehouse snapshot unusable (%s): rebuilding from bronze assets", problems)
+        paths.duckdb.unlink(missing_ok=True)
+    else:
+        log.warning("no warehouse snapshot: rebuilding from bronze assets")
     dates = [d for d in state.bronze_dates(gh, _months(PIPELINE_START, before)) if d < before]
     for d in dates:
         state.pull_bronze(gh, paths.data_dir, d)
@@ -212,6 +217,8 @@ def daily(
     try:
         gh = gh or state.GitHubReleases()
         st, full_refresh = restore(gh, paths, run_date)
+        if full_refresh:
+            notes.append(f"rebuilt warehouse from {len(st.get('bronze_dates', []))} bronze dates")
         manifest = ingest.run(run_date, boards_csv=paths.boards_csv, data_dir=paths.data_dir)
         entry["ingest"] = {
             k: manifest[k]

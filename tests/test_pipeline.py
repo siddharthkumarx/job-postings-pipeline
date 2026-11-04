@@ -58,6 +58,9 @@ def test_daily_runs_restore_state_and_publish(tmp_path: Path, env: tuple[FakeGit
         outcomes.append(pipeline.daily(d, _paths(tmp_path, seeds, n), gh))
     statuses = [o.status for o in outcomes]
     errors = [o.entry.get("error") or o.entry.get("hold_reasons") for o in outcomes]
+    # only the first run builds from scratch; later runs restore a complete snapshot
+    rebuilt = [any("rebuilt warehouse" in n for n in o.entry["notes"]) for o in outcomes]
+    assert rebuilt == [True, False, False, False, False, False], rebuilt
     # day 5 (index 4): Lever board fails -> 2 of 3 boards OK (< 90 %) -> held
     assert statuses == ["published"] * 4 + ["held", "published"], errors
     assert any("boards fetched OK 2/3" in r for r in outcomes[4].entry["hold_reasons"])

@@ -4,6 +4,7 @@ from datetime import date
 from pathlib import Path
 
 import httpx
+import pytest
 
 from jobpipe import state
 
@@ -93,7 +94,9 @@ def test_bronze_roundtrip_and_dates(tmp_path: Path) -> None:
     assert not state.pull_bronze(gh, dst, date(2026, 12, 1))
 
 
-def test_warehouse_roundtrip(tmp_path: Path) -> None:
+def test_warehouse_roundtrip(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(state, "checkpoint", lambda p: None)
+    monkeypatch.setattr(state, "validate_warehouse", lambda p, d: [])
     fake = FakeGitHub()
     gh = _gh(fake)
     assert state.pull_warehouse(gh, tmp_path / "w.duckdb") is None
@@ -106,3 +109,17 @@ def test_warehouse_roundtrip(tmp_path: Path) -> None:
     st = state.pull_warehouse(gh, out)
     assert st == {"last_good_run": "2026-11-04"}
     assert out.read_bytes() == b"duck" * 100
+
+
+def test_push_refuses_incomplete_warehouse(tmp_path: Path) -> None:
+    import duckdb
+
+    db = tmp_path / "w.duckdb"
+    con = duckdb.connect(str(db))
+    con.execute("create schema silver; create table silver.stg_postings (run_date date)")
+    con.close()
+    problems = state.validate_warehouse(db, ["2026-11-04"])
+    assert any("missing table gold.dim_company" in p for p in problems)
+    assert any("lacks run dates" in p for p in problems)
+    with pytest.raises(RuntimeError, match="incomplete warehouse"):
+        state.push_warehouse(_gh(FakeGitHub()), db, {"bronze_dates": ["2026-11-04"]})

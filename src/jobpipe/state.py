@@ -245,7 +245,65 @@ def bronze_dates(gh: GitHubReleases, months: list[str]) -> list[date]:
 # ---- warehouse snapshot ----------------------------------------------------------------
 
 
+REQUIRED_TABLES = [
+    ("silver", "stg_postings"),
+    ("silver", "stg_board_runs"),
+    ("history", "int_postings_daily"),
+    ("history", "int_title_labels"),
+    *[("gold", t) for t in (
+        "fct_job_postings", "dim_company", "mart_weekly_open_roles", "mart_days_open_bands",
+        "mart_salary_bands", "mart_hiring_velocity", "mart_data_roles",
+    )],
+]  # fmt: skip
+
+
+def checkpoint(duckdb_path: Path) -> None:
+    """Flush the write-ahead log into the database file so a file copy is complete.
+
+    dbt keeps its DuckDB connection open in this process; a connection to the same file
+    shares that database instance, so FORCE CHECKPOINT writes everything dbt committed.
+    """
+    import duckdb
+
+    con = duckdb.connect(str(duckdb_path))
+    try:
+        con.execute("FORCE CHECKPOINT")
+    finally:
+        con.close()
+
+
+def validate_warehouse(duckdb_path: Path, bronze_dates: list[str]) -> list[str]:
+    """Problems with a restored snapshot (empty list = usable for an incremental run)."""
+    import duckdb
+
+    problems: list[str] = []
+    con = duckdb.connect(str(duckdb_path))
+    try:
+        have = {
+            (r[0], r[1])
+            for r in con.execute(
+                "select table_schema, table_name from information_schema.tables"
+            ).fetchall()
+        }
+        problems += [f"missing table {s}.{t}" for s, t in REQUIRED_TABLES if (s, t) not in have]
+        if ("silver", "stg_postings") in have and bronze_dates:
+            loaded = {
+                str(r[0])
+                for r in con.execute("select distinct run_date from silver.stg_postings").fetchall()
+            }
+            missing = sorted(set(bronze_dates) - loaded)
+            if missing:
+                problems.append(f"silver.stg_postings lacks run dates {missing[:5]}")
+    finally:
+        con.close()
+    return problems
+
+
 def push_warehouse(gh: GitHubReleases, duckdb_path: Path, state: dict[str, Any]) -> None:
+    checkpoint(duckdb_path)
+    problems = validate_warehouse(duckdb_path, list(state.get("bronze_dates", [])))
+    if problems:
+        raise RuntimeError(f"refusing to upload an incomplete warehouse: {problems}")
     gz = duckdb_path.with_suffix(".duckdb.gz")
     with duckdb_path.open("rb") as src, gzip.open(gz, "wb", compresslevel=6) as dst:
         shutil.copyfileobj(src, dst)
