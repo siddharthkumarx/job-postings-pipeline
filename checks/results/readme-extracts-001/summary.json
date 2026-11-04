@@ -1,0 +1,17 @@
+{
+  "id": "readme-extracts-001",
+  "command": "readme-extracts",
+  "started_at": "2026-11-04T08:53:21+00:00",
+  "git_sha": "5d94bce5faadc619f3dc47558f0fda5bf9ff062a",
+  "run_id": "41802936616",
+  "runner": "Linux x86_64 py3.12.3",
+  "result": {
+    "state": "2026-11-04",
+    "sample": 5,
+    "changes": 1,
+    "example": true
+  },
+  "status": "ok",
+  "finished_at": "2026-11-04T08:53:24+00:00",
+  "duration_s": 3.2
+}
