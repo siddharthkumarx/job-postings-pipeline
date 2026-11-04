@@ -67,12 +67,23 @@ jobs:
           echo "status=$s" >> "$GITHUB_OUTPUT"
           echo "Pipeline status: $s (exit $code)" >> "$GITHUB_STEP_SUMMARY"
           exit 0
+      - name: Re-render README, dataset card and visuals
+        if: always()
+        run: uv run --no-sync jobpipe readme
+      - name: Dashboard screenshot (Mondays, or when missing)
+        if: steps.run.outputs.status == 'published'
+        run: |
+          if [ "$(date -u +%u)" = "1" ] || [ ! -f assets/dashboard.png ]; then
+            uv run --no-sync --with playwright==1.64.1 playwright install --with-deps chromium
+            uv run --no-sync --with playwright==1.64.1 python scripts/screenshots.py site data/screens
+            cp data/screens/dashboard-top.png assets/dashboard.png
+          fi
       - name: Commit public outputs
         if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public
+          git add public README.md assets docs/dataset-card.md
           if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
           d=$(python3 -c "import json;print(json.load(open('public/status.json')).get('last_run','?'))")
           git commit -m "data: run ${d} (${{ steps.run.outputs.status }})"
