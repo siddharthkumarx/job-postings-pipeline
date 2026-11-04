@@ -43,8 +43,12 @@ engineering: layers, incremental loads, history, tests and data contracts.
 ### Dashboard look
 Background `#0B1416`; panels `#0F1C1E` with border `#1D3331`; main text `#EAF2F0`; body text `#C9D8D5`; quiet text `#7E9996`; teal `#2FBFAE` = good / growth; amber `#E9A93C` = look here / drop / change. Fonts: Instrument Sans (headings, text) and IBM Plex Mono (data, tables), self-hosted. No external scripts; text contrast ≥ 4.5:1; works from 360 to 1920 px; respects reduced motion; aim for Lighthouse 100. GitHub Pages turns on only after the public publish. Until then, check with Playwright screenshots at 360, 768 and 1440 px.
 
-### README
-README and animated SVGs come last, from real run data, following rules the owner will send. Until then keep notes in `docs/readme-plan.md`.
+### README and visuals (owner's rules, 2026-11-04)
+- `README.md` is generated: edit `templates/README.md.j2` (and `templates/readme.yml` for the public URLs), never README.md itself. Every daily run re-renders it with `jobpipe readme`, together with `docs/dataset-card.md` and `assets/*.svg`.
+- Readers are clients first (recruiters, HR-tech teams, analysts, data hiring managers), engineers second. Use plain words, short sentences and no jargon above the "For engineers" section. Keep the section order fixed (the test in `tests/test_readme.py` enforces it).
+- Every number, row and log line shown comes from real runs. Growing numbers come from `status.json` badges or regenerated sections. A drawn illustration with made-up data must carry a small "EXAMPLE" label.
+- Visuals: CSS-only animation, 6–10 s loops, the final frame holds and is the still, reduced motion shows the final frame. Fonts are embedded subsets. At most 3 lines of text, text ≥ 22 px in a 1000-px viewBox, colours from the dashboard palette. Render them with Playwright at 390 and 1280 px after changes.
+- No HTML comments, notes or placeholders in the rendered README (`readme.check_rendered`).
 
 ## Stack
 Python 3.12 with uv, httpx, pydantic, PyYAML, duckdb, dbt-core + dbt-duckdb, pyarrow. Versions and licenses are in `docs/decisions.md` D-005.
@@ -63,6 +67,9 @@ uv run jobpipe backfill --from 2026-11-04 --to 2026-11-10
 uv run jobpipe rebuild                    # rebuild the warehouse from all bronze assets
 uv run jobpipe fixtures-build             # run dbt on golden fixtures (offline, used by CI)
 uv run jobpipe site --out site            # build the dashboard from the warehouse/public outputs
+uv run jobpipe readme                     # re-render README.md, docs/dataset-card.md, assets/*.svg
+node scripts/render_media.js              # assets/social-preview.png + media/linkedin-hero.mp4 (playwright + ffmpeg)
+python3 scripts/check_links.py            # internal Markdown links
 cd dbt && uv run dbt build --profiles-dir . # needs JOBPIPE_DATA / JOBPIPE_DUCKDB env vars
 ```
 
@@ -76,19 +83,18 @@ cd dbt && uv run dbt build --profiles-dir . # needs JOBPIPE_DATA / JOBPIPE_DUCKD
 
 ## Continue here
 
-Status (2026-11-04): items 1–20 are done (`docs/build-progress.md`). The
-pipeline is live. The first published run (2026-11-04) tracked 1,500 companies
-and 64,316 open postings, with a full run of about 9.5 min. The `daily` workflow
-runs on schedule at 07:41 UTC on the working branch (the repo's default branch).
+Status (2026-11-04): all build items 1–21 are done (`docs/build-progress.md`). The
+pipeline runs daily at 07:41 UTC on the working branch (the repo's default branch)
+and re-renders the README and visuals each time.
 
 Next:
 1. Each morning, check `public/runs.jsonl` / `public/status.json` and any open
-   `pipeline-alert` issue. Fix and log problems in `docs/incidents.md`. Tune
-   the guard thresholds (D-012) once a week of runs exists.
-2. Once there are two or more runs, re-take the screenshots (`checks/request.yml` →
-   `site-screenshots`, new id) so the trend lines show, and copy them to
-   `docs/screenshots/`.
-3. Item 21 (README + animated SVGs) waits for the owner's README rules. Notes are
-   in `docs/readme-plan.md`.
-4. After the public publish: set the repo variable `PAGES_ENABLED=true` (Pages
-   deploy job) and add the `HF_TOKEN` secret for the Hugging Face upload.
+   `pipeline-alert` issue. Fix problems and log them in `docs/incidents.md`, filling in
+   both "In plain words" lines, because the README shows them. After a week of runs,
+   tune the guard thresholds (D-012).
+2. Before the public publish: remove `docs/private/`, rename the repo to
+   `job-postings-pipeline`, check that `templates/readme.yml` (repo, branch) matches, and
+   apply `docs/repo-settings.md` (About, topics, social preview, Pages + `PAGES_ENABLED`,
+   `HF_TOKEN`).
+3. Re-render `media/linkedin-hero.mp4` and `assets/social-preview.png` with
+   `node scripts/render_media.js` whenever you post them, so they show current numbers.

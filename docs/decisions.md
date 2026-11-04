@@ -130,3 +130,30 @@ Selection runs in `jobpipe.recon.select` over `checks/results/recon-verify-001/v
 ## D-015 Run ledger is append-only
 
 `public/runs.jsonl` keeps every attempt (failed, held and published), one line each. `status.json` counts the final attempt of each run date for `runs_published`, `runs_held`, `runs_failed` and `missed_runs`, and reports `attempts`, `failed_attempts` and `held_attempts` separately, so a re-run never hides an earlier failure. The first day's three attempts (failed, held, published) were restored from git history when this changed.
+
+## D-016 README, visuals and portfolio polish (2026-11-04)
+
+**Generated README.** `README.md` is rendered from `templates/README.md.j2` by `jobpipe readme` in every daily run (after publishing, and also after a held run, so the run log and badges stay honest). Numbers come from `public/` (status, run log, summaries) and `seeds/boards.csv`. Growing numbers in the badge row (last run, days running, missed runs, rows today) are shields.io endpoint badges reading `public/badges/*.json` from the public repo. The renderer refuses to write a README that contains template syntax, HTML comments, empty links or placeholder words (`readme.check_rendered`, tested). The public URLs live in `templates/readme.yml`.
+
+**Second-source check.** Every run re-reads 30 random Greenhouse and Lever postings from the official single-posting endpoint and compares title and location (`ingest.spot_check`). Ashby has no single-posting endpoint and is excluded. A posting that disappeared in between counts as "gone", not as a mismatch. The README reports matched/checked.
+
+**Visuals** (`src/jobpipe/visuals/`), regenerated every run: `hero.svg`, `pipeline.svg`, `maintenance-loop.svg`, `data-roles.svg`, `dbt-lineage.svg` and the 1080×1080 `hero-square.svg` behind the LinkedIn video.
+- Fonts: WOFF2 subsets of only the glyphs each SVG uses, base64-embedded (fontTools + brotli). Each SVG is 19–32 KB.
+- Motion: CSS animation only, 8–10 s loops. The final frame is the default state, so it doubles as the still image. `prefers-reduced-motion` shows the final frame (verified with Playwright by inlining the SVG, because Chromium's emulation does not reach images).
+- Logos: from Simple Icons, used only for tools the repo uses (`assets/LICENSES.md`). dbt has no Simple Icons logo, and the job boards are data sources rather than tools, so all of them are plain text.
+- Exceptions to the "≥ 22 px in a 1000-px viewBox, ≤ 3 data rows" rule:
+  - `data-roles.svg` has 4 bars, because the brief names four data roles.
+  - `dbt-lineage.svg` is an engineering diagram 1,670 px wide with 26 px labels (1.6 %), and it sits inside the engineers' section.
+
+**Dashboard image.** `assets/dashboard.png` is the top of the real dashboard at 2×. The daily workflow refreshes it on Mondays (or when it is missing) rather than every day, because installing a browser costs about a minute of Actions time per run on a 2,000-minute monthly budget.
+
+**Added beyond the brief** (what a top data or scraping portfolio repo usually has):
+- `LICENSE` (MIT) and a data licence note: CC BY 4.0 for the compiled metadata, since each posting belongs to its company and is linked.
+- `CITATION.cff` and a Hugging Face-style dataset card (`docs/dataset-card.md`, rendered every run and uploaded as the HF README).
+- `SECURITY.md` with a contact and the opt-out promise, plus a "Data removal request" issue template.
+- An internal link checker in CI (`scripts/check_links.py`).
+- `docs/repo-settings.md` (About text, topics, settings to switch on after publishing).
+- A social preview image and a LinkedIn video (`scripts/render_media.js`).
+- A machine-readable incident log with plain-words fields (`docs/incidents.md`), which the README and the maintenance visual read.
+
+Not added on purpose: Dependabot. It would open pull requests and spend CI minutes while the repo is private. Enable it after publishing if wanted.

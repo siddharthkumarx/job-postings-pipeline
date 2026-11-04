@@ -25,4 +25,4 @@ Status: `todo` · `doing` · `done` · `blocked`.
 | 18 | Daily workflow (41 7 * * *), timeouts, concurrency, alert issue on failure/held | done | Pages job gated by repo variable `PAGES_ENABLED` |
 | 19 | CI: ruff, mypy, pytest, dbt build on fixtures, gitleaks, pip-audit, 50 MB file guard | done | green since run 5; golden fixtures added |
 | 20 | First real runs; fix incidents; record in docs/incidents.md | done | 2026-11-04: failed → held → published (9.7 min), re-run from snapshot published (9.4 min); 2 incidents fixed |
-| 21 | README + animated SVGs from real run data (waits for the owner's README rules) | todo | notes in `docs/readme-plan.md` |
+| 21 | README + animated SVGs from real run data (owner's rules of 2026-11-04) | done | generated README (`templates/README.md.j2`), 6 SVGs, dashboard PNG, social preview, LinkedIn video, dataset card, CITATION, LICENSE, explainer (private); D-016 |
