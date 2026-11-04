@@ -98,8 +98,8 @@ def hero(d: ReadmeData, square: bool = False) -> str:
         )
         b3 = [
             c.text(cx, 215, f"{d.open_jobs:,}", size=120, font="sansb", fill=TEAL, anchor="middle"),
-            c.text(cx, 285, f"open jobs at {d.companies:,} US tech companies", size=34, anchor="middle"),
-            c.text(cx, 340, f"checked every day · latest run {d.run_date}", size=24, font="mono",
+            c.text(cx, 292, f"open jobs at {d.companies:,} US tech companies", size=42, anchor="middle"),
+            c.text(cx, 352, f"checked every day · latest run {d.run_date}", size=28, font="mono",
                    fill=QUIET, anchor="middle"),
         ]  # fmt: skip
     else:
