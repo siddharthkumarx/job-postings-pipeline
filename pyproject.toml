@@ -48,6 +48,8 @@ ignore = ["S101", "RUF001", "RUF003", "PT018"]
 "scripts/**" = ["S603", "S607"]
 # The page template is HTML: long lines are clearer than split strings.
 "src/jobpipe/site/build.py" = ["E501"]
+# Live-check runner calls fixed commands (uv/playwright), never user input.
+"src/jobpipe/checks.py" = ["S603", "S607"]
 
 [tool.mypy]
 python_version = "3.12"

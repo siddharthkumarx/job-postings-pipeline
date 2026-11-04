@@ -169,7 +169,32 @@ def _capture_fixtures(params: dict[str, Any], out: Path) -> dict[str, Any]:
     return {"written": asyncio.run(go())}
 
 
+def _site_screenshots(params: dict[str, Any], out: Path) -> dict[str, Any]:
+    """Restore the last good warehouse, build the dashboard and screenshot it (Playwright)."""
+    import subprocess
+
+    from jobpipe import state
+    from jobpipe.site import build as site_build
+
+    work = Path("data/check-site")
+    gh = state.GitHubReleases()
+    st = state.pull_warehouse(gh, work / "warehouse.duckdb")
+    if st is None:
+        raise RuntimeError("no warehouse snapshot in the state release yet")
+    site_build.build(work / "warehouse.duckdb", Path("public"), out / "site")
+    pw = ["uv", "run", "--no-project", "--with", "playwright==1.64.1"]
+    subprocess.run([*pw, "playwright", "install", "--with-deps", "chromium"], check=True)
+    res = subprocess.run(
+        [*pw, "python", "scripts/screenshots.py", str(out / "site"), str(out / "screenshots")],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    return {"state": st.get("last_good_run"), "stdout": res.stdout[-2000:], "rc": res.returncode}
+
+
 COMMANDS: dict[str, Callable[[dict[str, Any], Path], dict[str, Any]]] = {
+    "site-screenshots": _site_screenshots,
     "capture-fixtures": _capture_fixtures,
     "recon-cc-pages": _recon_cc_pages,
     "recon-harvest": _recon_harvest,
