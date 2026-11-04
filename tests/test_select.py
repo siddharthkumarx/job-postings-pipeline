@@ -22,6 +22,14 @@ def _row(**kw: str) -> dict[str, str]:
 def test_norm_company_and_pretty_token() -> None:
     assert norm_company("Acme, Inc.") == norm_company("ACME") == "acme"
     assert pretty_token("open-co_labs") == "Open Co Labs"
+    assert pretty_token("shieldai") == "Shield AI"
+    assert pretty_token("alpacahealth") == "Alpaca Health"
+    assert pretty_token("NorthwoodSpace") == "Northwood Space"
+    assert pretty_token("happyrobot.ai") == "Happyrobot"
+    assert pretty_token("runway-ml") == "Runway ML"
+    assert pretty_token("penumbrainc") == "Penumbra"
+    assert pretty_token("ramp") == "Ramp"
+    assert pretty_token("zinc") == "Zinc"
 
 
 def test_company_kind_rules() -> None:

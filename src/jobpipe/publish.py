@@ -144,16 +144,27 @@ def read_runs(path: Path) -> list[dict[str, Any]]:
 
 
 def append_run(path: Path, entry: dict[str, Any]) -> None:
-    """Append, replacing an earlier entry for the same run date (idempotent re-runs)."""
-    runs = [r for r in read_runs(path) if r.get("run_date") != entry.get("run_date")]
-    runs.append(entry)
-    runs.sort(key=lambda r: (r.get("run_date", ""), r.get("finished_at", "")))
+    """Append one attempt to the ledger. Every attempt is kept (failed and held ones too);
+    status() counts the last attempt of each run date."""
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text("".join(json.dumps(r, sort_keys=True) + "\n" for r in runs))
+    with path.open("a", encoding="utf-8") as fh:
+        fh.write(json.dumps(entry, sort_keys=True) + "\n")
+
+
+def last_per_date(runs: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """The final attempt for each run date, ordered by date."""
+    final: dict[str, dict[str, Any]] = {}
+    for r in runs:
+        final[r["run_date"]] = r  # later lines win
+    return [final[d] for d in sorted(final)]
 
 
 def status(runs: list[dict[str, Any]], today: date | None = None) -> dict[str, Any]:
     today = today or datetime.now(UTC).date()
+    attempts = len(runs)
+    failed_attempts = sum(r.get("status") == "failed" for r in runs)
+    held_attempts = sum(r.get("status") == "held" for r in runs)
+    runs = last_per_date(runs)
     if not runs:
         return {"runs": 0}
     dates = sorted(date.fromisoformat(r["run_date"]) for r in runs)
@@ -176,6 +187,9 @@ def status(runs: list[dict[str, Any]], today: date | None = None) -> dict[str, A
         "runs_held": sum(r.get("status") == "held" for r in runs),
         "runs_failed": sum(r.get("status") == "failed" for r in runs),
         "missed_runs": missed,
+        "attempts": attempts,
+        "failed_attempts": failed_attempts,
+        "held_attempts": held_attempts,
         "jobs_tracked": (last_pub or {}).get("open_postings"),
         "companies_tracked": (last_pub or {}).get("companies"),
         "updated_at": datetime.now(UTC).isoformat(timespec="seconds"),

@@ -64,6 +64,7 @@ def test_daily_runs_restore_state_and_publish(tmp_path: Path, env: tuple[FakeGit
 
     runs = publish.read_runs(tmp_path / "public" / "runs.jsonl")
     assert [r["run_date"] for r in runs] == [d.isoformat() for d in fixtures.RUN_DATES]
+    assert len(publish.last_per_date(runs)) == 6
     st = publish.status(runs, today=fixtures.RUN_DATES[-1])
     assert st["runs_held"] == 1
     assert st["days_running"] == 10  # 2026-10-26 .. 2026-11-04
@@ -75,10 +76,14 @@ def test_daily_runs_restore_state_and_publish(tmp_path: Path, env: tuple[FakeGit
     assert gh.find("state", "warehouse.duckdb.gz") is not None
     assert len(state.bronze_dates(gh, ["2026-10", "2026-11"])) == 6
 
-    # idempotent re-run of the last day replaces, not duplicates, the ledger entry
+    # re-running the last day is idempotent for the data; the ledger keeps both attempts
     again = pipeline.daily(fixtures.RUN_DATES[-1], _paths(tmp_path, seeds, 9), gh)
     assert again.status == "published", again.entry
-    assert len(publish.read_runs(tmp_path / "public" / "runs.jsonl")) == 6
+    runs = publish.read_runs(tmp_path / "public" / "runs.jsonl")
+    assert len(runs) == 7
+    assert len(publish.last_per_date(runs)) == 6
+    st = publish.status(runs, today=fixtures.RUN_DATES[-1])
+    assert st["attempts"] == 7 and st["runs_published"] == 5
 
 
 def test_rebuild_from_bronze_when_snapshot_missing(

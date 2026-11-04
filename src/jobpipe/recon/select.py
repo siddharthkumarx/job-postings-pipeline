@@ -76,12 +76,51 @@ def norm_company(name: str) -> str:
     return _NON_ALNUM.sub("", _SUFFIX.sub("", name.lower()))
 
 
+_TLD = re.compile(r"\.(?:ai|io|com|co|tech|dev|space|careers|app|xyz|so|net|org)$", re.IGNORECASE)
+# "-inc" / " LLC" always; a bare suffix ("penumbrainc") only when ≥ 5 characters remain ("zinc").
+_CORP_SUFFIX = re.compile(
+    r"(?:[-_ ](?:inc|llc|ltd|corp|corporation|hq)|(?<=\w{5})(?:inc|llc|hq))$", re.IGNORECASE
+)
+_WORD_SUFFIXES = (
+    "therapeutics", "intelligence", "technologies", "engineering", "robotics", "security",
+    "minerals", "systems", "health", "energy", "space", "power", "labs", "aero", "ai", "ml",
+)  # fmt: skip
+_UPPER = {"ai": "AI", "ml": "ML", "hq": "HQ", "us": "US", "io": "IO"}
+
+
 def pretty_token(token: str) -> str:
-    words = re.split(r"[-_ .]+", token)
-    return " ".join(w[:1].upper() + w[1:] for w in words if w)
+    """Best-effort display name from a board name (used when the API gives none)."""
+    t = _TLD.sub("", token.strip())
+    t = _CORP_SUFFIX.sub("", t) or t
+    t = re.sub(r"(?<=[a-z0-9])(?=[A-Z])", " ", t)  # NorthwoodSpace -> Northwood Space
+    words: list[str] = []
+    for w in re.split(r"[-_ .]+", t):
+        if not w:
+            continue
+        low = w.lower()
+        for suf in _WORD_SUFFIXES:
+            if low.endswith(suf) and len(low) > len(suf) + 2 and w.islower():
+                words += [w[: -len(suf)], suf]
+                break
+        else:
+            words.append(w)
+    return " ".join(_UPPER.get(w.lower(), w[:1].upper() + w[1:]) for w in words)
+
+
+def load_names(path: Path) -> dict[str, str]:
+    """Reviewed display names keyed by board name (any provider)."""
+    if not path.exists():
+        return {}
+    return {r["board"].lower(): r["company"] for r in read_csv(path)}
+
+
+NAMES: dict[str, str] = {}
 
 
 def company_name(row: dict[str, str]) -> tuple[str, str]:
+    reviewed = NAMES.get(row["token"].lower())
+    if reviewed:
+        return reviewed, "reviewed"
     if row.get("company_name"):
         return row["company_name"], "api"
     if row.get("yc_name") and "yc" in row.get("sources", "").split("|"):
@@ -359,8 +398,8 @@ def render_sources_md(
         "## Tracked boards",
         "",
         "US share = share of jobs with a known country that are open in the US. Company names"
-        " come from the Greenhouse API, the YC directory, or the board name (the Lever and Ashby"
-        " APIs do not return a company name).",
+        " come from the reviewed list in `seeds/company_names.csv`, the Greenhouse API, the YC"
+        " directory, or the board name (the Lever and Ashby APIs do not return a company name).",
         "",
         "| Provider | Board name | Company | Open jobs (recon) | US share | Notes |",
         "|---|---|---|---:|---:|---|",
@@ -416,8 +455,11 @@ def run(
     th: Thresholds,
     exclusions_csv: Path = Path("seeds/exclusions.csv"),
     dropped_csv: Path | None = None,
+    names_csv: Path = Path("seeds/company_names.csv"),
 ) -> dict[str, Any]:
     rows = read_csv(verify_csv)
+    NAMES.clear()
+    NAMES.update(load_names(names_csv))
     boards, dropped, funnel = select(rows, th, load_exclusions(exclusions_csv))
     write_csv(out_csv, boards, BOARD_FIELDS)
     if dropped_csv is not None:
