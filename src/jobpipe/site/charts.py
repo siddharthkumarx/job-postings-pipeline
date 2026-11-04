@@ -128,9 +128,18 @@ def line(
     if not pts_all:
         return '<p class="empty">No data yet.</p>'
     xs = list(dict.fromkeys(x for _, pts, _ in series for x, _ in pts))
+    if len(xs) < 2:
+        latest = "; ".join(
+            f"{escape(name)} {fmt_int(pts[-1][1])}" for name, pts, _ in series if pts
+        )
+        return (
+            f'<figure class="chart"><figcaption>{escape(caption)}</figcaption>'
+            f'<p class="empty">The line starts after the second daily run. '
+            f"{escape(xs[0])}: {latest}.</p></figure>"
+        )
     ymax = max(pts_all) or 1
     ymin = 0.0
-    pad_l, pad_r, pad_t, pad_b = 8, 8, 22, 24
+    pad_l, pad_r, pad_t, pad_b = 8, 8, 10, 10
     w, h = width - pad_l - pad_r, height - pad_t - pad_b
 
     def px(i: int) -> float:
@@ -160,15 +169,10 @@ def line(
                 f"<title>{escape(name)} · {escape(x)}: {fmt_int(y)}</title></circle>"
             )
     first, last = xs[0], xs[-1]
+    # Axis labels are HTML so they stay readable when the SVG scales down on phones.
     axis = (
-        f'<text class="axis" x="{pad_l}" y="{height - 6}">{escape(first)}</text>'
-        + (
-            f'<text class="axis" x="{width - pad_r}" y="{height - 6}" text-anchor="end">'
-            f"{escape(last)}</text>"
-            if last != first
-            else ""
-        )
-        + f'<text class="axis" x="{pad_l}" y="12">max {fmt_int(ymax)}</text>'
+        f'<div class="axis-row" aria-hidden="true"><span>{escape(first)}</span>'
+        f"<span>max {fmt_int(ymax)}</span><span>{escape(last)}</span></div>"
     )
     legend = ""
     if len(series) > 1:
@@ -184,8 +188,8 @@ def line(
     return (
         f'<figure class="chart"><figcaption>{label}</figcaption>{legend}'
         f'<svg viewBox="0 0 {width} {height}" role="img" aria-label="{label}" '
-        f'preserveAspectRatio="xMidYMid meet">{grid}{"".join(paths)}{"".join(dots)}{axis}</svg>'
-        f"</figure>"
+        f'preserveAspectRatio="xMidYMid meet">{grid}{"".join(paths)}{"".join(dots)}</svg>'
+        f"{axis}</figure>"
     )
 
 

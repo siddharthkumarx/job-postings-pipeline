@@ -89,7 +89,8 @@ svg .line.amber { stroke: var(--amber); background: none; }
 svg .dot { stroke: var(--panel); stroke-width: 2; }
 svg .dot.teal { fill: var(--teal); }
 svg .dot.amber { fill: var(--amber); }
-svg .axis { fill: var(--quiet); font: 400 12px var(--mono); }
+.axis-row { display: flex; justify-content: space-between; gap: 8px; font-family: var(--mono); font-size: 0.72rem; color: var(--quiet); margin-top: 4px; }
+.grid + .grid { margin-top: 12px; }
 .legend { display: flex; gap: 14px; list-style: none; margin: -4px 0 8px; padding: 0; font-size: 0.8rem; color: var(--body); }
 .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
 
