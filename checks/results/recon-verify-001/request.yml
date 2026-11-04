@@ -1,0 +1,20 @@
+# Live check request. Changing this file on a branch triggers .github/workflows/checks.yml,
+# which runs `jobpipe checks checks/request.yml` and commits checks/results/<id>/.
+id: recon-verify-001
+steps:
+  - command: recon-verify
+    params:
+      input: checks/results/recon-harvest-001/seeds_raw.csv
+      min_cc_hits: 1
+      include_yc: true
+      budget_minutes: 280
+  - command: capture-fixtures
+    params:
+      max_jobs: 3
+      boards:
+        - {provider: greenhouse, board: stripe}
+        - {provider: greenhouse, board: airbnb}
+        - {provider: lever, board: palantir}
+        - {provider: lever, board: plaid}
+        - {provider: ashby, board: ramp}
+        - {provider: ashby, board: notion}

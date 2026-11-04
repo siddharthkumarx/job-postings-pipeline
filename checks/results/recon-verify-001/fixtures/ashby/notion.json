@@ -1,0 +1,106 @@
+{
+  "apiVersion": "1",
+  "jobs": [
+    {
+      "address": {
+        "postalAddress": {
+          "addressCountry": "United States",
+          "addressLocality": "San Francisco",
+          "addressRegion": "California"
+        }
+      },
+      "applyUrl": "https://jobs.ashbyhq.com/notion/1fc309c8-da20-4ff2-84c7-8b863ece2b0a/application",
+      "compensation": {
+        "compensationTierSummary": null,
+        "compensationTiers": [],
+        "scrapeableCompensationSalarySummary": null,
+        "summaryComponents": []
+      },
+      "department": "Engineering",
+      "descriptionPlain": "SYNTHETIC FIXTURE TEXT (the real description is never stored). Hybrid: 3 days a week in the office. 5+ years of experience. The base salary range is $120,000 - $150,000 per year.",
+      "employmentType": "FullTime",
+      "id": "1fc309c8-da20-4ff2-84c7-8b863ece2b0a",
+      "isListed": true,
+      "isRemote": true,
+      "jobUrl": "https://jobs.ashbyhq.com/notion/1fc309c8-da20-4ff2-84c7-8b863ece2b0a",
+      "location": "San Francisco, California",
+      "publishedAt": "2026-08-24T14:44:49.699+00:00",
+      "secondaryLocations": [
+        {
+          "address": {
+            "postalAddress": {
+              "addressCountry": "United States",
+              "addressLocality": "New York",
+              "addressRegion": "New York"
+            }
+          },
+          "location": "New York, New York"
+        }
+      ],
+      "shouldDisplayCompensationOnJobPostings": false,
+      "team": "Engineering",
+      "title": "Software Engineer, AI Connections (Developer Platform)",
+      "workplaceType": "Hybrid"
+    },
+    {
+      "address": {
+        "postalAddress": {
+          "addressCountry": "United States",
+          "addressLocality": "New York",
+          "addressRegion": "New York"
+        }
+      },
+      "applyUrl": "https://jobs.ashbyhq.com/notion/05e14247-17c4-4e98-9a13-53828a4e2f13/application",
+      "compensation": {
+        "compensationTierSummary": null,
+        "compensationTiers": [],
+        "scrapeableCompensationSalarySummary": null,
+        "summaryComponents": []
+      },
+      "department": "Early Career",
+      "descriptionPlain": "SYNTHETIC FIXTURE TEXT (the real description is never stored). Hybrid: 3 days a week in the office. 5+ years of experience. The base salary range is $120,000 - $150,000 per year.",
+      "employmentType": "FullTime",
+      "id": "05e14247-17c4-4e98-9a13-53828a4e2f13",
+      "isListed": true,
+      "isRemote": true,
+      "jobUrl": "https://jobs.ashbyhq.com/notion/05e14247-17c4-4e98-9a13-53828a4e2f13",
+      "location": "New York, New York",
+      "publishedAt": "2026-04-02T21:00:55.755+00:00",
+      "secondaryLocations": [],
+      "shouldDisplayCompensationOnJobPostings": false,
+      "team": "Early Career",
+      "title": "Business Development Representative, New York",
+      "workplaceType": "Hybrid"
+    },
+    {
+      "address": {
+        "postalAddress": {
+          "addressCountry": "United States",
+          "addressLocality": "San Francisco",
+          "addressRegion": "California"
+        }
+      },
+      "applyUrl": "https://jobs.ashbyhq.com/notion/b21fef72-4864-4a3e-a627-91557a0f8a36/application",
+      "compensation": {
+        "compensationTierSummary": null,
+        "compensationTiers": [],
+        "scrapeableCompensationSalarySummary": null,
+        "summaryComponents": []
+      },
+      "department": "Early Career",
+      "descriptionPlain": "SYNTHETIC FIXTURE TEXT (the real description is never stored). Hybrid: 3 days a week in the office. 5+ years of experience. The base salary range is $120,000 - $150,000 per year.",
+      "employmentType": "FullTime",
+      "id": "b21fef72-4864-4a3e-a627-91557a0f8a36",
+      "isListed": true,
+      "isRemote": true,
+      "jobUrl": "https://jobs.ashbyhq.com/notion/b21fef72-4864-4a3e-a627-91557a0f8a36",
+      "location": "San Francisco, California",
+      "publishedAt": "2026-04-01T23:05:05.541+00:00",
+      "secondaryLocations": [],
+      "shouldDisplayCompensationOnJobPostings": false,
+      "team": "Early Career",
+      "title": "Business Development Representative, San Francisco",
+      "workplaceType": "Hybrid"
+    }
+  ]
+}

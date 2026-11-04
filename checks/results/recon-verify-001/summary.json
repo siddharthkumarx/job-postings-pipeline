@@ -1,0 +1,74 @@
+{
+  "id": "recon-verify-001",
+  "command": "",
+  "started_at": "2026-11-03T23:48:41+00:00",
+  "git_sha": "8fecaae87fc7256adf6e8da7b97417c0d9f7e132",
+  "run_id": "41742029460",
+  "runner": "Linux x86_64 py3.12.3",
+  "result": [
+    {
+      "candidates": 9904,
+      "verified": 9904,
+      "skipped_budget": 0,
+      "outcomes": {
+        "ashby:ok": 2259,
+        "ashby:not_found": 983,
+        "greenhouse:ok": 3857,
+        "greenhouse:not_found": 1813,
+        "lever:ok": 246,
+        "lever:not_found": 746
+      },
+      "http": {
+        "api.ashbyhq.com": {
+          "requests": 3242,
+          "retries": 0,
+          "by_outcome": {
+            "ok": 2259,
+            "not_found": 983
+          },
+          "blocked": false,
+          "block_reason": null
+        },
+        "api.lever.co": {
+          "requests": 994,
+          "retries": 2,
+          "by_outcome": {
+            "not_found": 746,
+            "ok": 246
+          },
+          "blocked": false,
+          "block_reason": null
+        },
+        "boards-api.greenhouse.io": {
+          "requests": 5670,
+          "retries": 0,
+          "by_outcome": {
+            "ok": 3857,
+            "not_found": 1813
+          },
+          "blocked": false,
+          "block_reason": null
+        }
+      },
+      "selection": {
+        "min_cc_hits": 1,
+        "include_yc": true,
+        "budget_minutes": 280
+      },
+      "input": "checks/results/recon-harvest-001/seeds_raw.csv"
+    },
+    {
+      "written": {
+        "greenhouse/stripe": 3,
+        "greenhouse/airbnb": 3,
+        "lever/palantir": 3,
+        "lever/plaid": "not_found 404",
+        "ashby/ramp": 3,
+        "ashby/notion": 3
+      }
+    }
+  ],
+  "status": "ok",
+  "finished_at": "2026-11-04T00:24:32+00:00",
+  "duration_s": 2151.2
+}
