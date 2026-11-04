@@ -162,6 +162,73 @@ async def fetch_all(
     return postings, runs
 
 
+SPOT_CHECK_SIZE = 30
+
+
+def _single_posting(posting: Posting) -> tuple[str, dict[str, str]] | None:
+    """Official single-posting endpoint for a second look at one posting (Ashby has none)."""
+    if posting.provider == "greenhouse":
+        return (
+            f"https://boards-api.greenhouse.io/v1/boards/{posting.board}/jobs/{posting.posting_id}",
+            {},
+        )
+    if posting.provider == "lever":
+        return (f"https://api.lever.co/v0/postings/{posting.board}/{posting.posting_id}",
+                {"mode": "json"})  # fmt: skip
+    return None
+
+
+def _single_view(provider: str, payload: Any) -> tuple[str, str]:
+    if not isinstance(payload, dict):
+        return "", ""
+    if provider == "greenhouse":
+        return str(payload.get("title") or ""), str(
+            (payload.get("location") or {}).get("name") or ""
+        )
+    cats = payload.get("categories") or {}
+    return str(payload.get("text") or ""), str(cats.get("location") or "")
+
+
+async def spot_check(
+    postings: list[Posting], run_date: date, client: PoliteClient, size: int = SPOT_CHECK_SIZE
+) -> dict[str, Any]:
+    """Re-read a random sample from the single-posting endpoint and compare title + location.
+
+    A cross-check against a second endpoint of the same provider: it catches parsing bugs
+    and stale list responses. A posting that is gone (404) closed in between; it is counted
+    separately, not as a mismatch.
+    """
+    import random
+
+    pool = [p for p in postings if _single_posting(p) is not None]
+    rng = random.Random(run_date.toordinal())  # noqa: S311 - sampling, not crypto
+    sample = rng.sample(pool, min(size, len(pool)))
+    counts = {"checked": 0, "matched": 0, "mismatched": 0, "gone": 0, "errors": 0}
+    examples: list[str] = []
+
+    async def one(p: Posting) -> None:
+        target = _single_posting(p)
+        assert target is not None
+        res = await client.get_json(*target)
+        if res.outcome == "not_found":
+            counts["gone"] += 1
+            return
+        if not res.ok:
+            counts["errors"] += 1
+            return
+        counts["checked"] += 1
+        title, loc = _single_view(p.provider, res.data)
+        if title.strip() == p.title and (loc.strip() or None) == p.location_raw:
+            counts["matched"] += 1
+        else:
+            counts["mismatched"] += 1
+            if len(examples) < 3:
+                examples.append(f"{p.provider}/{p.board}/{p.posting_id}")
+
+    await asyncio.gather(*(one(p) for p in sample))
+    return {**counts, "sample": len(sample), "examples": examples}
+
+
 def run(
     run_date: date,
     *,
@@ -172,10 +239,13 @@ def run(
     boards = load_boards(boards_csv)
     t0 = time.monotonic()
 
+    spot: dict[str, Any] = {}
+
     async def go() -> tuple[list[Posting], list[BoardRun], dict[str, Any]]:
         c = client or PoliteClient(host_policies=HOST_POLICIES, timeout_s=60.0)
         try:
             p, r = await fetch_all(boards, run_date, c)
+            spot["result"] = await spot_check(p, run_date, c)
             return p, r, c.stats_summary()
         finally:
             await c.aclose()
@@ -195,6 +265,7 @@ def run(
         "board_status": dict(sorted(status_counts.items())),
         "postings_by_provider": dict(Counter(p.provider for p in postings)),
         "duration_s": round(time.monotonic() - t0, 1),
+        "spot_check": spot.get("result", {}),
         "http": http_stats,
         "schema_version": SCHEMA_VERSION,
     }

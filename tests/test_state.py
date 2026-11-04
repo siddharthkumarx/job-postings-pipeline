@@ -45,6 +45,8 @@ class FakeGitHub:
                 "data": req.content,
             }  # fmt: skip
             return httpx.Response(201, json={"id": aid, "size": len(req.content)})
+        if (m := re.fullmatch(r"/repos/o/r/releases/(\d+)", path)) and req.method == "PATCH":
+            return httpx.Response(200, json={"id": int(m.group(1))})
         if m := re.fullmatch(r"/repos/o/r/releases/assets/(\d+)", path):
             aid = int(m.group(1))
             if req.method == "DELETE":

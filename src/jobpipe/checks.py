@@ -193,7 +193,25 @@ def _site_screenshots(params: dict[str, Any], out: Path) -> dict[str, Any]:
     return {"state": st.get("last_good_run"), "stdout": res.stdout[-2000:], "rc": res.returncode}
 
 
+def _readme_extracts(params: dict[str, Any], out: Path) -> dict[str, Any]:
+    """Restore the last good warehouse and write the README/visual extracts (no fetching)."""
+    import shutil
+
+    from jobpipe import publish, state
+
+    work = Path("data/check-extracts")
+    st = state.pull_warehouse(state.GitHubReleases(), work / "warehouse.duckdb")
+    if st is None:
+        raise RuntimeError("no warehouse snapshot in the state release yet")
+    public = out / "public"
+    shutil.copytree("public", public, dirs_exist_ok=True)
+    publish.summary_csvs(work / "warehouse.duckdb", public / "summary")
+    result = publish.readme_extracts(work / "warehouse.duckdb", public)
+    return {"state": st.get("last_good_run"), **result}
+
+
 COMMANDS: dict[str, Callable[[dict[str, Any], Path], dict[str, Any]]] = {
+    "readme-extracts": _readme_extracts,
     "site-screenshots": _site_screenshots,
     "capture-fixtures": _capture_fixtures,
     "recon-cc-pages": _recon_cc_pages,

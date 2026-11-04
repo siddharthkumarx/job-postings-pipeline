@@ -112,14 +112,24 @@ class GitHubReleases:
                 "tag_name": tag,
                 "name": tag,
                 "body": body or f"Pipeline data: {tag}",
-                "prerelease": tag != STATE_TAG and not tag.startswith("dataset-"),
-                "make_latest": "false",
+                "prerelease": not tag.startswith("dataset-"),
+                "make_latest": "true" if tag.startswith("dataset-") else "false",
             },
         )
         if resp.status_code not in (200, 201):
             raise RuntimeError(f"create release {tag}: HTTP {resp.status_code} {resp.text[:200]}")
         created: dict[str, Any] = resp.json()
         return created
+
+    def mark_latest(self, tag: str) -> None:
+        """Make this release the repository's "latest" (the README's download link)."""
+        rel = self.release(tag)
+        if rel is not None:
+            self._req(
+                "PATCH",
+                f"{API}/repos/{self.repo}/releases/{rel['id']}",
+                json={"make_latest": "true", "prerelease": False},
+            )
 
     def assets(self, release: dict[str, Any]) -> list[Asset]:
         out: list[Asset] = []

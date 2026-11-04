@@ -100,6 +100,7 @@ def publish_all(
     paths: Paths, run_date: date, gh: state.GitHubReleases | None, notes: list[str]
 ) -> None:
     publish.summary_csvs(paths.duckdb, paths.public_dir / "summary")
+    publish.readme_extracts(paths.duckdb, paths.public_dir)
     tables = publish.export_tables(paths.duckdb, paths.data_dir / "public")
     notes.append("tables " + ", ".join(f"{k}={v}" for k, v in tables.items()))
     month_file = publish.monthly_dataset(
@@ -107,6 +108,7 @@ def publish_all(
     )
     if gh is not None:
         gh.upload(state.dataset_tag(run_date), month_file)
+        gh.mark_latest(state.dataset_tag(run_date))
         gh.upload(
             state.dataset_tag(run_date),
             paths.data_dir / "public" / "dim_company.parquet",
@@ -224,6 +226,8 @@ def daily(
             k: manifest[k]
             for k in ("boards", "boards_ok", "postings", "invalid_postings", "duration_s")
         }
+        entry["ingest"]["spot_check"] = manifest.get("spot_check", {})
+        entry["ingest"]["requests"] = sum(h.get("requests", 0) for h in manifest["http"].values())
         entry["ingest"]["blocked_hosts"] = [
             h for h, s in manifest["http"].items() if s.get("blocked")
         ]

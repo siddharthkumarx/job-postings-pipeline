@@ -43,6 +43,10 @@ LEVER = [
 
 
 def handler(req: httpx.Request) -> httpx.Response:
+    if req.url.host == "boards-api.greenhouse.io" and req.url.path.endswith("/jobs/1"):
+        return httpx.Response(200, json=GH["jobs"][0])  # single-posting spot check
+    if req.url.host == "api.lever.co" and req.url.path.endswith("/abc"):
+        return httpx.Response(200, json={**LEVER[0], "text": "Renamed"})  # a mismatch
     if req.url.host == "boards-api.greenhouse.io":
         assert req.url.params["content"] == "true"
         return httpx.Response(200, json=GH)
@@ -81,6 +85,8 @@ def test_ingest_writes_bronze_without_free_text(tmp_path: Path) -> None:
     for forbidden in ("Jane", "jane@acme.com", "Contact", "5+ years", "Recruiter"):
         assert forbidden not in blob
 
+    assert m["spot_check"]["checked"] == 2
+    assert m["spot_check"]["matched"] == 1 and m["spot_check"]["mismatched"] == 1
     runs = pq.read_table(ingest.partition_path(tmp_path, "board_runs", d)).to_pylist()
     assert {r["status"] for r in runs} == {"ok", "not_found"}
 

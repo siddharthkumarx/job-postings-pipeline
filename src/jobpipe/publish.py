@@ -191,6 +191,7 @@ def status(runs: list[dict[str, Any]], today: date | None = None) -> dict[str, A
         "failed_attempts": failed_attempts,
         "held_attempts": held_attempts,
         "jobs_tracked": (last_pub or {}).get("open_postings"),
+        "rows_today": (last_pub or {}).get("postings_listed"),
         "companies_tracked": (last_pub or {}).get("companies"),
         "updated_at": datetime.now(UTC).isoformat(timespec="seconds"),
     }
@@ -210,6 +211,7 @@ def write_status(public_dir: Path, today: date | None = None) -> dict[str, Any]:
         return st
     ok = st.get("last_status") == "published"
     jobs = st.get("jobs_tracked")
+    rows = st.get("rows_today")
     items = {
         "days-running": _badge("days running", str(st["days_running"]), "2FBFAE"),
         "last-run": _badge(
@@ -219,7 +221,165 @@ def write_status(public_dir: Path, today: date | None = None) -> dict[str, Any]:
             "missed runs", str(st["missed_runs"]), "2FBFAE" if st["missed_runs"] == 0 else "E9A93C"
         ),
         "jobs-tracked": _badge("jobs tracked", f"{jobs:,}" if jobs else "n/a", "2FBFAE"),
+        "rows-today": _badge("rows today", f"{rows:,}" if rows else "n/a", "2FBFAE"),
     }
     for name, payload in items.items():
         (badges / f"{name}.json").write_text(json.dumps(payload) + "\n")
     return st
+
+
+# ---- extracts for the README and the visuals (all from the warehouse) --------------------
+
+SAMPLE_SQL = """
+with ranked as (
+    select
+        f.company_name, f.title, f.role_family,
+        coalesce(f.city || ', ' || f.state_code, f.state_code, f.location_raw) as location,
+        f.remote_type, f.salary_min_usd_annual, f.salary_max_usd_annual, f.first_seen,
+        f.job_url, d.open_postings,
+        row_number() over (partition by f.company_id order by f.salary_max_usd_annual desc,
+                           f.posting_key) as rn
+    from gold.fct_job_postings f
+    join gold.dim_company d using (company_id)
+    where f.is_open and f.country_code = 'US' and f.salary_min_usd_annual is not null
+      and f.role_family in ('data_engineer', 'analytics_engineer', 'data_analyst', 'ml_engineer')
+      and f.seniority in ('mid', 'senior')
+)
+select company_name, title, location, remote_type, salary_min_usd_annual,
+       salary_max_usd_annual, first_seen, job_url
+from ranked where rn = 1
+order by open_postings desc, company_name
+limit 5
+"""
+
+EXAMPLE_SQL = """
+select * from gold.fct_job_postings
+where is_open and salary_min is not null and department is not null and city is not null
+  and remote_type <> 'unknown' and seniority_source = 'title'
+order by
+    case provider when 'greenhouse' then 0 else 1 end,
+    (select open_postings from gold.dim_company d where d.company_id = fct_job_postings.company_id)
+        desc,
+    posting_key
+limit 1
+"""
+
+
+def changes_today(con: Any) -> list[dict[str, Any]]:
+    """Top changes between the latest run date and the one before it."""
+    dates = [
+        r[0]
+        for r in con.execute(
+            "select run_date from history.int_run_calendar order by run_date desc limit 2"
+        ).fetchall()
+    ]
+    if not dates:
+        return []
+    latest = dates[0]
+    if len(dates) == 1:
+        return [{"kind": "first_day", "company": "", "count": 0, "detail": str(latest)}]
+    prev = dates[1]
+    out: list[dict[str, Any]] = []
+    totals = con.execute(
+        """select
+             count(*) filter (where first_seen = ? and not left_censored),
+             count(*) filter (where closed_on = ?)
+           from gold.fct_job_postings""",
+        [latest, latest],
+    ).fetchone()
+    out.append({"kind": "new_total", "company": "", "count": int(totals[0]), "detail": str(prev)})
+    out.append(
+        {"kind": "closed_total", "company": "", "count": int(totals[1]), "detail": str(prev)}
+    )
+    for company, n in con.execute(
+        """select company_name, count(*) from gold.fct_job_postings
+           where first_seen = ? and not left_censored group by 1 order by 2 desc, 1 limit 3""",
+        [latest],
+    ).fetchall():
+        out.append({"kind": "most_new", "company": company, "count": int(n), "detail": ""})
+    for company, n in con.execute(
+        """select company_name, count(*) from gold.fct_job_postings
+           where closed_on = ? group by 1 order by 2 desc, 1 limit 2""",
+        [latest],
+    ).fetchall():
+        out.append({"kind": "most_closed", "company": company, "count": int(n), "detail": ""})
+    changed = con.execute(
+        """with v as (
+             select posting_key, valid_from, salary_min, salary_max, title,
+                    lag(salary_min) over w as prev_min, lag(salary_max) over w as prev_max,
+                    lag(title) over w as prev_title
+             from history.int_posting_versions
+             window w as (partition by posting_key order by valid_from))
+           select
+             count(*) filter (where prev_min is distinct from salary_min
+                                 or prev_max is distinct from salary_max),
+             count(*) filter (where prev_title is distinct from title)
+           from v where valid_from = ? and prev_title is not null""",
+        [latest],
+    ).fetchone()
+    out.append({"kind": "salary_changed", "company": "", "count": int(changed[0]), "detail": ""})
+    out.append({"kind": "title_changed", "company": "", "count": int(changed[1]), "detail": ""})
+    return out
+
+
+def readme_extracts(duckdb_path: Path, public_dir: Path) -> dict[str, Any]:
+    """Small files the README and visuals are rendered from (regenerated every publish)."""
+    import csv
+
+    summary = public_dir / "summary"
+    summary.mkdir(parents=True, exist_ok=True)
+    con = _connect(duckdb_path)
+    try:
+        cur = con.execute(SAMPLE_SQL)
+        cols = [c[0] for c in cur.description]
+        sample = [dict(zip(cols, r, strict=True)) for r in cur.fetchall()]
+        cur = con.execute(EXAMPLE_SQL)
+        cols = [c[0] for c in cur.description]
+        row = cur.fetchone()
+        example = dict(zip(cols, row, strict=True)) if row else {}
+        changes = changes_today(con)
+        q = con.execute(
+            """with today as (
+                 select d.*, f.salary_min_usd_annual as pub_salary
+                 from history.int_postings_daily d
+                 left join gold.fct_job_postings f using (posting_key)
+                 where d.run_date = (select max(run_date) from history.int_run_calendar))
+               select count(*),
+                      count(*) filter (where salary_min is not null),
+                      count(*) filter (where salary_min is not null and pub_salary is null),
+                      count(*) filter (where country_code is null),
+                      count(*) filter (where role_family = 'other'),
+                      count(distinct company_id)
+               from today"""
+        ).fetchone()
+        quality = {
+            "postings_today": int(q[0]),
+            "salaries_found": int(q[1]),
+            "salaries_held_back": int(q[2]),
+            "country_unknown": int(q[3]),
+            "role_other": int(q[4]),
+            "companies_with_postings": int(q[5]),
+        }
+        data_roles = [
+            {"role_family": r[0], "open_roles": int(r[1]), "median_salary_usd": r[2]}
+            for r in con.execute(
+                """select role_family, count(*),
+                     round(median((salary_min_usd_annual + salary_max_usd_annual) / 2)
+                           filter (where country_code = 'US'), 0)
+                   from gold.mart_data_roles where is_open group by 1 order by 2 desc"""
+            ).fetchall()
+        ]
+    finally:
+        con.close()
+    with (summary / "sample_postings.csv").open("w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=list(sample[0]) if sample else ["company_name"])
+        w.writeheader()
+        w.writerows(sample)
+    with (summary / "changes_today.csv").open("w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=["kind", "company", "count", "detail"])
+        w.writeheader()
+        w.writerows(changes)
+    (summary / "example_posting.json").write_text(json.dumps(example, indent=2, default=str) + "\n")
+    (summary / "data_roles.json").write_text(json.dumps(data_roles, indent=2) + "\n")
+    (summary / "quality.json").write_text(json.dumps(quality, indent=2) + "\n")
+    return {"sample": len(sample), "changes": len(changes), "example": bool(example)}
