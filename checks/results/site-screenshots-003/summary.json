@@ -1,0 +1,16 @@
+{
+  "id": "site-screenshots-003",
+  "command": "site-screenshots",
+  "started_at": "2026-11-04T01:28:09+00:00",
+  "git_sha": "64e09fdc915cd47e5496c01b06ff19cf546d58d4",
+  "run_id": "41754230948",
+  "runner": "Linux x86_64 py3.12.3",
+  "result": {
+    "state": "2026-11-04",
+    "stdout": "{\"360\": {\"horizontal_overflow_px\": 0}, \"768\": {\"horizontal_overflow_px\": 0}, \"1440\": {\"horizontal_overflow_px\": 0}}\n",
+    "rc": 0
+  },
+  "status": "ok",
+  "finished_at": "2026-11-04T01:28:46+00:00",
+  "duration_s": 37.7
+}
