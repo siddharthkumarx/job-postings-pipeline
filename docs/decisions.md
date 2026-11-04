@@ -156,4 +156,6 @@ Selection runs in `jobpipe.recon.select` over `checks/results/recon-verify-001/v
 - A social preview image and a LinkedIn video (`scripts/render_media.js`).
 - A machine-readable incident log with plain-words fields (`docs/incidents.md`), which the README and the maintenance visual read.
 
+`.gitleaks.toml` keeps the default gitleaks rules and allowlists exactly one pattern: `"posting_key"` / `"company_id"` followed by 32 hex characters. These are MD5 surrogate keys of public identifiers, and their entropy trips the generic-api-key rule.
+
 Not added on purpose: Dependabot. It would open pull requests and spend CI minutes while the repo is private. Enable it after publishing if wanted.

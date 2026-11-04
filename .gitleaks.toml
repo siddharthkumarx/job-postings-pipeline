@@ -1,0 +1,10 @@
+# gitleaks config: the default rules, plus one allowlist for this repo's surrogate keys.
+# posting_key / company_id are md5 hashes of public identifiers (provider|board|posting_id),
+# not secrets, but their entropy trips the generic-api-key rule.
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "md5 surrogate keys of job postings and companies (not secrets)"
+regexTarget = "line"
+regexes = ['''"(posting_key|company_id)": "[0-9a-f]{32}"''']
