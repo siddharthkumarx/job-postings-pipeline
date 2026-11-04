@@ -126,14 +126,19 @@ def context(d: ReadmeData, cfg: dict[str, Any]) -> dict[str, Any]:
     first_day = "first_day" in ch or not d.changes
     run = d.last_run
     ing = run.get("ingest") or {}
-    spot = ing.get("spot_check") or {}
+    # the latest real spot-check result (from the newest run that ran one)
+    spot: dict[str, Any] = {}
+    spot_date = ""
+    for r in reversed(d.runs):
+        sc = (r.get("ingest") or {}).get("spot_check") or {}
+        if sc.get("checked"):
+            spot, spot_date = sc, r.get("run_date", "")
+            break
     dbt = run.get("dbt") or {}
     raw = f"https://raw.githubusercontent.com/{cfg['public_repo']}/{cfg['branch']}/public/badges"
 
     def badge(name: str) -> str:
-        return "https://img.shields.io/endpoint?style=flat-square&url=" + quote(
-            f"{raw}/{name}.json", safe=""
-        )
+        return "https://img.shields.io/endpoint?url=" + quote(f"{raw}/{name}.json", safe="")
 
     sample_names = ", ".join(r["company_name"] for r in d.sample[:3])
     return {
@@ -157,6 +162,7 @@ def context(d: ReadmeData, cfg: dict[str, Any]) -> dict[str, Any]:
             f"{r['company']} ({r['count']})" for r in d.changes if r["kind"] == "most_closed"
         ],
         "spot": spot,
+        "spot_date": spot_date,
         "q": d.quality,
         "invalid": ing.get("invalid_postings", 0),
         "boards_ok": ing.get("boards_ok", run.get("boards_ok", 0)),

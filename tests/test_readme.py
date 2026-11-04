@@ -53,3 +53,11 @@ def test_visuals_size_text_and_motion(name: str) -> None:
     assert "<title" in svg and "<desc" in svg
     assert "http://" not in svg.replace("http://www.w3.org/2000/svg", "")
     assert "<script" not in svg
+
+
+def test_second_source_shows_real_result_and_flat_badges(tmp_path: Path) -> None:
+    text = readme.render(out=tmp_path / "README.md")
+    assert "shown here after each run" not in text
+    assert re.search(r"Latest run \(\d{4}-\d{2}-\d{2}\): \d+ of \d+ matched", text)
+    assert "flat-square" not in text
+    assert "img.shields.io/endpoint?url=" in text
