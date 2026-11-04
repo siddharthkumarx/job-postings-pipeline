@@ -1,6 +1,15 @@
--- Title → role family + title seniority, using the versioned taxonomy seeds (docs/decisions.md D-006).
+{{ config(materialized='incremental', incremental_strategy='append') }}
+{#
+  Title → role family + title seniority, using the versioned taxonomy seeds
+  (docs/decisions.md D-006). Incremental: only titles not labelled yet are matched
+  (the regex join is the slowest step). A taxonomy change needs `dbt build --full-refresh`
+  (jobpipe rebuild), which relabels every title.
+#}
 with titles as (
     select distinct title from {{ ref('stg_postings') }}
+    {% if is_incremental() %}
+    where title not in (select title from {{ this }})
+    {% endif %}
 ),
 
 families as (

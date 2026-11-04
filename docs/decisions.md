@@ -64,7 +64,7 @@ dbt now advertises "dbt v2" as the default for new installs. The brief specifies
 - `dbt/seeds/role_taxonomy.csv` lists `taxonomy_version, priority, role_family, pattern` (case-insensitive regex on the title). The lowest priority that matches wins; no match gives `other`. Specific families come before generic ones (e.g. `analytics engineer` before `data analyst` before `analyst`).
 - `dbt/seeds/seniority_rules.csv` lists `taxonomy_version, priority, seniority, pattern`. Levels: `intern`, `junior`, `mid`, `senior`, `staff_principal`, `manager`, `director`, `vp_exec`. No match gives `mid`, with `seniority_source = default`.
 - When the title has no seniority signal, the description hint extracted during ingest (`desc_seniority_hint`, e.g. "5+ years") is used, with `seniority_source = description`.
-- The version is a date string (`2026-11-03`), stored on every silver row (`taxonomy_version`). A change to a seed bumps the version, and `docs/decisions.md` gets a line describing it. A full rebuild re-labels history.
+- The version is a date string (`2026-11-03`), stored on every silver row (`taxonomy_version`). A change to a seed bumps the version, and `docs/decisions.md` gets a line describing it. `int_title_labels` is incremental (only new titles are matched, because the regex join took 71 s for one day's 40k titles), so a taxonomy change must be followed by `jobpipe rebuild` (full refresh) to re-label history.
 - The "data roles" mart covers `data_engineer`, `analytics_engineer`, `data_analyst`, `ml_engineer` (`data_scientist` is shown alongside but is not part of the four).
 
 ## D-007 Where state lives: GitHub Release assets
