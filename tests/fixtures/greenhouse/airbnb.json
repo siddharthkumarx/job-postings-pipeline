@@ -1,0 +1,124 @@
+{
+  "jobs": [
+    {
+      "absolute_url": "https://careers.airbnb.com/positions/8306554?gh_jid=8306554",
+      "ai_disclaimer": null,
+      "ai_opt_out_request_url": null,
+      "application_deadline": null,
+      "company_name": "Airbnb",
+      "content": "SYNTHETIC FIXTURE TEXT (the real description is never stored). Hybrid: 3 days a week in the office. 5+ years of experience. The base salary range is $120,000 - $150,000 per year.",
+      "departments": [
+        {
+          "child_ids": [],
+          "id": 249,
+          "name": "Community Support",
+          "parent_id": 73698
+        }
+      ],
+      "education": "education_required",
+      "first_published": "2026-10-28T10:52:05-04:00",
+      "id": 8306554,
+      "include_ai_disclaimer": null,
+      "internal_job_id": 3591434,
+      "language": "en",
+      "location": {
+        "name": "Canada"
+      },
+      "metadata": null,
+      "offices": [
+        {
+          "child_ids": [
+            1170,
+            23350
+          ],
+          "id": 64283,
+          "location": null,
+          "name": "Canada",
+          "parent_id": 17515
+        }
+      ],
+      "requisition_id": "ONE",
+      "title": "AirCover Specialist, Claims Experience",
+      "updated_at": "2026-10-28T10:52:05-04:00"
+    },
+    {
+      "absolute_url": "https://careers.airbnb.com/positions/8345532?gh_jid=8345532",
+      "ai_disclaimer": null,
+      "ai_opt_out_request_url": null,
+      "application_deadline": null,
+      "company_name": "Airbnb",
+      "content": "SYNTHETIC FIXTURE TEXT (the real description is never stored). Hybrid: 3 days a week in the office. 5+ years of experience. The base salary range is $120,000 - $150,000 per year.",
+      "departments": [
+        {
+          "child_ids": [],
+          "id": 249,
+          "name": "Community Support",
+          "parent_id": 73698
+        }
+      ],
+      "first_published": "2026-11-02T03:52:24-05:00",
+      "id": 8345532,
+      "include_ai_disclaimer": null,
+      "internal_job_id": 3607261,
+      "language": "en",
+      "location": {
+        "name": "Japan"
+      },
+      "metadata": null,
+      "offices": [
+        {
+          "child_ids": [
+            625
+          ],
+          "id": 64274,
+          "location": null,
+          "name": "Japan",
+          "parent_id": 17517
+        }
+      ],
+      "requisition_id": "ONE",
+      "title": "AirCover Specialist, Claims Experience",
+      "updated_at": "2026-11-02T22:52:56-05:00"
+    },
+    {
+      "absolute_url": "https://careers.airbnb.com/positions/7789554?gh_jid=7789554",
+      "ai_disclaimer": null,
+      "ai_opt_out_request_url": null,
+      "application_deadline": null,
+      "company_name": "Airbnb",
+      "content": "SYNTHETIC FIXTURE TEXT (the real description is never stored). Hybrid: 3 days a week in the office. 5+ years of experience. The base salary range is $120,000 - $150,000 per year.",
+      "departments": [
+        {
+          "child_ids": [],
+          "id": 253,
+          "name": "Legal",
+          "parent_id": 73696
+        }
+      ],
+      "first_published": "2026-04-13T04:49:05-04:00",
+      "id": 7789554,
+      "include_ai_disclaimer": null,
+      "internal_job_id": 3407102,
+      "language": "en",
+      "location": {
+        "name": "Tokyo, Japan"
+      },
+      "metadata": null,
+      "offices": [
+        {
+          "child_ids": [],
+          "id": 625,
+          "location": "Tokyo, Japan",
+          "name": "Tokyo, Japan",
+          "parent_id": 64274
+        }
+      ],
+      "requisition_id": "ONE",
+      "title": "Associate Legal Counsel, Japan",
+      "updated_at": "2026-09-29T20:00:54-04:00"
+    }
+  ],
+  "meta": {
+    "total": 3
+  }
+}

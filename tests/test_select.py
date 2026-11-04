@@ -32,6 +32,12 @@ def test_company_kind_rules() -> None:
     assert company_kind(_row(token="remotejobs", company_name="Remote Jobs Hub"), {}) == (
         "job aggregator"
     )
+    assert company_kind(_row(token="vcfund", company_name="Fund Portfolio Jobs"), {}) == (
+        "job aggregator"
+    )
+    # a company's own careers board is not an aggregator
+    assert company_kind(_row(token="rubrik", company_name="Rubrik Job Board"), {}) is None
+    assert company_kind(_row(token="convex-dev", company_name="Convex Dev"), {}) is None
     assert company_kind(_row(), {}) is None
     assert company_kind(_row(), {("greenhouse", "acme"): "reviewed: agency"}) == "reviewed: agency"
     # not fooled by words that merely contain the patterns

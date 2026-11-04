@@ -1,0 +1,275 @@
+{
+  "apiVersion": "1",
+  "jobs": [
+    {
+      "address": {
+        "postalAddress": {
+          "addressCountry": "USA",
+          "addressLocality": "New York City",
+          "addressRegion": "NY"
+        }
+      },
+      "applyUrl": "https://jobs.ashbyhq.com/ramp/34413f8d-26bf-4bbc-8ade-eb309a0e2245/application",
+      "compensation": {
+        "compensationTierSummary": "$211.4K \u2013 $290.6K \u2022 Offers Equity",
+        "compensationTiers": [
+          {
+            "additionalInformation": null,
+            "components": [
+              {
+                "compensationType": "EquityPercentage",
+                "currencyCode": null,
+                "id": "feaef96f-559f-4df8-a38c-3eee072a8d74",
+                "interval": "NONE",
+                "maxValue": null,
+                "minValue": null,
+                "summary": "Offers Equity"
+              },
+              {
+                "compensationType": "Salary",
+                "currencyCode": "USD",
+                "id": "3481c194-45fd-4b89-8592-e8f4d4b51f20",
+                "interval": "1 YEAR",
+                "maxValue": 290600,
+                "minValue": 211400,
+                "summary": "$211.4K \u2013 $290.6K"
+              }
+            ],
+            "id": "5f7a903e-36e4-492c-ac09-f2745d717daa",
+            "tierSummary": "$211.4K \u2013 $290.6K \u2022 Offers Equity",
+            "title": null
+          }
+        ],
+        "scrapeableCompensationSalarySummary": "$211.4K - $290.6K",
+        "summaryComponents": [
+          {
+            "compensationType": "EquityPercentage",
+            "currencyCode": null,
+            "interval": "NONE",
+            "maxValue": null,
+            "minValue": null
+          },
+          {
+            "compensationType": "Salary",
+            "currencyCode": "USD",
+            "interval": "1 YEAR",
+            "maxValue": 290600,
+            "minValue": 211400
+          }
+        ]
+      },
+      "department": "Engineering",
+      "descriptionPlain": "SYNTHETIC FIXTURE TEXT (the real description is never stored). Hybrid: 3 days a week in the office. 5+ years of experience. The base salary range is $120,000 - $150,000 per year.",
+      "employmentType": "FullTime",
+      "id": "34413f8d-26bf-4bbc-8ade-eb309a0e2245",
+      "isListed": true,
+      "isRemote": true,
+      "jobUrl": "https://jobs.ashbyhq.com/ramp/34413f8d-26bf-4bbc-8ade-eb309a0e2245",
+      "location": "New York, NY (HQ)",
+      "publishedAt": "2026-04-07T17:12:35.753+00:00",
+      "secondaryLocations": [
+        {
+          "address": {
+            "postalAddress": {
+              "addressCountry": "Canada"
+            }
+          },
+          "location": "Remote (Canada)"
+        },
+        {
+          "address": {
+            "postalAddress": {
+              "addressCountry": "United States"
+            }
+          },
+          "location": "Remote (US)"
+        },
+        {
+          "address": {
+            "postalAddress": {
+              "addressCountry": "USA",
+              "addressLocality": "Miami",
+              "addressRegion": "Florida"
+            }
+          },
+          "location": "Miami, FL"
+        }
+      ],
+      "shouldDisplayCompensationOnJobPostings": true,
+      "team": "Backend",
+      "title": " Security Engineer, Cloud",
+      "workplaceType": "Hybrid"
+    },
+    {
+      "address": {
+        "postalAddress": {
+          "addressCountry": "USA",
+          "addressLocality": "New York City",
+          "addressRegion": "NY"
+        }
+      },
+      "applyUrl": "https://jobs.ashbyhq.com/ramp/f564dcf9-9390-4a3f-896f-8047a5086040/application",
+      "compensation": {
+        "compensationTierSummary": "$189K \u2013 $330K \u2022 Offers Equity",
+        "compensationTiers": [
+          {
+            "additionalInformation": null,
+            "components": [
+              {
+                "compensationType": "EquityPercentage",
+                "currencyCode": null,
+                "id": "8d3064c5-4a45-4c4a-b26c-157ec697171c",
+                "interval": "NONE",
+                "maxValue": null,
+                "minValue": null,
+                "summary": "Offers Equity"
+              },
+              {
+                "compensationType": "Salary",
+                "currencyCode": "USD",
+                "id": "104095ff-c915-4e77-b3fa-5472d81297ef",
+                "interval": "1 YEAR",
+                "maxValue": 330000,
+                "minValue": 189000,
+                "summary": "$189K \u2013 $330K"
+              }
+            ],
+            "id": "0283497e-f83b-42ef-9a0a-6215891aa062",
+            "tierSummary": "$189K \u2013 $330K \u2022 Offers Equity",
+            "title": null
+          }
+        ],
+        "scrapeableCompensationSalarySummary": "$189K - $330K",
+        "summaryComponents": [
+          {
+            "compensationType": "EquityPercentage",
+            "currencyCode": null,
+            "interval": "NONE",
+            "maxValue": null,
+            "minValue": null
+          },
+          {
+            "compensationType": "Salary",
+            "currencyCode": "USD",
+            "interval": "1 YEAR",
+            "maxValue": 330000,
+            "minValue": 189000
+          }
+        ]
+      },
+      "department": "Engineering",
+      "descriptionPlain": "SYNTHETIC FIXTURE TEXT (the real description is never stored). Hybrid: 3 days a week in the office. 5+ years of experience. The base salary range is $120,000 - $150,000 per year.",
+      "employmentType": "FullTime",
+      "id": "f564dcf9-9390-4a3f-896f-8047a5086040",
+      "isListed": true,
+      "isRemote": true,
+      "jobUrl": "https://jobs.ashbyhq.com/ramp/f564dcf9-9390-4a3f-896f-8047a5086040",
+      "location": "New York, NY (HQ)",
+      "publishedAt": "2025-07-31T21:58:34.674+00:00",
+      "secondaryLocations": [
+        {
+          "address": {
+            "postalAddress": {
+              "addressCountry": "Canada"
+            }
+          },
+          "location": "Remote (Canada)"
+        },
+        {
+          "address": {
+            "postalAddress": {
+              "addressCountry": "USA",
+              "addressLocality": "San Fransisco",
+              "addressRegion": "California "
+            }
+          },
+          "location": "San Francisco, CA"
+        },
+        {
+          "address": {
+            "postalAddress": {
+              "addressCountry": "United States"
+            }
+          },
+          "location": "Remote (US)"
+        }
+      ],
+      "shouldDisplayCompensationOnJobPostings": true,
+      "team": "Mobile",
+      "title": "Mobile Engineer, Android",
+      "workplaceType": "Hybrid"
+    },
+    {
+      "address": {
+        "postalAddress": {
+          "addressCountry": "USA",
+          "addressLocality": "New York City",
+          "addressRegion": "NY"
+        }
+      },
+      "applyUrl": "https://jobs.ashbyhq.com/ramp/4745807e-82f4-4b1a-857c-dc8dadc73076/application",
+      "compensation": {
+        "compensationTierSummary": "$108K \u2013 $200K \u2022 Offers Equity",
+        "compensationTiers": [
+          {
+            "additionalInformation": null,
+            "components": [
+              {
+                "compensationType": "Salary",
+                "currencyCode": "USD",
+                "id": "9d40857b-61cd-459c-8771-1667c7678f93",
+                "interval": "1 YEAR",
+                "maxValue": 200000,
+                "minValue": 108000,
+                "summary": "$108K \u2013 $200K"
+              },
+              {
+                "compensationType": "EquityPercentage",
+                "currencyCode": null,
+                "id": "57a28b15-31a5-4f85-8ce8-97872de92745",
+                "interval": "NONE",
+                "maxValue": null,
+                "minValue": null,
+                "summary": "Offers Equity"
+              }
+            ],
+            "id": "3865ac68-c076-4133-91b9-cfaea3a4f89f",
+            "tierSummary": "$108K \u2013 $200K \u2022 Offers Equity",
+            "title": null
+          }
+        ],
+        "scrapeableCompensationSalarySummary": "$108K - $200K",
+        "summaryComponents": [
+          {
+            "compensationType": "Salary",
+            "currencyCode": "USD",
+            "interval": "1 YEAR",
+            "maxValue": 200000,
+            "minValue": 108000
+          },
+          {
+            "compensationType": "EquityPercentage",
+            "currencyCode": null,
+            "interval": "NONE",
+            "maxValue": null,
+            "minValue": null
+          }
+        ]
+      },
+      "department": "Risk",
+      "descriptionPlain": "SYNTHETIC FIXTURE TEXT (the real description is never stored). Hybrid: 3 days a week in the office. 5+ years of experience. The base salary range is $120,000 - $150,000 per year.",
+      "employmentType": "FullTime",
+      "id": "4745807e-82f4-4b1a-857c-dc8dadc73076",
+      "isListed": true,
+      "isRemote": true,
+      "jobUrl": "https://jobs.ashbyhq.com/ramp/4745807e-82f4-4b1a-857c-dc8dadc73076",
+      "location": "New York, NY (HQ)",
+      "publishedAt": "2026-08-12T20:22:32.685+00:00",
+      "secondaryLocations": [],
+      "shouldDisplayCompensationOnJobPostings": true,
+      "team": "Risk",
+      "title": "Credit Risk Associate",
+      "workplaceType": "Hybrid"
+    }
+  ]
+}

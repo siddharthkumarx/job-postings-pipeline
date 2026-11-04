@@ -8,9 +8,9 @@ Status: `todo` · `doing` · `done` · `blocked`.
 | 1 | Repo skeleton: uv project, ruff/mypy/pytest, commit-msg hook, CI commit-message job | done | `.githooks/commit-msg`, `scripts/check_commit_messages.py` |
 | 2 | Polite HTTP client (per-host cap + delay, retry 429/5xx/network, Retry-After, block stops host) | done | `src/jobpipe/http.py`, `tests/test_http.py` |
 | 3 | Live-check workflow (`checks/request.yml` → `checks/results/<id>/`) | done | `.github/workflows/checks.yml`, `src/jobpipe/checks.py` |
-| 4 | Recon: harvest seeds (Common Crawl index, YC directory), verify via APIs, select boards, `docs/sources.md` | doing | rules approved by the owner; see `docs/sources.md` |
+| 4 | Recon: harvest seeds (Common Crawl index, YC directory), verify via APIs, select boards, `docs/sources.md` | done | 9,904 candidates → 1,500 kept (GH 779, Ashby 669, Lever 52); `seeds/boards.csv` |
 | 5 | Step-2 docs: docs/maintainers.md, architecture, build-progress, decisions, data-contracts, incidents | done | kept in sync as items land |
-| 6 | Golden fixtures per provider (captured by a live check, sanitised) | todo | `tests/fixtures/<provider>/*.json`; no description text kept |
+| 6 | Golden fixtures per provider (captured by a live check, sanitised) | done | 5 boards from recon-verify-001; descriptions replaced with marked synthetic text |
 | 7 | Bronze model + adapters: Pydantic `Posting`, one adapter per provider, description extraction in memory | done | allowlisted fields only; `tests/test_extract.py`, `tests/test_ingest.py` |
 | 8 | Ingest: run all boards → bronze Parquet (postings + board log), run manifest | done | atomic writes; privacy asserted in tests |
 | 9 | FX: ECB reference rates → bronze fx | done | `fx.py`, `tests/test_fx.py` |

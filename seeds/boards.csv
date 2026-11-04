@@ -1,0 +1,1501 @@
+provider,board,company,company_name_source,jobs_at_recon,us_jobs_at_recon,us_share,tech_share,sources,notes,recon_date
+greenhouse,1stavenuepower,1 Arc Power,api,12,12,1.0,0.833,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,1800contacts,1-800 Contacts,api,10,10,1.0,0.7,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,10alabs,10a Labs,api,24,11,0.786,0.5,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,2k,2K,api,84,43,0.512,0.702,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,31stunion,31st Union,api,8,8,1.0,0.75,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,3cloud,3Cloud,api,38,22,0.579,0.816,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,3redpartners,3Red Partners,api,6,5,0.833,0.667,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,66degrees,66degrees,api,16,10,0.625,0.688,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,6sense,6sense,api,31,22,0.71,0.677,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,8451,84.51°,api,16,16,1.0,0.75,cc:CC-MAIN-2026-17,,2026-11-04
+greenhouse,9thwayinsignia,9th Way Insignia,api,15,15,1.0,0.8,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,atek,A-TEK Inc.,api,6,6,1.0,0.833,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,abacus,ABACUS,api,44,29,0.674,0.818,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,abacusinsights,Abacus Insights,api,16,10,0.625,0.75,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,abnormalsecurity,Abnormal,api,84,47,0.56,0.452,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,accenturefederalservices,Accenture Federal Services,api,722,719,0.996,0.785,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,accordion,Accordion,api,50,32,0.64,0.5,cc:CC-MAIN-2026-17,,2026-11-04
+greenhouse,act1federal,ACT1 Federal,api,52,51,1.0,0.692,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,acuitymd,AcuityMD,api,9,8,1.0,0.667,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,acutechgroupinc,"AcuTech Group, Inc.",api,10,5,0.5,0.7,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,adswerveinc,"Adswerve, Inc",api,7,6,0.857,0.571,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,aestudio,AE Studio,api,7,4,0.667,0.714,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,aechelontechnology,Aechelon Technology,api,22,22,1.0,0.864,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,aevexaerospace,AEVEX,api,64,63,0.984,0.516,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,afresh,Afresh,api,11,11,1.0,0.545,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,agecareers,AGE Solutions,api,75,72,0.96,0.787,cc:CC-MAIN-2026-17,,2026-11-04
+greenhouse,agilityrobotics,Agility Robotics,api,78,62,1.0,0.641,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,aisquared,AI Squared,api,8,4,0.667,0.625,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,air,Air,api,36,36,1.0,0.611,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,airbnb,Airbnb,api,212,105,0.502,0.448,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,aircompany,AIRCO,api,7,7,1.0,0.571,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,airship,Airship,api,8,5,0.714,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,aksia,Aksia,api,19,12,0.632,0.474,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,alamarbiosciences,Alamar Biosciences,api,37,29,0.806,0.459,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,alarmcom,Alarm.com,api,85,57,0.713,0.718,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,albedo,Albedo,api,6,6,1.0,0.5,cc:CC-MAIN-2026-43|yc,,2026-11-04
+greenhouse,alertmedia,AlertMedia,api,18,13,0.722,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,allencontrolsystems,Allen Control Systems,api,68,66,1.0,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,allenintegratedsolutions,Allen Integrated Solutions,api,110,110,1.0,0.673,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,alloy,Alloy,api,30,22,0.88,0.767,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,altaresourcetechnologiesinc,"Alta Resource Technologies, Inc.",api,11,11,1.0,0.636,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,altanaai,Altana,api,39,26,0.667,0.744,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,altentechnologyusa,ALTEN Technology USA,api,229,229,1.0,0.83,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,altoslabs,Altos Labs,api,18,15,0.833,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,altruist,Altruist,api,84,82,1.0,0.619,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,alxcryptoholdingsinc,AlxCrypto Holdings Inc.,api,6,6,1.0,0.5,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,ambiqmicroinc,"Ambiq Micro, Inc.",api,51,29,0.58,0.863,cc:CC-MAIN-2026-17,,2026-11-04
+greenhouse,amca,Amca,api,48,48,1.0,0.688,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,americaninstitutesforresearch,American Institutes for Research,api,12,12,1.0,0.667,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,amperesand,Amperesand,api,51,46,0.902,0.706,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,amperity,Amperity,api,14,10,0.714,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,andurilindustries,Anduril Industries,api,2563,2434,0.956,0.77,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,anellophotonics,Anello Photonics,api,5,5,1.0,0.8,cc:CC-MAIN-2026-17,,2026-11-04
+greenhouse,anthropic,Anthropic,api,682,540,0.794,0.694,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,antora,Antora Energy,api,41,39,1.0,0.512,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,apexit,ApexIT,api,51,36,0.706,0.529,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,apperturesolutions,Apperture Solutions,api,9,9,1.0,1.0,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,appian,Appian Corporation,api,159,111,0.698,0.428,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,appliedatomicsinc,Applied Atomics,api,7,7,1.0,0.857,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,appliedengineering,Applied Engineering,api,28,26,1.0,1.0,cc:CC-MAIN-2026-17,,2026-11-04
+greenhouse,applovin,AppLovin,api,43,28,0.651,0.442,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,apptronik,Apptronik,api,88,88,1.0,0.852,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,aptoslabs,Aptos,api,7,6,0.857,0.857,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,aquaticcapitalmanagement,Aquatic Capital Management,api,12,12,1.0,0.917,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,arborenergy,Arbor Energy,api,22,22,1.0,0.727,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,arcboatcompany,Arc Boat Company,api,47,47,1.0,0.553,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,arcinstitute,Arc Institute,api,27,27,1.0,0.667,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,archer56,Archer,api,83,79,0.975,0.759,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,ardentmc,Ardent,api,17,9,1.0,0.706,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,arenaclub,Arena Club,api,11,11,1.0,0.455,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,arizeai,Arize AI,api,28,20,0.833,0.643,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,arizonaliverhealth,Arizona Liver Health,api,23,23,1.0,0.565,cc:CC-MAIN-2026-17,,2026-11-04
+greenhouse,arlosolutionsllc,Arlo Solutions LLC,api,58,51,1.0,0.603,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,armada,Armada,api,34,27,0.794,0.647,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,ascend21,Ascend,api,6,6,1.0,0.833,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,assemblyai,AssemblyAI,api,18,11,0.733,0.778,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43|yc,,2026-11-04
+greenhouse,assystinc,"ASSYST, Inc.",api,8,8,1.0,0.75,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,astspacemobile,AST SpaceMobile,api,280,231,0.831,0.557,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,asteralabs,Astera Labs,api,183,91,0.5,0.798,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,also on ashby `astera` (43 jobs); kept the larger board,2026-11-04
+greenhouse,astranis,Astranis,api,184,184,1.0,0.625,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43|yc,,2026-11-04
+greenhouse,atbayjobs,At-Bay,api,31,25,0.806,0.677,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,atariinc,Atari,api,17,9,0.529,0.824,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,atomicindustriesinc,"Atomic Industries, Inc.",api,18,11,1.0,0.5,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,atomicmachines,Atomic Machines,api,32,32,1.0,0.625,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,cssmerge,ATOMS Careers page,api,337,263,0.824,0.481,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,attain,Attain,api,13,12,1.0,0.538,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,attainpartners,Attain Partners,api,21,21,1.0,0.571,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,attentive,Attentive,api,25,23,0.92,0.64,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,attotude,AttoTude,api,17,13,0.765,0.824,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,atwellgroup,"Atwell, LLC",api,187,131,1.0,0.476,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,avathon,Avathon,api,51,32,0.653,0.725,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,aviatrix,Aviatrix,api,19,12,0.632,0.842,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,avride,Avride,api,44,44,1.0,0.5,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,awetomaton,Awetomaton,api,10,10,1.0,0.8,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,axiscompany,Axis Automation,api,13,13,1.0,0.615,cc:CC-MAIN-2026-17,,2026-11-04
+greenhouse,axle,Axle,api,57,52,1.0,0.561,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43|yc,,2026-11-04
+greenhouse,axon,Axon,api,481,387,0.808,0.603,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,axonius,Axonius,api,21,11,0.55,0.571,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,axs,AXS,api,31,27,0.871,0.645,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,babelstreet,Babel Street,api,13,11,0.846,0.462,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,babylist,Babylist,api,34,25,0.735,0.471,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,backblaze,Backblaze External Website,api,35,20,0.571,0.943,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,bamboohr17,BambooHR,api,28,28,1.0,0.607,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,bandwidth,Bandwidth,api,25,21,0.84,0.44,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,barbaricum,Barbaricum,api,77,69,0.896,0.468,cc:CC-MAIN-2026-17,,2026-11-04
+greenhouse,bassabatherapy,BASS ABA Therapy,api,31,31,1.0,0.452,cc:CC-MAIN-2026-17,,2026-11-04
+greenhouse,baton,Baton (A Ryder Technology Lab),api,7,7,1.0,0.857,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,bayasystems,Baya Systems,api,23,12,0.522,0.87,cc:CC-MAIN-2026-17,,2026-11-04
+greenhouse,bcc,BCC-NIH,api,10,10,1.0,0.9,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,alfredbeneschco,Benesch,api,151,144,1.0,0.609,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,bertramcapitalmanagement,Bertram Capital Management,api,6,6,1.0,0.5,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,betatechnologiesinc,BETA Technologies,api,124,124,1.0,0.702,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,betterhelpcom,BetterHelp,api,14,14,1.0,0.429,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,betterment,Betterment,api,27,27,1.0,0.444,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,bevicareers,Bevi,api,24,24,1.0,0.417,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,beyondfinance,Beyond Finance,api,24,14,1.0,0.542,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,beyondtrust,BeyondTrust,api,41,25,0.61,0.561,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,bigid,BigID,api,9,5,0.625,0.778,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,billcom,BILL,api,42,42,1.0,0.571,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,biohub,Biohub,api,12,12,1.0,0.75,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,bitgo,BitGo,api,56,30,0.566,0.5,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,bitmovin,Bitmovin,api,12,5,0.5,0.5,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43|yc,,2026-11-04
+greenhouse,blackcanyonconsulting,Black Canyon Consulting,api,84,83,1.0,0.833,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,blacksky,BlackSky,api,36,34,0.944,0.667,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,blend,Blend,api,13,13,1.0,0.615,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,blueroseresearch,Blue Rose Research,api,12,6,1.0,0.75,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,bluewaterthinking,Blue Water Thinking,api,26,26,1.0,0.615,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,bluefishai,Bluefish AI,api,23,18,0.783,0.435,cc:CC-MAIN-2026-17,,2026-11-04
+greenhouse,bluestaq,Bluestaq US External,api,10,10,1.0,1.0,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,bluevineus,Bluevine - US,api,8,8,1.0,0.625,cc:CC-MAIN-2026-17,,2026-11-04
+greenhouse,bombas,Bombas,api,6,6,1.0,0.5,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,botauto,Bot Auto,api,25,25,1.0,0.84,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,boulevard,Boulevard,api,10,9,1.0,0.6,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,boxinc,Box,api,136,73,0.545,0.515,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,braze,Braze,api,369,264,0.715,0.434,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,brex,Brex,api,270,217,0.807,0.448,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,brightcoreenergy,Brightcore Energy,api,7,7,1.0,0.429,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,brph,BRPH,api,74,71,1.0,0.446,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,bti36021,BTI360 Website,api,8,8,1.0,0.875,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,btig27,BTIG,api,10,7,0.7,0.5,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,bugcrowd,Bugcrowd,api,13,7,0.538,0.846,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,buildops,BuildOps,api,12,7,0.583,0.667,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,getbuilt,Built Technologies,api,13,11,0.917,0.462,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,bungie,Bungie,api,5,5,1.0,0.8,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,burgessniple,Burgess & Niple,api,63,63,1.0,0.556,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,businessolver,Businessolver,api,34,34,1.0,0.441,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,c3el,C3EL,api,34,34,1.0,0.735,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,cais,CAIS,api,13,11,0.846,0.615,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,calahealth,Cala Health,api,11,10,1.0,0.455,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,calendly,Calendly,api,8,8,1.0,0.875,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,cambridgemobiletelematics,Cambridge Mobile Telematics,api,21,16,0.762,0.857,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,cannondesign,CannonDesign,api,142,135,0.951,0.423,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,capitaltg,Capital Technology Group,api,14,13,1.0,0.571,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,captivation,Captivation Software,api,76,76,1.0,0.974,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,careaccess,Care Access,api,39,37,0.949,0.538,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,cariadinc,"CARIAD, Inc.",api,9,8,1.0,0.889,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,cartahealthcare,Carta Healthcare,api,14,14,1.0,1.0,cc:CC-MAIN-2026-17,,2026-11-04
+greenhouse,caseguard,CaseGuard,api,12,12,1.0,0.583,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,careportalinc,Cedar,api,12,12,1.0,0.75,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,celerocommunicationsinc,"Celero Communications, Inc.",api,27,17,0.63,0.889,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,cellanome,Cellanome,api,7,7,1.0,0.714,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,censys,Censys,api,26,17,0.895,0.654,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,centralreach,CentralReach,api,18,18,1.0,0.5,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,chainguard,Chainguard,api,96,56,0.583,0.562,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,chanzuckerberginitiative,Chan Zuckerberg Initiative,api,7,7,1.0,0.571,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,chaosindustries,CHAOS Industries,api,168,154,0.922,0.661,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,chariotdefense,Chariot Defense,api,10,10,1.0,0.8,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,charliehealthepd,"Charlie Health Engineering, Product & Design",api,12,12,1.0,0.833,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,checkr,Checkr,api,37,37,1.0,0.405,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30|yc,,2026-11-04
+greenhouse,chefman,Chefman,api,9,7,1.0,0.667,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,chenmoore,ChenMoore,api,7,7,1.0,0.714,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,chime,"Chime Financial, Inc",api,72,72,1.0,0.583,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,circleci,CircleCI,api,14,12,0.923,0.571,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,clarityinnovates,Clarity Innovations,api,49,38,0.927,0.898,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,clear,CLEAR - Corporate,api,62,62,1.0,0.435,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,clearstreet,Clear Street,api,44,16,0.516,0.682,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,cleo,Cleo (US),api,8,7,1.0,0.75,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,clockworksystems,Clockwork.io,api,5,5,1.0,0.8,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,closure-tech,Closure Technologies,api,6,6,1.0,1.0,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,cloudchamberen,Cloud Chamber,api,12,6,0.5,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,coalition,"Coalition, Inc.",api,51,28,0.549,0.686,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,cobaltio,Cobalt,api,7,6,1.0,0.714,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,codalinc,Codal,api,17,9,0.529,0.706,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,codeforamerica,Code for America,api,10,10,1.0,0.6,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,coderoad,CodeRoad,api,30,30,1.0,0.867,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,cognitiv,Cognitiv,api,7,7,1.0,0.857,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,coinbase,Coinbase,api,267,179,0.67,0.577,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,collibra,Collibra,api,25,14,0.56,0.64,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,colovore,Colovore,api,10,5,1.0,0.6,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,comptechcomputertechnologies,CompTech Computer Technologies,api,7,6,1.0,0.571,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+greenhouse,compunetinc,"CompuNet, Inc.",api,21,21,1.0,0.762,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,comstock,Comstock,api,75,74,1.0,0.427,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,concentric,Concentric,api,22,17,0.85,0.591,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,conga,Conga,api,41,21,0.525,0.439,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,constantcontact,Constant Contact,api,15,13,0.867,0.4,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,cooksys,Cook Systems,api,11,10,1.0,0.727,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,cordial81,Cordial Experience Inc.,api,6,6,1.0,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,coreone,Core One,api,91,90,1.0,0.549,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,coretelligent,Coretelligent,api,8,8,1.0,0.875,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,coreweave,CoreWeave,api,306,299,0.977,0.706,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,counterpart,Counterpart,api,10,6,0.857,0.8,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,covar,CoVar,api,6,6,1.0,0.833,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,costar,Co–Star,api,9,6,1.0,0.556,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,credible,Credible,api,14,12,0.857,0.5,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,cresta,Cresta,api,89,50,0.562,0.64,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,crexi,Crexi,api,16,12,1.0,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,cribl,Cribl,api,77,56,0.727,0.481,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,criticalmass,Critical Mass,api,16,16,1.0,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,crunchyroll,"Crunchyroll, LLC",api,101,57,0.564,0.416,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,csgconsultants,CSG Consultants,api,11,11,1.0,0.545,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,current81,Current,api,21,21,1.0,0.714,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,also on greenhouse `current` (7 jobs); kept the larger board,2026-11-04
+greenhouse,customcomputerspecialists,Custom Computer Specialists,api,19,17,1.0,0.421,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,d3,D3,api,8,7,1.0,0.625,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,darkwolfsolutions,Dark Wolf Solutions,api,60,55,1.0,0.783,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,datasystemsanalystsinc,"Data Systems Analysts, Inc.",api,42,39,1.0,0.881,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,databento,Databento,api,15,11,0.786,0.8,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,databricks,Databricks,api,914,487,0.535,0.721,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,datacamp,DataCamp,api,40,24,0.6,0.7,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,datacor,Datacor,api,12,11,1.0,0.667,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,datadog,Datadog,api,398,211,0.53,0.442,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,decimainternational,Decima International,api,32,19,0.594,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,defcon,DEFCON AI,api,9,9,1.0,0.556,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,defenseunicorns,Defense Unicorns,api,49,43,1.0,0.714,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,densityai,DensityAI,api,29,29,1.0,0.759,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,descript,Descript,api,9,9,1.0,0.556,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,designedconveyorsystems,Designed Conveyor Systems,api,20,18,1.0,0.65,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,devtechnology,Dev Technology,api,5,5,1.0,0.8,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,digisecuritysystems,Digi Security Systems,api,12,12,1.0,0.75,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,diracinc,"Dirac, Inc.",api,6,6,1.0,0.5,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,discord,Discord,api,33,30,0.968,0.758,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,divergent,Divergent,api,135,135,1.0,0.578,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,dlhcorporation,DLH,api,24,24,1.0,0.833,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,dlrgroup,DLR Group,api,175,175,1.0,0.68,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,docugami,Docugami,api,7,5,0.714,0.857,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,dominodatalab,Domino,api,19,12,0.632,0.895,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,dorsia,Dorsia,api,16,16,1.0,0.562,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,doximity,Doximity,api,12,11,1.0,0.417,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,dragos,Dragos,api,46,30,0.652,0.804,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,drivewealth,DriveWealth,api,25,18,0.72,0.6,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,drweng,DRW,api,164,87,0.54,0.854,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,duolingo,Duolingo,api,54,42,0.778,0.611,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,durinmining,Durin Mining Technologies Corp.,api,6,6,1.0,0.667,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,dvtrading,DV Trading,api,74,35,0.5,0.554,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,earnin,EarnIn,api,35,21,0.6,0.771,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,eccintegrator,ECC,api,10,7,1.0,0.4,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,echodynecorp,Echodyne Corp,api,57,56,0.982,0.702,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,edo,EDO,api,6,6,1.0,0.5,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,efficientcomputer,Efficient Computer,api,25,25,1.0,0.8,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,eikontherapeutics,Eikon Therapeutics,api,26,26,1.0,0.423,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,eh2,Electric Hydrogen,api,17,16,0.941,0.824,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,elementbiosciences,Element Biosciences,api,16,10,0.714,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,elevatebio,ElevateBio,api,16,16,1.0,0.562,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,elitetechnology,Elite Technology,api,9,7,0.778,0.667,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,endorlabs,Endor Labs,api,34,20,0.588,0.647,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,energyhub,EnergyHub,api,15,14,0.933,0.533,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,enigmaio,Enigma,api,8,8,1.0,1.0,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,ensco,"ENSCO, Inc.",api,26,25,1.0,0.654,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,ensono,Ensono,api,86,45,0.523,0.744,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,entradatherapeutics,Entrada Therapeutics,api,7,7,1.0,0.429,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,eolapower,EOLA Power,api,10,10,1.0,0.4,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,epicgames,Epic Games,api,138,56,0.577,0.754,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,epirus,Epirus,api,39,39,1.0,0.615,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,eplusinc,"ePlus Technology, inc.",api,60,51,0.911,0.483,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,esri,Esri,api,482,464,0.963,0.618,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,etelligentgroup,eTelligent Group LLC,api,4,4,1.0,1.0,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,eudia,Eudia,api,21,17,0.81,0.524,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,eulerity,Eulerity,api,14,13,1.0,1.0,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,eve,Eve,api,21,21,1.0,0.476,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,mwamevents,Events,api,13,6,0.857,0.692,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,purestorage,Everpure,api,356,180,0.506,0.624,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,evolutioniq,EvolutionIQ,api,19,18,1.0,0.895,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,evolvevacationrental,Evolve,api,9,9,1.0,0.667,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,exiger,Exiger,api,65,47,0.734,0.646,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,extend,Extend,api,16,12,1.0,0.625,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,also on ashby `extend` (5 jobs); kept the larger board,2026-11-04
+greenhouse,extenteamcareers,Extenteam Careers,api,4,4,1.0,1.0,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,extrahopnetworks,ExtraHop,api,20,15,0.75,0.7,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,factored,Factored,api,10,7,0.7,0.8,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,faire,Faire,api,65,49,0.754,0.692,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30|yc,,2026-11-04
+greenhouse,falconx,FalconX,api,18,13,0.722,0.556,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,fanaticsfbg,Fanatics Betting & Gaming,api,82,62,0.756,0.732,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,fanaticsinc,Fanatics Inc.,api,23,22,0.957,0.478,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,fanduel,FanDuel,api,93,72,0.774,0.742,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,faradayfuture,Faraday Future,api,82,82,1.0,0.537,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,fastly,Fastly,api,52,42,0.808,0.654,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,fictiv,Fictiv,api,100,57,0.57,0.42,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,figma,Figma,api,145,94,0.648,0.497,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,figureai,Figure,api,101,87,0.861,0.604,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,figure,Figure Lending,api,21,12,1.0,0.429,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,financialtechnologypartners,Financial Technology Partners,api,19,15,0.789,0.526,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,finitestate,Finite State,api,10,9,0.9,0.6,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,fiveringsllc,Five Rings LLC - Careers,api,17,12,0.706,0.529,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,fivetran,Fivetran,api,156,97,0.622,0.667,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,flagshippioneeringinc,"Flagship Pioneering, Inc.",api,93,88,0.946,0.548,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,fleetio,Fleetio,api,16,14,1.0,0.625,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,flex,Flex,api,26,24,1.0,0.5,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,flip,Flip,api,14,14,1.0,0.5,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,florencehealthcare,Florence Healthcare - US,api,8,8,1.0,0.625,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,foratravel,Fora,api,37,37,1.0,0.405,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,forgebiologics,Forge Biologics,api,18,18,1.0,0.556,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,formationbio,Formation Bio,api,22,22,1.0,0.682,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,formativgroup,FormativGroup,api,24,20,0.87,0.792,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,formic,Formic,api,57,57,1.0,0.632,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,formlabs,Formlabs,api,239,184,0.77,0.565,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,fortastracorporation,Fortastra Corporation,api,14,14,1.0,0.857,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,forwardnetworks,Forward,api,21,14,0.737,0.476,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,fourkites,FourKites,api,16,9,0.562,0.562,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,freeformfuturecorp,Freeform,api,78,78,1.0,0.872,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,freenome,Freenome,api,37,22,1.0,0.541,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,fronterahealth,Frontera,api,7,6,0.857,0.714,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,fsastorecom,FSAStore.com,api,10,10,1.0,0.5,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,fubotv,Fubo,api,6,6,1.0,0.833,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,fulfil,Fulfil Solutions,api,10,10,1.0,0.8,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,further,Further,api,8,8,1.0,0.625,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,galaxydigitalservices,Galaxy,api,51,26,0.531,0.627,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,gameplantech,Game Plan Tech,api,11,11,1.0,0.545,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,gametimeunited,Gametime United,api,8,7,1.0,1.0,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,gardacp,Garda Capital Partners,api,10,8,0.8,0.5,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,garnerhealth,Garner Health,api,66,37,1.0,0.5,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,gatikaiinc,Gatik AI,api,74,71,0.973,0.5,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,gavindebeckerassociates,Gavin de Becker & Associates,api,41,41,1.0,0.512,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,gcmgrosvenor,GCM Grosvenor,api,15,15,1.0,0.4,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,gemini,Gemini,api,29,27,0.931,0.69,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,generalmatter,General Matter,api,131,131,1.0,0.626,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,generalproximity,General Proximity,api,8,8,1.0,0.75,cc:CC-MAIN-2026-30|yc,,2026-11-04
+greenhouse,generatebiomedicines,Generate Biomedicines,api,24,17,1.0,0.542,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,genevatrading,Geneva Trading,api,11,7,0.636,0.545,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,genezenlabs,Genezen,api,23,23,1.0,0.522,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,ginkgobioworks,Ginkgo Bioworks Inc.,api,20,20,1.0,0.7,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,gitai,GITAI,api,16,16,1.0,0.75,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,gitlab,GitLab,api,239,117,0.5,0.582,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,givecampus,GiveCampus,api,11,11,1.0,0.636,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30|yc,,2026-11-04
+greenhouse,givewell,GiveWell,api,15,15,1.0,0.6,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,gleanwork,Glean,api,127,96,0.756,0.606,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,glydways,Glydways,api,21,12,1.0,0.81,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,glyphicbiotechnologies,Glyphic Biotechnologies,api,5,5,1.0,1.0,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,godaddy,GoDaddy,api,27,15,0.577,0.741,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,gofundme,GoFundMe,api,19,11,0.611,0.789,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,gokenamericallc,Goken,api,25,20,0.8,0.8,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,goodfire,Goodfire,api,29,28,0.966,0.414,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,gotion,"Gotion, Inc.",api,143,135,0.944,0.503,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,gradial,Gradial,api,10,10,1.0,0.7,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,grahamcapitalmanagement,"Graham Capital Management, L.P.",api,12,8,0.667,0.583,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,graviticsinc,"Gravitics, Inc",api,20,20,1.0,0.7,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,greenpointtechnologies,Greenpoint Technologies,api,49,49,1.0,0.531,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,gusto,"Gusto, Inc.",api,81,81,1.0,0.617,cc:CC-MAIN-2026-21|yc,,2026-11-04
+greenhouse,haizelabs,Haize Labs,api,6,6,1.0,0.833,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,hanwhaenergyusa,Hanwha Energy USA,api,20,19,1.0,0.4,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,harbingermotors,Harbinger Motors Inc.,api,92,91,1.0,0.533,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,harborglobal,Harbor,api,34,25,0.735,0.412,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,harnessinc,Harness,api,65,41,0.631,0.569,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,harrys,Harry's,api,11,11,1.0,0.455,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,headlandsresearch,Headlands Research,api,61,56,1.0,0.59,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,healthie,Healthie,api,20,14,1.0,0.75,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,hellbenderinc,HELLBENDER Inc.,api,12,12,1.0,0.667,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,heygen,HeyGen,api,19,19,1.0,0.684,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,himarley,Hi Marley,api,10,10,1.0,0.4,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,holderconstruction,Holder Construction,api,317,313,1.0,0.423,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,honeycomb,Honeycomb.io,api,22,14,0.636,0.727,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,hpiq,HP IQ,api,36,36,1.0,0.917,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,hubblenetwork,Hubble Network,api,17,17,1.0,0.647,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,hudl,Hudl,api,42,22,0.524,0.405,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,wehrtyou,Hudson River Trading,api,84,66,0.786,0.762,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,humanagency,Human Agency,api,111,81,0.786,0.423,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,humeai,Hume AI,api,5,5,1.0,0.8,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,huntress,Huntress Labs,api,46,34,0.739,0.565,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,hut8,Hut 8,api,48,46,1.0,0.458,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,hyperfine53,Hyperfine,api,10,8,1.0,0.6,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,hypori,Hypori,api,18,18,1.0,0.611,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,hypr,HYPR,api,7,4,0.8,0.571,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,icarus,Icarus,api,22,22,1.0,0.682,cc:CC-MAIN-2026-21|yc,,2026-11-04
+greenhouse,iconcareers,ICON,api,72,71,1.0,0.458,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,iconiq,ICONIQ,api,16,16,1.0,0.438,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,ideo,IDEO,api,12,7,0.583,0.5,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,idme,IDMe,api,52,52,1.0,0.558,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,impinjexternal,Impinj,api,19,14,0.737,0.789,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,impiricus,Impiricus,api,19,16,1.0,0.474,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,imply,Imply,api,5,5,1.0,0.8,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,infinitumelectric,Infinitum,api,18,16,1.0,0.5,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,instacart,Instacart,api,89,56,0.629,0.472,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,instead,Instead,api,11,7,0.7,0.545,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,insurify,Insurify,api,14,8,0.571,0.714,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,integrainterns,Integra FEC - Internships,api,8,8,1.0,1.0,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,intersystems,InterSystems,api,95,49,0.557,0.411,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,intrinsicrobotics,Intrinsic,api,21,16,0.762,0.857,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,inversionspace,Inversion,api,89,89,1.0,0.854,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,invisibletech,Invisible Technologies,api,23,19,0.826,0.783,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,ionq,IonQ,api,120,73,0.613,0.758,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,ispottv,iSpot,api,9,5,1.0,0.889,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,itd,itD Tech,api,24,22,0.957,0.667,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,iterativehealth,Iterative Health,api,63,55,0.932,0.698,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,a3c41b8b71eff8c4,Ivanti,api,8,6,0.75,0.875,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,jamf,Jamf,api,23,14,0.609,0.609,cc:CC-MAIN-2026-12,,2026-11-04
+greenhouse,jetzero,JetZero,api,21,21,1.0,0.524,cc:CC-MAIN-2026-12,,2026-11-04
+greenhouse,jordanparkgroup,Jordan Park Group,api,12,12,1.0,0.583,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,journey,Journey,api,16,8,0.571,0.5,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,justworks,Justworks,api,106,97,0.942,0.453,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,juullabs,Juul Labs,api,8,7,0.875,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,khealthcareers,K Health,api,17,9,1.0,0.471,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,k2spacecorporation,K2 Space,api,253,237,1.0,0.787,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,kairospower,Kairos Power,api,65,65,1.0,0.723,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,kalepa,Kalepa,api,13,13,1.0,0.538,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,kapitus,Kapitus,api,20,20,1.0,0.65,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,karat,Karat,api,13,7,0.538,0.615,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,katalyst,Katalyst Space Technologies,api,28,28,1.0,0.714,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,keepersecurity,Keeper Security,api,94,66,0.702,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,keplergroup,Kepler Group,api,52,36,0.692,0.654,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,ketryx,Ketryx,api,19,15,0.789,0.421,cc:CC-MAIN-2026-12,,2026-11-04
+greenhouse,kettle,Kettle,api,16,15,1.0,0.438,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,kikoff,Kikoff,api,52,51,1.0,0.423,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,klaviyo,Klaviyo,api,156,128,0.821,0.519,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,knit,Knit,api,17,12,1.0,0.471,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,koalafi,Koalafi,api,12,11,1.0,0.583,cc:CC-MAIN-2026-12,,2026-11-04
+greenhouse,kodiak,Kodiak,api,67,67,1.0,0.701,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,komodohealth,Komodo Health,api,22,18,0.818,0.591,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,kunai,Kunai,api,11,10,0.909,0.909,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,labelbox,Labelbox,api,10,9,0.9,0.7,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,landdesign,LandDesign,api,11,11,1.0,0.909,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,laporteusa,LAPORTE USA,api,23,23,1.0,0.913,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,latitude,Latitude AI,api,28,27,1.0,0.679,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,lattice,Lattice,api,8,4,0.5,0.875,cc:CC-MAIN-2026-21|yc,,2026-11-04
+greenhouse,layerhealth,Layer Health,api,16,16,1.0,0.688,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,education,Learning Commons,api,5,5,1.0,0.8,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,yurtsai,Legion Intelligence,api,7,7,1.0,0.857,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,lemurianlabs,Lemurian Labs,api,6,6,1.0,1.0,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,lendingtree,LendingTree,api,23,19,1.0,0.565,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,leolabsinc,"LeoLabs, Inc.",api,27,16,0.941,0.481,cc:CC-MAIN-2026-12,,2026-11-04
+greenhouse,lexingtonmedical,"Lexington Medical, Inc.",api,18,15,0.833,0.556,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,liberate,Liberate,api,15,13,1.0,0.733,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,life360,Life360,api,26,26,1.0,0.692,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,lightfeatheriollc,LIGHTFEATHER IO LLC,api,13,13,1.0,0.923,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,lightmatter,Lightmatter,api,57,44,0.772,0.93,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,lightningai,Lightning AI,api,51,45,0.918,0.647,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,lilasciences,Lila Sciences,api,125,125,1.0,0.712,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,lpc,Lincoln Property Company,api,106,105,1.0,0.406,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,emslinqinc,LINQ,api,7,5,1.0,0.571,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,litify,Litify,api,13,13,1.0,0.538,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,lodestarspace,Lodestar,api,7,6,0.857,0.857,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,loftfederal,Loft Federal,api,15,13,1.0,0.6,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,logicalintelligence,Logical Intelligence,api,4,4,1.0,1.0,cc:CC-MAIN-2026-12,,2026-11-04
+greenhouse,loyal36,Loyal,api,6,6,1.0,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,ltconsulting,LT Consulting,api,6,6,1.0,0.833,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,shopltk,LTK USA,api,12,12,1.0,0.5,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,lts,LTS,api,13,13,1.0,0.769,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,lucidmotors,Lucid Motors,api,453,349,0.873,0.442,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,103644278,Lume Deodorant,api,13,13,1.0,0.462,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,lumosfiber,Lumos,api,25,25,1.0,0.48,cc:CC-MAIN-2026-12,,2026-11-04
+greenhouse,lumosassociates,Lumos & Associates,api,17,17,1.0,0.529,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,lunarenergy,Lunar Energy,api,23,21,0.913,0.87,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,lyft,Lyft,api,176,92,0.523,0.614,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,m9solutions,M9 Solutions,api,35,34,1.0,0.829,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,machinifyinc,Machinify,api,59,59,1.0,0.542,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,manifoldbio,Manifold Bio,api,8,8,1.0,0.75,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,manscaped,MANSCAPED,api,7,7,1.0,0.429,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,mattermost,Mattermost,api,11,8,0.727,0.727,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,mavenclinic,Maven Clinic,api,29,23,1.0,0.448,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,mavenrobotics,Maven Robotics,api,24,24,1.0,0.792,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,maymobility,May Mobility,api,38,38,1.0,0.711,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|yc,,2026-11-04
+greenhouse,memx,MEMX,api,6,6,1.0,0.833,cc:CC-MAIN-2026-12,,2026-11-04
+greenhouse,mendaerainc,"Mendaera, Inc.",api,6,6,1.0,0.667,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,mercury,Mercury,api,76,76,1.0,0.513,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,mesh,Mesh,api,25,17,0.708,0.52,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,meshopticaltechnologies,Mesh Optical Technologies,api,29,29,1.0,0.793,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,consensys,MetaMask,api,13,9,0.692,0.462,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,metron,Metron,api,18,18,1.0,0.889,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,metropolis,Metropolis,api,102,95,0.931,0.441,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,mill,Mill,api,25,23,0.958,0.72,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,missionlane,Mission Lane,api,15,15,1.0,0.4,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,mitratech,Mitratech,api,13,7,0.538,0.615,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,mixpanel,Mixpanel,api,42,24,0.571,0.524,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,mobilityware,MobilityWare,api,7,7,1.0,0.571,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,mochihealth,Mochi Health,api,13,13,1.0,0.538,cc:CC-MAIN-2026-12,,2026-11-04
+greenhouse,moloco,Moloco,api,46,29,0.63,0.652,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,momentus,Momentus Space LLC,api,10,9,1.0,0.9,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,monstro,Monstro,api,6,6,1.0,0.667,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,moonlite,Moonlite,api,5,5,1.0,0.8,cc:CC-MAIN-2026-12,,2026-11-04
+greenhouse,morsecorp,MORSE Corp,api,31,31,1.0,0.903,cc:CC-MAIN-2026-12,,2026-11-04
+greenhouse,motional,Motional,api,78,68,0.872,0.846,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,muonspace,Muon Space,api,138,110,1.0,0.812,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,mxtechnologiesinc,"MX Technologies, Inc.",api,12,12,1.0,0.417,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,mhi,Myers-Holum,api,13,9,0.692,0.615,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,myfitnesspal,MyFitnessPal,api,6,6,1.0,0.833,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,myriad360,Myriad360,api,63,44,0.917,0.508,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,nanit,Nanit,api,7,4,0.8,0.714,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,nanopathinc,Nanopath,api,8,8,1.0,0.875,cc:CC-MAIN-2026-12,,2026-11-04
+greenhouse,naughtydog,Naughty Dog,api,16,16,1.0,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,neonaerospace,Neon Aerospace,api,16,16,1.0,0.688,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,neptunemedical,Neptune Medical,api,11,11,1.0,0.636,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,nerostechnologies,Neros Technologies,api,113,103,0.945,0.602,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,netbrain,NetBrain,api,35,18,0.529,0.6,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,netdocuments,NetDocuments,api,17,13,0.765,0.529,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,netsage,NetSage,api,35,35,1.0,0.971,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,neuralink,Neuralink,api,79,79,1.0,0.759,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,newleafenergy,"New Leaf Energy, Inc.",api,27,26,1.0,0.667,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,nyiso,New York ISO,api,17,17,1.0,0.647,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,newlimit,NewLimit,api,17,17,1.0,0.706,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,highmetric,NewRocket,api,49,22,0.524,0.878,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,newsbreak,NewsBreak,api,66,66,1.0,0.561,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,nexhealth,NexHealth,api,55,53,0.964,0.527,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,nextinsurance66,Next Insurance,api,32,17,0.68,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,nextdoor,Nextdoor,api,20,20,1.0,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,ngrokinc,ngrok Inc.,api,5,5,1.0,0.8,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,nimblegravity,Nimble Gravity,api,14,12,0.857,0.929,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,nimblerobotics,Nimble Robotics,api,37,36,1.0,0.757,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,ninjatrader,NinjaTrader,api,21,21,1.0,0.619,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,testnisc,NISC,api,28,24,1.0,0.929,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,nmi,NMI,api,11,7,0.636,0.545,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,undercontrolroboticsinc,"Noble Machines, Inc",api,12,12,1.0,0.833,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,xebiausa,North America,api,7,7,1.0,0.571,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,northpointtechnology,North Point Technology,api,111,88,0.88,0.802,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,northbeam,Northbeam,api,24,15,0.652,0.875,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,gingerlabsinc,Notability,api,7,7,1.0,0.857,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,ntconcepts,NT Concepts,api,14,8,0.571,0.857,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,nuancelabs,Nuance Labs,api,6,6,1.0,0.667,cc:CC-MAIN-2026-12,,2026-11-04
+greenhouse,nurix,Nurix,api,30,26,0.867,0.4,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,nuro,Nuro,api,93,93,1.0,0.839,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,obsidiansecurity,Obsidian Security,api,15,8,0.571,0.667,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,ocrolusinc,Ocrolus Inc.,api,7,3,0.75,0.857,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,octaura,Octaura,api,5,5,1.0,1.0,cc:CC-MAIN-2026-12,,2026-11-04
+greenhouse,octus,Octus,api,42,21,0.5,0.452,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,oklo,Oklo,api,78,74,1.0,0.538,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,olsson,Olsson,api,362,324,1.0,0.68,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,omadahealth,Omada Health,api,19,19,1.0,0.526,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,ombud,Ombud,api,5,5,1.0,0.8,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,onenergy,ON.energy,api,46,32,0.762,0.652,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,onetrust,OneTrust,api,82,41,0.5,0.659,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,onxmaps,onX,api,27,27,1.0,0.481,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,ooma,Ooma,api,7,6,0.857,0.429,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,openeye,OpenEye,api,17,17,1.0,0.647,cc:CC-MAIN-2026-12,,2026-11-04
+greenhouse,orcasecurity,Orca Security,api,10,5,0.5,0.7,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,orkes,Orkes,api,19,13,0.684,0.684,cc:CC-MAIN-2026-12,,2026-11-04
+greenhouse,otter,Otter,api,23,18,0.818,0.696,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,otterai,Otter.ai,api,20,20,1.0,0.8,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,outrider,Outrider,api,8,7,1.0,0.875,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,outsideanalytics,Outside Analytics,api,7,7,1.0,1.0,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,pacificfusion,Pacific Fusion,api,27,27,1.0,0.852,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,panthalassa,Panthalassa,api,53,47,0.959,0.566,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,pantheon,"Pantheon Systems, Inc",api,15,8,0.533,0.867,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,paperlessparts,Paperless Parts,api,12,11,0.917,0.417,cc:CC-MAIN-2026-12,,2026-11-04
+greenhouse,parachutehealth,Parachute Health,api,9,9,1.0,0.556,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,parallel,Parallel Systems,api,21,21,1.0,0.81,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|yc,,2026-11-04
+greenhouse,parsecautomationcorp,Parsec Automation Corp.,api,9,4,0.667,0.556,cc:CC-MAIN-2026-12,,2026-11-04
+greenhouse,pathrobotics,Path Robotics,api,61,58,1.0,0.426,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,pathai,PathAI,api,10,10,1.0,1.0,cc:CC-MAIN-2026-12,,2026-11-04
+greenhouse,paveakatroveinformationtechnologies,Pave,api,20,19,0.95,0.65,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,pdtpartners,PDT Partners,api,12,11,0.917,0.917,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,peakenergy,Peak Energy,api,24,24,1.0,0.833,cc:CC-MAIN-2026-12,,2026-11-04
+greenhouse,pelago,Pelago,api,13,9,0.9,0.538,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|yc,,2026-11-04
+greenhouse,peloton,Peloton,api,51,36,0.706,0.529,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,pendo,Pendo,api,26,16,0.667,0.692,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,peregrinetechnologies,Peregrine Technologies,api,78,77,0.987,0.423,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,perpay,Perpay - Career's Page,api,17,17,1.0,0.824,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,personalisinc,"Personalis, Inc",api,12,11,1.0,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,phizenix,Phizenix,api,20,10,0.909,0.8,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,phoenixcontact,Phoenix Contact,api,49,43,1.0,0.49,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,piaggiofastforward,Piaggio Fast Forward,api,6,5,1.0,0.667,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,picarroinc,"Picarro, Inc",api,18,16,0.941,0.722,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,pilothq,Pilot.com,api,12,8,1.0,0.667,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,pinterest,Pinterest,api,168,123,0.732,0.631,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,pistontechnologies,Piston Technologies,api,16,15,0.938,0.438,cc:CC-MAIN-2026-12,,2026-11-04
+greenhouse,pitchbookdata,PitchBook Data,api,23,19,0.826,0.652,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,place,PLACE Corporate Careers,api,25,14,0.824,0.4,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,placerlabs,Placer.ai,api,17,9,0.562,0.588,cc:CC-MAIN-2026-12,,2026-11-04
+greenhouse,planetlabs,Planet,api,130,65,0.5,0.654,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,planetscale,PlanetScale,api,12,8,0.727,0.667,cc:CC-MAIN-2026-12,,2026-11-04
+greenhouse,sonyinteractiveentertainmentglobal,PlayStation Global,api,211,131,0.621,0.72,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,pointdigitalfinance,"Point Digital Finance, Inc.",api,14,14,1.0,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,point72,Point72,api,198,104,0.528,0.818,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,praxent,Praxent,api,12,7,1.0,1.0,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,bfiprep,Pre-Doctoral in Economics Program (PREP),api,8,8,1.0,1.0,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,preciselyusjobs,Precisely US Jobs,api,31,31,1.0,0.516,cc:CC-MAIN-2026-12,,2026-11-04
+greenhouse,profluent,Profluent,api,12,12,1.0,0.833,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,prokidney,ProKidney,api,10,9,1.0,0.4,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,prolaio,Prolaio,api,5,5,1.0,0.8,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,protonai,Proton.ai,api,8,6,0.75,0.625,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,psiquantum,PsiQuantum,api,90,71,0.816,0.756,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,pulsebiosciences,Pulse Biosciences,api,12,12,1.0,0.583,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,qgenda,QGenda,api,8,8,1.0,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,quaise,"Quaise Energy, Inc",api,8,8,1.0,0.625,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,qualia,Qualia,api,9,9,1.0,0.778,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,qualtrics,Qualtrics,api,98,81,0.827,0.408,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,quantifind,Quantifind,api,20,18,0.9,0.7,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,quantumspacellc,Quantum Space,api,28,28,1.0,0.786,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,queracomputinginc,"QuEra Computing, Inc.",api,70,60,0.857,0.829,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,qventus,Qventus,api,18,16,0.889,0.667,yc,,2026-11-04
+greenhouse,racapitalmanagementllc,"RA Capital Management, LLC",api,7,7,1.0,0.714,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,radixuniversity,Radix Trading University Job Board,api,8,8,1.0,0.875,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,raft,Raft Company Website,api,25,24,1.0,0.84,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,rangeviewinc,Rangeview Inc.,api,11,11,1.0,0.455,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,rebuildmanufacturing,Re:Build Manufacturing,api,133,133,1.0,0.541,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,recidiviz,Recidiviz,api,12,12,1.0,0.583,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|yc,,2026-11-04
+greenhouse,recordedfuture,Recorded Future,api,49,26,0.531,0.612,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,recursionpharmaceuticals,Recursion,api,9,9,1.0,0.444,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,redcellpartners,Red Cell Partners,api,32,31,1.0,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,redventures,Red Ventures,api,53,53,1.0,0.528,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,redapt,Redapt,api,8,8,1.0,0.625,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,reddit,Reddit,api,162,130,0.802,0.772,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,redwoodmaterials,Redwood Materials,api,132,132,1.0,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,toggleai,Reflexivity,api,9,5,0.556,0.889,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,relativity,Relativity Space,api,407,407,1.0,0.654,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,reltio,Reltio,api,29,19,0.679,0.793,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,rhombuspower,"Rhombus Power, Inc.",api,14,10,0.714,0.786,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,ridgeline,Ridgeline,api,26,23,0.885,0.692,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,ripple,Ripple,api,112,65,0.58,0.482,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,rithum,Rithum,api,10,8,0.8,0.4,cc:CC-MAIN-2026-12,,2026-11-04
+greenhouse,rithumliboard,Rithum LinkedIn Board,api,10,8,0.8,0.4,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,robinhood,Robinhood,api,159,130,0.818,0.635,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,roblox,Roblox,api,270,249,0.94,0.833,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,roboforce,RoboForce,api,17,17,1.0,0.824,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,rocketlab,Rocket Lab Corporation,api,556,461,0.84,0.673,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,truebill,Rocket Money,api,19,19,1.0,0.579,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,roivantsciences,Roivant Sciences,api,8,8,1.0,0.625,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,roku,Roku,api,84,58,0.69,0.774,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,rubrik,Rubrik Job Board,api,156,75,0.514,0.442,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,rushdownstudios,Rushdown Studios,api,6,6,1.0,0.833,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,rvohealth,RVO Health,api,22,22,1.0,0.636,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,sendabiosciences,Sail Biomedicines,api,11,10,1.0,0.909,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,saildroneinc,Saildrone,api,49,43,0.935,0.49,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,salientmotion,Salient Motion,api,17,17,1.0,0.706,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,samaraaerospace,Samara Aerospace,api,7,7,1.0,1.0,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,samayaai,Samaya AI,api,7,7,1.0,0.571,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,sambanovasystems,SambaNova,api,71,56,0.789,0.775,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,samsara,Samsara,api,326,182,0.708,0.411,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,samsungresearchamerica,Samsung Research America,api,25,24,0.96,0.84,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,samsungsemiconductor,Samsung Semiconductor,api,74,74,1.0,0.689,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,sanabiotech,Sana Biotechnology,api,7,7,1.0,0.571,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,scaleai,Scale AI,api,166,122,0.735,0.723,cc:CC-MAIN-2026-21|yc,,2026-11-04
+greenhouse,schrdinger,Schrödinger,api,39,21,0.568,0.641,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,science37,Science 37,api,60,55,1.0,0.933,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,scoutmotors,Scout Motors,api,199,197,1.0,0.568,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,seatgeek,SeatGeek,api,38,38,1.0,0.763,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,securityscorecard,SecurityScorecard,api,11,9,0.9,0.545,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,seisandbox,SEI,api,58,58,1.0,0.603,cc:CC-MAIN-2026-21,also on ashby `sei-labs` (8 jobs); kept the larger board,2026-11-04
+greenhouse,selffinancial,Self Financial,api,6,6,1.0,0.833,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,sevenresearch,Seven Research,api,13,13,1.0,0.846,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,sharkninjaoperatingllc,SharkNinja,api,143,109,0.762,0.476,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,shift5,Shift5,api,10,8,1.0,0.6,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,sigmacomputing,Sigma Computing,api,77,64,0.865,0.623,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,signifyd95,Signifyd,api,14,8,0.615,0.714,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,silananotechnologies,Sila,api,39,38,0.974,0.667,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,silvus,Silvus Technologies,api,39,39,1.0,0.718,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,simplesense,Simplesense,api,7,7,1.0,1.0,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,simplisafe,SimpliSafe,api,32,30,1.0,0.719,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,singlestore,SingleStore,api,40,25,0.641,0.625,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,sixgeninc,"SixGen, Inc.",api,19,14,1.0,0.842,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,skhynixamerica,SK hynix America,api,49,49,1.0,0.551,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,skildai-careers,Skild AI,api,57,46,0.807,0.789,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,skylighthq,Skylight,api,16,16,1.0,0.812,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,skyryse,Skyryse,api,20,20,1.0,0.7,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,smaamerica,SMA America,api,16,15,1.0,0.5,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,smartrent,SmartRent,api,9,9,1.0,0.556,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,snorkelai,Snorkel AI,api,43,43,1.0,0.721,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,sofi,SoFi,api,56,49,1.0,0.518,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,soloioinc,"Solo.io, Inc.",api,7,7,1.0,0.429,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,familyoffice,Soros Fund Management,api,9,9,1.0,0.444,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,soundcloud71,SoundCloud,api,17,11,0.647,0.647,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,spacex,SpaceX,api,2881,2852,1.0,0.617,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,xai,SpaceXSI,api,300,268,0.924,0.533,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,sparksoftcorporation,Sparksoft Corporation,api,24,24,1.0,0.667,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,sphinxdefense,Sphinx Defense,api,16,10,1.0,0.938,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,spire,Spire,api,38,22,0.579,0.5,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,splice,Splice,api,6,6,1.0,0.667,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,spycloud,SpyCloud,api,7,5,0.833,0.714,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,squarespace,Squarespace,api,23,17,0.81,0.652,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,stackav,Stack AV,api,14,14,1.0,0.786,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,starburst,Starburst,api,36,24,0.667,0.639,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,scm,Stevens Capital Management LP,api,29,29,1.0,1.0,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,stokespacetechnologies,Stoke Space,api,74,74,1.0,0.662,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,storable,Storable,api,23,22,0.957,0.696,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,systemstechnologyresearch,STR,api,147,138,0.958,0.912,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,strandtherapeutics,Strand Therapeutics,api,8,8,1.0,0.875,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,stratolaunch,Stratolaunch,api,74,74,1.0,0.554,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,stripe,Stripe,api,745,355,0.505,0.479,cc:CC-MAIN-2026-30|yc,,2026-11-04
+greenhouse,strivehealth,Strive Health,api,48,48,1.0,0.438,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,striveworks,Striveworks,api,36,36,1.0,0.889,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,stubhubinc,StubHub,api,40,40,1.0,0.625,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,superluminalrx,"Superluminal Medicines, Inc.",api,6,6,1.0,0.833,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,swayable,Swayable,api,16,14,1.0,0.438,cc:CC-MAIN-2026-21|yc,,2026-11-04
+greenhouse,synack,Synack,api,8,6,0.75,0.75,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,tailorcare2023,TailorCare,api,10,10,1.0,0.5,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,taketwo,"Take-Two Interactive Software, Inc.",api,36,20,0.556,0.417,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,talkspace,Talkspace,api,22,18,1.0,0.409,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,tanium,Tanium,api,61,48,0.787,0.443,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,taskrabbit,Taskrabbit,api,21,15,0.714,0.571,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,tastylive,tastylive,api,15,15,1.0,0.4,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,tatari,Tatari,api,40,35,0.897,0.55,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,teamlfg,teamLFG,api,12,12,1.0,0.833,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,tebra,Tebra,api,11,8,0.727,0.455,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,tempo,Tempo,api,6,5,0.833,0.667,cc:CC-MAIN-2026-43|yc,,2026-11-04
+greenhouse,tenableinc,"Tenable, Inc.",api,38,23,0.605,0.474,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,tenstorrent,Tenstorrent,api,127,70,0.551,0.795,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,tenstorrentuniversity,Tenstorrent University Jobs,api,13,9,0.692,0.615,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,terranorbitalcorporation,Terran Orbital Corporation,api,28,28,1.0,0.679,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,texasairsystems,Texas AirSystems,api,47,47,1.0,0.404,cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,thealleninstitute,The Allen Institute for Artificial Intelligence,api,16,16,1.0,0.812,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,phxproduction,The Honest Company,api,15,15,1.0,0.467,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+greenhouse,tsg,Titan Security Group,api,104,91,1.0,0.827,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,togetherai,Together AI,api,86,65,0.774,0.791,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,tomorrow,Tomorrow.io,api,17,13,0.867,0.529,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,topsteptrader,Topstep,api,19,17,0.895,0.684,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,torcrobotics,Torc Robotics,api,49,44,0.936,0.776,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,torq,Torq,api,19,16,0.842,0.579,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,toshibaglobalcommercesolutions,Toshiba Global Commerce Solutions - External,api,96,68,0.723,0.656,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,tpgcareers,TPG Careers Page,api,19,16,1.0,0.579,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,trace3,Trace3,api,103,98,1.0,0.641,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,translucent,Translucent,api,7,7,1.0,0.714,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,trase,Trase Systems,api,8,8,1.0,0.875,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,triplelift,TripleLift,api,15,8,0.533,0.6,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,trueanomalyinc,True Anomaly,api,209,208,1.0,0.804,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,tubitv,Tubi,api,25,23,0.92,0.48,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,tulip,Tulip Interfaces,api,61,42,0.689,0.541,cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,turing,Turing,api,42,27,0.659,0.762,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,twitch,Twitch,api,58,55,0.948,0.603,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,twosixtechnologies,Two Six Technologies,api,85,85,1.0,0.894,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,typeface,Typeface,api,18,13,0.929,0.778,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,uareai,Uare.ai,api,9,9,1.0,0.444,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,ultimagenomics,Ultima Genomics,api,16,15,0.938,0.5,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,unanet,Unanet,api,8,8,1.0,0.5,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,unconventionalinc,"Unconventional, Inc.",api,22,22,1.0,0.955,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,unframe,Unframe,api,32,18,0.562,0.562,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,upgrade,Upgrade,api,33,25,0.758,0.485,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,upstart,Upstart,api,85,85,1.0,0.588,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,ursamajor,Ursa Major,api,120,116,1.0,0.608,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,valaratomics,Valar Atomics,api,110,110,1.0,0.627,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,vantagescore,VantageScore,api,9,9,1.0,0.444,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,vardaspace,Varda Space Industries,api,123,123,1.0,0.732,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,vast,Vast,api,195,192,0.985,0.682,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,vaticlabs,Vatic Labs,api,8,6,0.75,1.0,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,vaxcyte,Vaxcyte,api,29,27,0.931,0.552,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,vectara,Vectara,api,6,5,0.833,0.833,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,vectranetworks,Vectra,api,22,13,0.65,0.636,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,vegaamericas,VEGA Americas,api,22,22,1.0,0.591,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,veir,VEIR,api,12,12,1.0,0.75,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,venncity,Venn,api,9,5,0.556,1.0,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,veracode,Veracode,api,12,10,0.909,0.417,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,veracyte,Veracyte,api,21,12,0.667,0.524,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,vercel,Vercel,api,88,71,0.807,0.58,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,verisign,Verisign,api,16,14,0.933,0.812,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,veristainc,"Verista, Inc.",api,49,45,1.0,0.796,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,verkada,Verkada,api,335,265,0.791,0.501,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,verse,Verse,api,8,8,1.0,0.75,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,via99,VIA,api,15,15,1.0,0.733,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,viamrobotics,Viam,api,8,8,1.0,0.875,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,virbiotechnologyinc,Vir Biotechnology,api,15,15,1.0,0.467,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,virtru,Virtru,api,8,8,1.0,0.75,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,visualconcepts,Visual Concepts,api,6,6,1.0,0.833,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,vmax,Vmax,api,8,8,1.0,0.875,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,voyagertechnologiesinc,"Voyager Technologies, Inc.",api,180,173,1.0,0.656,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,vsco39,VSCO,api,7,7,1.0,0.857,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,vulcanelements,Vulcan Elements,api,65,64,1.0,0.462,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,vulncheck,VulnCheck,api,12,8,0.667,0.667,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,vynyl,VYNYL,api,6,5,1.0,1.0,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,warp,Warp,api,5,5,1.0,1.0,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,wasabi,Wasabi Technologies,api,11,10,0.909,0.636,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,watchmakergenomics,Watchmaker Genomics,api,19,15,0.882,0.632,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,watershed,Watershed Informatics,api,8,8,1.0,1.0,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,waymo,Waymo,api,368,308,0.848,0.753,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,weedmaps77,Weedmaps,api,8,8,1.0,0.5,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,whisperaero,Whisper Aero,api,7,7,1.0,0.571,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,wight,Wight & Company,api,17,17,1.0,0.588,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,wing,Wing,api,55,55,1.0,0.691,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,woolpert,Woolpert,api,129,120,0.93,0.512,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,workhelix,Workhelix,api,10,10,1.0,0.5,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,xairatherapeutics,Xaira Therapeutics,api,32,32,1.0,0.781,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,xantium,Xantium,api,9,7,0.778,0.556,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,xometry,Xometry,api,230,200,0.873,0.609,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,xpengmotors,XPENG,api,19,13,0.684,0.737,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,yerbamadre,Yerba Madre,api,7,7,1.0,0.429,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,yipitdata,YipitData,api,53,39,0.765,0.509,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,youcom,You.com,api,9,9,1.0,0.778,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,yugabyte,YugabyteDB,api,13,10,0.769,0.615,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,zipcolimited,Zip Co Limited,api,41,31,0.756,0.659,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,flyzipline,Zipline,api,351,327,0.956,0.567,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,ziprecruiter,ZipRecruiter,api,50,38,1.0,0.6,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,zocdoc,Zocdoc,api,60,48,0.8,0.617,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,zone5technologies,Zone 5 Technologies,api,72,72,1.0,0.639,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,zoo,Zoo,api,8,8,1.0,0.75,cc:CC-MAIN-2026-21|cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,zoominfo,ZoomInfo Technologies LLC,api,94,61,0.709,0.543,cc:CC-MAIN-2026-30|cc:CC-MAIN-2026-43,,2026-11-04
+greenhouse,zuora,Zuora,api,36,20,0.556,0.806,cc:CC-MAIN-2026-30,,2026-11-04
+greenhouse,oura,ŌURA,api,97,82,0.863,0.66,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+lever,aeratechnology,Aeratechnology,board name,18,13,0.722,0.833,cc:CC-MAIN-2026-43,,2026-11-04
+lever,agiloft,Agiloft,board name,16,13,0.812,0.688,cc:CC-MAIN-2026-43,,2026-11-04
+lever,aledade,Aledade,board name,38,38,1.0,0.421,cc:CC-MAIN-2026-43,,2026-11-04
+lever,altarum,Altarum,board name,7,7,1.0,0.571,cc:CC-MAIN-2026-43,,2026-11-04
+lever,amtengineering,Amtengineering,board name,107,107,1.0,0.598,cc:CC-MAIN-2026-43,,2026-11-04
+lever,ana-corp,Ana Corp,board name,26,26,1.0,0.5,cc:CC-MAIN-2026-43,,2026-11-04
+lever,asapp-2,Asapp 2,board name,13,8,0.615,0.692,cc:CC-MAIN-2026-43,,2026-11-04
+lever,bellese,Bellese,board name,8,8,1.0,0.75,cc:CC-MAIN-2026-43,,2026-11-04
+lever,bounteous,Bounteous,board name,31,20,0.645,0.806,cc:CC-MAIN-2026-43,,2026-11-04
+lever,brooksrunning,Brooksrunning,board name,25,17,0.68,0.44,cc:CC-MAIN-2026-43,,2026-11-04
+lever,canarytechnologies,Canary Technologies,yc,17,14,0.824,0.588,yc,,2026-11-04
+lever,captivateiq,CaptivateIQ,yc,23,19,0.826,0.522,yc,,2026-11-04
+lever,cfsenergy,Cfsenergy,board name,142,142,1.0,0.669,cc:CC-MAIN-2026-43,,2026-11-04
+lever,charmindustrial,Charmindustrial,board name,10,10,1.0,0.6,cc:CC-MAIN-2026-43,,2026-11-04
+lever,disher,Disher,board name,92,92,1.0,0.587,cc:CC-MAIN-2026-43,,2026-11-04
+lever,dutch,Dutch,board name,19,14,0.737,0.632,cc:CC-MAIN-2026-43,,2026-11-04
+lever,field-ai,Field Ai,board name,107,104,0.972,0.916,cc:CC-MAIN-2026-43,,2026-11-04
+lever,finch,Finch,yc,7,7,1.0,0.714,yc,also on ashby `finch` (3 jobs); kept the larger board,2026-11-04
+lever,furientis,Furientis,board name,23,23,1.0,0.739,cc:CC-MAIN-2026-43,,2026-11-04
+lever,gridware,Gridware,yc,16,16,1.0,0.688,yc,,2026-11-04
+lever,hatchit,Hatchit,board name,23,22,0.957,0.652,cc:CC-MAIN-2026-43,,2026-11-04
+lever,hermeus,Hermeus,board name,78,78,1.0,0.782,cc:CC-MAIN-2026-43,,2026-11-04
+lever,humble-robotics,Humble Robotics,board name,24,24,1.0,0.833,cc:CC-MAIN-2026-43,,2026-11-04
+lever,hutker-architects-inc,Hutker Architects Inc,board name,8,8,1.0,0.75,cc:CC-MAIN-2026-43,,2026-11-04
+lever,kobie,Kobie,board name,30,20,0.667,0.433,cc:CC-MAIN-2026-43,,2026-11-04
+lever,last-energy,Last Energy,board name,25,24,0.96,0.64,cc:CC-MAIN-2026-43,,2026-11-04
+lever,life,Life,board name,52,51,1.0,0.462,cc:CC-MAIN-2026-43,,2026-11-04
+lever,makpar,Makpar,board name,8,8,1.0,0.75,cc:CC-MAIN-2026-43,,2026-11-04
+lever,mashgin,Mashgin,yc,10,8,0.8,0.9,yc,,2026-11-04
+lever,merlinlabs,Merlinlabs,board name,26,26,1.0,0.808,cc:CC-MAIN-2026-43,,2026-11-04
+lever,moonpay,Moonpay,board name,24,12,0.5,0.667,cc:CC-MAIN-2026-39,,2026-11-04
+lever,multiplylabs,Multiply Labs,yc,12,11,0.917,0.667,yc,,2026-11-04
+lever,outreach,Outreach,board name,19,12,0.632,0.579,cc:CC-MAIN-2026-43,,2026-11-04
+lever,palantir,Palantir,board name,305,241,0.79,0.728,cc:CC-MAIN-2026-43,,2026-11-04
+lever,pditechnologies,Pditechnologies,board name,25,16,0.64,0.68,cc:CC-MAIN-2026-43,,2026-11-04
+lever,penumbrainc,Penumbrainc,board name,74,56,0.757,0.473,cc:CC-MAIN-2026-43,,2026-11-04
+lever,pivotal,Pivotal,board name,29,29,1.0,0.793,cc:CC-MAIN-2026-43,,2026-11-04
+lever,plus-2,Plus 2,board name,45,45,1.0,0.778,cc:CC-MAIN-2026-43,,2026-11-04
+lever,prolific-machines,Prolific Machines,board name,7,7,1.0,1.0,cc:CC-MAIN-2026-43,,2026-11-04
+lever,prosper,Prosper,yc,11,11,1.0,0.545,yc,,2026-11-04
+lever,shieldai,Shieldai,board name,664,544,0.819,0.774,cc:CC-MAIN-2026-39|cc:CC-MAIN-2026-43,,2026-11-04
+lever,skyways,Skyways,yc,20,20,1.0,0.65,yc,,2026-11-04
+lever,teamsnap,Teamsnap,board name,8,8,1.0,0.75,cc:CC-MAIN-2026-43,,2026-11-04
+lever,theathletic,Theathletic,board name,10,9,1.0,0.5,cc:CC-MAIN-2026-43,,2026-11-04
+lever,truetandem,Truetandem,board name,6,6,1.0,0.667,cc:CC-MAIN-2026-43,,2026-11-04
+lever,velaura,Velaura,board name,50,29,0.58,0.88,cc:CC-MAIN-2026-43,,2026-11-04
+lever,venusaero,Venusaero,board name,24,24,1.0,0.625,cc:CC-MAIN-2026-39,,2026-11-04
+lever,virtualitics,Virtualitics,board name,18,18,1.0,0.556,cc:CC-MAIN-2026-43,,2026-11-04
+lever,waabi,Waabi,board name,92,91,0.989,0.641,cc:CC-MAIN-2026-39,,2026-11-04
+lever,wealthfront,Wealthfront,board name,23,23,1.0,0.652,cc:CC-MAIN-2026-43,,2026-11-04
+lever,xcimer,Xcimer,board name,61,61,1.0,0.623,cc:CC-MAIN-2026-43,,2026-11-04
+lever,zoox,Zoox,board name,225,224,0.996,0.791,cc:CC-MAIN-2026-43,,2026-11-04
+ashby,1password,1password,board name,76,63,0.829,0.539,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,8vc,8vc,board name,5,5,1.0,0.8,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,9-mothers,9 Mothers,yc,9,9,1.0,0.667,cc:CC-MAIN-2026-12|yc,,2026-11-04
+ashby,abby-care,Abby Care,board name,28,28,1.0,0.429,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Abridge,Abridge,board name,37,37,1.0,0.405,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,adaption,Adaption,board name,8,8,1.0,0.625,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Adaptive,Adaptive,board name,10,10,1.0,0.6,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,AeroVect,AeroVect,board name,44,36,0.818,0.659,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,aerovy,Aerovy,board name,6,6,1.0,0.667,cc:CC-MAIN-2026-12,,2026-11-04
+ashby,afterquery,AfterQuery,yc,39,39,1.0,0.513,yc,,2026-11-04
+ashby,agave,Agave,yc,10,10,1.0,0.8,yc,,2026-11-04
+ashby,AgentMail,AgentMail,board name,9,9,1.0,0.667,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,agi-inc,Agi Inc,board name,6,6,1.0,1.0,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,aiprise,AiPrise,yc,19,12,0.632,0.684,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,airbyte,Airbyte,board name,9,6,0.667,0.778,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,airspace-intelligence.com,Airspace Intelligence Com,board name,34,28,0.824,0.794,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,akasa,Akasa,board name,9,9,1.0,0.778,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,alembic,Alembic,board name,13,13,1.0,0.769,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,aleph,Aleph,yc,12,12,1.0,0.417,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,allium,Allium,board name,13,13,1.0,0.538,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,alloyenterprises,Alloyenterprises,board name,5,5,1.0,0.8,cc:CC-MAIN-2026-12,,2026-11-04
+ashby,allspice,Allspice,board name,6,6,1.0,0.5,cc:CC-MAIN-2026-12,,2026-11-04
+ashby,alpacahealth,Alpacahealth,board name,418,413,0.988,0.562,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,alva-energy,Alva Energy,board name,7,7,1.0,0.714,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,ambiencehealthcare,Ambiencehealthcare,board name,20,20,1.0,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,ambient.ai,Ambient Ai,board name,25,23,0.92,0.6,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,ambrook,Ambrook,board name,14,14,1.0,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,american-housing,American Housing,board name,12,12,1.0,0.75,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,ami,Ami,board name,6,4,0.667,0.667,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,amperos,Amperos,board name,17,10,0.588,0.471,cc:CC-MAIN-2026-12,,2026-11-04
+ashby,Ampersand,Ampersand,board name,6,6,1.0,0.833,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,andromeda,Andromeda,board name,15,13,0.867,0.667,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,anrok,Anrok,board name,15,14,0.933,0.467,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Antares,Antares,board name,89,87,1.0,0.787,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,anthrogen,Anthrogen,yc,8,8,1.0,0.75,yc,,2026-11-04
+ashby,antimetal,Antimetal,board name,9,9,1.0,0.778,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,antithesis,Antithesis,board name,21,16,0.762,0.429,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,anyscale,Anyscale,board name,22,17,0.773,0.864,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,anysignal,Anysignal,board name,27,27,1.0,0.667,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,apex-technology-inc,Apex Technology Inc,board name,127,127,1.0,0.74,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,apollo-graphql,Apollo Graphql,board name,9,8,0.889,0.667,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Applied Compute,Applied Compute,board name,15,15,1.0,0.667,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,arcadeai,Arcadeai,board name,6,6,1.0,0.833,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,arena,Arena,board name,19,19,1.0,0.684,cc:CC-MAIN-2026-12,,2026-11-04
+ashby,artafinance,Artafinance,board name,7,4,0.571,1.0,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,artemis,Artemis,board name,23,17,0.85,0.739,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,articul8,Articul8,board name,20,10,0.5,0.9,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,artie,Artie,yc,6,6,1.0,0.5,yc,,2026-11-04
+ashby,ashby,Ashby,yc,72,37,0.521,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,asimov,Asimov,board name,7,7,1.0,1.0,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,assembledhq,Assembledhq,board name,16,15,0.938,0.438,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,assorthealth,Assorthealth,board name,36,36,1.0,0.611,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,assured,Assured,board name,44,44,1.0,0.636,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,asteriAI,AsteriAI,board name,5,4,0.8,1.0,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,astro-mechanica,Astro Mechanica,yc,44,44,1.0,0.75,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,astronomer,Astronomer,board name,19,11,0.579,0.579,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,ataraxis-ai,Ataraxis Ai,board name,16,16,1.0,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,ATG,ATG,board name,7,7,1.0,0.857,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,atob,AtoB,yc,9,9,1.0,0.444,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,atomic,Atomic,yc,7,7,1.0,0.429,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,atomic-invest,Atomic Invest,board name,10,9,0.9,0.4,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,atticus,Atticus,board name,16,16,1.0,0.438,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,auctor,Auctor,yc,11,11,1.0,0.636,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,august,August,board name,12,12,1.0,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,aurelian,Aurelian,yc,8,8,1.0,0.625,yc,,2026-11-04
+ashby,aurorasolar,Aurorasolar,board name,6,4,0.667,0.833,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,authzed,authzed,yc,5,5,1.0,1.0,yc,,2026-11-04
+ashby,automat,Automat,board name,6,6,1.0,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,autoscience,Autoscience,board name,5,5,1.0,0.8,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,avalanchefusion,Avalanchefusion,board name,10,10,1.0,0.7,cc:CC-MAIN-2026-12,,2026-11-04
+ashby,avoca,Avoca,yc,19,14,0.778,0.421,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,axion,Axion,board name,13,13,1.0,0.538,cc:CC-MAIN-2026-12,,2026-11-04
+ashby,axle-health,Axle Health,yc,7,7,1.0,0.857,yc,,2026-11-04
+ashby,bankjoy,Bankjoy,board name,13,11,0.846,0.615,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,barkbus,Barkbus,board name,12,12,1.0,1.0,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,baseten,Baseten,board name,105,101,0.962,0.571,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,basis-research,Basis Research,board name,11,11,1.0,0.727,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,batoncorporation,Batoncorporation,board name,11,11,1.0,0.727,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,bayesianhealth,Bayesianhealth,board name,12,12,1.0,0.667,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,beaconai,Beaconai,board name,17,17,1.0,0.941,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,bedrock-robotics,Bedrock Robotics,board name,57,57,1.0,0.772,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,bettermoney,Bettermoney,board name,7,7,1.0,0.857,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,betterup,Betterup,board name,7,7,1.0,0.429,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,beyondreachlabs,Beyond Reach Labs,yc,6,6,1.0,0.833,yc,,2026-11-04
+ashby,binance.us,Binance Us,board name,9,7,0.778,0.889,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,binti,Binti,board name,12,12,1.0,0.917,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,bivacor-inc,Bivacor Inc,board name,12,12,1.0,0.5,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Blacksmith,Blacksmith,board name,22,22,1.0,0.545,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,bland,Bland AI,yc,17,16,1.0,0.471,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,blee,Blee,yc,6,6,1.0,0.5,yc,,2026-11-04
+ashby,blissway,Blissway,yc,11,11,1.0,0.818,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,blockit,Blockit,board name,6,6,1.0,0.667,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Blockworks,Blockworks,board name,6,6,1.0,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,bobyard,Bobyard,board name,38,36,0.947,0.421,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,brainbaselabs,Brainbaselabs,board name,6,5,0.833,0.667,cc:CC-MAIN-2026-12,,2026-11-04
+ashby,brainco,Brainco,board name,52,45,0.865,0.808,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Braintrust,Braintrust,board name,30,26,0.867,0.467,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,BranchLab,BranchLab,board name,12,12,1.0,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,brelle,Brelle,board name,6,6,1.0,1.0,cc:CC-MAIN-2026-12,,2026-11-04
+ashby,brettonai,Bretton AI,yc,6,6,1.0,0.833,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,brigit,Brigit,board name,14,14,1.0,0.643,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,brinc,Brinc,board name,27,27,1.0,0.481,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,broccoli,Broccoli AI,yc,31,28,0.903,0.581,cc:CC-MAIN-2026-12|yc,,2026-11-04
+ashby,browserbase,Browserbase,board name,9,9,1.0,0.667,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,bubble,Bubble,board name,4,4,1.0,1.0,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,bunkerhillhealth,Bunkerhill Health,yc,8,8,1.0,0.5,yc,,2026-11-04
+ashby,buspatrol,Buspatrol,board name,15,14,0.933,0.4,cc:CC-MAIN-2026-12,,2026-11-04
+ashby,butterflymx,Butterflymx,board name,8,8,1.0,0.625,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,camber,Camber,yc,14,14,1.0,0.429,cc:CC-MAIN-2026-12|yc,,2026-11-04
+ashby,cambio,Cambio,yc,7,6,0.857,0.714,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,canals,Canals,board name,24,15,0.625,0.583,cc:CC-MAIN-2026-12,,2026-11-04
+ashby,candidhealth,Candid Health,yc,30,30,1.0,0.567,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,candidintelligence,Candidintelligence,board name,7,7,1.0,0.857,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,cantina,Cantina,board name,23,19,0.826,0.696,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,cape,Cape,board name,24,23,0.958,0.792,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,cardless,Cardless,board name,16,16,1.0,0.5,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,carnot-ai,Carnot Ai,board name,9,6,0.667,0.778,cc:CC-MAIN-2026-12,,2026-11-04
+ashby,cartesia,Cartesia,board name,24,22,0.917,0.667,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,casca,Casca,yc,6,6,1.0,0.833,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,causal,Causal,board name,21,21,1.0,0.762,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,centerfield,Centerfield,board name,21,11,0.524,0.524,cc:CC-MAIN-2026-12,,2026-11-04
+ashby,chaidiscovery,Chaidiscovery,board name,21,21,1.0,0.571,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,chambercardio,Chambercardio,board name,6,6,1.0,0.5,cc:CC-MAIN-2026-12,,2026-11-04
+ashby,character,Character,board name,13,13,1.0,1.0,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,charge-robotics,Charge Robotics,yc,13,13,1.0,0.538,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,chromatic,Chromatic,board name,6,5,0.833,0.833,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,cinder,Cinder,yc,10,8,0.889,0.8,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,Citizen,Citizen,board name,9,8,1.0,0.556,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,civilgrid,Civilgrid,board name,7,7,1.0,0.571,cc:CC-MAIN-2026-12,,2026-11-04
+ashby,claim-health,Claim Health,board name,10,10,1.0,0.4,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,clair,Clair,board name,8,8,1.0,0.75,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,clarify,Clarify,board name,6,6,1.0,0.5,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,clarion,Clarion,yc,7,7,1.0,0.571,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,clarium,Clarium,board name,7,7,1.0,0.571,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,clasp-group,Clasp Group,board name,12,12,1.0,0.5,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,claylabs,Claylabs,board name,63,53,0.841,0.429,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,clickup,Clickup,board name,48,32,0.681,0.771,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Close,Close,board name,6,6,1.0,1.0,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,CloudZero,CloudZero,board name,13,13,1.0,0.462,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,cobot,Cobot,board name,14,14,1.0,0.786,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,coderabbit,Coderabbit,board name,45,37,0.881,0.489,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,coframe,Coframe,board name,17,15,0.882,0.412,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,cogent-security,Cogent Security,board name,52,52,1.0,0.423,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,cognition,Cognition,board name,107,56,0.523,0.439,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,cohere,Cohere,board name,119,66,0.555,0.664,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Coinflow,Coinflow,board name,20,18,0.9,0.75,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Commure,Commure,board name,84,66,0.786,0.595,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,composio,Composio,board name,31,27,0.871,0.645,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Conception,Conception,board name,5,5,1.0,0.8,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,concourse,Concourse,yc,7,7,1.0,0.571,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,conductorai,Conductorai,board name,6,6,1.0,0.5,cc:CC-MAIN-2026-12,,2026-11-04
+ashby,confido,Confido,yc,38,38,1.0,0.579,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,contoro,Contoro,board name,12,12,1.0,0.75,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,conversion,Conversion,board name,15,15,1.0,0.533,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,convex-dev,Convex Dev,board name,11,11,1.0,0.727,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,corvus-robotics,Corvus Robotics,board name,8,8,1.0,0.625,cc:CC-MAIN-2026-12,,2026-11-04
+ashby,counsel,Counsel,board name,12,12,1.0,0.583,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Coworker,Coworker,board name,6,6,1.0,0.5,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,creatify,Creatify,board name,7,7,1.0,0.571,cc:CC-MAIN-2026-12,,2026-11-04
+ashby,creatoriq,Creatoriq,board name,35,21,0.6,0.486,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,creditgenie,Creditgenie,board name,15,15,1.0,0.667,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,crosby,Crosby,board name,25,24,0.96,0.44,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Crusoe,Crusoe,board name,330,315,0.955,0.515,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-17,,2026-11-04
+ashby,cursor,Cursor,board name,118,78,0.661,0.551,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,cybcube,Cybcube,board name,8,7,0.875,0.5,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,cyberhaven,Cyberhaven,board name,33,21,0.636,0.727,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,cyvl,Cyvl,board name,16,16,1.0,0.562,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,d-Matrix,D Matrix,board name,39,37,0.949,0.872,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,DatologyAI,DatologyAI,board name,14,13,0.929,0.857,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,decagon,Decagon,board name,132,101,0.765,0.583,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Deepgram,Deepgram,yc,77,55,0.733,0.662,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,delphi,Delphi,board name,5,5,1.0,0.8,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,demandbase,Demandbase,board name,15,10,0.667,0.6,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,deposco,Deposco,board name,13,13,1.0,0.615,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,depthfirst,Depthfirst,board name,19,19,1.0,0.789,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,diagrid,Diagrid,board name,6,4,0.667,0.833,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,distributed-spectrum,Distributed Spectrum,board name,13,13,1.0,0.615,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Distyl,Distyl,board name,25,23,0.92,0.92,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,ditto,Ditto,board name,7,7,1.0,0.571,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,docker,Docker,board name,50,43,0.86,0.74,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,doctronic,Doctronic,board name,18,18,1.0,0.556,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Doppel,Doppel,board name,23,19,0.826,0.826,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,doss,Doss,board name,20,17,0.85,0.55,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,DoubleZero,DoubleZero,board name,5,5,1.0,0.8,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,drata,Drata,board name,26,19,0.731,0.654,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,dryft,Dryft,board name,13,7,0.538,0.462,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,DubClub,DubClub,board name,6,6,1.0,0.5,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,duck-duck-go,Duck Duck Go,board name,10,9,1.0,0.6,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,dyna-robotics,Dyna Robotics,board name,26,26,1.0,0.577,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,e2b,E2b,board name,15,10,0.667,0.8,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Edison Scientific,Edison Scientific,board name,24,24,1.0,0.667,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,eightsleep,Eight Sleep,yc,35,28,0.8,0.714,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,ellipsislabs,Ellipsislabs,board name,14,13,0.929,0.714,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,eloquentai,Eloquentai,board name,13,11,0.846,0.846,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,endurance-energy,Endurance Energy,board name,21,21,1.0,0.476,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,engflow,Engflow,board name,9,7,0.778,0.667,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,etched,Etched,board name,120,111,0.925,0.7,cc:CC-MAIN-2026-17,also on greenhouse `etchedai` (25 jobs); kept the larger board,2026-11-04
+ashby,ether.fi,Ether Fi,board name,16,14,1.0,0.5,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,eventualcomputing,Eventualcomputing,board name,5,5,1.0,0.8,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,evertune,Evertune,board name,5,5,1.0,0.8,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,exa,Exa,board name,61,45,0.738,0.623,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,f2-ai,F2 Ai,board name,9,9,1.0,0.556,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,fable,Fable,board name,7,6,1.0,0.429,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,factory,Factory,board name,69,65,0.942,0.42,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,far.ai,Far Ai,board name,19,19,1.0,0.632,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,farsight,Farsight,board name,6,6,1.0,0.833,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,fieldguide,Fieldguide,yc,43,39,0.907,0.581,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,finout,Finout,board name,15,9,0.6,0.467,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,firecrawl,Firecrawl,board name,29,29,1.0,0.759,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,first-resonance,First Resonance,board name,12,12,1.0,0.917,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,FleetWorks,FleetWorks,yc,7,7,1.0,0.714,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,flint,Flint,yc,8,8,1.0,0.625,yc,,2026-11-04
+ashby,flowengineering,Flowengineering,board name,37,30,0.811,0.514,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,fluidstack,Fluidstack,board name,251,249,0.996,0.602,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,flux,Flux,board name,7,7,1.0,0.857,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,focused,Focused,board name,37,32,0.865,0.541,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,formenergy,Formenergy,board name,202,202,1.0,0.673,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,fortreum,Fortreum,board name,11,11,1.0,0.545,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,foundationhealthcareers,Foundationhealthcareers,board name,14,9,0.643,0.714,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,foundry-robotics,Foundry Robotics,board name,29,29,1.0,0.552,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,fuel-cycle,Fuel Cycle,board name,15,15,1.0,0.6,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Fuse,Fuse,board name,44,41,0.932,0.455,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,futurefitai,Futurefitai,board name,6,6,1.0,0.667,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,gamechanger,Gamechanger,board name,10,10,1.0,0.8,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,gamma,Gamma,board name,20,20,1.0,0.8,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,gecko-robotics,Gecko Robotics,yc,22,21,0.955,0.682,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,gem-technologies,Gem Technologies,board name,43,43,1.0,0.651,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,generalrobotics,Generalrobotics,board name,13,9,0.692,0.923,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,generate,Generate,board name,16,15,1.0,0.438,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,genmo,Genmo,board name,5,5,1.0,1.0,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,gigaml,Gigaml,board name,33,31,0.939,0.424,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,gimlet,Gimlet,board name,17,17,1.0,0.765,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,glacier,Glacier,board name,4,4,1.0,1.0,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,glide,Glide,board name,10,10,1.0,0.6,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,glimpse,Glimpse,yc,8,8,1.0,0.5,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,goteleport,Goteleport,board name,20,19,0.95,0.6,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,granica,Granica,board name,9,8,0.889,0.667,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,graphite,Graphite,board name,4,4,1.0,1.0,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,graymatter-robotics,Graymatter Robotics,board name,14,14,1.0,0.643,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,greenboard,Greenboard,yc,7,7,1.0,0.571,yc,,2026-11-04
+ashby,greptile,Greptile,yc,19,19,1.0,0.632,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,gridcare,Gridcare,board name,9,9,1.0,0.889,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,gridverify,Gridverify,board name,5,5,1.0,0.8,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Grindr LLC,Grindr LLC,board name,26,26,1.0,0.808,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,gritt,Gritt,board name,18,17,0.944,0.944,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,hackerone,Hackerone,board name,14,8,0.571,0.571,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,hadrian-automation,Hadrian Automation,board name,158,158,1.0,0.627,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,halobraid,Halobraid,board name,5,5,1.0,0.8,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,handshake,Handshake,board name,79,60,0.759,0.506,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Hang,Hang,board name,6,6,1.0,0.667,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,happyrobot.ai,Happyrobot Ai,board name,80,44,0.55,0.475,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Harmonic,Harmonic,board name,9,8,0.889,0.889,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,harvey,Harvey,board name,375,261,0.696,0.52,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Hatch,Hatch,board name,8,8,1.0,0.75,cc:CC-MAIN-2026-17,also on greenhouse `hatchcareers` (7 jobs); kept the larger board,2026-11-04
+ashby,havocai,Havocai,board name,23,23,1.0,0.565,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,haydenai,Haydenai,board name,15,15,1.0,0.867,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Headstart,Headstart,board name,4,4,1.0,1.0,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,helion,Helion,board name,62,62,1.0,0.694,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,helius,Helius,board name,9,8,1.0,1.0,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,hercules,Hercules,board name,30,24,0.8,0.833,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,heron-power,Heron Power,board name,53,53,1.0,0.811,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,higharc,Higharc,board name,12,12,1.0,0.833,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,hike-medical,Hike Medical,board name,9,9,1.0,0.444,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,hinge-health,Hinge Health,board name,82,75,0.915,0.646,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Hippocratic AI,Hippocratic AI,board name,50,49,0.98,0.42,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,homebase,Homebase,board name,17,11,0.647,0.529,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,horizon3ai,Horizon3ai,board name,179,132,0.737,0.525,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,hud,HUD,yc,37,31,0.939,0.595,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,human-computer-lab,Human Computer Lab,board name,14,14,1.0,0.857,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,hyperbolic,Hyperbolic,board name,18,15,1.0,0.556,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,hyperbound,Hyperbound,yc,9,9,1.0,0.556,yc,,2026-11-04
+ashby,iambic-therapeutics,Iambic Therapeutics,board name,30,29,0.967,0.667,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,illumio,Illumio,board name,65,52,0.8,0.708,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,imprint,Imprint,board name,19,19,1.0,0.421,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Inferact,Inferact,board name,32,25,0.781,0.844,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,inference,Inference,board name,5,5,1.0,0.8,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,infinitus,Infinitus,board name,7,7,1.0,0.571,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,infisical,Infisical,yc,12,11,0.917,0.583,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,Injective,Injective,board name,11,10,1.0,0.455,cc:CC-MAIN-2026-17,also on ashby `injective-labs` (4 jobs); kept the larger board,2026-11-04
+ashby,insitro,Insitro,board name,15,15,1.0,0.667,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Intellistack,Intellistack,board name,12,9,0.75,0.5,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Interrahealth,Interrahealth,board name,7,7,1.0,0.857,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,intrinsic-safety,Intrinsic Safety,board name,9,9,1.0,0.667,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,intro,Intro,board name,9,9,1.0,0.444,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,inworld-ai,Inworld Ai,board name,17,9,0.529,0.824,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,ironcladhq,Ironcladhq,board name,22,18,0.818,0.591,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,january,January,board name,16,16,1.0,0.562,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,judgmentlabs,Judgmentlabs,board name,4,4,1.0,1.0,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,julius,Julius,board name,6,4,1.0,0.833,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,junipersquare,Junipersquare,board name,48,41,0.854,0.458,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,kalshi,Kalshi,yc,34,34,1.0,0.529,cc:CC-MAIN-2026-17|yc,also on greenhouse `kalshi` (28 jobs); kept the larger board,2026-11-04
+ashby,Karman Industries,Karman Industries,board name,44,44,1.0,0.773,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,kastle,Kastle,yc,18,17,1.0,0.444,yc,,2026-11-04
+ashby,keycard-labs,Keycard Labs,board name,7,7,1.0,0.571,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,kin,Kin,board name,21,21,1.0,0.524,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,kled-ai,Kled Ai,board name,5,5,1.0,0.8,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,knot,Knot,board name,11,11,1.0,0.545,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Known,Known,board name,6,6,1.0,0.5,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,knox-systems,Knox Systems,board name,16,16,1.0,0.812,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,koahlabs,Koahlabs,board name,9,9,1.0,0.889,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,kovo,Kovo,board name,8,8,1.0,1.0,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,krea,Krea,board name,13,13,1.0,0.692,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,lambda,Lambda,board name,93,90,0.968,0.828,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,lancedb,Lancedb,board name,11,11,1.0,0.909,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,langchain,Langchain,board name,103,81,0.786,0.515,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,lassie,Lassie,board name,15,14,0.933,0.467,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,LatchBio,LatchBio,board name,30,30,1.0,0.867,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,latent,Latent,yc,25,25,1.0,0.52,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,laurel,Laurel,board name,13,12,0.923,0.462,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,lavendo,Lavendo,board name,16,14,0.875,0.75,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,layerfi,Layerfi,board name,6,6,1.0,0.5,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,lazer,Lazer,board name,8,5,0.625,0.625,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,leandata,Leandata,board name,8,8,1.0,0.5,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,leanlayer,Leanlayer,board name,9,9,1.0,0.556,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,letta,Letta,board name,4,4,1.0,1.0,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,lgads,Lgads,board name,13,9,0.692,1.0,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Lightfield,Lightfield,board name,24,24,1.0,0.542,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,lightning,Lightning,board name,14,12,1.0,0.786,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,lilt-corporate,Lilt Corporate,board name,24,20,0.833,0.75,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Linear,Linear,board name,32,18,0.562,0.562,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Linkup,Linkup,board name,14,11,0.786,0.643,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,liquid-ai,Liquid Ai,board name,20,18,0.9,0.75,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,litellm,LiteLLM,yc,10,9,0.9,0.9,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,liveflow,LiveFlow,yc,5,5,1.0,0.8,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,livekit,Livekit,board name,29,22,0.759,0.828,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,loancrate,Loancrate,board name,8,8,1.0,1.0,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,lorikeet,Lorikeet,board name,15,12,0.8,0.533,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,luminai,Luminai,yc,16,16,1.0,0.688,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,Luminary,Luminary,board name,10,10,1.0,0.4,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,lunar,Lunar,board name,15,13,0.867,0.533,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,lydian,Lydian,board name,6,6,1.0,1.0,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,mach9,Mach9,yc,15,14,1.0,0.467,yc,,2026-11-04
+ashby,macroscope,Macroscope,board name,9,9,1.0,0.667,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,madhive,Madhive,board name,6,6,1.0,0.5,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,magic.dev,Magic Dev,board name,7,7,1.0,0.857,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,magicpatterns,Magicpatterns,board name,7,7,1.0,0.571,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,makai-labs,Makai Labs,board name,10,8,0.8,0.9,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,mandolin,Mandolin,board name,4,4,1.0,1.0,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,maple,Maple,board name,14,12,0.857,0.5,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,marianaminerals,Marianaminerals,board name,99,99,1.0,0.525,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,MaticRobots,MaticRobots,board name,24,24,1.0,0.875,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,matter-intelligence,Matter Intelligence,board name,30,30,1.0,0.7,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,maven-agi,Maven Agi,board name,13,13,1.0,0.615,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Maxima,Maxima,board name,16,9,0.562,0.688,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,maybern,Maybern,board name,14,13,1.0,0.643,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,mechanize,Mechanize,board name,4,4,1.0,1.0,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,medraai,Medraai,board name,15,15,1.0,0.867,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,merciv,Merciv,board name,7,7,1.0,0.714,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,mercor,Mercor,board name,105,101,0.962,0.6,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Merge Labs,Merge Labs,board name,31,31,1.0,0.871,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,meridianlink,Meridianlink,board name,19,19,1.0,0.842,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,meter,Meter,board name,54,47,0.87,0.556,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,method,Method,board name,9,9,1.0,0.667,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,method.security,Method Security,board name,8,8,1.0,0.625,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,metriport,Metriport,yc,17,17,1.0,0.706,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,mia-labs,Mia Labs,board name,9,9,1.0,0.556,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,middesk,Middesk,yc,17,17,1.0,0.529,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,midstream,Midstream,board name,8,8,1.0,0.75,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,mimica,Mimica,board name,15,9,0.6,0.6,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,mindrobotics,Mindrobotics,board name,33,33,1.0,0.848,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Mintlify,Mintlify,yc,14,14,1.0,0.643,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,mirage,Mirage,board name,15,15,1.0,0.8,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,mirendil,Mirendil,board name,12,12,1.0,0.917,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,modal,Modal,board name,42,37,0.881,0.643,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,moderntreasury,Modern Treasury,yc,9,9,1.0,0.556,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,Molg,Molg,board name,6,6,1.0,1.0,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,moment,Moment,board name,12,12,1.0,0.75,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,monarchcrops,Monarchcrops,board name,10,10,1.0,0.5,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,monarchmoney,Monarchmoney,board name,6,4,1.0,0.667,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,moonshot,Moonshot,board name,5,5,1.0,0.8,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,mural,Mural,board name,13,7,0.538,0.769,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,mutiny,Mutiny,yc,7,7,1.0,0.429,yc,,2026-11-04
+ashby,mystenlabs,Mystenlabs,board name,10,9,0.9,0.9,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,n1,N1,board name,11,10,0.909,0.727,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Nango,Nango,board name,8,8,1.0,0.625,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Nash,Nash,yc,23,18,0.783,0.435,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,Nautilus Biotechnology,Nautilus Biotechnology,board name,12,12,1.0,0.75,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,neara,Neara,board name,39,20,0.513,0.667,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,nectar-social,Nectar Social,board name,21,21,1.0,0.571,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,nerdwallet,Nerdwallet,board name,26,24,0.923,0.462,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,netboxlabs,Netboxlabs,board name,20,16,0.8,0.55,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,netic,Netic,board name,36,35,1.0,0.583,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,netpreme,Netpreme,board name,6,6,1.0,0.667,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,neuroscale,Neuroscale,board name,9,5,1.0,0.556,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,nevis,Nevis,board name,22,14,0.636,0.5,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,niantic-spatial,Niantic Spatial,board name,18,14,0.778,0.889,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,NormalComputing,NormalComputing,board name,37,37,1.0,0.703,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,NorthwoodSpace,NorthwoodSpace,board name,65,65,1.0,0.615,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,notable,Notable,board name,9,9,1.0,0.667,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,notion,Notion,board name,146,76,0.521,0.425,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,novaintelligence,Novaintelligence,board name,10,10,1.0,0.5,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,novig,Novig,yc,13,13,1.0,0.462,yc,,2026-11-04
+ashby,novita-ai,Novita Ai,board name,5,5,1.0,0.8,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,novo,Novo,board name,6,4,0.667,0.667,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,numeral,Numeral,yc,21,21,1.0,0.429,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,numeric,Numeric,board name,24,23,0.958,0.5,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,obviant,Obviant,board name,9,9,1.0,0.889,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,odys-aviation,Odys Aviation,board name,15,15,1.0,0.467,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,odyssey,Odyssey,board name,6,6,1.0,0.5,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,odysseyml,Odysseyml,board name,13,12,0.923,0.923,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,office-hours,Office Hours,board name,11,11,1.0,0.455,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,oligo,Oligo,board name,4,4,1.0,1.0,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,oneapp,Oneapp,board name,41,37,0.902,0.61,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,onebrief,Onebrief,board name,40,34,0.85,0.45,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,onoshealth,Onoshealth,board name,9,9,1.0,0.778,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Ontic,Ontic,board name,14,11,0.786,0.643,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Opal,Opal,board name,13,13,1.0,0.462,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,openai,Openai,board name,810,631,0.779,0.732,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,opengov,Opengov,board name,98,63,0.643,0.408,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,openrouter,Openrouter,board name,30,29,0.967,0.567,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,opusclip,Opusclip,board name,11,8,0.727,0.636,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,orb,Orb,board name,19,19,1.0,0.684,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,oscilar,Oscilar,board name,22,17,0.773,0.5,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Oso,Oso,board name,7,7,1.0,0.429,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,outset,Outset,yc,34,31,0.912,0.412,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,P-1 AI,P 1 AI,board name,6,5,0.833,0.667,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,pangramlabs,Pangramlabs,board name,15,15,1.0,0.6,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,parallel,Parallel Bio,yc,30,30,1.0,0.567,cc:CC-MAIN-2026-17|yc,also on ashby `parallel-bio` (9 jobs); kept the larger board,2026-11-04
+ashby,pariveda,Pariveda,board name,26,22,0.846,0.731,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,parker,Parker,board name,13,11,0.846,0.692,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,partiful,Partiful,board name,10,10,1.0,0.7,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,patlytics,Patlytics,board name,13,12,0.923,0.538,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,patreon,Patreon,board name,20,19,0.95,0.65,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,payabli,Payabli,board name,9,9,1.0,0.778,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,percepta,Percepta,board name,13,13,1.0,0.923,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,perfect-venue,Perfect Venue,board name,6,6,1.0,0.5,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,periodic-labs,Periodic Labs,board name,32,32,1.0,0.625,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Perplexity,Perplexity,board name,136,116,0.853,0.669,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,phonic,Phonic,board name,7,7,1.0,0.857,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,physicalintelligence,Physicalintelligence,board name,44,44,1.0,0.614,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,picogrid,Picogrid,board name,21,20,0.952,0.476,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,pilgrim,Pilgrim,board name,15,15,1.0,0.467,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,pinecone,Pinecone,board name,6,6,1.0,1.0,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,pivotrobotics,Pivotrobotics,board name,5,5,1.0,0.8,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,planera,Planera,board name,9,9,1.0,0.556,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,plasmidsaurus,Plasmidsaurus,board name,14,13,0.929,0.571,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Plaud,Plaud,board name,47,30,0.638,0.681,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,PlayerZero,PlayerZero,board name,11,11,1.0,0.818,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,playground,Playground,board name,6,6,1.0,1.0,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Playlab,Playlab,board name,9,8,0.889,0.667,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,pluralis-research,Pluralis Research,board name,12,11,0.917,1.0,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,poesis,Poesis,board name,5,5,1.0,1.0,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,pointone,PointOne,yc,15,15,1.0,0.467,yc,,2026-11-04
+ashby,polymarket,Polymarket,board name,37,37,1.0,0.459,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,popl,Popl,yc,6,6,1.0,0.5,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,posthog,PostHog,yc,10,4,0.667,0.9,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,powerlattice,Powerlattice,board name,8,8,1.0,1.0,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,prefect,Prefect,board name,6,5,0.833,0.833,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,prelim,Prelim,yc,7,7,1.0,0.857,yc,,2026-11-04
+ashby,PrimeIntellect,PrimeIntellect,board name,40,40,1.0,0.75,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,prior-labs,Prior Labs,board name,21,16,0.762,0.476,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Profound,Profound,board name,82,79,0.963,0.415,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Promise,Promise,yc,12,12,1.0,0.417,cc:CC-MAIN-2026-17|yc,,2026-11-04
+ashby,propel,Propel,board name,7,7,1.0,0.429,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,prophet-security,Prophet Security,board name,7,7,1.0,0.714,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,protege,Protege,board name,17,17,1.0,0.529,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,protegrity,Protegrity,board name,6,4,0.667,0.833,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,psi,Psi,board name,15,15,1.0,0.733,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,pulse,Pulse,yc,11,11,1.0,0.636,yc,,2026-11-04
+ashby,pylon,Pylon,yc,25,25,1.0,0.6,yc,also on ashby `pylon-labs` (15 jobs); kept the larger board,2026-11-04
+ashby,qualified-health-pbc,Qualified Health Pbc,board name,18,18,1.0,0.722,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,quilter,Quilter,board name,8,8,1.0,0.875,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,quindar,Quindar,yc,19,19,1.0,0.789,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21|yc,,2026-11-04
+ashby,quora,Quora,board name,9,9,1.0,1.0,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,rabot,Rabot,board name,6,6,1.0,0.5,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,radai,Radai,board name,23,23,1.0,0.609,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,radar,RADAR,yc,20,20,1.0,0.8,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21|yc,also on greenhouse `radaranalytics` (1 jobs); kept the larger board,2026-11-04
+ashby,radiant-industries,Radiant Industries,board name,96,96,1.0,0.74,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,railway,Railway,board name,7,7,1.0,1.0,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,rain,Rain,board name,37,36,0.973,0.649,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,rainforest-pay,Rainforest Pay,board name,9,9,1.0,0.444,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,ramp,Ramp,board name,169,150,0.888,0.426,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,rapdev,Rapdev,board name,8,6,0.857,0.5,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,ravenna,Ravenna,board name,7,7,1.0,0.571,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,reach,Reach,yc,6,4,1.0,1.0,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21|yc,also on lever `reachpower` (2 jobs); kept the larger board,2026-11-04
+ashby,read-ai,Read Ai,board name,17,17,1.0,0.824,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,ready,Ready,yc,7,7,1.0,0.571,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21|yc,,2026-11-04
+ashby,realitydefender,Reality Defender,yc,6,6,1.0,0.833,yc,,2026-11-04
+ashby,realmalliance,Realmalliance,board name,10,10,1.0,0.7,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,red6,Red6,board name,17,17,1.0,0.647,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,reducto,Reducto,yc,36,36,1.0,0.417,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21|yc,,2026-11-04
+ashby,reflect-orbital,Reflect Orbital,board name,17,17,1.0,0.824,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,reflectionai,Reflectionai,board name,45,45,1.0,0.733,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,reflow,Reflow,board name,15,15,1.0,0.533,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,reka,Reka,board name,9,7,0.875,0.667,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,render,Render,board name,35,35,1.0,0.857,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,rennscotmfg,Rennscotmfg,board name,17,17,1.0,0.588,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Replicant,Replicant,board name,8,7,1.0,0.75,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,replit,Replit,yc,34,31,0.912,0.647,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21|yc,,2026-11-04
+ashby,rescale,Rescale,yc,19,12,0.632,0.737,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21|yc,,2026-11-04
+ashby,resend,Resend,board name,14,8,0.571,1.0,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,retell-ai,Retell AI,yc,20,17,0.944,0.55,yc,,2026-11-04
+ashby,revenuecat,RevenueCat,yc,19,16,0.842,0.632,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21|yc,,2026-11-04
+ashby,rhoda-ai,Rhoda Ai,board name,44,42,0.955,0.864,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,Ricursive Intelligence,Ricursive Intelligence,board name,15,15,1.0,0.6,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,Ridealso,Ridealso,board name,30,29,0.967,0.8,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,rilla,Rilla,board name,26,25,0.962,0.5,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,rivianvw.tech,Rivianvw Tech,board name,159,130,0.818,0.943,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,Roadrunner,Roadrunner,board name,11,11,1.0,0.545,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,roboflow,Roboflow,yc,38,37,0.974,0.605,cc:CC-MAIN-2026-21|yc,,2026-11-04
+ashby,Rox-Data-Corp,Rox Data Corp,board name,42,39,0.929,0.452,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,ruby-labs,Ruby Labs,board name,33,25,0.893,0.515,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,rula,Rula,board name,32,32,1.0,0.562,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,runetech,Runetech,board name,17,17,1.0,0.765,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,runlayer,Runlayer,board name,17,17,1.0,0.588,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,runway-ml,Runway Ml,board name,48,46,0.958,0.479,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,safetykit,Safetykit,board name,9,9,1.0,0.556,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,sainapse,Sainapse,board name,6,6,1.0,0.667,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,SalesPatriot,SalesPatriot,yc,8,5,0.625,0.75,cc:CC-MAIN-2026-21|yc,,2026-11-04
+ashby,salient,Salient,yc,14,14,1.0,0.857,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21|yc,,2026-11-04
+ashby,sandbar,Sandbar,board name,12,12,1.0,0.917,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,sandboxaq,Sandboxaq,board name,34,27,0.794,0.853,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,Sandstone,Sandstone,board name,11,11,1.0,0.455,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,sanity,Sanity,board name,33,20,0.606,0.515,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,sapien,Sapien,board name,11,11,1.0,0.455,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,sardine,Sardine,board name,45,28,0.636,0.667,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,saronic,Saronic,board name,261,258,0.989,0.579,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,sazabi,Sazabi,board name,8,8,1.0,0.5,cc:CC-MAIN-2026-17,,2026-11-04
+ashby,Sciforium,Sciforium,board name,14,14,1.0,0.929,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,ScribdInc,ScribdInc,board name,22,22,1.0,0.818,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,scribe,Scribe,board name,32,28,0.933,0.5,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,Second-Front-Systems,Second Front Systems,board name,25,23,0.92,0.6,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,sekai,Sekai,board name,7,7,1.0,1.0,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,semgrep,Semgrep,board name,13,12,1.0,0.923,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,sent,Sent,board name,14,11,1.0,0.5,cc:CC-MAIN-2026-17|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,sentry,Sentry,board name,39,26,0.667,0.949,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,sequence,Sequence,board name,8,4,0.5,1.0,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,sesame,Sesame,board name,23,23,1.0,0.87,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,sf-tensor,Sf Tensor,board name,7,7,1.0,0.857,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,shepherd,Shepherd,yc,25,25,1.0,0.48,cc:CC-MAIN-2026-21|yc,,2026-11-04
+ashby,Shiftkey,Shiftkey,board name,12,11,0.917,0.5,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,Sierra,Sierra,board name,216,123,0.569,0.546,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,sieve,Sieve,yc,14,13,0.929,0.643,cc:CC-MAIN-2026-21|yc,,2026-11-04
+ashby,siftstack,Siftstack,board name,33,33,1.0,0.879,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,simple-ai,Simple Ai,board name,10,10,1.0,0.4,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,Siro,Siro,board name,17,17,1.0,0.588,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,skyflow,Skyflow,board name,12,8,0.667,0.667,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,slash-financial,Slash Financial,board name,16,16,1.0,0.562,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,snowflake,Snowflake,board name,368,224,0.609,0.652,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,socket,Socket,board name,27,20,0.8,0.778,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,socure,Socure,board name,88,79,0.898,0.557,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,sola,Sola,board name,7,7,1.0,0.857,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,solace,Solace,board name,10,10,1.0,0.4,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,solidroad,Solidroad,board name,9,5,0.556,0.556,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,Solvd,Solvd,board name,23,12,0.522,0.957,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,spade,Spade,yc,13,13,1.0,0.538,yc,,2026-11-04
+ashby,span,Span,board name,26,16,0.696,0.538,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,Speakeasy,Speakeasy,board name,5,5,1.0,0.8,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,spellbrush,Spellbrush,yc,11,11,1.0,0.909,cc:CC-MAIN-2026-21|yc,,2026-11-04
+ashby,sphere,Sphere,board name,17,15,0.882,0.412,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,sprinter-health,Sprinter Health,board name,53,53,1.0,0.83,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,spruceid,SpruceID,yc,7,5,1.0,1.0,cc:CC-MAIN-2026-21|yc,,2026-11-04
+ashby,st-labs,St Labs,board name,14,14,1.0,0.643,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,stack-ai,Stack Ai,board name,23,15,0.652,0.826,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,StandardBots,StandardBots,board name,34,34,1.0,0.647,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,StandInsurance,StandInsurance,board name,14,14,1.0,0.429,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,starpath.space,Starpath Space,board name,25,25,1.0,0.88,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,stedi,Stedi,board name,21,21,1.0,0.619,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,stellar,Stellar,board name,21,21,1.0,0.619,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,stellar-health,Stellar Health,board name,8,8,1.0,0.5,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,strategic-growth-partners,Strategic Growth Partners,board name,24,24,1.0,0.583,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,strava,Strava,board name,27,24,0.889,0.667,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,substack,Substack,board name,18,17,0.944,0.444,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,Suite-Studios,Suite Studios,board name,10,10,1.0,0.4,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,summation,Summation,board name,7,6,0.857,0.571,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,sunday,Sunday,board name,22,22,1.0,0.636,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,suno,Suno,board name,71,70,0.986,0.634,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,sunset,Sunset,board name,12,12,1.0,0.667,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,super.com,Super Com,board name,13,13,1.0,0.769,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,Superhuman Platform Inc,Superhuman Platform Inc,board name,70,56,0.8,0.657,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,swarmaero,Swarmaero,board name,47,36,1.0,0.787,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,Swoop,Swoop,board name,15,14,1.0,1.0,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,sydecar,Sydecar,board name,14,14,1.0,0.5,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,sygaldry-technologies,Sygaldry Technologies,board name,17,15,0.882,0.471,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,taaraconnect,Taaraconnect,board name,23,23,1.0,0.696,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,taekus,Taekus,board name,12,12,1.0,0.417,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,take2,Take2,board name,6,6,1.0,0.667,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,talos-trading,Talos Trading,board name,21,13,0.65,0.619,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,tamarindbio,Tamarind Bio,yc,7,7,1.0,0.714,yc,,2026-11-04
+ashby,tapcart,Tapcart,board name,10,10,1.0,0.6,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,tavus,Tavus,yc,19,19,1.0,0.579,cc:CC-MAIN-2026-21|yc,,2026-11-04
+ashby,teamworks,Teamworks,board name,15,12,0.8,0.4,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,tempo-xyz,Tempo Xyz,board name,12,11,1.0,0.583,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,tenex,Tenex,board name,41,38,0.927,0.707,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,tenexlabs,Tenexlabs,board name,22,22,1.0,0.864,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,tennr,Tennr,yc,25,25,1.0,0.48,cc:CC-MAIN-2026-21|yc,,2026-11-04
+ashby,tensorwave,Tensorwave,board name,42,42,1.0,0.714,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,terac,Terac,board name,73,58,0.841,0.466,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,tern,Tern,board name,7,7,1.0,0.429,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,tessera-labs,Tessera Labs,board name,36,31,0.861,0.917,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,texture,Texture,board name,4,4,1.0,1.0,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,teza-technologies,Teza Technologies,board name,10,8,0.8,0.6,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,the-flex,The Flex,board name,7,5,0.833,0.571,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,The Zebra,The Zebra,board name,7,7,1.0,0.714,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,thebotcompany,Thebotcompany,board name,7,7,1.0,0.714,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,thread-ai,Thread Ai,board name,18,18,1.0,0.611,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,tilthq,Tilthq,board name,20,11,0.55,0.65,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,titan,Titan,yc,12,12,1.0,0.417,cc:CC-MAIN-2026-21|yc,,2026-11-04
+ashby,Tools for Humanity,Tools For Humanity,board name,7,6,0.857,0.714,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,topline-pro,Topline Pro,yc,9,9,1.0,0.556,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|yc,,2026-11-04
+ashby,tracelabs,Tracelabs,board name,4,4,1.0,1.0,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,traversal,Traversal,board name,31,31,1.0,0.548,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,tread,Tread,board name,6,6,1.0,0.833,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,runtrellis,Trellis AI,yc,14,14,1.0,0.5,yc,,2026-11-04
+ashby,tremendous,Tremendous,board name,26,19,0.731,0.577,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,triedge-investments,Triedge Investments,board name,13,9,0.692,0.462,cc:CC-MAIN-2026-12,,2026-11-04
+ashby,triumph-arcade,Triumph Arcade,board name,29,29,1.0,0.517,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,trm-labs,TRM Labs,yc,117,96,0.821,0.59,yc,,2026-11-04
+ashby,troveo,Troveo,board name,5,5,1.0,0.8,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,Trunk Tools,Trunk Tools,board name,16,16,1.0,0.562,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,turion-space,Turion Space,yc,16,16,1.0,0.812,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|yc,,2026-11-04
+ashby,turquoise-health,Turquoise Health,board name,16,16,1.0,0.625,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,twenty,Twenty,board name,45,45,1.0,0.822,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,tycho-ai,Tycho Ai,board name,10,10,1.0,0.9,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,uncountable,Uncountable,board name,33,28,0.903,0.424,cc:CC-MAIN-2026-12,,2026-11-04
+ashby,unify,Unify,board name,11,11,1.0,0.727,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,uniswap,Uniswap,board name,9,9,1.0,0.444,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,uniti,Uniti,board name,7,7,1.0,0.429,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,universalagi,Universalagi,board name,20,18,0.947,0.65,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,Unlearn,Unlearn,board name,5,5,1.0,0.8,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,upside,Upside,board name,16,16,1.0,0.688,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,usekernel,Usekernel,board name,9,9,1.0,0.778,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,usul,Usul,yc,6,6,1.0,0.667,cc:CC-MAIN-2026-21|yc,,2026-11-04
+ashby,valinor,Valinor,board name,11,11,1.0,0.909,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,valkai,Valkai,board name,13,13,1.0,0.923,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,Valon,Valon,board name,29,29,1.0,0.621,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,valthos,Valthos,board name,8,8,1.0,0.75,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,vanta,Vanta,yc,83,47,0.566,0.518,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|yc,,2026-11-04
+ashby,Verne Robotics,Verne Robotics,board name,6,6,1.0,0.667,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,verticalsemi,Verticalsemi,board name,4,4,1.0,1.0,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,vibe,Vibe,board name,19,10,0.526,0.526,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,virtahealth,Virtahealth,board name,26,26,1.0,0.577,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,vital-lyfe,Vital Lyfe,board name,13,13,1.0,0.538,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,vizcom,Vizcom,board name,9,9,1.0,0.667,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,voltai.careers,Voltai Careers,board name,33,33,1.0,0.848,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,vorto,Vorto,board name,6,6,1.0,1.0,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,voyant-photonics,Voyant Photonics,board name,22,22,1.0,0.955,cc:CC-MAIN-2026-12,,2026-11-04
+ashby,vultr,Vultr,board name,49,45,0.918,0.857,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,Watershed,Watershed,board name,39,23,0.59,0.462,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,wealth-com,Wealth Com,board name,17,17,1.0,0.588,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,weave,Weave,yc,26,20,0.769,0.692,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|yc,,2026-11-04
+ashby,webai,Webai,board name,18,18,1.0,0.944,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,webflow,Webflow,yc,21,14,0.667,0.667,yc,,2026-11-04
+ashby,whitecircle,Whitecircle,board name,16,9,0.6,0.75,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,windborne-systems,Windborne Systems,board name,7,6,0.857,0.571,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,wirescreen,Wirescreen,board name,10,10,1.0,0.7,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,wispr-flow,Wispr Flow,board name,31,31,1.0,0.742,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,withclutch,Withclutch,board name,11,9,0.818,0.545,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,witnessai,Witnessai,board name,8,8,1.0,0.75,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,workos,Workos,board name,28,28,1.0,0.786,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,worldlabs,Worldlabs,board name,8,8,1.0,0.875,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,wraithwatch,Wraithwatch,board name,6,6,1.0,0.667,cc:CC-MAIN-2026-12,,2026-11-04
+ashby,wrapbook,Wrapbook,board name,15,14,0.933,0.6,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,writer,Writer,board name,45,33,0.733,0.689,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,wynd-labs,Wynd Labs,board name,6,6,1.0,0.833,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,xnrgy-climate-systems,Xnrgy Climate Systems,board name,38,31,0.816,0.553,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,xona-space,Xona Space,board name,54,45,0.833,0.759,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,xyz-reality,Xyz Reality,board name,49,32,0.653,0.49,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,ycombinator,Ycombinator,board name,10,10,1.0,0.7,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,yobi,Yobi,board name,5,5,1.0,1.0,cc:CC-MAIN-2026-21,,2026-11-04
+ashby,yotta,Yotta,board name,4,4,1.0,1.0,cc:CC-MAIN-2026-12,,2026-11-04
+ashby,Zania,Zania,board name,14,14,1.0,0.429,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,zapier,Zapier,yc,11,8,0.8,0.455,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|yc,,2026-11-04
+ashby,zefr,Zefr,board name,7,7,1.0,0.857,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,Zello,Zello,board name,9,7,0.778,0.444,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,Zeromark,Zeromark,board name,10,10,1.0,0.6,cc:CC-MAIN-2026-12,,2026-11-04
+ashby,zip,Zip,yc,100,57,0.57,0.42,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21|yc,,2026-11-04
+ashby,zoomlogi,Zoomlogi,board name,7,7,1.0,0.857,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04
+ashby,zyphra,Zyphra,board name,16,16,1.0,1.0,cc:CC-MAIN-2026-12|cc:CC-MAIN-2026-21,,2026-11-04

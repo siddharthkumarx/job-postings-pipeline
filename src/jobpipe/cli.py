@@ -22,7 +22,7 @@ def main(argv: list[str] | None = None) -> int:
     p_sel.add_argument("--out-md", type=Path, default=Path("docs/sources.md"))
     p_sel.add_argument("--min-us-share", type=float, default=0.5)
     p_sel.add_argument("--min-known-share", type=float, default=0.5)
-    p_sel.add_argument("--min-tech-share", type=float, default=0.2)
+    p_sel.add_argument("--min-tech-share", type=float, default=0.4)
     p_sel.add_argument("--target", type=int, default=1500)
 
     p_run = sub.add_parser("run", help="daily run for one date (needs network + GITHUB_TOKEN)")
@@ -86,6 +86,10 @@ def main(argv: list[str] | None = None) -> int:
 
         harvest = json.loads(args.harvest.read_text())
         verify_summary = json.loads((args.verify.parent / "summary.json").read_text())
+        vres = verify_summary.get("result", {})
+        if isinstance(vres, list):  # multi-step request: the verify step is the one with counts
+            vres = next((r for r in vres if "verified" in r), {})
+        verify_summary["result"] = vres
         th = select.Thresholds(
             min_us_share=args.min_us_share,
             min_known_share=args.min_known_share,

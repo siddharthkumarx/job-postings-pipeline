@@ -76,7 +76,15 @@ cd dbt && uv run dbt build --profiles-dir . # needs JOBPIPE_DATA / JOBPIPE_DUCKD
 
 ## Continue here
 
-Step 1 (recon) was approved with the selection rules above. Next: finish item 4
-(apply the rules to the verify results, then write `seeds/boards.csv` and
-`docs/sources.md`), then work through `docs/build-progress.md` items in order.
-Update build-progress after every item.
+Recon is done: 1,500 boards in `seeds/boards.csv` (Greenhouse 779, Ashby 669,
+Lever 52); see `docs/sources.md`. Items 1–16 and 18 are done; see
+`docs/build-progress.md`. Next:
+1. Trigger the first real daily run (`daily` workflow, workflow_dispatch on the
+   working branch, which is also the default branch). Then pull
+   `public/runs.jsonl` and check the duration against D-009, and the guard
+   thresholds against real null rates. Record anything that breaks in
+   `docs/incidents.md`.
+2. Item 17: take Playwright screenshots of the real dashboard at 360/768/1440 px
+   (download the `site-and-run` artifact or build locally from the restored
+   warehouse) and save them to `docs/screenshots/`.
+3. Item 19: keep CI green. Item 21 (README) waits for the owner's rules.

@@ -41,22 +41,23 @@ _SUFFIX = re.compile(
     re.IGNORECASE,
 )
 _NON_ALNUM = re.compile(r"[^a-z0-9]+")
+# Staffing / recruiting firms place candidates at other companies.
 AGENCY = re.compile(
-    r"staffing|recruit(?:ing|ers|ment)?\b|\bheadhunt|\bplacement|\bmanpower\b|"
-    r"workforce solutions|employment agency|executive search|talent (?:partners|solutions|"
-    r"group|agency|acquisition partners)|search (?:partners|group|firm)|"
-    r"\bstaff(?:ing)? (?:group|agency)",
+    r"staffing|\brecruit(?:ing|ers|ment) (?:agency|firm|group|partners|solutions)|"
+    r"\bheadhunt|\bplacement (?:agency|firm)|\bmanpower\b|workforce solutions|"
+    r"employment agency|executive search|search (?:partners|firm)",
     re.IGNORECASE,
 )
+# Aggregators repost other companies' jobs (portfolio boards, job sites) or collect general
+# applications rather than real openings (talent pools).
 AGGREGATOR = re.compile(
-    r"job ?board|jobs? ?(?:network|hub|list|portal|feed)|remote ?(?:jobs|work ?hub)|"
-    r"talent ?(?:pool|network|community|collective|marketplace)|"
-    r"(?:^|[-_ ])(?:jobs|careers|hiring)$|^(?:jobs|careers|hiring)(?:[-_ ]|$)",
+    r"\bportfolio\b|talent ?(?:pool|network|community|collective|marketplace)|"
+    r"remote ?jobs|job ?(?:network|aggregator)|\bjobs? at (?:our|portfolio)",
     re.IGNORECASE,
 )
 TEST_DEMO = re.compile(
-    r"(?:^|[-_ .])(?:test|testing|demo|sandbox|example|staging|sample|dummy|qa|dev|training)"
-    r"(?:[-_ .]|\d|$)|^demo|demo$",
+    r"(?:^|[-_ .])(?:test|testing|demo|sandbox|example|staging|sample|dummy)(?:[-_ .]|\d|$)"
+    r"|^demo|demo$",
     re.IGNORECASE,
 )
 
@@ -66,7 +67,7 @@ class Thresholds:
     min_jobs: int = 1
     min_us_share: float = 0.5
     min_known_share: float = 0.5
-    min_tech_share: float = 0.2
+    min_tech_share: float = 0.4
     target: int = 1500
     minimum: int = 1000
 
