@@ -119,8 +119,10 @@ def icon(name: str, x: float, y: float, size: float, fill: str = BODY, cls: str 
 
 
 def beats_css(n: int, loop_s: float, hold_s: float = 2.6, fade: float = 0.35) -> str:
-    """CSS for n sequential beats (classes .b1..bn) in one loop; the last beat holds and is
-    also the still frame (default visible) and the reduced-motion frame."""
+    """CSS for n sequential beats (classes .b1..bn) in one loop; the last beat holds.
+
+    The final frame is also the still: see ``start_on_final_frame`` and ``final_state_css``.
+    """
     span = (loop_s - hold_s) / (n - 1) if n > 1 else loop_s
     css = [f".beat{{animation:{loop_s}s linear infinite}}"]
     for i in range(1, n + 1):
@@ -137,12 +139,37 @@ def beats_css(n: int, loop_s: float, hold_s: float = 2.6, fade: float = 0.35) ->
         else:
             frames = f"0%{{opacity:0}}{a:.2f}%{{opacity:0}}{b:.2f}%{{opacity:1}}100%{{opacity:1}}"
             css.append(f".b{i}{{opacity:1;animation-name:k{i}}}@keyframes k{i}{{{frames}}}")
-    css.append(
-        "@media (prefers-reduced-motion: reduce){*{animation:none!important}"
-        + "".join(f".b{i}{{opacity:0}}" for i in range(1, n))
-        + f".b{n}{{opacity:1}}.still{{opacity:1!important;transform:none!important}}}}"
-    )
     return "".join(css)
+
+
+def final_beat_time(n: int, loop_s: float, hold_s: float = 2.6, fade: float = 0.35) -> float:
+    """Seconds into the loop at which the last beat is fully shown."""
+    span = (loop_s - hold_s) / (n - 1) if n > 1 else loop_s
+    return (n - 1) * span + fade + 0.05
+
+
+def start_on_final_frame(seconds: float) -> str:
+    """Shift every animation so that t = 0 shows the final frame.
+
+    Renderers that never advance time (thumbnails, image previews, some README viewers)
+    then show the result instead of the first beat; the loop continues from there.
+    """
+    return f"*{{animation-delay:-{seconds:.2f}s!important}}"
+
+
+def final_state_css(n_beats: int = 0, extra: str = "") -> str:
+    """Under reduced motion: no animation, and every animated element takes its final state."""
+    beats = "".join(f".b{i}{{opacity:0!important}}" for i in range(1, n_beats))
+    last = f".b{n_beats}{{opacity:1!important}}" if n_beats else ""
+    return (
+        "@media (prefers-reduced-motion: reduce){*{animation:none!important}"
+        + beats
+        + last
+        + ".row{opacity:1!important}.bar{transform:none!important}"
+        + f".st{{stroke:{TEAL}!important}}"
+        + extra
+        + "}"
+    )
 
 
 def fmt_usd_k(v: float | None) -> str:

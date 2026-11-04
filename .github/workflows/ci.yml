@@ -36,6 +36,8 @@ jobs:
           python-version: "3.12"
           enable-cache: true
       - run: uv sync --frozen
+      - name: Chromium for the visual frame tests
+        run: uv run --no-sync playwright install --with-deps chromium
       - name: ruff
         run: uv run --no-sync ruff check . && uv run --no-sync ruff format --check .
       - name: mypy

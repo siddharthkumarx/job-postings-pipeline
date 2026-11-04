@@ -25,6 +25,7 @@ jobpipe = "jobpipe.cli:main"
 [dependency-groups]
 dev = [
     "mypy>=2.4",
+    "playwright>=1.64,<2",
     "pytest>=9.2",
     "respx>=0.23",
     "ruff>=0.17",

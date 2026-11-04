@@ -6,6 +6,12 @@ maintenance-loop.svg  daily runs → a real incident → fixed → data keeps ar
 data-roles.svg      open data roles today (real counts and median salaries)
 dbt-lineage.svg     the dbt model graph, read from dbt's manifest.json
 hero-square.svg     1080x1080 hero for the LinkedIn video (text ≥ 40 px)
+
+Sizes (in a 1000-px-wide viewBox): headings ≥ 36 px, row and body text ≥ 30 px, so the
+text stays readable when GitHub shrinks the image to a phone's width.
+
+Every animation starts on its final frame (negative delay) and reduced motion pins every
+animated element to its final state, so any still capture shows the result.
 """
 
 from __future__ import annotations
@@ -26,11 +32,17 @@ from jobpipe.visuals.base import (
     TEXT,
     Canvas,
     beats_css,
+    final_beat_time,
+    final_state_css,
     fmt_usd_k,
     icon,
+    start_on_final_frame,
 )
 
 LOOP_S = 10.0
+H1 = 40  # headings
+H2 = 36  # smaller headings
+ROW = 30  # row and body text
 
 
 def _salary(row: dict[str, str]) -> str:
@@ -49,6 +61,20 @@ def _wrap(s: str, width: int, lines: int = 2) -> list[str]:
     return out
 
 
+def _first_sentence(s: str) -> str:
+    """First sentence (a dot followed by a space and a capital), so it fits in two lines."""
+    import re
+
+    m = re.search(r"(?<=[.!?])\s+(?=[A-Z])", s)
+    return s[: m.start()] if m else s
+
+
+def _timing(c: Canvas, n_beats: int) -> None:
+    c.css.append(beats_css(n_beats, LOOP_S))
+    c.css.append(start_on_final_frame(final_beat_time(n_beats, LOOP_S)))
+    c.css.append(final_state_css(n_beats))
+
+
 # ---- hero ------------------------------------------------------------------------------
 
 
@@ -62,44 +88,32 @@ def hero(d: ReadmeData, square: bool = False) -> str:
         f"daily run collects them into a single table; result: {d.open_jobs:,} open jobs at "
         f"{d.companies:,} US tech companies (latest run {d.run_date}).",
     )
-    c.css.append(beats_css(3, LOOP_S))
     cx = w / 2
     rows = d.sample[:3]
     if not square:
         b1 = [
-            c.text(cx, 185, "Open tech jobs are spread across", size=40, font="sansb", anchor="middle"),
-            c.text(cx, 240, f"{d.companies:,} separate company job boards.", size=40, font="sansb",
+            c.text(cx, 175, "Open tech jobs are spread across", size=44, font="sansb", anchor="middle"),
+            c.text(cx, 235, f"{d.companies:,} separate company job boards.", size=44, font="sansb",
                    anchor="middle", fill=AMBER),
-            c.text(cx, 300, "Checking them by hand takes days.", size=26, fill=BODY, anchor="middle"),
+            c.text(cx, 305, "Checking them by hand takes days.", size=ROW + 2, fill=BODY, anchor="middle"),
         ]  # fmt: skip
-        b2 = [c.text(40, 70, "One run every morning", size=26, fill=BODY)]
-        for i, name in enumerate(("Greenhouse", "Lever", "Ashby")):
-            y = 110 + i * 80
-            b2.append(f'<rect x="40" y="{y}" width="190" height="56" rx="10" fill="{PANEL}" '
-                      f'stroke="{BORDER}" stroke-width="2"/>')  # fmt: skip
-            b2.append(c.text(135, y + 36, name, size=24, fill=BODY, anchor="middle"))
-            b2.append(f'<path class="flow" d="M232 {y + 28} C 270 {y + 28}, 262 218, 300 218" '
-                      f'stroke="{TEAL}" stroke-width="3" fill="none" stroke-dasharray="6 10"/>')  # fmt: skip
-        b2 += [
-            f'<rect x="300" y="160" width="200" height="116" rx="14" fill="{PANEL}" stroke="{TEAL}" stroke-width="2"/>',
-            c.text(400, 210, "check + clean", size=24, font="sansb", anchor="middle"),
-            c.text(400, 246, "every row", size=22, font="mono", fill=QUIET, anchor="middle"),
-            f'<path class="flow" d="M502 218 L 556 218" stroke="{TEAL}" stroke-width="3" fill="none" stroke-dasharray="6 10"/>',
+        b2 = [
+            c.text(60, 72, "One run every morning", size=H2, font="sansb"),
+            c.text(940, 72, d.run_date, size=ROW, font="mono", fill=QUIET, anchor="end"),
+            c.text(60, 122, "3 job boards → check + clean → one table", size=ROW, font="mono",
+                   fill=TEAL),
         ]  # fmt: skip
         for i, r in enumerate(rows):
-            y = 120 + i * 70
-            b2.append(f'<g class="row r{i + 1}"><rect x="560" y="{y}" width="400" height="56" rx="10" '
+            y = 152 + i * 88
+            b2.append(f'<g class="row r{i + 1}"><rect x="60" y="{y}" width="880" height="72" rx="12" '
                       f'fill="{PANEL}" stroke="{BORDER}" stroke-width="2"/>'
-                      + c.text(578, y + 36, r["company_name"][:18], size=24, font="sansb")
-                      + c.text(942, y + 36, _salary(r), size=22, font="mono", fill=TEAL, anchor="end")
+                      + c.text(88, y + 47, r["company_name"][:22], size=ROW + 2, font="sansb")
+                      + c.text(912, y + 47, _salary(r), size=ROW, font="mono", fill=TEAL, anchor="end")
                       + "</g>")  # fmt: skip
-        b2.append(
-            c.text(560, 350, f"real rows, run of {d.run_date}", size=22, font="mono", fill=QUIET)
-        )
         b3 = [
-            c.text(cx, 215, f"{d.open_jobs:,}", size=120, font="sansb", fill=TEAL, anchor="middle"),
-            c.text(cx, 292, f"open jobs at {d.companies:,} US tech companies", size=42, anchor="middle"),
-            c.text(cx, 352, f"checked every day · latest run {d.run_date}", size=28, font="mono",
+            c.text(cx, 230, f"{d.open_jobs:,}", size=140, font="sansb", fill=TEAL, anchor="middle"),
+            c.text(cx, 308, f"open jobs at {d.companies:,} US tech companies", size=44, anchor="middle"),
+            c.text(cx, 372, f"checked every day · latest run {d.run_date}", size=ROW + 2, font="mono",
                    fill=QUIET, anchor="middle"),
         ]  # fmt: skip
     else:
@@ -128,13 +142,13 @@ def hero(d: ReadmeData, square: bool = False) -> str:
                    anchor="middle"),
         ]  # fmt: skip
     c.css.append(
-        ".flow{animation:dash 1.2s linear infinite}@keyframes dash{to{stroke-dashoffset:-32}}"
-        + "".join(
+        "".join(
             f".r{i}{{animation:rw{i} {LOOP_S}s linear infinite}}"
             f"@keyframes rw{i}{{0%,{40 + i * 5}%{{opacity:0}}{43 + i * 5}%,100%{{opacity:1}}}}"
             for i in (1, 2, 3)
         )
     )
+    _timing(c, 3)
     c.add(f'<g class="beat b1">{"".join(b1)}</g>')
     c.add(f'<g class="beat b2">{"".join(b2)}</g>')
     c.add(f'<g class="beat b3">{"".join(b3)}</g>')
@@ -146,10 +160,11 @@ def hero(d: ReadmeData, square: bool = False) -> str:
 STAGES: list[tuple[str, str, list[str]]] = [
     ("Source", "3 job boards", []),
     ("Collect", "Python", ["python", "uv", "pydantic"]),
-    ("Check", "dbt + pytest", ["pytest"]),
+    ("Check", "dbt, pytest", ["pytest"]),
     ("Store", "DuckDB", ["duckdb", "apacheparquet"]),
     ("Deliver", "GitHub, HF", ["github", "githubactions", "huggingface"]),
 ]
+PIPE_LOOP = 8.0
 
 
 def pipeline(d: ReadmeData) -> str:
@@ -163,46 +178,46 @@ def pipeline(d: ReadmeData) -> str:
         f"{d.minutes:.0f} minutes, every morning.",
     )
     xs = [100, 300, 500, 700, 900]
-    loop = 8.0
     for i in range(len(xs)):
-        a = i * 1.0 / loop * 100
-        b = (i * 1.0 + 0.3) / loop * 100
+        a = i * 1.0 / PIPE_LOOP * 100
+        b = (i * 1.0 + 0.3) / PIPE_LOOP * 100
         c.css.append(
-            f".s{i}{{animation:sk{i} {loop}s linear infinite}}"
+            f".s{i}{{animation:sk{i} {PIPE_LOOP}s linear infinite}}"
             f"@keyframes sk{i}{{0%,{a:.1f}%{{stroke:{BORDER}}}{b:.1f}%,100%{{stroke:{TEAL}}}}}"
         )
     c.css.append(
         ".dot{animation:mv 1.6s linear infinite}@keyframes mv{from{transform:translateX(0)}"
         "to{transform:translateX(50px)}}"
-        "@media (prefers-reduced-motion: reduce){*{animation:none!important}}"
     )
+    c.css.append(start_on_final_frame(len(xs) * 1.0 + 0.3))
+    c.css.append(final_state_css(0, ".dot{transform:none!important}"))
     for i, (label, caption, icons) in enumerate(STAGES):
         x = xs[i]
-        c.add(f'<rect class="s{i}" x="{x - 75}" y="50" width="150" height="130" rx="18" '
+        c.add(f'<rect class="st s{i}" x="{x - 78}" y="36" width="156" height="136" rx="18" '
               f'fill="{PANEL}" stroke="{TEAL}" stroke-width="3"/>')  # fmt: skip
         if not icons:  # the three sources: a simple list glyph
             for j in range(3):
                 c.add(
-                    f'<rect x="{x - 40}" y="{82 + j * 24}" width="80" height="12" rx="6" fill="{BODY}"/>'
+                    f'<rect x="{x - 42}" y="{70 + j * 26}" width="84" height="13" rx="6" fill="{BODY}"/>'
                 )
         elif label == "Check":
-            c.add(icon("pytest", x - 50, 95, 40))
-            c.add(c.text(x + 30, 126, "dbt", size=26, font="monob", fill=BODY, anchor="middle"))
+            c.add(icon("pytest", x - 56, 84, 42))
+            c.add(c.text(x + 30, 116, "dbt", size=ROW, font="monob", fill=BODY, anchor="middle"))
         else:
             n = len(icons)
-            size = 40 if n <= 2 else 34
-            total = n * size + (n - 1) * 12
+            size = 42 if n <= 2 else 36
+            total = n * size + (n - 1) * 10
             for j, name in enumerate(icons):
-                c.add(icon(name, x - total / 2 + j * (size + 12), 115 - size / 2, size))
-        c.add(c.text(x, 225, label, size=26, font="sansb", anchor="middle"))
-        c.add(c.text(x, 260, caption, size=22, font="mono", fill=QUIET, anchor="middle"))
+                c.add(icon(name, x - total / 2 + j * (size + 10), 104 - size / 2, size))
+        c.add(c.text(x, 222, label, size=H2, font="sansb", anchor="middle"))
+        c.add(c.text(x, 264, caption, size=ROW, fill=QUIET, anchor="middle"))
         if i < len(xs) - 1:
             c.add(
-                f'<line x1="{x + 77}" y1="115" x2="{x + 123}" y2="115" stroke="{BORDER}" stroke-width="3"/>'
+                f'<line x1="{x + 80}" y1="104" x2="{x + 120}" y2="104" stroke="{BORDER}" stroke-width="3"/>'
             )
-            c.add(f'<circle class="dot" cx="{x + 75}" cy="115" r="6" fill="{TEAL}"/>')
-    c.add(c.text(500, 340, f"{d.companies:,} job boards · about {d.minutes:.0f} minutes · "
-                           "every morning at 07:41 UTC", size=24, fill=BODY, anchor="middle"))  # fmt: skip
+            c.add(f'<circle class="dot" cx="{x + 78}" cy="104" r="6" fill="{TEAL}"/>')
+    c.add(c.text(500, 350, f"{d.companies:,} boards · about {d.minutes:.0f} min · daily at 07:41 UTC",
+                 size=ROW + 2, fill=BODY, anchor="middle"))  # fmt: skip
     return c.render()
 
 
@@ -225,48 +240,45 @@ def _pick_incident(d: ReadmeData) -> tuple[Incident | None, str | None]:
 def maintenance_loop(d: ReadmeData) -> str:
     inc, run_id = _pick_incident(d)
     attempts = d.runs[-14:]
-    rows_today = int(d.last_run.get("postings_listed") or d.open_jobs)
+    ing = d.last_run.get("ingest") or {}
+    ok, total = int(ing.get("boards_ok") or 0), int(ing.get("boards") or d.companies)
     c = Canvas(
         1000,
-        420,
+        380,
         "Maintenance loop: daily runs, a real incident, fixed, data keeps arriving",
         f"Animated: one square per pipeline run ({len(d.runs)} so far). "
         + (f"Incident {inc.date}: {inc.plain} Fix: {inc.fix_plain} " if inc else "")
-        + f"Latest run ({d.run_date}) read every tracked job board and collected "
-        f"{rows_today:,} jobs.",
+        + f"Latest run ({d.run_date}): {ok:,} of {total:,} job boards read.",
     )
-    c.css.append(beats_css(4, LOOP_S))
+    _timing(c, 4)
     size, gap = 44, 14
-    total = len(attempts) * size + (len(attempts) - 1) * gap
-    x0 = 500 - total / 2
+    width = len(attempts) * size + (len(attempts) - 1) * gap
+    x0 = 500 - width / 2
     for i, r in enumerate(attempts):
-        status = r.get("status")
-        color = TEAL if status == "published" else AMBER
+        color = TEAL if r.get("status") == "published" else AMBER
         hl = run_id is not None and r.get("actions_run_id") == run_id
-        cls = " hl" if hl else ""
-        c.add(f'<rect class="sq{cls}" x="{x0 + i * (size + gap):.1f}" y="60" width="{size}" '
-              f'height="{size}" rx="8" fill="{color}"/>')  # fmt: skip
-    c.css.append(f".hl{{stroke:{TEXT};stroke-width:3}}")
+        stroke = f' stroke="{TEXT}" stroke-width="3"' if hl else ""
+        c.add(f'<rect x="{x0 + i * (size + gap):.1f}" y="36" width="{size}" height="{size}" '
+              f'rx="8" fill="{color}"{stroke}/>')  # fmt: skip
     b1 = [
-        c.text(500, 220, "A fresh run every morning.", size=36, font="sansb", anchor="middle"),
-        c.text(500, 268, f"{len(d.runs)} runs so far · amber = held or failed", size=24,
+        c.text(500, 190, "A fresh run every morning.", size=H1, font="sansb", anchor="middle"),
+        c.text(500, 246, f"{len(d.runs)} runs so far · amber = held or failed", size=ROW,
                font="mono", fill=QUIET, anchor="middle"),
     ]  # fmt: skip
-    b2, b3 = [], []
+    b2: list[str] = []
+    b3: list[str] = []
     if inc:
-        b2.append(c.text(500, 200, f"{inc.date}: {inc.title}", size=28, font="sansb", fill=AMBER,
+        b2.append(c.text(500, 180, _wrap(inc.title, 44, 1)[0], size=H2, font="sansb", fill=AMBER,
                          anchor="middle"))  # fmt: skip
-        for j, line in enumerate(_wrap(inc.plain, 66)):
-            b2.append(c.text(500, 250 + j * 36, line, size=24, fill=BODY, anchor="middle"))
-        b3.append(c.text(500, 200, "Fixed the same day.", size=30, font="sansb", fill=TEAL,
+        for j, line in enumerate(_wrap(_first_sentence(inc.plain), 54)):
+            b2.append(c.text(500, 236 + j * 44, line, size=ROW, fill=BODY, anchor="middle"))
+        b3.append(c.text(500, 180, "Fixed the same day.", size=H2, font="sansb", fill=TEAL,
                          anchor="middle"))  # fmt: skip
-        for j, line in enumerate(_wrap(inc.fix_plain, 66)):
-            b3.append(c.text(500, 250 + j * 36, line, size=24, fill=BODY, anchor="middle"))
-    ing = d.last_run.get("ingest") or {}
-    ok, total = int(ing.get("boards_ok") or 0), int(ing.get("boards") or d.companies)
+        for j, line in enumerate(_wrap(_first_sentence(inc.fix_plain), 54)):
+            b3.append(c.text(500, 236 + j * 44, line, size=ROW, fill=BODY, anchor="middle"))
     b4 = [
-        c.text(500, 250, f"{ok:,} of {total:,}", size=88, font="sansb", fill=TEAL, anchor="middle"),
-        c.text(500, 305, f"job boards read in the latest run · {d.run_date}", size=26,
+        c.text(500, 230, f"{ok:,} of {total:,}", size=96, font="sansb", fill=TEAL, anchor="middle"),
+        c.text(500, 296, f"job boards read in the latest run · {d.run_date}", size=ROW + 2,
                anchor="middle"),
     ]  # fmt: skip
     c.add(f'<g class="beat b1">{"".join(b1)}</g>')
@@ -288,7 +300,7 @@ def data_roles(d: ReadmeData) -> str:
     top = max((int(r["open_roles"]) for r in rows), default=1) or 1
     c = Canvas(
         1000,
-        420,
+        470,
         "Open data roles today",
         "Bar chart, open roles on "
         + d.run_date
@@ -299,19 +311,19 @@ def data_roles(d: ReadmeData) -> str:
             for r in rows
         ),
     )
-    c.add(c.text(40, 62, "Open data roles today", size=30, font="sansb"))
-    c.add(c.text(960, 62, f"run of {d.run_date}", size=22, font="mono", fill=QUIET, anchor="end"))
+    c.add(c.text(40, 64, "Open data roles today", size=H1, font="sansb"))
+    c.add(c.text(960, 64, "median pay", size=ROW, fill=QUIET, anchor="end"))
     for i, r in enumerate(rows):
-        y = 110 + i * 72
-        width = max(6.0, 400 * int(r["open_roles"]) / top)
-        c.add(c.text(40, y + 30, ROLE_LABELS[r["role_family"]], size=24, fill=BODY))
-        c.add(f'<rect class="bar g{i}" x="290" y="{y + 8}" width="{width:.1f}" height="30" rx="4" '
+        y = 104 + i * 78
+        width = max(6.0, 300 * int(r["open_roles"]) / top)
+        c.add(c.text(40, y + 38, ROLE_LABELS[r["role_family"]], size=ROW, fill=BODY))
+        c.add(f'<rect class="bar g{i}" x="340" y="{y + 14}" width="{width:.1f}" height="32" rx="4" '
               f'fill="{TEAL}"/>')  # fmt: skip
-        c.add(c.text(290 + width + 14, y + 32, f"{int(r['open_roles']):,}", size=24, font="monob"))
-        c.add(c.text(960, y + 32, f"median {fmt_usd_k(r['median_salary_usd'])}", size=22,
-                     font="mono", fill=QUIET, anchor="end"))  # fmt: skip
-    c.add(c.text(40, 400, "Median: middle of the published US salary range, per year.", size=22,
-                 fill=QUIET))  # fmt: skip
+        c.add(c.text(340 + width + 14, y + 40, f"{int(r['open_roles']):,}", size=ROW, font="monob"))
+        c.add(c.text(960, y + 40, fmt_usd_k(r["median_salary_usd"]), size=ROW, font="mono",
+                     fill=QUIET, anchor="end"))  # fmt: skip
+    c.add(c.text(40, 446, f"US roles, middle of the published yearly range · {d.run_date}",
+                 size=ROW, fill=QUIET))  # fmt: skip
     c.css.append(
         ".bar{transform-box:fill-box;transform-origin:left center}"
         + "".join(
@@ -320,8 +332,9 @@ def data_roles(d: ReadmeData) -> str:
             "{transform:scaleX(1)}}"
             for i in range(4)
         )
-        + "@media (prefers-reduced-motion: reduce){*{animation:none!important}}"
     )
+    c.css.append(start_on_final_frame(0.2 * LOOP_S + 3 * 0.04 * LOOP_S + 0.1))
+    c.css.append(final_state_css(0))
     return c.render()
 
 
@@ -356,7 +369,7 @@ def lineage(manifest: dict[str, Any]) -> str:
         for i, (_, kinds) in enumerate(LAYERS):
             if n["layer"] in kinds:
                 cols[i].append(uid)
-    box_w, box_h, gap_y, col_gap = 360, 58, 22, 110
+    box_w, box_h, gap_y, col_gap = 420, 66, 22, 110
     w = 60 * 2 + len(cols) * box_w + (len(cols) - 1) * col_gap
     max_rows = max(len(col) for col in cols)
     h = 150 + max_rows * (box_h + gap_y) + 40
@@ -370,7 +383,7 @@ def lineage(manifest: dict[str, Any]) -> str:
     pos: dict[str, tuple[float, float]] = {}
     for i, col in enumerate(cols):
         x = 60 + i * (box_w + col_gap)
-        c.add(c.text(x, 80, LAYERS[i][0], size=34, font="sansb"))
+        c.add(c.text(x, 80, LAYERS[i][0], size=44, font="sansb"))
         top = 130 + (max_rows - len(col)) * (box_h + gap_y) / 2
         for j, uid in enumerate(col):
             y = top + j * (box_h + gap_y)
@@ -394,7 +407,7 @@ def lineage(manifest: dict[str, Any]) -> str:
         stroke = TEAL if n["layer"] == "marts" else BORDER
         c.add(f'<rect x="{bx}" y="{by}" width="{box_w}" height="{box_h}" rx="10" fill="{PANEL}" '
               f'stroke="{stroke}" stroke-width="2"/>')  # fmt: skip
-        c.add(c.text(bx + 18, by + 38, n["name"], size=26, font="mono", fill=TEXT))
+        c.add(c.text(bx + 18, by + 44, n["name"], size=30, font="mono", fill=TEXT))
     c.css.append(
         ".edge{stroke-dasharray:8 10;animation:fl 2s linear infinite}"
         "@keyframes fl{to{stroke-dashoffset:-36}}"
