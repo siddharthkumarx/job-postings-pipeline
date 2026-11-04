@@ -47,7 +47,7 @@ _CUR_PREFIX = (
     r"(?P<cur>CA\$|C\$|A\$|AU\$|NZ\$|S\$|US\$|USD\s?|CAD\s?|AUD\s?|GBP\s?|EUR\s?|INR\s?|"
     r"\$|£|€|₹)"
 )
-_NUM = r"(?P<{n}>\d{{1,3}}(?:[,.\s]\d{{3}})+(?:\.\d+)?|\d+(?:\.\d+)?)\s?(?P<{n}k>[kK])?"
+_NUM = r"(?P<{n}>\d{{1,3}}(?:[,.\s]\d{{3}})+(?:[.,]\d{{1,2}})?|\d+(?:\.\d+)?)\s?(?P<{n}k>[kK])?"
 _RANGE = re.compile(
     _CUR_PREFIX
     + r"\s?"
@@ -87,12 +87,17 @@ _BOUNDS = {
 
 
 def _num(raw: str, k: str | None) -> float:
+    """Parse "120,000", "120.000", "120,000.00", "140.000,00", "140.000.00", "57.50"."""
     digits = raw.replace(" ", "")
-    # "120,000" / "120.000" (thousands separators) vs "57.50" (decimal)
-    if re.fullmatch(r"\d{1,3}(?:[,.]\d{3})+", digits):
-        value = float(re.sub(r"[,.]", "", digits))
+    m = re.fullmatch(r"(\d{1,3}(?:[,.]\d{3})+)(?:[,.](\d{1,2}))?", digits)
+    if m:
+        whole = float(re.sub(r"[,.]", "", m.group(1)))
+        value = whole + (float(f"0.{m.group(2)}") if m.group(2) else 0.0)
     else:
-        value = float(digits.replace(",", ""))
+        try:
+            value = float(digits.replace(",", ""))
+        except ValueError:
+            return float("nan")
     return value * 1000 if k else value
 
 
@@ -178,12 +183,19 @@ def seniority_hint(text: str) -> str | None:
     return "staff_principal"
 
 
+def _safe_salary(text: str) -> Salary | None:
+    try:
+        return find_salary(text)
+    except (ValueError, ArithmeticError):
+        return None  # odd number formats must never fail a run
+
+
 def analyse(description: str | None) -> DescriptionFacts:
     text = to_text(description)
     if not text:
         return DescriptionFacts(None, None, None, None, None)
     return DescriptionFacts(
-        salary=find_salary(text),
+        salary=_safe_salary(text),
         remote_hint=remote_hint(text),
         seniority_hint=seniority_hint(text),
         sha256=hashlib.sha256(text.encode("utf-8")).hexdigest(),

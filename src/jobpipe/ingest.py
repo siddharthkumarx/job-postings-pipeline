@@ -130,10 +130,15 @@ async def fetch_all(
         fetched_at = datetime.now(UTC)
         found: list[Posting] = []
         errors: list[str] = []
+        status = _status(res)
         if res.ok:
-            found, errors = to_postings(
-                provider, res.data, RunContext(b.board, run_date, fetched_at)
-            )
+            try:
+                found, errors = to_postings(
+                    provider, res.data, RunContext(b.board, run_date, fetched_at)
+                )
+            except Exception as exc:  # a parsing bug fails this board, never the run
+                status, found = "error", []
+                errors = [f"parse failed: {type(exc).__name__}: {exc}"[:300]]
             res.data = None  # drop descriptions now
         postings.extend(found)
         runs.append(
@@ -141,7 +146,7 @@ async def fetch_all(
                 provider=provider.name,  # type: ignore[arg-type]
                 board=b.board,
                 run_date=run_date,
-                status=_status(res),  # type: ignore[arg-type]
+                status=status,  # type: ignore[arg-type]
                 http_status=res.status,
                 postings=len(found),
                 invalid_postings=len(errors),

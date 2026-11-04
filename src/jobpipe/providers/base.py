@@ -79,8 +79,12 @@ def to_postings(
     errors: list[str] = []
     seen: set[str] = set()
     for job in provider.jobs(payload):
-        fields, description = provider.posting_fields(job)
-        facts = analyse(description)
+        try:
+            fields, description = provider.posting_fields(job)
+            facts = analyse(description)
+        except Exception as exc:  # one malformed job must not drop the board
+            errors.append(f"{job.get('id')}: {type(exc).__name__}: {exc}"[:200])
+            continue
         description = None  # never kept beyond this point
         sal = facts.salary
         fields.update(

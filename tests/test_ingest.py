@@ -3,6 +3,7 @@ from pathlib import Path
 
 import httpx
 import pyarrow.parquet as pq
+import pytest
 
 from jobpipe import ingest
 from jobpipe.http import HostPolicy, PoliteClient
@@ -82,3 +83,30 @@ def test_ingest_writes_bronze_without_free_text(tmp_path: Path) -> None:
 
     runs = pq.read_table(ingest.partition_path(tmp_path, "board_runs", d)).to_pylist()
     assert {r["status"] for r in runs} == {"ok", "not_found"}
+
+
+def test_parse_failure_fails_the_board_not_the_run(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    boards = tmp_path / "boards.csv"
+    boards.write_text("provider,board,company\ngreenhouse,acme,Acme\nlever,beta,Beta\n")
+    real = ingest.to_postings
+
+    def flaky(provider, payload, ctx):  # type: ignore[no-untyped-def]
+        if provider.name == "greenhouse":
+            raise ValueError("could not convert string to float: '140.000.00'")
+        return real(provider, payload, ctx)
+
+    monkeypatch.setattr(ingest, "to_postings", flaky)
+
+    async def nosleep(_: float) -> None:
+        return None
+
+    client = PoliteClient(
+        transport=httpx.MockTransport(handler),
+        default_policy=HostPolicy(concurrency=2, min_interval_s=0),
+        sleep=nosleep,
+    )
+    m = ingest.run(date(2026, 11, 4), boards_csv=boards, data_dir=tmp_path, client=client)
+    assert m["board_status"] == {"greenhouse:error": 1, "lever:ok": 1}
+    assert m["postings"] == 1

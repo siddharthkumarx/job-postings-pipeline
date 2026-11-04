@@ -55,3 +55,22 @@ def test_analyse_returns_no_text() -> None:
     assert facts.sha256 is not None and len(facts.sha256) == 64
     assert "jane" not in repr(facts)
     assert analyse(None).sha256 is None
+
+
+@pytest.mark.parametrize(
+    ("text", "expected"),
+    [
+        ("€140.000.00 - €160.000.00", (140000, 160000, "EUR", "year")),
+        ("$120,000.00 - $150,000.00 per year", (120000, 150000, "USD", "year")),
+        ("€140.000,00 – €160.000,00", (140000, 160000, "EUR", "year")),
+    ],
+)
+def test_find_salary_decimal_formats(text: str, expected: tuple[float, float, str, str]) -> None:
+    s = find_salary(text)
+    assert s is not None
+    assert (s.min, s.max, s.currency, s.period) == expected
+
+
+def test_analyse_never_raises_on_odd_numbers() -> None:
+    for text in ("$1.2.3.4 - $5", "$999,999,999,999,999 - $1", "$.5 - $.6/hr", "$140.000.00"):
+        analyse(text)
