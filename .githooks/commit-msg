@@ -1,24 +1,5 @@
 #!/bin/sh
-# Strip tool attribution trailers from commit messages.
-# Removes lines starting with "Co-Authored-By:" or "Session-Id:" and any
-# line that starts with "Generated with" (optionally after an emoji/punctuation),
-# then trims trailing blank lines. Enabled with: git config core.hooksPath .githooks
-msg_file="$1"
-tmp="$(mktemp)"
-python3 - "$msg_file" "$tmp" <<'PY'
-import re
-import sys
-
-src, dst = sys.argv[1], sys.argv[2]
-pattern = re.compile(
-    r"^\s*(co-authored-by:|session-id:)|^\W*generated with\b", re.IGNORECASE
-)
-with open(src, encoding="utf-8") as fh:
-    lines = fh.read().splitlines()
-kept = [line for line in lines if not pattern.search(line)]
-while kept and not kept[-1].strip():
-    kept.pop()
-with open(dst, "w", encoding="utf-8") as fh:
-    fh.write("\n".join(kept) + "\n")
-PY
-mv "$tmp" "$msg_file"
+# Commit-message rule: no trailers except Signed-off-by, and no "Generated with" footer.
+# Disallowed lines are removed before the commit is written (see scripts/commit_guard.py).
+# Enable with: git config core.hooksPath .githooks
+exec python3 "$(git rev-parse --show-toplevel)/scripts/commit_guard.py" --fix "$1"

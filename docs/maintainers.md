@@ -16,7 +16,7 @@ engineering: layers, incremental loads, history, tests and data contracts.
 
 ### Git
 - Commit as `Siddharth Kumar <273157498+siddharthkumarx@users.noreply.github.com>` (repo-local `git config`).
-- Never add `Co-Authored-By`, `Session-Id` or "Generated with" lines. `.githooks/commit-msg` strips them (`git config core.hooksPath .githooks`). CI job `commit-messages` fails if any commit has them.
+- Commit messages carry no trailers except `Signed-off-by`, and no "Generated with" footer. `.githooks/commit-msg` removes them (`git config core.hooksPath .githooks`; rule in `scripts/commit_guard.py`), and the CI job `commit-messages` fails on any commit that has one.
 - Never open a PR. Work on the designated branch only. Small, meaningful commits.
 - Every file in git stays under 50 MB (CI guard). Bulk data lives in GitHub Release assets.
 
@@ -92,9 +92,9 @@ Next:
    `pipeline-alert` issue. Fix problems and log them in `docs/incidents.md`, filling in
    both "In plain words" lines, because the README shows them. After a week of runs,
    tune the guard thresholds (D-012).
-2. Before the public publish: remove `docs/private/`, rename the repo to
-   `job-postings-pipeline`, check that `templates/readme.yml` (repo, branch) matches, and
-   apply `docs/repo-settings.md` (About, topics, social preview, Pages + `PAGES_ENABLED`,
-   `HF_TOKEN`).
+2. To publish, follow `docs/publish-checklist.md`: a fresh public repo
+   `job-postings-pipeline` with a clean `main` (not a rename), without `docs/private/`, with
+   this file moved to `docs/maintainers.md`, the `templates/readme.yml` URLs checked, the
+   release assets copied, and `docs/repo-settings.md` applied.
 3. Re-render `media/linkedin-hero.mp4` and `assets/social-preview.png` with
    `node scripts/render_media.js` whenever you post them, so they show current numbers.
