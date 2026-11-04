@@ -1,0 +1,5 @@
+# Live check request. Changing this file on a branch triggers .github/workflows/checks.yml,
+# which runs `jobpipe checks checks/request.yml` and commits checks/results/<id>/.
+id: site-screenshots-001
+command: site-screenshots
+params: {}

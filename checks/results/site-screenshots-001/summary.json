@@ -1,0 +1,13 @@
+{
+  "id": "site-screenshots-001",
+  "command": "site-screenshots",
+  "started_at": "2026-11-04T01:08:47+00:00",
+  "git_sha": "8bc29b991da159c64fe09a51ea18d621c9dd6bcb",
+  "run_id": "41751975282",
+  "runner": "Linux x86_64 py3.12.3",
+  "status": "error",
+  "error": "CatalogException: Catalog Error: Table with name dim_company does not exist!\nDid you mean \"fct_job_postings\"?\n\nLINE 2:                 (select count(*) from gold.dim_company where last_fetch_status = 'ok'),\n                                              ^^^^^^^^^^^^^^^^",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/runner/work/job-postings-pipeline-wip/job-postings-pipeline-wip/src/jobpipe/checks.py\", line 233, in run_request\n    results.append(fn(dict(step.get(\"params\") or {}), out))\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/job-postings-pipeline-wip/job-postings-pipeline-wip/src/jobpipe/checks.py\", line 184, in _site_screenshots\n    site_build.build(work / \"warehouse.duckdb\", Path(\"public\"), out / \"site\")\n  File \"/home/runner/work/job-postings-pipeline-wip/job-postings-pipeline-wip/src/jobpipe/site/build.py\", line 453, in build\n    data = gather(duckdb_path)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/job-postings-pipeline-wip/job-postings-pipeline-wip/src/jobpipe/site/build.py\", line 79, in gather\n    d[\"kpi\"] = q(\n               ^^\n  File \"/home/runner/work/job-postings-pipeline-wip/job-postings-pipeline-wip/src/jobpipe/site/build.py\", line 68, in q\n    rows: list[tuple[Any, ...]] = con.execute(sql, params or []).fetchall()\n                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n_duckdb.CatalogException: Catalog Error: Table with name dim_company does not exist!\nDid you mean \"fct_job_postings\"?\n\nLINE 2:                 (select count(*) from gold.dim_company where last_fetch_status = 'ok'),\n                                              ^^^^^^^^^^^^^^^^\n",
+  "finished_at": "2026-11-04T01:08:49+00:00",
+  "duration_s": 2.2
+}
