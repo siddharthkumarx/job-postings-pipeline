@@ -8,11 +8,11 @@
   "runs_held": 0,
   "runs_failed": 0,
   "missed_runs": 0,
-  "attempts": 6,
+  "attempts": 7,
   "failed_attempts": 1,
   "held_attempts": 1,
-  "jobs_tracked": 64349,
-  "rows_today": 64349,
+  "jobs_tracked": 64330,
+  "rows_today": 64330,
   "companies_tracked": 1500,
-  "updated_at": "2026-11-04T09:23:53+00:00"
+  "updated_at": "2026-11-04T15:52:45+00:00"
 }

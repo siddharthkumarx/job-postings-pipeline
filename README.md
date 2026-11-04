@@ -1,4 +1,4 @@
-![Animation: open tech jobs are spread across 1,500 company job boards; one daily run collects them into one table (real rows: SpaceX, Anduril Industries, Databricks); result: 64,349 open jobs at 1,500 US tech companies, checked every day](assets/hero.svg)
+![Animation: open tech jobs are spread across 1,500 company job boards; one daily run collects them into one table (real rows: SpaceX, Anduril Industries, Databricks); result: 64,330 open jobs at 1,500 US tech companies, checked every day](assets/hero.svg)
 
 # US tech hiring data, checked every day
 
@@ -20,7 +20,7 @@ One row per open job: company, job title, location, remote or on-site, salary ra
 | OpenAI | [Machine Learning Engineer, Monetization AI/ML](https://jobs.ashbyhq.com/openai/80f9f564-d789-47bc-91c3-3babf5a1a33d) | San Francisco, CA | On-site | $381,000 to $555,000 | 2026-11-04 |
 | Accenture Federal Services | [Data Engineer Team Lead](https://boards.greenhouse.io/accenturefederalservices/jobs/4611519006?gh_jid=4611519006) | Arlington, VA | On-site | $160,700 to $306,500 | 2026-11-04 |
 
-The full table has 64,349 rows today. The download includes every field listed in the [data dictionary](#data-dictionary).
+The full table has 64,330 rows today. The download includes every field listed in the [data dictionary](#data-dictionary).
 
 ### What changed today
 
@@ -29,9 +29,9 @@ The latest run (2026-11-04) is the first day of data, so there is nothing to com
 ## Why you can trust this data
 
 - **Checked against a second source.** Every run re-reads 30 random jobs one by one from a second official address at the job board and compares the title and location. Latest run (2026-11-04): 30 of 30 matched.
-- **Doubtful values are held back, not guessed.** In the latest run, 91 salary figures that looked wrong (far outside any normal yearly pay once converted) were left empty instead of published, and 12 malformed job ads were set aside. If a whole run looks wrong, it is not published at all and yesterday's data stays up until it is fixed.
+- **Doubtful values are held back, not guessed.** In the latest run, 90 salary figures that looked wrong (far outside any normal yearly pay once converted) were left empty instead of published, and 12 malformed job ads were set aside. If a whole run looks wrong, it is not published at all and yesterday's data stays up until it is fixed.
 - **Nothing missing.** 1,500 of 1,500 company job boards were read in the latest run. A job only counts as closed after it is missing on two days in a row, so one bad day cannot wipe out real openings.
-- **Polite collection.** One request per company per day, plus the 30 spot checks (1,531 requests in the latest run), a short pause between requests, no logins, and only the official public job-board feeds that the companies use for their own career pages.
+- **Polite collection.** One request per company per day, plus the 30 spot checks (1,530 requests in the latest run), a short pause between requests, no logins, and only the official public job-board feeds that the companies use for their own career pages.
 - **Tested every day.** The latest run passed all 91 automatic data checks. Missed or held days are counted in public: see the badges above and the [run log](public/runs.jsonl).
 
 ## How it works
@@ -43,7 +43,7 @@ The latest run (2026-11-04) is the first day of data, so there is nothing to com
 3. **Store.** Each day's raw data is kept, so history (when a job opened, when it closed, when its salary changed) can always be rebuilt.
 4. **Deliver.** The clean table, the [dashboard](https://siddharthkumar.com/job-postings-pipeline/) and a monthly download are refreshed. A full run takes about 9 minutes.
 
-![Bar chart of open data roles today: ml engineer 1,542, data engineer 499, data analyst 294, analytics engineer 114](assets/data-roles.svg)
+![Bar chart of open data roles today: ml engineer 1,544, data engineer 500, data analyst 296, analytics engineer 114](assets/data-roles.svg)
 
 ![Screenshot of the live dashboard: 1,500 companies tracked and open roles by role family, data roles, salary bands and days open](assets/dashboard.png)
 
@@ -127,7 +127,7 @@ One row per job posting ever seen. The examples are real values from the run of 
 | `salary_min_usd_annual` | number | Lowest yearly salary in US dollars | 175000 |
 | `salary_max_usd_annual` | number | Highest yearly salary in US dollars | 240000 |
 | `salary_source` | text | Where the salary came from: the job board's salary field or the ad text | description |
-| `fx_rate_date` | date | Date of the official exchange rate used for the dollar conversion | 2026-11-03 |
+| `fx_rate_date` | date | Date of the official exchange rate used for the dollar conversion | 2026-11-04 |
 | `job_url` | text | Link to the original posting | [link](https://boards.greenhouse.io/spacex/jobs/8579126002?gh_jid=8579126002) |
 | `published_at` | date and time (UTC) | When the company published or last updated the posting | 2026-06-09 21:04:05+00:00 |
 | `first_seen` | date | First day the job was seen | 2026-11-04 |
