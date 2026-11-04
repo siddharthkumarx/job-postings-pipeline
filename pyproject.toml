@@ -7,10 +7,13 @@ requires-python = ">=3.12,<3.13"
 license = "MIT"
 authors = [{ name = "Siddharth Kumar" }]
 dependencies = [
+    "brotli>=1.2,<2",
     "dbt-core>=1.12,<1.13",
     "dbt-duckdb>=1.11,<1.12",
     "duckdb>=1.4",
+    "fonttools>=4.68,<5",
     "httpx>=0.28.1,<0.29",
+    "jinja2>=3.1,<4",
     "pyarrow>=26,<27",
     "pydantic>=2.14,<3",
     "pyyaml>=6.0.3,<7",
@@ -48,6 +51,7 @@ ignore = ["S101", "RUF001", "RUF003", "PT018"]
 "scripts/**" = ["S603", "S607"]
 # The page template is HTML: long lines are clearer than split strings.
 "src/jobpipe/site/build.py" = ["E501"]
+"src/jobpipe/visuals/build.py" = ["E501"]
 # Live-check runner calls fixed commands (uv/playwright), never user input.
 "src/jobpipe/checks.py" = ["S603", "S607"]
 
@@ -58,7 +62,10 @@ mypy_path = "src"
 packages = ["jobpipe"]
 
 [[tool.mypy.overrides]]
-module = ["pyarrow", "pyarrow.*", "duckdb", "dbt.*", "huggingface_hub", "huggingface_hub.*"]
+module = [
+    "pyarrow", "pyarrow.*", "duckdb", "dbt.*", "huggingface_hub", "huggingface_hub.*",
+    "fontTools", "fontTools.*",
+]
 ignore_missing_imports = true
 
 [tool.pytest.ini_options]
