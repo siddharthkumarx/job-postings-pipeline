@@ -1,0 +1,21 @@
+name: Data removal request
+description: Ask for a company's postings to be removed from the published data (handled within 24 hours).
+title: "Data removal: <company>"
+labels: ["data-removal"]
+body:
+  - type: input
+    id: company
+    attributes:
+      label: Company name
+    validations:
+      required: true
+  - type: input
+    id: board
+    attributes:
+      label: Job board URL (e.g. https://boards.greenhouse.io/yourcompany)
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else we should know

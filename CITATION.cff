@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "If you use this software or the dataset it publishes, please cite it as below."
+title: "US tech job postings pipeline"
+abstract: >-
+  A daily pipeline that collects open jobs at about 1,500 US tech companies from their
+  public Greenhouse, Lever and Ashby job boards, models them in DuckDB and dbt
+  (staging, history, marts with enforced contracts) and publishes a daily dataset,
+  summary files and a dashboard.
+type: software
+authors:
+  - family-names: Kumar
+    given-names: Siddharth
+    website: "https://siddharthkumar.com"
+    email: hello@siddharthkumar.com
+repository-code: "https://github.com/siddharthkumarx/job-postings-pipeline"
+url: "https://siddharthkumar.com/job-postings-pipeline/"
+license: MIT
+version: 0.1.0
+date-released: 2026-11-04
+keywords:
+  - job postings
+  - hiring data
+  - web scraping
+  - data engineering
+  - dbt
+  - duckdb
+  - labor market
+references:
+  - type: dataset
+    title: "US tech job postings (daily)"
+    authors:
+      - family-names: Kumar
+        given-names: Siddharth
+    license: CC-BY-4.0
+    url: "https://github.com/siddharthkumarx/job-postings-pipeline/releases/latest"
