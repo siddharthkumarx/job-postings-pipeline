@@ -23,6 +23,6 @@ Status: `todo` · `doing` · `done` · `blocked`.
 | 16 | Outputs: summary CSVs, runs.jsonl, status.json, monthly dataset asset, HF upload (skip without token), dbt docs | done | badges in `public/badges/*.json` (shields endpoint schema) |
 | 17 | Dashboard: static site in `site/`, Playwright screenshots at 360/768/1440 | doing | built and checked on fixtures; real-data screenshots after the first run |
 | 18 | Daily workflow (41 7 * * *), timeouts, concurrency, alert issue on failure/held | done | Pages job gated by repo variable `PAGES_ENABLED` |
-| 19 | CI: ruff, mypy, pytest, dbt build on fixtures, gitleaks, pip-audit, 50 MB file guard | doing | first full CI run pending |
-| 20 | First real runs; fix incidents; record in docs/incidents.md | todo | |
+| 19 | CI: ruff, mypy, pytest, dbt build on fixtures, gitleaks, pip-audit, 50 MB file guard | done | green since run 5; golden fixtures added |
+| 20 | First real runs; fix incidents; record in docs/incidents.md | done | 2026-11-04: failed → held → published (9.7 min), re-run from snapshot published (9.4 min); 2 incidents fixed |
 | 21 | README + animated SVGs from real run data (waits for the owner's README rules) | todo | notes in `docs/readme-plan.md` |
