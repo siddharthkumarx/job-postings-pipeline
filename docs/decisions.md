@@ -159,3 +159,15 @@ Selection runs in `jobpipe.recon.select` over `checks/results/recon-verify-001/v
 `.gitleaks.toml` keeps the default gitleaks rules and allowlists exactly one pattern: `"posting_key"` / `"company_id"` followed by 32 hex characters. These are MD5 surrogate keys of public identifiers, and their entropy trips the generic-api-key rule.
 
 Not added on purpose: Dependabot. It would open pull requests and spend CI minutes while the repo is private. Enable it after publishing if wanted.
+
+## D-017 Review fixes: still frames, phone sizes, neutral commit rule, fresh public repo (2026-11-04)
+
+- **Still frames.** An SVG loaded as an image is not reached by Chromium's reduced-motion emulation (measured: `<img>` evaluates `no-preference` even when the page emulates `reduce`). Some README renderers also capture at t = 0. Two fixes:
+  - Every animation now starts on its final frame, through a negative `animation-delay` (`visuals.base.start_on_final_frame`), so any capture at t = 0 shows the result.
+  - The reduced-motion block pins every animated element to its final state: beat opacities, rows, bar transforms, stage outlines (`final_state_css`).
+  - `tests/test_visual_frames.py` renders each SVG in Chromium with `reduce`, and again at t = 0 without it, and checks the last beat, full bars, lit outlines and the real result number. With the fixes reverted the test fails. CI installs Chromium for it.
+- **Phone sizes.** In a 1000-px viewBox, headings are ≥ 36 px and row/body text ≥ 30 px. Hero beat 2 is now a heading, a "3 job boards → check + clean → one table" line and three full-width real rows. The lineage graph uses 44 px headings and 30 px labels in a wider viewBox; it remains the documented exception for the engineers' section.
+- **Second-source line** always shows the latest real result ("Latest run (date): N of M matched"), taken from the newest run that ran the spot check. Without such a run the line is omitted, never filled with placeholder text.
+- **Badges** use shields.io's default flat style, to match the sister repo.
+- **Commit rule, tool-neutral:** no trailers except `Signed-off-by`, and no "Generated with" footer. One implementation (`scripts/commit_guard.py`) backs the hook (removes such lines), the CI check (fails on them) and `tests/test_commit_guard.py` (neutral examples such as "Reviewed-by: A").
+- **Publishing** is a fresh public repo `job-postings-pipeline` with a clean `main`, not a rename of this one. It also copies the release assets, so history continues. Steps are in `docs/publish-checklist.md`.

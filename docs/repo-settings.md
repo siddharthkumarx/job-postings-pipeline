@@ -1,4 +1,6 @@
-# Repository settings (paste when the repo goes public)
+# Repository settings (paste into the public repo)
+
+The public repo is created fresh, not renamed; follow `docs/publish-checklist.md` first.
 
 ## About → Description (under 350 characters)
 
@@ -38,6 +40,6 @@ Settings → General → Social preview → upload `assets/social-preview.png` (
 
 - **Pages:** Settings → Pages → Source: GitHub Actions; custom domain `siddharthkumar.com` is served from the owner's site, so the dashboard lives at `/job-postings-pipeline/`. Then set the repository variable `PAGES_ENABLED=true` (Settings → Secrets and variables → Actions → Variables).
 - **Secret `HF_TOKEN`:** a Hugging Face write token, for the dataset upload (the run skips it cleanly when absent).
-- **Default branch:** `main`. The badge URLs in `templates/readme.yml` read `public/badges/*.json` from `main`; change `branch` there if the default branch has another name.
+- **Default branch:** `main`. The badge URLs read `public/badges/*.json` from `main` (set in `templates/readme.yml`).
 - **Releases:** the `dataset-YYYY-MM` release is marked "latest" by every run, so the README's "Download the data" link always points at the current month.
-- **Remove before publishing:** `docs/private/`, plus `checks/results/` if you prefer a smaller repo (they document how the recon was done, so keeping them is fine).
+- **Before publishing:** follow `docs/publish-checklist.md` (drop `docs/private/`, rename `docs/maintainers.md` to `docs/maintainers.md`, check `templates/readme.yml`).
