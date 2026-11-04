@@ -1,0 +1,10 @@
+# Public identity used when rendering README.md and the dataset card.
+# The repo is developed privately; these are the URLs it will have once published.
+public_repo: siddharthkumarx/job-postings-pipeline
+branch: main
+dashboard_url: https://siddharthkumar.com/job-postings-pipeline/
+google_sheet_url: ""
+hf_dataset: siddharthkumarx/us-tech-job-postings
+contact_email: hello@siddharthkumar.com
+website: https://siddharthkumar.com
+owner: Siddharth Kumar

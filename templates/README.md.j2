@@ -1,0 +1,181 @@
+![{{ hero_alt }}](assets/hero.svg)
+
+# US tech hiring data, checked every day
+
+Every open job at {{ companies | num }} US tech companies, collected each morning from their public job boards and delivered as one clean table you can download, filter and chart.
+
+[![Last run]({{ badge('last-run') }})](public/runs.jsonl) [![Days running]({{ badge('days-running') }})](public/status.json) [![Missed runs]({{ badge('missed-runs') }})](public/status.json) [![Rows today]({{ badge('rows-today') }})](public/summary/providers.csv) [![Tests](https://github.com/{{ cfg.public_repo }}/actions/workflows/ci.yml/badge.svg)](https://github.com/{{ cfg.public_repo }}/actions/workflows/ci.yml)
+
+**[Live dashboard]({{ cfg.dashboard_url }})** · **[Download the data](https://github.com/{{ cfg.public_repo }}/releases/latest)**{% if cfg.google_sheet_url %} · **[Open the Google Sheet]({{ cfg.google_sheet_url }})**{% endif %}
+
+## What you get
+
+One row per open job: company, job title, location, remote or on-site, salary range when the company publishes one, the date it was first seen and a link to the original posting. Here are {{ sample | length }} real rows from the run of {{ run_date }}:
+
+| Company | Job title | Location | Work type | Salary (per year) | First seen |
+|---|---|---|---|---|---|
+{% for r in sample -%}
+| {{ r.company_name }} | [{{ r.title | short(60) }}]({{ r.job_url }}) | {{ r.location }} | {{ r.remote_type | worktype }} | {{ r | salary }} | {{ r.first_seen }} |
+{% endfor %}
+The full table has {{ open_jobs | num }} rows today. The download includes every field listed in the [data dictionary](#data-dictionary).
+
+### What changed today
+
+{% if first_day -%}
+The latest run ({{ run_date }}) is the first day of data, so there is nothing to compare yet. From the next run on, this list shows the roles that opened, the roles that closed and the salaries that changed since the day before.
+{%- else -%}
+Compared with the run of {{ prev_date }}:
+
+- **{{ new_total | num }} new roles** opened{% if most_new %}, most at {{ most_new | join(', ') }}{% endif %}.
+- **{{ closed_total | num }} roles closed**{% if most_closed %}, most at {{ most_closed | join(', ') }}{% endif %}.
+- **{{ salary_changed | num }} salary ranges** and **{{ title_changed | num }} job titles** were edited by the companies.
+{%- endif %}
+
+## Why you can trust this data
+
+- **Checked against a second source.** {% if spot.get('checked') -%}
+Every run re-reads {{ spot.sample }} random jobs one by one from a second official address at the job board and compares the title and location. Latest run: {{ spot.matched }} of {{ spot.checked }} matched{% if spot.get('gone') %}, and {{ spot.gone }} had closed in the minutes between the two reads{% endif %}.
+{%- else -%}
+Every run re-reads 30 random jobs one by one from a second official address at the job board and compares the title and location. The result is shown here after each run.
+{%- endif %}
+- **Doubtful values are held back, not guessed.** In the latest run, {{ q.salaries_held_back | num }} salary figures that looked wrong (far outside any normal yearly pay once converted) were left empty instead of published, and {{ invalid | num }} malformed job ads were set aside. If a whole run looks wrong, it is not published at all and yesterday's data stays up until it is fixed.
+- **Nothing missing.** {{ boards_ok | num }} of {{ boards | num }} company job boards were read in the latest run. A job only counts as closed after it is missing on two days in a row, so one bad day cannot wipe out real openings.
+- **Polite collection.** One request per company per day ({{ requests | num }} requests in the latest run), a short pause between requests, no logins, and only the official public job-board feeds that the companies use for their own career pages.
+- **Tested every day.** The latest run passed all {{ tests | num }} automatic data checks. Missed or held days are counted in public: see the badges above and the [run log](public/runs.jsonl).
+
+## How it works
+
+![{{ pipeline_alt }}](assets/pipeline.svg)
+
+1. **Collect.** Each morning at 07:41 UTC, the pipeline reads the public job board of every tracked company: {{ by_provider.greenhouse | num }} on Greenhouse, {{ by_provider.ashby | num }} on Ashby and {{ by_provider.lever | num }} on Lever.
+2. **Check.** Every job is cleaned and tested. Titles become role types (for example "data engineer"), locations become city and state, and salaries become yearly US dollars.
+3. **Store.** Each day's raw data is kept, so history (when a job opened, when it closed, when its salary changed) can always be rebuilt.
+4. **Deliver.** The clean table, the [dashboard]({{ cfg.dashboard_url }}) and a monthly download are refreshed. A full run takes about {{ minutes | round | int }} minutes.
+
+![{{ data_roles_alt }}](assets/data-roles.svg)
+
+![{{ dashboard_alt }}](assets/dashboard.png)
+
+## What broke and how I fixed it
+
+Every pipeline breaks sometimes. What matters is that problems are caught before bad data reaches you, fixed quickly and written down. Real incidents from the [incident log](docs/incidents.md):
+
+![{{ maintenance_alt }}](assets/maintenance-loop.svg)
+
+{% for inc in incidents -%}
+- **{{ inc.date }}: {{ inc.title }}.** {{ inc.plain }} {{ inc.fix_plain }}
+{% endfor %}
+## Who uses data like this
+
+- **Recruiters and staffing teams** see which companies are hiring for which roles, and where, before they make a call.
+- **HR-tech and people-analytics teams** plug the daily table into their own products and track open roles, time-to-fill and salary ranges over time.
+- **Analysts and data hiring managers** compare pay and demand for data engineers, analytics engineers, data analysts and ML engineers across {{ companies | num }} companies.
+
+## Want this for your own sites?
+
+I build and run pipelines like this one for clients: job boards, competitor career pages, marketplaces, price lists and other public data.
+
+- **Free sample first.** You get 20 to 50 real rows from your own target sites before you pay anything.
+- **Fixed price.** A clear quote after the sample, with no hourly surprises.
+- **Data on schedule.** Daily, weekly or one-off, delivered as CSV, Excel, Google Sheets, Parquet or straight into your database.
+
+**Contact:** [{{ cfg.contact_email }}](mailto:{{ cfg.contact_email }}) · [siddharthkumar.com]({{ cfg.website }})
+
+## FAQ
+
+**How fresh is the data?**
+It is collected every morning at 07:41 UTC. The latest run was on {{ run_date }}. The badges at the top always show the last run and any missed days.
+
+**What happens when a site changes?**
+The daily checks notice it, that day's data is held back instead of published, and I get an alert. I fix the collector, usually the same day, and the incident goes in the public log above.
+
+**Which formats can I get?**
+CSV, Excel, Google Sheets, Parquet, JSON, or a direct load into your database or data warehouse. This project publishes CSV summaries and a monthly Parquet file.
+
+**Can you track my competitors' sites?**
+Yes, if the information is publicly visible without logging in. Send me the list of sites and I will check what is possible and send a free sample.
+
+**Is it legal and polite?**
+This project reads only public pages and official public feeds, follows each site's published rate limits, collects no personal data and links back to every original posting. See [Data use and compliance](#data-use-and-compliance).
+
+**How does pricing work?**
+Either a fixed monthly price for a running pipeline or a one-time price for a single delivery. You get a quote after the free sample, once both of us know exactly what the data looks like.
+
+## Data dictionary
+
+One row per job posting ever seen. The examples are real values from the run of {{ run_date }}.
+
+| Field | Type | Meaning | Example |
+|---|---|---|---|
+{% for f in dictionary -%}
+| `{{ f.name }}` | {{ f.type }} | {{ f.meaning }} | {{ f.example }} |
+{% endfor %}
+<details>
+<summary><b>For engineers</b></summary>
+
+### Architecture
+
+Daily GitHub Actions run → polite async collector (httpx, per-host limits, retries only on 429/5xx, Retry-After honoured, a block stops that host) → one Pydantic record per posting, with free text dropped → **bronze** Parquet per run date, stored as GitHub Release assets → **dbt-duckdb**: silver (staging) → history (lifecycle, SCD2) → gold marts with enforced contracts → quality gates (dbt tests, row-count and null-rate guards) → publish or hold → summary CSVs, monthly dataset, `status.json` badges, static dashboard and this README, re-rendered every run. Details: [docs/architecture.md](docs/architecture.md).
+
+![{{ lineage_alt }}](assets/dbt-lineage.svg)
+
+### Data model
+
+| Layer | Models | Notes |
+|---|---|---|
+| Bronze | `postings`, `board_runs`, `fx` Parquet per run date | API fields minus free text and personal fields; descriptions are read in memory only for salary, remote and seniority hints, plus a SHA-256 |
+| Silver | `stg_postings`, `stg_board_runs`, `stg_fx_rates`, `stg_tracked_boards` | incremental, delete+insert by run date (idempotent) |
+| History | `int_postings_daily`, `int_posting_lifecycle`, `int_posting_versions`, `int_title_labels`, `int_locations` | first/last seen, closed after 2 missed successful fetches, SCD2 on title/location/salary, versioned role taxonomy |
+| Gold | `fct_job_postings`, `dim_company`, `mart_weekly_open_roles`, `mart_days_open_bands`, `mart_salary_bands`, `mart_hiring_velocity`, `mart_data_roles` | dbt contracts enforced; schema in [docs/data-contracts.md](docs/data-contracts.md) |
+
+### Repository layout
+
+```
+src/jobpipe/        collector, models, state, guards, publish, dashboard, visuals, README renderer
+dbt/                dbt project (staging, intermediate, marts, seeds, tests)
+seeds/boards.csv    the {{ companies | num }} tracked boards (how they were chosen: docs/sources.md)
+public/             run log, status.json, badges and summary CSVs (committed by every run)
+templates/          README and dataset-card templates
+checks/             live checks run on GitHub Actions and their results
+tests/              pytest, golden fixtures from real boards
+docs/               decisions, contracts, sources, incidents, architecture
+```
+
+### Run it locally
+
+```bash
+git clone https://github.com/{{ cfg.public_repo }}.git && cd {{ cfg.public_repo.split('/')[1] }}
+uv sync
+uv run pytest
+uv run jobpipe fixtures-build --dir data/fixtures
+uv run jobpipe site --duckdb data/fixtures/warehouse.duckdb --public data/fixtures/public --out site
+```
+
+`jobpipe fixtures-build` runs the full dbt project on synthetic data, offline. A live run (`uv run jobpipe run`) needs network access and a `GITHUB_TOKEN` with `contents: write`, because state is stored in Release assets. `jobpipe backfill --from A --to B` replays stored snapshots, and `jobpipe rebuild` rebuilds the warehouse from every snapshot.
+
+### Tests and CI
+
+`ruff`, `mypy --strict`, `pytest` (unit tests, golden fixtures from 5 real boards, end-to-end runs against a fake GitHub API), a dbt build with {{ dbt_tests }} data tests on synthetic data, `pip-audit`, `gitleaks`, an internal link check, a 50 MB file guard and a commit-message check. Workflows: [ci.yml](.github/workflows/ci.yml), [daily.yml](.github/workflows/daily.yml), [checks.yml](.github/workflows/checks.yml).
+
+### Key decisions
+
+- [Sources, terms and politeness](docs/decisions.md#d-001-sources-official-public-job-board-apis-only-checked-2026-11-03): official public job-board APIs only; Lever at ≤ 1 request/s.
+- [Where state lives](docs/decisions.md#d-007-where-state-lives-github-release-assets): GitHub Release assets, with the warehouse rebuildable from bronze.
+- [Lifecycle definitions](docs/decisions.md#d-011-lifecycle-definitions) and [quality gates](docs/decisions.md#d-012-quality-gates-and-holds).
+- [How the {{ companies | num }} companies were chosen](docs/sources.md) and [run-time budget](docs/decisions.md#d-009-daily-run-time-budget--45-min-lever-at-1-requests).
+
+</details>
+
+## Data use and compliance
+
+- Only public job-board pages and the official public job-board APIs of Greenhouse, Lever and Ashby are used. No logins, no paywalls.
+- `robots.txt` and rate limits are respected: at most one request per company per day, a pause between requests, and Lever at no more than one request per second as its `robots.txt` asks.
+- No personal data: recruiter or hiring-manager names, emails and phone numbers are never collected or stored.
+- No job descriptions or images are republished. Descriptions are read once, in memory, only to find the salary and remote hints, and are then discarded. Every row links back to the original posting.
+- **Opt-out:** email [{{ cfg.contact_email }}](mailto:{{ cfg.contact_email }}) and your company's postings are removed within 24 hours.
+
+## License
+
+The code is released under the [MIT License](LICENSE). The published dataset is factual job metadata compiled from public postings, shared under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Each posting belongs to the company that published it and is linked at its source. Citation details are in [CITATION.cff](CITATION.cff); the dataset card is in [docs/dataset-card.md](docs/dataset-card.md).
+
+Built and maintained by {{ cfg.owner }} · [siddharthkumar.com]({{ cfg.website }})

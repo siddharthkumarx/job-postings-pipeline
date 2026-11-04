@@ -45,7 +45,13 @@ def main(argv: list[str] | None = None) -> int:
     p_site.add_argument("--public", type=Path, default=Path("public"))
     p_site.add_argument("--out", type=Path, default=Path("site"))
 
+    sub.add_parser("readme", help="re-render README.md, the dataset card and assets/*.svg")
+
     args = parser.parse_args(argv)
+    if args.cmd == "readme":
+        from jobpipe.readme import main as readme_main
+
+        return readme_main()
     if args.cmd in ("run", "backfill", "release-hold", "rebuild"):
         from jobpipe import pipeline
 
