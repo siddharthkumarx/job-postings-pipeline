@@ -123,6 +123,15 @@ def hf_upload(files: list[Path], repo_id: str | None = None) -> str:
     repo_id = repo_id or os.environ.get("HF_DATASET_REPO", "siddharthkumarx/us-tech-job-postings")
     api = HfApi(token=token)
     api.create_repo(repo_id, repo_type="dataset", exist_ok=True)
+    card = Path("docs/dataset-card.md")
+    if card.exists():
+        api.upload_file(
+            path_or_fileobj=str(card),
+            path_in_repo="README.md",
+            repo_id=repo_id,
+            repo_type="dataset",
+            commit_message="docs: update dataset card",
+        )
     for f in files:
         api.upload_file(
             path_or_fileobj=str(f),
@@ -245,7 +254,7 @@ with ranked as (
       and f.role_family in ('data_engineer', 'analytics_engineer', 'data_analyst', 'ml_engineer')
       and f.seniority in ('mid', 'senior')
 )
-select company_name, title, location, remote_type, salary_min_usd_annual,
+select company_name, title, role_family, location, remote_type, salary_min_usd_annual,
        salary_max_usd_annual, first_seen, job_url
 from ranked where rn = 1
 order by open_postings desc, company_name
