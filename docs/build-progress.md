@@ -21,7 +21,7 @@ Status: `todo` · `doing` · `done` · `blocked`.
 | 14 | Quality: dbt tests, source freshness, guards (row count, null rate), contracts, hold logic | done | 91 dbt tests; guards in `guards.py`; thresholds to tune on real runs |
 | 15 | Orchestration: `jobpipe run`, `backfill --from --to`, `rebuild`; idempotency | done | `tests/test_pipeline.py` runs 6 days + rebuild against a fake GitHub API |
 | 16 | Outputs: summary CSVs, runs.jsonl, status.json, monthly dataset asset, HF upload (skip without token), dbt docs | done | badges in `public/badges/*.json` (shields endpoint schema) |
-| 17 | Dashboard: static site in `site/`, Playwright screenshots at 360/768/1440 | doing | built and checked on fixtures; real-data screenshots after the first run |
+| 17 | Dashboard: static site in `site/`, Playwright screenshots at 360/768/1440 | done | real data, `docs/screenshots/` (from check site-screenshots-003); 0 px horizontal overflow at all widths |
 | 18 | Daily workflow (41 7 * * *), timeouts, concurrency, alert issue on failure/held | done | Pages job gated by repo variable `PAGES_ENABLED` |
 | 19 | CI: ruff, mypy, pytest, dbt build on fixtures, gitleaks, pip-audit, 50 MB file guard | done | green since run 5; golden fixtures added |
 | 20 | First real runs; fix incidents; record in docs/incidents.md | done | 2026-11-04: failed → held → published (9.7 min), re-run from snapshot published (9.4 min); 2 incidents fixed |
