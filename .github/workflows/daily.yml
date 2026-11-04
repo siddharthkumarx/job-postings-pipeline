@@ -111,6 +111,15 @@ jobs:
           else
             gh issue create --title "Pipeline ${STATUS}: $(date -u +%F)" --label pipeline-alert --body "$body"
           fi
+      - name: Close open alerts after a published run
+        if: steps.run.outputs.status == 'published'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          for n in $(gh issue list --label pipeline-alert --state open --json number --jq '.[].number'); do
+            gh issue close "$n" --comment "Resolved: run published again ($RUN_URL)."
+          done
       - name: Fail the job when not published
         if: steps.run.outputs.status != 'published'
         run: exit 1
