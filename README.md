@@ -14,9 +14,9 @@ One row per open job: company, job title, location, remote or on-site, salary ra
 
 | Company | Job title | Location | Work type | Salary (per year) | First seen |
 |---|---|---|---|---|---|
-| SpaceX | [Sr. AI Engineer, Supercomputing, Special Programs - Top Sec…](https://boards.greenhouse.io/spacex/jobs/8865268002?gh_jid=8865268002) | Hawthorne, CA | On-site | $220,000 to $350,000 | 2026-11-04 |
-| Anduril Industries | [Senior Machine Learning Engineer (Applied Intelligence)](https://boards.greenhouse.io/andurilindustries/jobs/5250787007?gh_jid=5250787007) | Santa Ana, CA | On-site | $220,000 to $292,000 | 2026-11-04 |
-| Databricks | [AI Engineer – Forward Deployed Engineering (AI FDE), U.S. P…](https://databricks.com/company/careers/open-positions/job?gh_jid=8760167002) | MD | Not stated | $182,000 to $250,208 | 2026-11-04 |
+| SpaceX | [Sr. AI Engineer, Supercomputing, Special Progra…](https://boards.greenhouse.io/spacex/jobs/8865268002?gh_jid=8865268002) | Hawthorne, CA | On-site | $220,000 to $350,000 | 2026-11-04 |
+| Anduril Industries | [Senior Machine Learning Engineer (Applied Intel…](https://boards.greenhouse.io/andurilindustries/jobs/5250787007?gh_jid=5250787007) | Santa Ana, CA | On-site | $220,000 to $292,000 | 2026-11-04 |
+| Databricks | [AI Engineer – Forward Deployed Engineering (AI…](https://databricks.com/company/careers/open-positions/job?gh_jid=8760167002) | MD | Not stated | $182,000 to $250,208 | 2026-11-04 |
 | OpenAI | [Machine Learning Engineer, Monetization AI/ML](https://jobs.ashbyhq.com/openai/80f9f564-d789-47bc-91c3-3babf5a1a33d) | San Francisco, CA | On-site | $381,000 to $555,000 | 2026-11-04 |
 | Accenture Federal Services | [Data Engineer Team Lead](https://boards.greenhouse.io/accenturefederalservices/jobs/4611519006?gh_jid=4611519006) | Arlington, VA | On-site | $160,700 to $306,500 | 2026-11-04 |
 
@@ -31,7 +31,7 @@ The latest run (2026-11-04) is the first day of data, so there is nothing to com
 - **Checked against a second source.** Every run re-reads 30 random jobs one by one from a second official address at the job board and compares the title and location. Latest run: 30 of 30 matched.
 - **Doubtful values are held back, not guessed.** In the latest run, 91 salary figures that looked wrong (far outside any normal yearly pay once converted) were left empty instead of published, and 12 malformed job ads were set aside. If a whole run looks wrong, it is not published at all and yesterday's data stays up until it is fixed.
 - **Nothing missing.** 1,500 of 1,500 company job boards were read in the latest run. A job only counts as closed after it is missing on two days in a row, so one bad day cannot wipe out real openings.
-- **Polite collection.** One request per company per day (1,531 requests in the latest run), a short pause between requests, no logins, and only the official public job-board feeds that the companies use for their own career pages.
+- **Polite collection.** One request per company per day, plus the 30 spot checks (1,531 requests in the latest run), a short pause between requests, no logins, and only the official public job-board feeds that the companies use for their own career pages.
 - **Tested every day.** The latest run passed all 91 automatic data checks. Missed or held days are counted in public: see the badges above and the [run log](public/runs.jsonl).
 
 ## How it works
@@ -71,7 +71,7 @@ I build and run pipelines like this one for clients: job boards, competitor care
 
 - **Free sample first.** You get 20 to 50 real rows from your own target sites before you pay anything.
 - **Fixed price.** A clear quote after the sample, with no hourly surprises.
-- **Data on schedule.** Daily, weekly or one-off, delivered as CSV, Excel, Google Sheets, Parquet or straight into your database.
+- **Data on schedule.** Daily, weekly or one-off, delivered as CSV, Excel, Google Sheets or straight into your database.
 
 **Contact:** [hello@siddharthkumar.com](mailto:hello@siddharthkumar.com) · [siddharthkumar.com](https://siddharthkumar.com)
 
@@ -84,7 +84,7 @@ It is collected every morning at 07:41 UTC. The latest run was on 2026-11-04. Th
 The daily checks notice it, that day's data is held back instead of published, and I get an alert. I fix the collector, usually the same day, and the incident goes in the public log above.
 
 **Which formats can I get?**
-CSV, Excel, Google Sheets, Parquet, JSON, or a direct load into your database or data warehouse. This project publishes CSV summaries and a monthly Parquet file.
+CSV, Excel, Google Sheets, JSON, Parquet (a compact file format that data tools read quickly), or a direct load into your database. This project publishes CSV summaries and a monthly Parquet file.
 
 **Can you track my competitors' sites?**
 Yes, if the information is publicly visible without logging in. Send me the list of sites and I will check what is possible and send a free sample.
