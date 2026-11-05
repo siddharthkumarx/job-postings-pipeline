@@ -1,4 +1,4 @@
-![Animation: open tech jobs are spread across 1,500 company job boards; one daily run collects them into one table (real rows: SpaceX, Anduril Industries, Databricks); result: 65,305 open jobs at 1,500 US tech companies, checked every day](assets/hero.svg)
+![Animation: open tech jobs are spread across 1,500 company job boards; one daily run collects them into one table (real rows: SpaceX, Anduril Industries, Databricks); result: 65,483 open jobs at 1,500 US tech companies, checked every day](assets/hero.svg)
 
 # US tech hiring data, checked every day
 
@@ -20,34 +20,34 @@ One row per open job: company, job title, location, remote or on-site, salary ra
 | OpenAI | [Machine Learning Engineer, Monetization AI/ML](https://jobs.ashbyhq.com/openai/80f9f564-d789-47bc-91c3-3babf5a1a33d) | San Francisco, CA | On-site | $381,000 to $555,000 | 2026-11-04 |
 | Accenture Federal Services | [Data Engineer Team Lead](https://boards.greenhouse.io/accenturefederalservices/jobs/4611519006?gh_jid=4611519006) | Arlington, VA | On-site | $160,700 to $306,500 | 2026-11-04 |
 
-The full table has 65,305 rows today. The download includes every field listed in the [data dictionary](#data-dictionary).
+The full table has 65,483 rows today. The download includes every field listed in the [data dictionary](#data-dictionary).
 
 ### What changed today
 
 Compared with the run of 2026-11-04:
 
-- **975 new roles** opened, most at Anduril Industries (46), SpaceX (43), Captivation Software (36).
+- **1,153 new roles** opened, most at Anduril Industries (55), SpaceX (45), Captivation Software (36).
 - **0 roles closed**.
-- **244 salary ranges** and **187 job titles** were edited by the companies.
+- **262 salary ranges** and **240 job titles** were edited by the companies.
 
 ## Why you can trust this data
 
 - **Checked against a second source.** Every run re-reads 30 random jobs one by one from a second official address at the job board and compares the title and location. Latest run (2026-11-05): 30 of 30 matched.
-- **Doubtful values are held back, not guessed.** In the latest run, 87 salary figures that looked wrong (far outside any normal yearly pay once converted) were left empty instead of published, and 12 malformed job ads were set aside. If a whole run looks wrong, it is not published at all and yesterday's data stays up until it is fixed.
+- **Doubtful values are held back, not guessed.** In the latest run, 86 salary figures that looked wrong (far outside any normal yearly pay once converted) were left empty instead of published, and 12 malformed job ads were set aside. If a whole run looks wrong, it is not published at all and yesterday's data stays up until it is fixed.
 - **Nothing missing.** 1,499 of 1,500 company job boards were read in the latest run. A job only counts as closed after it is missing on two days in a row, so one bad day cannot wipe out real openings.
 - **Polite collection.** One request per company per day, plus the 30 spot checks (1,530 requests in the latest run), a short pause between requests, no logins, and only the official public job-board feeds that the companies use for their own career pages.
 - **Tested every day.** The latest run passed all 91 automatic data checks. Missed or held days are counted in public: see the badges above and the [run log](public/runs.jsonl).
 
 ## How it works
 
-![Animation of the pipeline: source (3 job boards), collect (Python), check (dbt and pytest), store (DuckDB), deliver (GitHub, Hugging Face); 1,500 job boards in about 8 minutes every morning](assets/pipeline.svg)
+![Animation of the pipeline: source (3 job boards), collect (Python), check (dbt and pytest), store (DuckDB), deliver (GitHub, Hugging Face); 1,500 job boards in about 9 minutes every morning](assets/pipeline.svg)
 
 1. **Collect.** Each morning at 07:41 UTC, the pipeline reads the public job board of every tracked company: 779 on Greenhouse, 669 on Ashby and 52 on Lever.
 2. **Check.** Every job is cleaned and tested. Titles become role types (for example "data engineer"), locations become city and state, and salaries become yearly US dollars.
 3. **Store.** Each day's raw data is kept, so history (when a job opened, when it closed, when its salary changed) can always be rebuilt.
-4. **Deliver.** The clean table, the [dashboard](https://siddharthkumar.com/job-postings-pipeline/) and a monthly download are refreshed. A full run takes about 8 minutes.
+4. **Deliver.** The clean table, the [dashboard](https://siddharthkumar.com/job-postings-pipeline/) and a monthly download are refreshed. A full run takes about 9 minutes.
 
-![Bar chart of open data roles today: ml engineer 1,567, data engineer 504, data analyst 304, analytics engineer 115](assets/data-roles.svg)
+![Bar chart of open data roles today: ml engineer 1,568, data engineer 506, data analyst 305, analytics engineer 115](assets/data-roles.svg)
 
 ![Screenshot of the live dashboard: 1,500 companies tracked and open roles by role family, data roles, salary bands and days open](assets/dashboard.png)
 
