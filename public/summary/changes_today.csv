@@ -1,2 +1,8 @@
 kind,company,count,detail
-first_day,,0,2026-11-04
+new_total,,975,2026-11-04
+closed_total,,0,2026-11-04
+most_new,Anduril Industries,46,
+most_new,SpaceX,43,
+most_new,Captivation Software,36,
+salary_changed,,244,
+title_changed,,187,
