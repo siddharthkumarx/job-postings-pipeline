@@ -1,4 +1,4 @@
-# docs/maintainers.md: job-postings-pipeline
+# Maintainers' guide
 
 Read this first, then `docs/build-progress.md` ("Continue here" is at the bottom of this file).
 
@@ -92,9 +92,7 @@ Next:
    `pipeline-alert` issue. Fix problems and log them in `docs/incidents.md`, filling in
    both "In plain words" lines, because the README shows them. After a week of runs,
    tune the guard thresholds (D-012).
-2. To publish, follow `docs/publish-checklist.md`: a fresh public repo
-   `job-postings-pipeline` with a clean `main` (not a rename), without `docs/private/`, with
-   this file moved to `docs/maintainers.md`, the `templates/readme.yml` URLs checked, the
-   release assets copied, and `docs/repo-settings.md` applied.
+2. Publishing was done in place on 2026-11-05 (see `docs/publish-checklist.md`). The
+   remaining manual settings are listed there and in `docs/repo-settings.md`.
 3. Re-render `media/linkedin-hero.mp4` and `assets/social-preview.png` with
    `node scripts/render_media.js` whenever you post them, so they show current numbers.

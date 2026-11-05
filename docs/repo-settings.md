@@ -1,6 +1,6 @@
 # Repository settings (paste into the public repo)
 
-The public repo is created fresh, not renamed; follow `docs/publish-checklist.md` first.
+The repo was published in place (see `docs/publish-checklist.md`); these are the settings to click.
 
 ## About → Description (under 350 characters)
 
@@ -42,4 +42,4 @@ Settings → General → Social preview → upload `assets/social-preview.png` (
 - **Secret `HF_TOKEN`:** a Hugging Face write token, for the dataset upload (the run skips it cleanly when absent).
 - **Default branch:** `main`. The badge URLs read `public/badges/*.json` from `main` (set in `templates/readme.yml`).
 - **Releases:** the `dataset-YYYY-MM` release is marked "latest" by every run, so the README's "Download the data" link always points at the current month.
-- **Before publishing:** follow `docs/publish-checklist.md` (drop `docs/private/`, rename `docs/maintainers.md` to `docs/maintainers.md`, check `templates/readme.yml`).
+- **Publishing record:** `docs/publish-checklist.md`.
