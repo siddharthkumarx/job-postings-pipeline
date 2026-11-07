@@ -1,8 +1,8 @@
 kind,company,count,detail
-new_total,,1068,2026-11-05
-closed_total,,0,2026-11-05
-most_new,Anduril Industries,42,
+new_total,,944,2026-11-06
+closed_total,,0,2026-11-06
+most_new,Anduril Industries,38,
+most_new,Samsara,33,
 most_new,SpaceX,32,
-most_new,Samsara,30,
-salary_changed,,258,
-title_changed,,238,
+salary_changed,,120,
+title_changed,,194,

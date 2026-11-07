@@ -1,4 +1,4 @@
-![Animation: open tech jobs are spread across 1,500 company job boards; one daily run collects them into one table (real rows: SpaceX, Anduril Industries, Databricks); result: 65,378 open jobs at 1,500 US tech companies, checked every day](assets/hero.svg)
+![Animation: open tech jobs are spread across 1,500 company job boards; one daily run collects them into one table (real rows: SpaceX, Anduril Industries, Databricks); result: 65,120 open jobs at 1,500 US tech companies, checked every day](assets/hero.svg)
 
 # US tech hiring data, checked every day
 
@@ -10,30 +10,30 @@ Every open job at 1,500 US tech companies, collected each morning from their pub
 
 ## What you get
 
-One row per open job: company, job title, location, remote or on-site, salary range when the company publishes one, the date it was first seen and a link to the original posting. Here are 5 real rows from the run of 2026-11-06:
+One row per open job: company, job title, location, remote or on-site, salary range when the company publishes one, the date it was first seen and a link to the original posting. Here are 5 real rows from the run of 2026-11-07:
 
 | Company | Job title | Location | Work type | Salary (per year) | First seen |
 |---|---|---|---|---|---|
 | SpaceX | [Sr. AI Engineer, Supercomputing, Special Progra…](https://boards.greenhouse.io/spacex/jobs/8865268002?gh_jid=8865268002) | Hawthorne, CA | On-site | $220,000 to $350,000 | 2026-11-04 |
-| Anduril Industries | [Senior Machine Learning Engineer (Applied Intel…](https://boards.greenhouse.io/andurilindustries/jobs/5250787007?gh_jid=5250787007) | Santa Ana, CA | On-site | $220,000 to $292,000 | 2026-11-04 |
+| Anduril Industries | [Senior Machine Learning Tracking Engineer](https://boards.greenhouse.io/andurilindustries/jobs/5274649007?gh_jid=5274649007) | Waltham, MA | On-site | $220,000 to $292,000 | 2026-11-04 |
 | Databricks | [AI Engineer – Forward Deployed Engineering (AI…](https://databricks.com/company/careers/open-positions/job?gh_jid=8760167002) | MD | Not stated | $182,000 to $250,208 | 2026-11-04 |
 | OpenAI | [Machine Learning Engineer, Monetization AI/ML](https://jobs.ashbyhq.com/openai/80f9f564-d789-47bc-91c3-3babf5a1a33d) | San Francisco, CA | On-site | $381,000 to $555,000 | 2026-11-04 |
 | Accenture Federal Services | [Data Engineer Team Lead](https://boards.greenhouse.io/accenturefederalservices/jobs/4611519006?gh_jid=4611519006) | Arlington, VA | On-site | $160,700 to $306,500 | 2026-11-04 |
 
-The full table has 65,378 rows today. The download includes every field listed in the [data dictionary](#data-dictionary).
+The full table has 65,120 rows today. The download includes every field listed in the [data dictionary](#data-dictionary).
 
 ### What changed today
 
-Compared with the run of 2026-11-05:
+Compared with the run of 2026-11-06:
 
-- **1,068 new roles** opened, most at Anduril Industries (42), SpaceX (32), Samsara (30).
+- **944 new roles** opened, most at Anduril Industries (38), Samsara (33), SpaceX (32).
 - **0 roles closed**.
-- **258 salary ranges** and **238 job titles** were edited by the companies.
+- **120 salary ranges** and **194 job titles** were edited by the companies.
 
 ## Why you can trust this data
 
-- **Checked against a second source.** Every run re-reads 30 random jobs one by one from a second official address at the job board and compares the title and location. Latest run (2026-11-06): 30 of 30 matched.
-- **Doubtful values are held back, not guessed.** In the latest run, 87 salary figures that looked wrong (far outside any normal yearly pay once converted) were left empty instead of published, and 12 malformed job ads were set aside. If a whole run looks wrong, it is not published at all and yesterday's data stays up until it is fixed.
+- **Checked against a second source.** Every run re-reads 30 random jobs one by one from a second official address at the job board and compares the title and location. Latest run (2026-11-07): 30 of 30 matched.
+- **Doubtful values are held back, not guessed.** In the latest run, 90 salary figures that looked wrong (far outside any normal yearly pay once converted) were left empty instead of published, and 12 malformed job ads were set aside. If a whole run looks wrong, it is not published at all and yesterday's data stays up until it is fixed.
 - **Nothing missing.** 1,499 of 1,500 company job boards were read in the latest run. A job only counts as closed after it is missing on two days in a row, so one bad day cannot wipe out real openings.
 - **Polite collection.** One request per company per day, plus the 30 spot checks (1,530 requests in the latest run), a short pause between requests, no logins, and only the official public job-board feeds that the companies use for their own career pages.
 - **Tested every day.** The latest run passed all 91 automatic data checks. Missed or held days are counted in public: see the badges above and the [run log](public/runs.jsonl).
@@ -47,7 +47,7 @@ Compared with the run of 2026-11-05:
 3. **Store.** Each day's raw data is kept, so history (when a job opened, when it closed, when its salary changed) can always be rebuilt.
 4. **Deliver.** The clean table, the [dashboard](https://siddharthkumar.com/job-postings-pipeline/) and a monthly download are refreshed. A full run takes about 9 minutes.
 
-![Bar chart of open data roles today: ml engineer 1,559, data engineer 505, data analyst 308, analytics engineer 115](assets/data-roles.svg)
+![Bar chart of open data roles today: ml engineer 1,560, data engineer 502, data analyst 300, analytics engineer 115](assets/data-roles.svg)
 
 ![Screenshot of the live dashboard: 1,500 companies tracked and open roles by role family, data roles, salary bands and days open](assets/dashboard.png)
 
@@ -82,7 +82,7 @@ I build and run pipelines like this one for clients: job boards, competitor care
 ## FAQ
 
 **How fresh is the data?**
-It is collected every morning at 07:41 UTC. The latest run was on 2026-11-06. The badges at the top always show the last run and any missed days.
+It is collected every morning at 07:41 UTC. The latest run was on 2026-11-07. The badges at the top always show the last run and any missed days.
 
 **What happens when a site changes?**
 The daily checks notice it, that day's data is held back instead of published, and I get an alert. I fix the collector, usually the same day, and the incident goes in the public log above.
@@ -101,7 +101,7 @@ Either a fixed monthly price for a running pipeline or a one-time price for a si
 
 ## Data dictionary
 
-One row per job posting ever seen. The examples are real values from the run of 2026-11-06.
+One row per job posting ever seen. The examples are real values from the run of 2026-11-07.
 
 | Field | Type | Meaning | Example |
 |---|---|---|---|
@@ -135,10 +135,10 @@ One row per job posting ever seen. The examples are real values from the run of 
 | `job_url` | text | Link to the original posting | [link](https://boards.greenhouse.io/spacex/jobs/8579126002?gh_jid=8579126002) |
 | `published_at` | date and time (UTC) | When the company published or last updated the posting | 2026-06-09 21:04:05+00:00 |
 | `first_seen` | date | First day the job was seen | 2026-11-04 |
-| `last_seen` | date | Last day the job was seen | 2026-11-06 |
+| `last_seen` | date | Last day the job was seen | 2026-11-07 |
 | `closed_on` | date | Day the job was counted as closed (missing two days in a row) | empty while the job is open |
 | `is_open` | yes / no | Whether the job was open in the latest run | true |
-| `days_open` | whole number | Days the job has been open so far, or was open in total | 3 |
+| `days_open` | whole number | Days the job has been open so far, or was open in total | 4 |
 | `left_censored` | yes / no | Yes if the job was already open on the first day it was tracked | true |
 | `version_count` | whole number | How many times the title, location or salary changed, plus one | 1 |
 | `taxonomy_version` | text | Version of the rules used for role type and level | 2026-11-03 |
