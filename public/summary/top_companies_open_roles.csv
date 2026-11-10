@@ -1,101 +1,101 @@
 company_name,provider,open_postings,open_us_postings
-SpaceX,greenhouse,2930,2901
-Anduril Industries,greenhouse,2621,2488
-Databricks,greenhouse,928,477
-OpenAI,ashby,823,645
-Stripe,greenhouse,774,359
-Accenture Federal Services,greenhouse,733,729
-Anthropic,greenhouse,681,507
-Shield AI,lever,665,552
-Rocket Lab Corporation,greenhouse,545,449
-Axon,greenhouse,489,388
-Esri,greenhouse,487,468
-Lucid Motors,greenhouse,462,348
-Alpaca Health,ashby,418,413
-Datadog,greenhouse,410,223
-Relativity Space,greenhouse,410,410
-Harvey,ashby,377,255
-Snowflake,ashby,374,233
-Waymo,greenhouse,371,312
-Everpure,greenhouse,364,190
-Braze,greenhouse,361,260
-Olsson,greenhouse,352,314
+SpaceX,greenhouse,2934,2904
+Anduril Industries,greenhouse,2621,2485
+Databricks,greenhouse,932,478
+OpenAI,ashby,837,650
+Stripe,greenhouse,784,363
+Accenture Federal Services,greenhouse,736,733
+Anthropic,greenhouse,685,510
+Shield AI,lever,680,566
+Rocket Lab Corporation,greenhouse,551,456
+Esri,greenhouse,499,477
+Axon,greenhouse,486,389
+Lucid Motors,greenhouse,468,348
+Alpaca Health,ashby,423,418
+Relativity Space,greenhouse,405,405
+Datadog,greenhouse,404,221
+Waymo,greenhouse,384,316
+Snowflake,ashby,378,234
+Harvey,ashby,377,254
+Everpure,greenhouse,376,198
+Braze,greenhouse,360,259
+Olsson,greenhouse,352,313
 Zipline,greenhouse,347,319
-Verkada,greenhouse,346,274
-ATOMS Careers page,greenhouse,341,268
+Verkada,greenhouse,344,272
+ATOMS Careers page,greenhouse,342,269
+Crusoe,ashby,329,313
 Holder Construction,greenhouse,327,323
-Crusoe,ashby,324,308
-Samsara,greenhouse,317,145
-Palantir,lever,305,237
-SpaceXSI,greenhouse,304,274
-CoreWeave,greenhouse,295,287
-Coinbase,greenhouse,286,186
-AST SpaceMobile,greenhouse,275,226
-Brex,greenhouse,270,218
-Roblox,greenhouse,270,246
+Samsara,greenhouse,318,145
+SpaceXSI,greenhouse,315,275
+CoreWeave,greenhouse,304,296
+Palantir,lever,304,237
+Coinbase,greenhouse,287,187
+Brex,greenhouse,277,222
+Roblox,greenhouse,274,249
+AST SpaceMobile,greenhouse,271,222
 Saronic,ashby,269,266
-Fluidstack,ashby,253,249
-K2 Space,greenhouse,253,237
-GitLab,greenhouse,251,61
-Xometry,greenhouse,243,212
+GitLab,greenhouse,255,64
+K2 Space,greenhouse,252,236
+Fluidstack,ashby,251,247
+Xometry,greenhouse,247,216
+Formlabs,greenhouse,245,188
 Zoox,lever,241,239
-Formlabs,greenhouse,240,182
-PlayStation Global,greenhouse,225,137
-ALTEN Technology USA,greenhouse,222,221
-Sierra,ashby,217,124
-True Anomaly,greenhouse,212,211
-"Atwell, LLC",greenhouse,210,129
-Scout Motors,greenhouse,208,206
-Airbnb,greenhouse,206,101
-Form Energy,ashby,205,205
-Vast,greenhouse,205,202
-Point72,greenhouse,201,103
-Horizon3 AI,ashby,192,148
-Astranis,greenhouse,189,189
+PlayStation Global,greenhouse,234,142
+ALTEN Technology USA,greenhouse,223,222
+Cursor,ashby,218,147
+Sierra,ashby,216,123
+"Atwell, LLC",greenhouse,215,130
+Vast,greenhouse,214,211
+True Anomaly,greenhouse,213,212
+Airbnb,greenhouse,208,101
+Scout Motors,greenhouse,207,205
+Form Energy,ashby,206,206
+Point72,greenhouse,200,103
+Horizon3 AI,ashby,194,151
+Astranis,greenhouse,190,190
 "Voyager Technologies, Inc.",greenhouse,183,176
-Astera Labs,greenhouse,180,91
+Astera Labs,greenhouse,181,92
+Fivetran,greenhouse,177,116
 Rivian and VW Group Technology,ashby,176,142
-Fivetran,greenhouse,174,111
-CHAOS Industries,greenhouse,173,158
-Ramp,ashby,169,152
-Pinterest,greenhouse,168,125
-Scale AI,greenhouse,168,118
-Hadrian Automation,ashby,166,166
-Lyft,greenhouse,166,91
-DRW,greenhouse,165,87
-Reddit,greenhouse,163,130
-DLR Group,greenhouse,160,160
-Appian Corporation,greenhouse,159,112
-STR,greenhouse,157,146
-Robinhood,greenhouse,156,128
-Notion,ashby,155,79
-Rubrik Job Board,greenhouse,153,75
+CHAOS Industries,greenhouse,174,158
+Ramp,ashby,174,157
+Pinterest,greenhouse,172,129
+Scale AI,greenhouse,171,120
+Hadrian Automation,ashby,169,169
+DRW,greenhouse,164,87
+Reddit,greenhouse,163,131
+Lyft,greenhouse,161,90
+STR,greenhouse,161,150
+Appian Corporation,greenhouse,160,113
+DLR Group,greenhouse,159,159
+Robinhood,greenhouse,155,128
+Notion,ashby,153,78
 Klaviyo,greenhouse,152,126
+Rubrik Job Board,greenhouse,152,76
 Benesch,greenhouse,147,140
-Figma,greenhouse,147,96
-SharkNinja,greenhouse,144,115
+Figma,greenhouse,147,95
+Box,greenhouse,146,78
+Divergent,greenhouse,145,145
 Commonwealth Fusion Systems,lever,143,143
+Muon Space,greenhouse,143,114
+SharkNinja,greenhouse,143,116
 "Gotion, Inc.",greenhouse,142,134
-Muon Space,greenhouse,142,114
-Divergent,greenhouse,138,138
 Perplexity,ashby,138,118
-Box,greenhouse,137,71
-Re:Build Manufacturing,greenhouse,137,137
+Re:Build Manufacturing,greenhouse,138,138
+General Matter,greenhouse,137,137
 Apex Technology,ashby,135,135
-CannonDesign,greenhouse,134,129
-General Matter,greenhouse,132,132
+CannonDesign,greenhouse,133,129
+Epic Games,greenhouse,133,54
 Decagon,ashby,131,99
-Epic Games,greenhouse,131,52
-Woolpert,greenhouse,131,121
-Redwood Materials,greenhouse,130,130
-Tenstorrent,greenhouse,127,70
-Glean,greenhouse,125,94
-Varda Space Industries,greenhouse,125,125
-BETA Technologies,greenhouse,124,122
-Cohere,ashby,124,33
-Planet,greenhouse,123,61
-Lila Sciences,greenhouse,122,122
-Cursor,ashby,121,81
-IonQ,greenhouse,120,73
+Redwood Materials,greenhouse,131,131
+Woolpert,greenhouse,130,119
+Cohere,ashby,128,36
+Lila Sciences,greenhouse,126,126
+Varda Space Industries,greenhouse,126,126
+Tenstorrent,greenhouse,125,68
+Glean,greenhouse,124,94
+BETA Technologies,greenhouse,123,121
+Planet,greenhouse,122,62
+Ripple,greenhouse,122,68
 Ursa Major,greenhouse,120,115
-Ripple,greenhouse,117,64
+IonQ,greenhouse,119,72
