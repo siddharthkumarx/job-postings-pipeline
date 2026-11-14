@@ -1,8 +1,8 @@
 kind,company,count,detail
-new_total,,1000,2026-11-12
-closed_total,,0,2026-11-12
-most_new,SpaceX,52,
-most_new,Anduril Industries,34,
-most_new,Qualtrics,27,
-salary_changed,,211,
-title_changed,,232,
+new_total,,880,2026-11-13
+closed_total,,0,2026-11-13
+most_new,Anduril Industries,56,
+most_new,SpaceX,22,
+most_new,Canals,17,
+salary_changed,,144,
+title_changed,,140,
