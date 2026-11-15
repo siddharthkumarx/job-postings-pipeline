@@ -1,8 +1,8 @@
 kind,company,count,detail
-new_total,,880,2026-11-13
-closed_total,,0,2026-11-13
-most_new,Anduril Industries,56,
-most_new,SpaceX,22,
-most_new,Canals,17,
-salary_changed,,144,
-title_changed,,140,
+new_total,,56,2026-11-14
+closed_total,,0,2026-11-14
+most_new,Mirage,5,
+most_new,GitLab,4,
+most_new,LangChain,4,
+salary_changed,,25,
+title_changed,,9,
