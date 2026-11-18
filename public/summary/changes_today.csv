@@ -1,8 +1,8 @@
 kind,company,count,detail
-new_total,,1082,2026-11-16
-closed_total,,0,2026-11-16
-most_new,SpaceX,90,
-most_new,Anduril Industries,41,
-most_new,Lucid Motors,22,
-salary_changed,,206,
-title_changed,,259,
+new_total,,1004,2026-11-17
+closed_total,,0,2026-11-17
+most_new,SpaceX,46,
+most_new,Anduril Industries,29,
+most_new,Stripe,18,
+salary_changed,,168,
+title_changed,,256,
