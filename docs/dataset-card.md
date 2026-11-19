@@ -22,7 +22,7 @@ configs:
 
 # US tech job postings (daily)
 
-Open jobs at 1,500 US tech companies, collected every day from their public Greenhouse, Lever and Ashby job boards by the open-source pipeline [siddharthkumarx/job-postings-pipeline](https://github.com/siddharthkumarx/job-postings-pipeline). The latest run, on 2026-11-18, listed 64,268 open postings.
+Open jobs at 1,500 US tech companies, collected every day from their public Greenhouse, Lever and Ashby job boards by the open-source pipeline [siddharthkumarx/job-postings-pipeline](https://github.com/siddharthkumarx/job-postings-pipeline). The latest run, on 2026-11-19, listed 64,238 open postings.
 
 ## Dataset summary
 
