@@ -1,8 +1,8 @@
 kind,company,count,detail
-new_total,,1065,2026-11-18
-closed_total,,0,2026-11-18
-most_new,Anduril Industries,45,
-most_new,SpaceX,39,
-most_new,Everpure,26,
-salary_changed,,165,
-title_changed,,286,
+new_total,,1000,2026-11-19
+closed_total,,0,2026-11-19
+most_new,SpaceX,57,
+most_new,Anduril Industries,44,
+most_new,OpenAI,27,
+salary_changed,,164,
+title_changed,,198,
