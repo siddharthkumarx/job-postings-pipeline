@@ -28,19 +28,30 @@ def hbars(
     rows: Sequence[tuple[str, float, str]],
     *,
     caption: str,
-    tone: str = "teal",
+    tone: str = "good",
     highlight: set[str] | None = None,
+    highlight_label: str = "",
 ) -> str:
-    """Horizontal bars: (label, value, value_text). Highlighted labels use amber."""
+    """Horizontal bars: (label, value, value_text).
+
+    Highlighted rows use the look-here colour and carry ``highlight_label`` as a direct
+    text label, so the colour never has to be decoded from a legend.
+    """
     if not rows:
         return '<p class="empty">No data yet.</p>'
     top = max(v for _, v, _ in rows) or 1
     items = []
     for label, value, text in rows:
-        cls = "amber" if highlight and label in highlight else tone
+        hl = bool(highlight and label in highlight)
+        cls = "look" if hl else tone
         width = max(0.5, 100 * value / top)
+        tag = (
+            f'<span class="tag-look">{escape(highlight_label)}</span>'
+            if hl and highlight_label
+            else ""
+        )
         items.append(
-            f'<li><span class="bar-label">{escape(label)}</span>'
+            f'<li><span class="bar-label">{escape(label)}{tag}</span>'
             f'<span class="bar-track"><span class="bar {cls}" style="width:{width:.1f}%" '
             f'title="{escape(label)}: {escape(text)}"></span></span>'
             f'<span class="bar-value">{escape(text)}</span></li>'
@@ -68,7 +79,7 @@ def ranges(
         items.append(
             f'<li><span class="bar-label">{escape(label)}</span>'
             f'<span class="range-track" title="{escape(tip)}">'
-            f'<span class="range teal" style="left:{pos(p25):.1f}%;'
+            f'<span class="range good" style="left:{pos(p25):.1f}%;'
             f'width:{pos(p75) - pos(p25):.1f}%"></span>'
             f'<span class="median" style="left:{pos(med):.1f}%"></span></span>'
             f'<span class="bar-value">{fmt_usd(med)} <span class="quiet">n={n:,}</span></span></li>'
@@ -97,7 +108,7 @@ def _nice_ticks(lo: float, hi: float, n: int) -> list[float]:
     return out
 
 
-def columns(rows: Sequence[tuple[str, float, str]], *, caption: str, tone: str = "teal") -> str:
+def columns(rows: Sequence[tuple[str, float, str]], *, caption: str, tone: str = "good") -> str:
     """Vertical columns (histogram bands): (label, value, value_text)."""
     if not rows or not any(v for _, v, _ in rows):
         return '<p class="empty">No data yet.</p>'
@@ -123,7 +134,11 @@ def line(
     height: int = 200,
     width: int = 640,
 ) -> str:
-    """Line chart in SVG. series: (name, [(x_label, y)], tone). ≥ 2 series get a legend."""
+    """Line chart in SVG. series: (name, [(x_label, y)], tone).
+
+    With two or more series, each line ends in a direct label (name and latest value), set in
+    HTML so it stays readable when the SVG scales down on phones.
+    """
     pts_all = [y for _, pts, _ in series for _, y in pts]
     if not pts_all:
         return '<p class="empty">No data yet.</p>'
@@ -139,7 +154,8 @@ def line(
         )
     ymax = max(pts_all) or 1
     ymin = 0.0
-    pad_l, pad_r, pad_t, pad_b = 8, 8, 10, 10
+    labelled = len(series) > 1
+    pad_l, pad_r, pad_t, pad_b = 8, 8, 34 if labelled else 10, 10
     w, h = width - pad_l - pad_r, height - pad_t - pad_b
 
     def px(i: int) -> float:
@@ -149,11 +165,13 @@ def line(
         return pad_t + h - h * (v - ymin) / (ymax - ymin)
 
     grid = "".join(
-        f'<line class="grid" x1="{pad_l}" x2="{width - pad_r}" y1="{py(ymax * f):.1f}" '
+        f'<line class="gridline" x1="{pad_l}" x2="{width - pad_r}" y1="{py(ymax * f):.1f}" '
         f'y2="{py(ymax * f):.1f}"/>'
         for f in (0, 0.5, 1)
     )
-    paths, dots = [], []
+    paths: list[str] = []
+    dots: list[str] = []
+    ends: list[tuple[float, str, str, float]] = []
     for name, pts, tone in series:
         lookup = dict(pts)
         coords = [(px(i), py(lookup[x]), x, lookup[x]) for i, x in enumerate(xs) if x in lookup]
@@ -165,31 +183,33 @@ def line(
             paths.append(f'<path class="line {tone}" d="{d}"/>')
         for cx, cy, x, y in coords:
             dots.append(
-                f'<circle class="dot {tone}" cx="{cx:.1f}" cy="{cy:.1f}" r="4">'
+                f'<circle class="pt {tone}" cx="{cx:.1f}" cy="{cy:.1f}" r="4">'
                 f"<title>{escape(name)} · {escape(x)}: {fmt_int(y)}</title></circle>"
             )
+        if coords:
+            ends.append((100 * coords[-1][1] / height, name, tone, coords[-1][3]))
+    labels = ""
+    if labelled:
+        ends.sort(key=lambda e: e[0])
+        tops = [e[0] for e in ends]
+        for k in range(1, len(tops)):  # keep stacked end labels at least 13 % apart
+            tops[k] = max(tops[k], tops[k - 1] + 13)
+        labels = "".join(
+            f'<span class="end-label" style="top:{top:.1f}%"><span class="swatch {tone}"></span>'
+            f"{escape(name)} {fmt_int(v)}</span>"
+            for top, (_, name, tone, v) in zip(tops, ends, strict=True)
+        )
     first, last = xs[0], xs[-1]
-    # Axis labels are HTML so they stay readable when the SVG scales down on phones.
     axis = (
         f'<div class="axis-row" aria-hidden="true"><span>{escape(first)}</span>'
         f"<span>max {fmt_int(ymax)}</span><span>{escape(last)}</span></div>"
     )
-    legend = ""
-    if len(series) > 1:
-        legend = (
-            '<ul class="legend" role="list">'
-            + "".join(
-                f'<li><span class="swatch {tone}"></span>{escape(name)}</li>'
-                for name, _, tone in series
-            )
-            + "</ul>"
-        )
     label = escape(caption)
     return (
-        f'<figure class="chart"><figcaption>{label}</figcaption>{legend}'
+        f'<figure class="chart"><figcaption>{label}</figcaption><div class="plot">'
         f'<svg viewBox="0 0 {width} {height}" role="img" aria-label="{label}" '
         f'preserveAspectRatio="xMidYMid meet">{grid}{"".join(paths)}{"".join(dots)}</svg>'
-        f"{axis}</figure>"
+        f"{labels}</div>{axis}</figure>"
     )
 
 

@@ -1,4 +1,6 @@
-"""Screenshot site/index.html at 360, 768 and 1440 px and report horizontal overflow.
+"""Screenshot site/index.html at 360, 390, 768, 1280 and 1440 px; report horizontal overflow.
+
+The 1440-px top of the page at 2x becomes assets/dashboard.png (the README image).
 
 Run: uv run --with playwright==1.64.1 python scripts/screenshots.py site docs/screenshots
 """
@@ -18,7 +20,7 @@ def main(site: Path, out: Path) -> int:
     report = {}
     with sync_playwright() as p:
         browser = p.chromium.launch(executable_path=os.environ.get("CHROMIUM_PATH") or None)
-        for width in (360, 768, 1440):
+        for width in (360, 390, 768, 1280, 1440):
             page = browser.new_page(viewport={"width": width, "height": 900}, device_scale_factor=2)
             page.emulate_media(reduced_motion="reduce")
             page.goto((site / "index.html").resolve().as_uri())

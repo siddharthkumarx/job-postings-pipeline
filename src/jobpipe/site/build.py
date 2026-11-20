@@ -13,9 +13,27 @@ from html import escape
 from pathlib import Path
 from typing import Any
 
+from jobpipe.readme_data import schedule_note
 from jobpipe.site import charts as c
 
 ASSETS = Path(__file__).parent / "assets"
+REPO_URL = "https://github.com/siddharthkumarx/job-postings-pipeline"
+STEADYDATA = "https://steadydata.co"
+STEADYDATA_CONTACT = "https://steadydata.co/contact/"
+CONTACT_EMAIL = "hello@steadydata.co"
+MARK = (
+    '<svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" '
+    'height="32" rx="8" fill="#0B7468"/><rect x="8" y="16" width="4" height="9" rx="1.5" '
+    'fill="#FFFFFF"/><rect x="14" y="11" width="4" height="14" rx="1.5" fill="#FFFFFF"/>'
+    '<rect x="20" y="7" width="4" height="18" rx="1.5" fill="#FFFFFF"/></svg>'
+)
+FAVICON = (
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E"
+    "%3Crect width='32' height='32' rx='8' fill='%230B7468'/%3E%3Crect x='8' y='16' "
+    "width='4' height='9' rx='1.5' fill='%23FFFFFF'/%3E%3Crect x='14' y='11' width='4' "
+    "height='14' rx='1.5' fill='%23FFFFFF'/%3E%3Crect x='20' y='7' width='4' height='18' "
+    "rx='1.5' fill='%23FFFFFF'/%3E%3C/svg%3E"
+)
 DATA_ROLES = ["data_engineer", "analytics_engineer", "data_analyst", "ml_engineer"]
 LABELS = {
     "software_engineer": "Software engineer",
@@ -195,7 +213,7 @@ def _kpi(label_: str, value: str, sub: str = "") -> str:
     )
 
 
-def render(d: dict[str, Any], st: dict[str, Any]) -> str:
+def render(d: dict[str, Any], st: dict[str, Any], runs: list[dict[str, Any]] | None = None) -> str:
     latest: date | None = d["latest"]
     companies, open_roles, us_share, data_open, salary_share, remote_share = d["kpi"]
     days = [(str(r[0]), float(r[1])) for r in d["daily"]]
@@ -210,8 +228,8 @@ def render(d: dict[str, Any], st: dict[str, Any]) -> str:
             _kpi("Open data roles", c.fmt_int(data_open), "DE · AE · DA · MLE"),
             _kpi("US roles with salary", c.fmt_pct(salary_share), "pay published"),
             _kpi(
-                "Days running",
-                c.fmt_int(st.get("days_running")),
+                "Daily runs delivered",
+                f"{c.fmt_int(st.get('runs_published'))} of {c.fmt_int(st.get('days_running'))}",
                 f"missed runs: {st.get('missed_runs', '–')}",
             ),
         ]
@@ -219,7 +237,7 @@ def render(d: dict[str, Any], st: dict[str, Any]) -> str:
 
     trends = (
         '<div class="grid">'
-        f'<div class="panel">{c.line([("Open roles", days, "teal")], caption="Open roles per run")}'
+        f'<div class="panel">{c.line([("Open roles", days, "good")], caption="Open roles per run")}'
         + c.table(
             ["Run date", "Open roles"],
             [(x, c.fmt_int(y)) for x, y in days],
@@ -229,7 +247,7 @@ def render(d: dict[str, Any], st: dict[str, Any]) -> str:
         + "</div>"
         '<div class="panel">'
         + c.line(
-            [("New roles", flows_new, "teal"), ("Closed roles", flows_closed, "amber")],
+            [("New roles", flows_new, "good"), ("Closed roles", flows_closed, "look")],
             caption="New vs closed roles per run",
         )
         + c.table(
@@ -247,9 +265,12 @@ def render(d: dict[str, Any], st: dict[str, Any]) -> str:
     families = (
         '<div class="grid"><div class="panel">'
         + c.hbars(
-            fam_rows, caption="Open roles by role family", highlight={label(f) for f in DATA_ROLES}
+            fam_rows,
+            caption="Open roles by role family",
+            highlight={label(f) for f in DATA_ROLES},
+            highlight_label="data role",
         )
-        + '<p class="section-note">Amber bars are the four data roles.</p></div>'
+        + "</div>"
         '<div class="panel">'
         + c.hbars(
             [(label(p), float(o or 0), f"{c.fmt_int(o)} · {n} cos") for p, n, o in d["providers"]],
@@ -268,10 +289,10 @@ def render(d: dict[str, Any], st: dict[str, Any]) -> str:
         for f in DATA_ROLES
     ]
     series_tones = {
-        "data_engineer": "teal",
-        "analytics_engineer": "teal",
-        "data_analyst": "teal",
-        "ml_engineer": "teal",
+        "data_engineer": "good",
+        "analytics_engineer": "good",
+        "data_analyst": "good",
+        "ml_engineer": "good",
     }
     data_daily: dict[str, list[tuple[str, float]]] = {}
     for run_date, fam, n in d["data_daily"]:
@@ -405,45 +426,80 @@ def render(d: dict[str, Any], st: dict[str, Any]) -> str:
             ("about", "About the data"),
         ]
     )
-    meta = (
-        f"<span>Latest run {latest}</span><span>First run {st.get('first_run', '–')}</span>"
-        f"<span>Status {escape(str(st.get('last_status', '–')))}</span>"
+    sched = schedule_note(runs or [])
+    late_note = ""
+    if sched.get("late"):
+        late_note = (
+            f"<p>Schedule: the run is due at 07:41 UTC. Over the last {sched['runs']} days,"
+            f" GitHub's scheduler started it {sched['min_h']} to {sched['max_h']} hours late"
+            f" (median {sched['median_h']} hours), so new data usually arrives in the"
+            " afternoon UTC. Every one of those days was still delivered.</p>"
+        )
+    ok = st.get("last_status") == "published"
+    pill = (
+        f'<span class="dot {"good" if ok else "look"}" aria-hidden="true"></span>'
+        f"Latest run {escape(str(st.get('last_run', latest)))}: "
+        f"{escape(str(st.get('last_status', '–')))} · daily runs delivered "
+        f"{c.fmt_int(st.get('runs_published'))} of {c.fmt_int(st.get('days_running'))}"
+    )
+    description = (
+        f"Daily open roles at {c.fmt_int(companies)} US tech companies from their public "
+        "Greenhouse, Lever and Ashby job boards: hiring trends, data roles, salary bands and "
+        "days open."
     )
     return f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>US tech hiring: daily job-board data</title>
-<meta name="description" content="Daily open roles at {c.fmt_int(companies)} US tech companies from their public Greenhouse, Lever and Ashby job boards: hiring trends, data roles, salary bands and days open.">
-<meta name="theme-color" content="#0B1416">
-<link rel="preload" href="assets/fonts/instrument-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/ibm-plex-mono-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<title>US tech hiring data, checked every day</title>
+<meta name="description" content="{escape(description)}">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preload" href="assets/fonts/plus-jakarta-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/plus-jakarta-sans-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/site.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%230B1416'/%3E%3Crect x='3' y='8' width='2' height='5' fill='%232FBFAE'/%3E%3Crect x='7' y='5' width='2' height='8' fill='%232FBFAE'/%3E%3Crect x='11' y='3' width='2' height='10' fill='%23E9A93C'/%3E%3C/svg%3E">
+<link rel="icon" href="{FAVICON}">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="top"><div class="wrap">
-<h1>US tech hiring, from the job boards</h1>
-<p class="lede">Open roles at {c.fmt_int(companies)} US tech companies, read once a day from their public Greenhouse, Lever and Ashby job boards and modelled in DuckDB + dbt.</p>
-<p class="meta">{meta}</p>
-</div></header>
+<div class="wrap">
+<div class="topbar">
+<a class="brand" href="{REPO_URL}">{MARK}<span>US tech hiring data</span></a>
+<span class="by">Built by SteadyData · <a href="{STEADYDATA_CONTACT}">Get a free sample</a></span>
+</div>
+<header class="hero">
+<h1>US tech hiring data, checked every day</h1>
+<p class="lede">Every open job at {c.fmt_int(companies)} US tech companies, read once a day from their public Greenhouse, Lever and Ashby job boards, checked, and delivered as one clean table.</p>
+<p class="status" role="status">{pill}</p>
+</header>
+</div>
 <nav class="sections" aria-label="Sections"><div class="wrap"><ul>{nav}</ul></div></nav>
-<main id="main" class="wrap">
-<section id="overview" aria-labelledby="h-overview"><h2 id="h-overview" class="skip">Overview</h2><ul class="kpis" role="list">{kpis}</ul>
-<p class="section-note" style="margin-top:12px">Remote share of open roles: {c.fmt_pct(remote_share)}.</p></section>
-<section id="trends" aria-labelledby="h-trends"><h2 id="h-trends">Hiring trends</h2><p class="section-note">Every point is one daily run.</p>{trends}</section>
-<section id="families" aria-labelledby="h-families"><h2 id="h-families">Role families</h2><p class="section-note">Titles are mapped to role families by a versioned rule table (taxonomy {escape(str(d.get("taxonomy", "2026-11-03")))}).</p>{families}</section>
-<section id="data-roles" aria-labelledby="h-data"><h2 id="h-data">Data roles</h2><p class="section-note">Data engineers, analytics engineers, data analysts and ML engineers.</p>{data_section}</section>
-<section id="salary" aria-labelledby="h-salary"><h2 id="h-salary">Salary bands</h2>{salary_section}</section>
-<section id="days-open" aria-labelledby="h-days"><h2 id="h-days">Days open</h2>{days_section}</section>
-<section id="companies" aria-labelledby="h-companies"><h2 id="h-companies">Companies</h2>{company_table}</section>
-<section id="about" aria-labelledby="h-about"><h2 id="h-about">About the data</h2>
+<main id="main">
+<section id="overview" class="wrap" aria-labelledby="h-overview"><h2 id="h-overview" class="skip">Overview</h2><ul class="kpis" role="list">{kpis}</ul>
+<p class="section-note" style="margin-top:14px">Remote share of open roles: {c.fmt_pct(remote_share)}.</p></section>
+<div class="band"><section id="trends" class="wrap" aria-labelledby="h-trends"><h2 id="h-trends">Hiring trends</h2><p class="section-note">Every point is one daily run.</p>{trends}</section></div>
+<section id="families" class="wrap" aria-labelledby="h-families"><h2 id="h-families">Role families</h2><p class="section-note">Titles are mapped to role families by a versioned rule table (taxonomy {escape(str(d.get("taxonomy", "2026-11-03")))}).</p>{families}</section>
+<div class="band"><section id="data-roles" class="wrap" aria-labelledby="h-data"><h2 id="h-data">Data roles</h2><p class="section-note">Data engineers, analytics engineers, data analysts and ML engineers.</p>{data_section}</section></div>
+<section id="salary" class="wrap" aria-labelledby="h-salary"><h2 id="h-salary">Salary bands</h2>{salary_section}</section>
+<div class="band"><section id="days-open" class="wrap" aria-labelledby="h-days"><h2 id="h-days">Days open</h2>{days_section}</section></div>
+<section id="companies" class="wrap" aria-labelledby="h-companies"><h2 id="h-companies">Companies</h2>{company_table}</section>
+<div class="band"><section id="about" class="wrap" aria-labelledby="h-about"><h2 id="h-about">About the data</h2>
 <div class="panel"><p>Source: the official public job-board APIs of Greenhouse, Lever and Ashby, one request per board per day with per-host rate limits. Only metadata and derived fields are kept: title, company, department, location, remote type, salary range, dates and the job URL. Job-description text and personal data are never stored. Descriptions are read in memory only, to extract salary and remote hints.</p>
-<p>Downloads: the monthly Parquet dataset is attached to the repository's releases; summary CSVs and the run log live in <code>public/</code>. Model documentation: <a href="dbt-docs/index.html">dbt docs</a>.</p></div></section>
+<p>Checks: every run re-reads a random sample of jobs from a second official address and compares title and location; a run that looks wrong is held and the last good data stays up.</p>
+{late_note}
+<p>Downloads: the monthly Parquet dataset is attached to the repository's <a href="{REPO_URL}/releases">releases</a>; summary CSVs and the run log live in <a href="{REPO_URL}/tree/main/public"><code>public/</code></a>. Model documentation: <a href="dbt-docs/index.html">dbt docs</a>. Opt-out: email <a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a> and a company's postings are removed within 24 hours.</p></div></section></div>
+<section class="wrap" aria-labelledby="cta-h">
+<div class="card cta">
+<div><h2 id="cta-h">Want this for your own sites?</h2>
+<p>SteadyData builds custom data feeds like this one for your own target sites: a free sample of up to 1,000 rows within 48 hours, then a fixed quote. No sales calls needed. Everything by email.</p></div>
+<a class="button" href="{STEADYDATA_CONTACT}">Get a free sample</a>
+</div>
+</section>
 </main>
-<footer><div class="wrap"><p>Built by Siddharth Kumar, web scraping and data engineering (<a href="https://siddharthkumar.com">siddharthkumar.com</a>). Numbers come from daily pipeline runs; see the run log for misses and holds.</p></div></footer>
+<footer><div class="wrap">
+<p>Numbers come from daily pipeline runs; held or missed days are counted in the <a href="{REPO_URL}/blob/main/public/runs.jsonl">run log</a>. Code and method: <a href="{REPO_URL}">GitHub</a>.</p>
+<p class="author">Built and maintained by Siddharth Kumar, Founder of SteadyData · <a href="{STEADYDATA}">steadydata.co</a></p>
+</div></footer>
 </body>
 </html>
 """
@@ -453,12 +509,18 @@ def build(duckdb_path: Path, public_dir: Path, out_dir: Path) -> Path:
     data = gather(duckdb_path)
     status_path = public_dir / "status.json"
     st = json.loads(status_path.read_text()) if status_path.exists() else {}
+    runs_path = public_dir / "runs.jsonl"
+    runs = (
+        [json.loads(x) for x in runs_path.read_text().splitlines() if x.strip()]
+        if runs_path.exists()
+        else []
+    )
     out_dir.mkdir(parents=True, exist_ok=True)
     assets = out_dir / "assets"
     if assets.exists():
         shutil.rmtree(assets)
     shutil.copytree(ASSETS, assets)
     index = out_dir / "index.html"
-    index.write_text(render(data, st), encoding="utf-8")
+    index.write_text(render(data, st, runs), encoding="utf-8")
     (out_dir / ".nojekyll").write_text("")
     return index

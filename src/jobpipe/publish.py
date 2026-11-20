@@ -222,15 +222,15 @@ def write_status(public_dir: Path, today: date | None = None) -> dict[str, Any]:
     jobs = st.get("jobs_tracked")
     rows = st.get("rows_today")
     items = {
-        "days-running": _badge("days running", str(st["days_running"]), "2FBFAE"),
+        "days-running": _badge("days running", str(st["days_running"]), "0E8A7D"),
         "last-run": _badge(
-            "last run", f"{st['last_run']} {st['last_status']}", "2FBFAE" if ok else "E9A93C"
+            "last run", f"{st['last_run']} {st['last_status']}", "0E8A7D" if ok else "D98E14"
         ),
         "missed-runs": _badge(
-            "missed runs", str(st["missed_runs"]), "2FBFAE" if st["missed_runs"] == 0 else "E9A93C"
+            "missed runs", str(st["missed_runs"]), "0E8A7D" if st["missed_runs"] == 0 else "D98E14"
         ),
-        "jobs-tracked": _badge("jobs tracked", f"{jobs:,}" if jobs else "n/a", "2FBFAE"),
-        "rows-today": _badge("rows today", f"{rows:,}" if rows else "n/a", "2FBFAE"),
+        "jobs-tracked": _badge("jobs tracked", f"{jobs:,}" if jobs else "n/a", "0E8A7D"),
+        "rows-today": _badge("rows today", f"{rows:,}" if rows else "n/a", "0E8A7D"),
     }
     for name, payload in items.items():
         (badges / f"{name}.json").write_text(json.dumps(payload) + "\n")

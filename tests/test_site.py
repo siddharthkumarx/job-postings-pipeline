@@ -5,9 +5,10 @@ import pytest
 
 from jobpipe.site import build
 
-BG, PANEL = "#0B1416", "#0F1C1E"
-TEXTS = {"main": "#EAF2F0", "body": "#C9D8D5", "quiet": "#7E9996", "teal": "#2FBFAE",
-         "amber": "#E9A93C"}  # fmt: skip
+# Light system v1 (D-018): every text colour on every surface it is used on.
+PAGE, ALT, CARD, SOFT = "#FFFFFF", "#F3F8F7", "#FFFFFF", "#E3F3F0"
+TEXTS = {"ink": "#0B1416", "body": "#3D4B49", "muted": "#5F716E", "accent": "#0B7468",
+         "accent_hover": "#095E55"}  # fmt: skip
 
 
 def _lum(hex_: str) -> float:
@@ -21,10 +22,25 @@ def contrast(a: str, b: str) -> float:
     return (la + 0.05) / (lb + 0.05)
 
 
-@pytest.mark.parametrize("surface", [BG, PANEL])
+@pytest.mark.parametrize("surface", [PAGE, ALT, CARD])
 @pytest.mark.parametrize("name", list(TEXTS))
 def test_text_contrast_at_least_4_5(name: str, surface: str) -> None:
     assert contrast(TEXTS[name], surface) >= 4.5
+
+
+def test_soft_surfaces_and_button_contrast() -> None:
+    assert contrast("#0B1416", SOFT) >= 4.5  # status pill and CTA text
+    assert contrast("#FFFFFF", "#0B7468") >= 4.5  # button
+    assert contrast("#FFFFFF", "#095E55") >= 4.5  # button hover
+    assert contrast("#0B1416", "#FBF1E1") >= 4.5  # "data role" tag
+
+
+def test_css_uses_the_light_palette() -> None:
+    css = (build.ASSETS / "site.css").read_text()
+    for token in ("#FFFFFF", "#F3F8F7", "#E2EAE8", "#0B1416", "#3D4B49", "#5F716E", "#0B7468",
+                  "#095E55", "#E3F3F0", "#0E8A7D", "#D98E14", "Plus Jakarta Sans"):  # fmt: skip
+        assert token in css
+    assert "Instrument Sans" not in css and "#0F1C1E" not in css
 
 
 def _data() -> dict[str, object]:
@@ -53,6 +69,17 @@ def test_render_has_no_external_scripts_and_escapes() -> None:
     html = build.render(_data(), {"days_running": 3, "missed_runs": 0, "first_run": "2026-11-02"})
     assert "<script" not in html.replace("&lt;script", "")
     external = re.findall(r'(?:src|href)="(https?://[^"]+)"', html)
-    assert external == ["https://siddharthkumar.com"]
+    assert set(external) == {
+        "https://github.com/siddharthkumarx/job-postings-pipeline",
+        "https://github.com/siddharthkumarx/job-postings-pipeline/releases",
+        "https://github.com/siddharthkumarx/job-postings-pipeline/tree/main/public",
+        "https://github.com/siddharthkumarx/job-postings-pipeline/blob/main/public/runs.jsonl",
+        "https://steadydata.co",
+        "https://steadydata.co/contact/",
+    }
+    assert "Built by SteadyData" in html and "Get a free sample" in html
+    assert "Built and maintained by Siddharth Kumar, Founder of SteadyData" in html
+    assert "hello@steadydata.co" in html and "hello@" + "siddharthkumar.com" not in html
+    assert "<!--" not in html
     assert 'lang="en"' in html and 'name="viewport"' in html and 'name="description"' in html
     assert "Acme &lt;script&gt;" in html
