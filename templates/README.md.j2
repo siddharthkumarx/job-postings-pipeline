@@ -2,7 +2,7 @@
 
 # US tech hiring data, checked every day
 
-Every open job at {{ companies | num }} US tech companies, collected each morning from their public job boards and delivered as one clean table you can download, filter and chart.
+**Every open job at {{ companies | num }} US tech companies, collected every day from their public job boards and delivered as one clean table you can download, filter and chart.**
 
 [![Last run]({{ badge('last-run') }})](public/runs.jsonl) [![Days running]({{ badge('days-running') }})](public/status.json) [![Missed runs]({{ badge('missed-runs') }})](public/status.json) [![Rows today]({{ badge('rows-today') }})](public/summary/providers.csv) [![Tests](https://github.com/{{ cfg.public_repo }}/actions/workflows/ci.yml/badge.svg)](https://github.com/{{ cfg.public_repo }}/actions/workflows/ci.yml)
 
@@ -34,18 +34,18 @@ Compared with the run of {{ prev_date }}:
 ## Why you can trust this data
 
 {% if spot.get('checked') -%}
-- **Checked against a second source.** Every run re-reads {{ spot.sample }} random jobs one by one from a second official address at the job board and compares the title and location. Latest run ({{ spot_date }}): {{ spot.matched }} of {{ spot.checked }} matched{% if spot.get('gone') %}, and {{ spot.gone }} had closed in the minutes between the two reads{% endif %}.
+- **Spot-checked against a second source.** Every run re-reads a sample of {{ spot.sample }} random jobs one by one from a second official address at the job board and compares the title and location. Latest run ({{ spot_date }}): {{ spot.matched }} of {{ spot.checked }} matched{% if spot.get('gone') %}, and {{ spot.gone }} had closed in the minutes between the two reads{% endif %}.
 {% endif -%}
 - **Doubtful values are held back, not guessed.** In the latest run, {{ q.salaries_held_back | num }} salary figures that looked wrong (far outside any normal yearly pay once converted) were left empty instead of published, and {{ invalid | num }} malformed job ads were set aside. If a whole run looks wrong, it is not published at all and yesterday's data stays up until it is fixed.
-- **Nothing missing.** {{ boards_ok | num }} of {{ boards | num }} company job boards were read in the latest run. A job only counts as closed after it is missing on two days in a row, so one bad day cannot wipe out real openings.
-- **Polite collection.** One request per company per day, plus the 30 spot checks ({{ requests | num }} requests in the latest run), a short pause between requests, no logins, and only the official public job-board feeds that the companies use for their own career pages.
-- **Tested every day.** The latest run passed all {{ tests | num }} automatic data checks. Missed or held days are counted in public: see the badges above and the [run log](public/runs.jsonl).
+- **Nothing silently missing.** {{ boards_ok | num }} of {{ boards | num }} company job boards were read in the latest run; a board that could not be read keeps its open jobs until it is read again. A job only counts as closed after it is missing on two days in a row, so one bad day cannot wipe out real openings.
+- **Polite collection.** One request per company per day, plus the {{ spot.get('sample', 0) }} spot checks ({{ requests | num }} requests in the latest run), a short pause between requests, no logins, and only the official public job-board feeds that the companies use for their own career pages.
+- **Daily runs delivered: {{ delivered | num }} of {{ due | num }}.** The latest run passed all {{ tests | num }} automatic data checks. Missed or held days are counted in public: see the badges above and the [run log](public/runs.jsonl).
 
 ## How it works
 
 ![{{ pipeline_alt }}](assets/pipeline.svg)
 
-1. **Collect.** Each morning at 07:41 UTC, the pipeline reads the public job board of every tracked company: {{ by_provider.greenhouse | num }} on Greenhouse, {{ by_provider.ashby | num }} on Ashby and {{ by_provider.lever | num }} on Lever.
+1. **Collect.** Once a day, the pipeline reads the public job board of every tracked company: {{ by_provider.greenhouse | num }} on Greenhouse, {{ by_provider.ashby | num }} on Ashby and {{ by_provider.lever | num }} on Lever.
 2. **Check.** Every job is cleaned and tested. Titles become role types (for example "data engineer"), locations become city and state, and salaries become yearly US dollars.
 3. **Store.** Each day's raw data is kept, so history (when a job opened, when it closed, when its salary changed) can always be rebuilt.
 4. **Deliver.** The clean table, the [dashboard]({{ cfg.dashboard_url }}) and a monthly download are refreshed. A full run takes about {{ minutes | round | int }} minutes.
@@ -71,33 +71,35 @@ Every pipeline breaks sometimes. What matters is that problems are caught before
 
 ## Want this for your own sites?
 
-I build and run pipelines like this one for clients: job boards, competitor career pages, marketplaces, price lists and other public data.
+{{ cfg.brand }} builds custom data feeds like this one for your own target sites: job boards, competitor career pages, marketplaces, price lists and other public data.
 
-- **Free sample first.** You get 20 to 50 real rows from your own target sites before you pay anything.
-- **Fixed price.** A clear quote after the sample, with no hourly surprises.
-- **Data on schedule.** Daily, weekly or one-off, delivered as CSV, Excel, Google Sheets or straight into your database.
+- **Free sample first.** Up to 1,000 real rows from your own target sites within 48 hours, before you pay anything.
+- **Fixed quote.** After the sample you get a fixed quote, with no hourly billing.
+- **Data on schedule.** Delivered daily or weekly as Excel, CSV, JSON or Google Sheets.
 
-**Contact:** [{{ cfg.contact_email }}](mailto:{{ cfg.contact_email }}) · [siddharthkumar.com]({{ cfg.website }})
+No sales calls needed. Everything by email.
+
+**[Get a free sample →]({{ cfg.sample_url }})** · [How {{ cfg.brand }} works →]({{ cfg.brand_url }}) · [{{ cfg.contact_email }}](mailto:{{ cfg.contact_email }})
 
 ## FAQ
 
 **How fresh is the data?**
-It is collected every morning at 07:41 UTC. The latest run was on {{ run_date }}. The badges at the top always show the last run and any missed days.
+Every company's job board is read once a day. The latest run was on {{ run_date }}, and daily runs delivered so far: {{ delivered | num }} of {{ due | num }}. The badges at the top always show the last run and any missed days.{% if sched and sched.late %} The run is scheduled for 07:41 UTC, but GitHub's scheduler has started it late: over the last {{ sched.runs }} days, {{ sched.min_h }} to {{ sched.max_h }} hours late (median {{ sched.median_h }} hours), so new data usually arrives in the afternoon UTC. Every one of those days was still delivered.{% endif %}
 
 **What happens when a site changes?**
-The daily checks notice it, that day's data is held back instead of published, and I get an alert. I fix the collector, usually the same day, and the incident goes in the public log above.
+The daily checks notice it: that day's data is held back instead of published, yesterday's data stays up, and I get an alert. I fix the collector, usually the same day, and the incident goes in the public log above.
 
 **Which formats can I get?**
-CSV, Excel, Google Sheets, JSON, Parquet (a compact file format that data tools read quickly), or a direct load into your database. This project publishes CSV summaries and a monthly Parquet file.
+For a custom feed: Excel, CSV, JSON or Google Sheets, delivered daily or weekly. This project itself publishes CSV summaries and a monthly Parquet file (a compact file format that data tools read quickly).
 
 **Can you track my competitors' sites?**
-Yes, if the information is publicly visible without logging in. Send me the list of sites and I will check what is possible and send a free sample.
+Yes, if the information is publicly visible without logging in. Email the list of sites to [{{ cfg.contact_email }}](mailto:{{ cfg.contact_email }}). {{ cfg.brand }} checks what can be collected and how often, then sends a free sample.
 
 **Is it legal and polite?**
 This project reads only public pages and official public feeds, follows each site's published rate limits, collects no personal data and links back to every original posting. See [Data use and compliance](#data-use-and-compliance).
 
 **How does pricing work?**
-Either a fixed monthly price for a running pipeline or a one-time price for a single delivery. You get a quote after the free sample, once both of us know exactly what the data looks like.
+Custom feeds get a fixed quote after the free sample, once both sides know exactly what the data looks like. Monitoring plans are listed on [{{ cfg.brand_site }}/pricing]({{ cfg.pricing_url }}).
 
 ## Data dictionary
 
@@ -176,4 +178,4 @@ uv run jobpipe site --duckdb data/fixtures/warehouse.duckdb --public data/fixtur
 
 The code is released under the [MIT License](LICENSE). The published dataset is factual job metadata compiled from public postings, shared under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Each posting belongs to the company that published it and is linked at its source. Citation details are in [CITATION.cff](CITATION.cff); the dataset card is in [docs/dataset-card.md](docs/dataset-card.md).
 
-Built and maintained by {{ cfg.owner }} · [siddharthkumar.com]({{ cfg.website }})
+Built and maintained by {{ cfg.owner }}, {{ cfg.owner_title }} · [{{ cfg.brand_site }}]({{ cfg.brand_url }})

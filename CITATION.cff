@@ -5,13 +5,15 @@ abstract: >-
   A daily pipeline that collects open jobs at about 1,500 US tech companies from their
   public Greenhouse, Lever and Ashby job boards, models them in DuckDB and dbt
   (staging, history, marts with enforced contracts) and publishes a daily dataset,
-  summary files and a dashboard.
+  summary files and a dashboard. Built and maintained by Siddharth Kumar,
+  Founder of SteadyData · steadydata.co.
 type: software
 authors:
   - family-names: Kumar
     given-names: Siddharth
-    website: "https://siddharthkumar.com"
-    email: hello@siddharthkumar.com
+    affiliation: "SteadyData"
+    website: "https://steadydata.co"
+    email: hello@steadydata.co
 repository-code: "https://github.com/siddharthkumarx/job-postings-pipeline"
 url: "https://siddharthkumar.com/job-postings-pipeline/"
 license: MIT
@@ -31,5 +33,6 @@ references:
     authors:
       - family-names: Kumar
         given-names: Siddharth
+        affiliation: "SteadyData"
     license: CC-BY-4.0
     url: "https://github.com/siddharthkumarx/job-postings-pipeline/releases/latest"

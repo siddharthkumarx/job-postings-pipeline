@@ -4,9 +4,9 @@ The repo was published in place (see `docs/publish-checklist.md`); these are the
 
 ## About → Description (under 350 characters)
 
-Daily web scraping and data engineering pipeline: every open job at 1,500 US tech companies, collected from public Greenhouse, Lever and Ashby job boards, tested with dbt and published as a free dataset (CSV, Parquet) and dashboard. Python, DuckDB, dbt, GitHub Actions.
+Daily web scraping and data engineering pipeline: every open job at 1,500 US tech companies, collected from public Greenhouse, Lever and Ashby job boards, tested with dbt and published as a free dataset (CSV, Parquet) and dashboard. Python, DuckDB, dbt, GitHub Actions. A SteadyData proof project.
 
-(269 characters)
+(297 characters)
 
 ## About → Website
 

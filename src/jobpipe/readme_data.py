@@ -10,9 +10,13 @@ from __future__ import annotations
 import csv
 import json
 import re
+import statistics
 from dataclasses import dataclass, field
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
+
+SCHEDULE_UTC = (7, 41)  # .github/workflows/daily.yml: cron "41 7 * * *"
 
 ROLE_LABELS = {
     "data_engineer": "Data engineer", "analytics_engineer": "Analytics engineer",
@@ -60,6 +64,60 @@ class ReadmeData:
     @property
     def minutes(self) -> float:
         return round(float(self.last_run.get("duration_s") or 0) / 60, 1)
+
+    @property
+    def runs_delivered(self) -> tuple[int, int]:
+        """(days with published data, days since the first run), from status.json."""
+        return int(self.status.get("runs_published") or 0), int(
+            self.status.get("days_running") or 0
+        )
+
+    @property
+    def hf_uploaded(self) -> bool:
+        """True only when the latest published run really uploaded to Hugging Face."""
+        notes = self.last_run.get("notes") or []
+        return any(n.startswith("hf ") and "skipped" not in n for n in notes)
+
+    def start_delays(self, last: int = 14) -> list[float]:
+        return start_delays(self.runs, last)
+
+    def schedule_note(self, last: int = 14) -> dict[str, Any]:
+        return schedule_note(self.runs, last)
+
+
+def start_delays(runs: list[dict[str, Any]], last: int = 14) -> list[float]:
+    """Hours between the scheduled 07:41 UTC and the start of each day's final run.
+
+    Read from ``started_at`` in the run log, for the last ``last`` run dates whose final
+    run started on its own run date.
+    """
+    final: dict[str, dict[str, Any]] = {}
+    for r in runs:
+        if r.get("run_date") and r.get("started_at"):
+            final[r["run_date"]] = r
+    hours: list[float] = []
+    for run_date in sorted(final)[-last:]:
+        started = datetime.fromisoformat(final[run_date]["started_at"]).astimezone(UTC)
+        due = datetime.fromisoformat(run_date).replace(
+            hour=SCHEDULE_UTC[0], minute=SCHEDULE_UTC[1], tzinfo=UTC
+        )
+        if started.date().isoformat() == run_date:
+            hours.append(max(0.0, (started - due).total_seconds() / 3600))
+    return hours
+
+
+def schedule_note(runs: list[dict[str, Any]], last: int = 14) -> dict[str, Any]:
+    """Start delay of the scheduled run over the last ``last`` days, in hours."""
+    h = start_delays(runs, last)
+    if not h:
+        return {}
+    return {
+        "runs": len(h),
+        "late": sum(x > 0.25 for x in h),
+        "min_h": round(min(h), 1),
+        "median_h": round(statistics.median(h), 1),
+        "max_h": round(max(h), 1),
+    }
 
 
 def _csv(path: Path) -> list[dict[str, str]]:

@@ -6,9 +6,9 @@ Read this first, then `docs/build-progress.md` ("Continue here" is at the bottom
 
 A daily hiring-data pipeline for about 1,500 US tech companies, built from their
 public job boards (Greenhouse, Lever, Ashby) and loaded into a DuckDB + dbt
-warehouse, with a public dashboard and dataset. It becomes the public portfolio
-repo `job-postings-pipeline` of Siddharth Kumar (web scraping and data
-engineering freelancer, siddharthkumar.com). It must show production-grade data
+warehouse, with a public dashboard and dataset. It is a public proof project of
+SteadyData (steadydata.co), built and maintained by Siddharth Kumar, Founder of
+SteadyData. It must show production-grade data
 engineering: layers, incremental loads, history, tests and data contracts.
 **Every number shown anywhere must come from real runs.**
 
@@ -40,14 +40,21 @@ engineering: layers, incremental loads, history, tests and data contracts.
 - One full daily run must finish in under 45 minutes with Lever at 1 request/s (estimate in `docs/decisions.md` D-009).
 - `docs/sources.md` lists the final boards, the seed sources and every dropped board with its reason.
 
-### Dashboard look
-Background `#0B1416`; panels `#0F1C1E` with border `#1D3331`; main text `#EAF2F0`; body text `#C9D8D5`; quiet text `#7E9996`; teal `#2FBFAE` = good / growth; amber `#E9A93C` = look here / drop / change. Fonts: Instrument Sans (headings, text) and IBM Plex Mono (data, tables), self-hosted. No external scripts; text contrast ≥ 4.5:1; works from 360 to 1920 px; respects reduced motion; aim for Lighthouse 100. GitHub Pages turns on only after the public publish. Until then, check with Playwright screenshots at 360, 768 and 1440 px.
+### Brand and voice (owner's rules, 2026-11-21)
+- SteadyData is the brand and the subject of the copy; "I" only for the founder (Siddharth Kumar, Founder of SteadyData); never "our team".
+- Contact and opt-out: hello@steadydata.co. Free sample: https://steadydata.co/contact/ (up to 1,000 rows within 48 hours, then a fixed quote). Monitoring plans: https://steadydata.co/pricing/.
+- Footer: "Built and maintained by Siddharth Kumar, Founder of SteadyData · steadydata.co". The dashboard stays at siddharthkumar.com/job-postings-pipeline/.
+- Claim only what is proven. Never: bypassing anti-bot systems or CAPTCHAs, stealth, anonymity, IP masking, 100 % accuracy, client counts, logos, testimonials, years of experience, "AI-powered". The spot check re-reads a sample from a second source; never imply every row was second-sourced.
+- Keep sections, wording and footer consistent with the sister repo `siddharthkumarx/ecommerce-price-monitor`.
+
+### Dashboard look (light system v1, D-018)
+Page `#FFFFFF`; alt sections `#F3F8F7`; cards `#FFFFFF` with border `#E2EAE8`, radius 14px, soft shadow. Headings `#0B1416`; body `#3D4B49`; small/muted `#5F716E`. Accent (buttons, links) `#0B7468`, hover `#095E55`, soft `#E3F3F0`. Data: `#0E8A7D` = good / verified; `#D98E14` = change / look here, always with a direct label (marks only, never text). Fonts: Plus Jakarta Sans (text, tabular numbers) and IBM Plex Mono (IDs and code only), self-hosted. No 3D, glow or dark sections; motion only where it explains. No external scripts; text contrast ≥ 4.5:1; works from 360 to 1920 px; respects reduced motion; aim for Lighthouse 100. GitHub Pages turns on only after the public publish. Until then, check with Playwright screenshots at 360, 768 and 1440 px.
 
 ### README and visuals (owner's rules, 2026-11-04)
 - `README.md` is generated: edit `templates/README.md.j2` (and `templates/readme.yml` for the public URLs), never README.md itself. Every daily run re-renders it with `jobpipe readme`, together with `docs/dataset-card.md` and `assets/*.svg`.
 - Readers are clients first (recruiters, HR-tech teams, analysts, data hiring managers), engineers second. Use plain words, short sentences and no jargon above the "For engineers" section. Keep the section order fixed (the test in `tests/test_readme.py` enforces it).
 - Every number, row and log line shown comes from real runs. Growing numbers come from `status.json` badges or regenerated sections. A drawn illustration with made-up data must carry a small "EXAMPLE" label.
-- Visuals: CSS-only animation, 6–10 s loops, the final frame holds and is the still, reduced motion shows the final frame. Fonts are embedded subsets. At most 3 lines of text, text ≥ 22 px in a 1000-px viewBox, colours from the dashboard palette. Render them with Playwright at 390 and 1280 px after changes.
+- Visuals: one idea per visual, CSS-only animation, 6–10 s loops, the final frame holds and is the still, reduced motion shows the final frame. Fonts are embedded base64 WOFF2 subsets. At most 3 lines of text, in a 1000-px viewBox headings ≥ 36 px and row text ≥ 30 px, colours from the light palette, text contrast ≥ 4.5:1. Real tool logos only for tools this repo uses (licence notes in `assets/LICENSES.md`). Render them with Playwright at 390 and 1280 px, and with reduced motion, after changes.
 - No HTML comments, notes or placeholders in the rendered README (`readme.check_rendered`).
 
 ## Stack
@@ -84,8 +91,11 @@ cd dbt && uv run dbt build --profiles-dir . # needs JOBPIPE_DATA / JOBPIPE_DUCKD
 ## Continue here
 
 Status (2026-11-04): all build items 1–21 are done (`docs/build-progress.md`). The
-pipeline runs daily at 07:41 UTC on the working branch (the repo's default branch)
-and re-renders the README and visuals each time.
+pipeline is scheduled daily at 07:41 UTC on the default branch and re-renders the
+README and visuals each time. GitHub's scheduler starts it hours late (6.6–10.1 h,
+median 8.3 h, 7–20 Nov 2026); every day has still been delivered. The README states
+"Daily runs delivered: X of Y" and the measured delay; any future on-time count
+must start from the first on-time trigger and carry its start date.
 
 Next:
 1. Each morning, check `public/runs.jsonl` / `public/status.json` and any open

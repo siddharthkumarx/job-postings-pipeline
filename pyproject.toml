@@ -1,11 +1,11 @@
 [project]
 name = "job-postings-pipeline"
 version = "0.1.0"
-description = "Daily hiring-data pipeline for US tech companies from official public job-board APIs, loaded into a DuckDB + dbt warehouse."
+description = "Daily hiring-data pipeline for US tech companies from official public job-board APIs, loaded into a DuckDB + dbt warehouse. Built and maintained by Siddharth Kumar, Founder of SteadyData · steadydata.co"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 license = "MIT"
-authors = [{ name = "Siddharth Kumar" }]
+authors = [{ name = "Siddharth Kumar", email = "hello@steadydata.co" }]
 dependencies = [
     "brotli>=1.2,<2",
     "dbt-core>=1.12,<1.13",
@@ -18,6 +18,11 @@ dependencies = [
     "pydantic>=2.14,<3",
     "pyyaml>=6.0.3,<7",
 ]
+
+[project.urls]
+Homepage = "https://steadydata.co"
+Repository = "https://github.com/siddharthkumarx/job-postings-pipeline"
+Dashboard = "https://siddharthkumar.com/job-postings-pipeline/"
 
 [project.scripts]
 jobpipe = "jobpipe.cli:main"

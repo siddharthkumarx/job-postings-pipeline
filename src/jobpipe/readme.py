@@ -171,6 +171,10 @@ def context(d: ReadmeData, cfg: dict[str, Any]) -> dict[str, Any]:
         "tests": dbt.get("pass", 0),
         "dbt_tests": dbt.get("pass", 0),
         "by_provider": d.boards_by_provider,
+        "delivered": d.runs_delivered[0],
+        "due": d.runs_delivered[1],
+        "sched": d.schedule_note(),
+        "hf": d.hf_uploaded,
         "incidents": d.incidents,
         "dictionary": dictionary(d.example),
         "hero_alt": (
@@ -180,20 +184,21 @@ def context(d: ReadmeData, cfg: dict[str, Any]) -> dict[str, Any]:
         ),
         "pipeline_alt": (
             "Animation of the pipeline: source (3 job boards), collect (Python), check (dbt "
-            f"and pytest), store (DuckDB), deliver (GitHub, Hugging Face); {d.companies:,} job "
-            f"boards in about {d.minutes:.0f} minutes every morning"
+            "and pytest), store (DuckDB), deliver ("
+            + ("GitHub, Hugging Face" if d.hf_uploaded else "GitHub")
+            + f"); {d.companies:,} job boards in about {d.minutes:.0f} minutes, once a day"
         ),
         "data_roles_alt": "Bar chart of open data roles today: "
         + ", ".join(
             f"{r['role_family'].replace('_', ' ')} {int(r['open_roles']):,}" for r in d.data_roles
         ),
         "dashboard_alt": (
-            f"Screenshot of the live dashboard: {d.companies:,} companies tracked and open roles "
-            "by role family, data roles, salary bands and days open"
+            "The live dashboard: companies tracked, open roles, daily runs delivered, hiring "
+            "trends, role families, data roles, salary bands and days open"
         ),
         "maintenance_alt": (
             "Animation: one square per daily run, amber for a held or failed run; a real "
-            "incident, its fix the same day, and every job board read in the latest run"
+            "incident and its fix the same day; then the job boards read in the latest run"
         ),
         "lineage_alt": (
             "dbt lineage graph: raw inputs feed cleaned staging models, then history models, "
