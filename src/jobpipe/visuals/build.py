@@ -7,6 +7,9 @@ data-roles.svg      open data roles today (real counts and median salaries)
 dbt-lineage.svg     the dbt model graph, read from dbt's manifest.json
 hero-square.svg     1080x1080 hero for the LinkedIn video (text ≥ 40 px)
 
+Light system v1 (D-018): an alt-section background, white cards, ink/body/muted/accent
+text, the good colour for data marks and the look-here colour only with a direct label.
+
 Sizes (in a 1000-px-wide viewBox): headings ≥ 36 px, row and body text ≥ 30 px, so the
 text stays readable when GitHub shrinks the image to a phone's width.
 
@@ -23,15 +26,17 @@ from typing import Any
 
 from jobpipe.readme_data import ROLE_LABELS, Incident, ReadmeData, load, short_title
 from jobpipe.visuals.base import (
-    AMBER,
+    ACCENT,
     BODY,
-    BORDER,
-    PANEL,
-    QUIET,
-    TEAL,
-    TEXT,
+    GOOD,
+    INK,
+    LINE,
+    LOOK,
+    MUTED,
+    SOFT,
     Canvas,
     beats_css,
+    card,
     final_beat_time,
     final_state_css,
     fmt_usd_k,
@@ -75,6 +80,14 @@ def _timing(c: Canvas, n_beats: int) -> None:
     c.css.append(final_state_css(n_beats))
 
 
+def _rows_css() -> str:
+    return "".join(
+        f".r{i}{{animation:rw{i} {LOOP_S}s linear infinite}}"
+        f"@keyframes rw{i}{{0%,{40 + i * 5}%{{opacity:0}}{43 + i * 5}%,100%{{opacity:1}}}}"
+        for i in (1, 2, 3)
+    )
+
+
 # ---- hero ------------------------------------------------------------------------------
 
 
@@ -83,7 +96,7 @@ def hero(d: ReadmeData, square: bool = False) -> str:
     c = Canvas(
         w,
         h,
-        f"{d.companies:,} companies, {d.open_jobs:,} open jobs, checked every day",
+        f"{d.open_jobs:,} open jobs at {d.companies:,} US tech companies, checked every day",
         f"Animated: open tech jobs are spread across {d.companies:,} company job boards; one "
         f"daily run collects them into a single table; result: {d.open_jobs:,} open jobs at "
         f"{d.companies:,} US tech companies (latest run {d.run_date}).",
@@ -91,63 +104,62 @@ def hero(d: ReadmeData, square: bool = False) -> str:
     cx = w / 2
     rows = d.sample[:3]
     if not square:
+        mark_w = len(f"{d.companies:,} separate company job boards.") * 22.6
         b1 = [
-            c.text(cx, 175, "Open tech jobs are spread across", size=44, font="sansb", anchor="middle"),
-            c.text(cx, 235, f"{d.companies:,} separate company job boards.", size=44, font="sansb",
-                   anchor="middle", fill=AMBER),
-            c.text(cx, 305, "Checking them by hand takes days.", size=ROW + 2, fill=BODY, anchor="middle"),
+            c.text(cx, 170, "Open tech jobs are spread across", size=44, font="sansb", anchor="middle"),
+            c.text(cx, 236, f"{d.companies:,} separate company job boards.", size=44, font="sansb",
+                   anchor="middle"),
+            f'<rect x="{cx - mark_w / 2}" y="252" width="{mark_w}" height="8" rx="4" fill="{LOOK}"/>',
+            c.text(cx, 322, "Checking them by hand takes days.", size=ROW + 2, fill=BODY, anchor="middle"),
         ]  # fmt: skip
         b2 = [
-            c.text(60, 72, "One run every morning", size=H2, font="sansb"),
-            c.text(940, 72, d.run_date, size=ROW, font="mono", fill=QUIET, anchor="end"),
-            c.text(60, 122, "3 job boards → check + clean → one table", size=ROW, font="mono",
-                   fill=TEAL),
-        ]  # fmt: skip
+            c.text(60, 84, "One run a day, one clean table", size=H2, font="sansb"),
+            c.text(940, 84, d.run_date, size=ROW, fill=MUTED, anchor="end"),
+        ]
         for i, r in enumerate(rows):
-            y = 152 + i * 88
-            b2.append(f'<g class="row r{i + 1}"><rect x="60" y="{y}" width="880" height="72" rx="12" '
-                      f'fill="{PANEL}" stroke="{BORDER}" stroke-width="2"/>'
-                      + c.text(88, y + 47, r["company_name"][:22], size=ROW + 2, font="sansb")
-                      + c.text(912, y + 47, _salary(r), size=ROW, font="mono", fill=TEAL, anchor="end")
+            y = 120 + i * 100
+            b2.append(f'<g class="row r{i + 1}">' + card(60, y, 880, 80)
+                      + c.text(92, y + 51, r["company_name"][:24], size=ROW + 2, font="sansb")
+                      + c.text(908, y + 51, _salary(r), size=ROW, font="sansm", fill=ACCENT, anchor="end")
                       + "</g>")  # fmt: skip
         b3 = [
-            c.text(cx, 230, f"{d.open_jobs:,}", size=140, font="sansb", fill=TEAL, anchor="middle"),
-            c.text(cx, 308, f"open jobs at {d.companies:,} US tech companies", size=44, anchor="middle"),
-            c.text(cx, 372, f"checked every day · latest run {d.run_date}", size=ROW + 2, font="mono",
-                   fill=QUIET, anchor="middle"),
+            card(60, 60, 880, 340),
+            c.text(cx, 230, f"{d.open_jobs:,}", size=132, font="sansb", fill=ACCENT, anchor="middle"),
+            c.text(cx, 300, f"open jobs at {d.companies:,} US tech companies", size=42, anchor="middle"),
+            c.text(cx, 356, f"checked every day · latest run {d.run_date}", size=ROW, fill=MUTED,
+                   anchor="middle"),
         ]  # fmt: skip
     else:
+        sq_w = len(f"{d.companies:,} job boards.") * 37
         b1 = [
             c.text(cx, 420, "Open tech jobs are", size=64, font="sansb", anchor="middle"),
             c.text(cx, 500, "spread across", size=64, font="sansb", anchor="middle"),
-            c.text(cx, 600, f"{d.companies:,} job boards.", size=72, font="sansb", fill=AMBER,
-                   anchor="middle"),
+            c.text(cx, 600, f"{d.companies:,} job boards.", size=72, font="sansb", anchor="middle"),
+            f'<rect x="{cx - sq_w / 2}" y="626" width="{sq_w}" height="10" rx="5" fill="{LOOK}"/>',
         ]  # fmt: skip
-        b2 = [c.text(cx, 180, "One run every morning", size=48, fill=BODY, anchor="middle")]
+        b2 = [
+            c.text(
+                cx, 190, "One run a day, one clean table", size=48, font="sansb", anchor="middle"
+            )
+        ]
         for i, r in enumerate(rows):
-            y = 300 + i * 190
-            b2.append(f'<g class="row r{i + 1}"><rect x="90" y="{y}" width="900" height="150" rx="18" '
-                      f'fill="{PANEL}" stroke="{BORDER}" stroke-width="3"/>'
+            y = 280 + i * 190
+            b2.append(f'<g class="row r{i + 1}">' + card(90, y, 900, 150)
                       + c.text(130, y + 66, r["company_name"][:22], size=48, font="sansb")
                       + c.text(130, y + 120, short_title(r, 24), size=40, fill=BODY)
-                      + c.text(950, y + 66, _salary(r), size=40, font="mono", fill=TEAL, anchor="end")
+                      + c.text(950, y + 66, _salary(r), size=40, font="sansm", fill=ACCENT, anchor="end")
                       + "</g>")  # fmt: skip
-        b2.append(c.text(cx, 930, f"real rows · {d.run_date}", size=40, font="mono", fill=QUIET,
-                         anchor="middle"))  # fmt: skip
-        b3 = [
-            c.text(cx, 520, f"{d.open_jobs:,}", size=200, font="sansb", fill=TEAL, anchor="middle"),
-            c.text(cx, 620, "open jobs at", size=56, anchor="middle"),
-            c.text(cx, 690, f"{d.companies:,} US tech companies", size=56, anchor="middle"),
-            c.text(cx, 790, f"checked every day · {d.run_date}", size=44, font="mono", fill=QUIET,
-                   anchor="middle"),
-        ]  # fmt: skip
-    c.css.append(
-        "".join(
-            f".r{i}{{animation:rw{i} {LOOP_S}s linear infinite}}"
-            f"@keyframes rw{i}{{0%,{40 + i * 5}%{{opacity:0}}{43 + i * 5}%,100%{{opacity:1}}}}"
-            for i in (1, 2, 3)
+        b2.append(
+            c.text(cx, 900, f"real rows · {d.run_date}", size=40, fill=MUTED, anchor="middle")
         )
-    )
+        b3 = [
+            card(90, 300, 900, 520),
+            c.text(cx, 540, f"{d.open_jobs:,}", size=190, font="sansb", fill=ACCENT, anchor="middle"),
+            c.text(cx, 630, "open jobs at", size=56, anchor="middle"),
+            c.text(cx, 700, f"{d.companies:,} US tech companies", size=56, anchor="middle"),
+            c.text(cx, 780, f"checked every day · {d.run_date}", size=40, fill=MUTED, anchor="middle"),
+        ]  # fmt: skip
+    c.css.append(_rows_css())
     _timing(c, 3)
     c.add(f'<g class="beat b1">{"".join(b1)}</g>')
     c.add(f'<g class="beat b2">{"".join(b2)}</g>')
@@ -157,25 +169,35 @@ def hero(d: ReadmeData, square: bool = False) -> str:
 
 # ---- pipeline --------------------------------------------------------------------------
 
-STAGES: list[tuple[str, str, list[str]]] = [
-    ("Source", "3 job boards", []),
-    ("Collect", "Python", ["python", "uv", "pydantic"]),
-    ("Check", "dbt, pytest", ["pytest"]),
-    ("Store", "DuckDB", ["duckdb", "apacheparquet"]),
-    ("Deliver", "GitHub, HF", ["github", "githubactions", "huggingface"]),
-]
 PIPE_LOOP = 8.0
 
 
+def stages(d: ReadmeData) -> list[tuple[str, str, list[str]]]:
+    """The five steps with the logos of tools this repo really uses in each step.
+
+    Hugging Face appears only once a run has really uploaded the dataset there.
+    """
+    deliver = ["github", "githubactions"] + (["huggingface"] if d.hf_uploaded else [])
+    return [
+        ("Source", "3 job boards", []),
+        ("Collect", "Python", ["python", "uv", "pydantic"]),
+        ("Check", "dbt, pytest", ["pytest"]),
+        ("Store", "DuckDB", ["duckdb", "apacheparquet"]),
+        ("Deliver", "GitHub, HF" if d.hf_uploaded else "GitHub", deliver),
+    ]
+
+
 def pipeline(d: ReadmeData) -> str:
+    steps = stages(d)
+    deliver_to = "GitHub and Hugging Face" if d.hf_uploaded else "GitHub"
     c = Canvas(
         1000,
         400,
         "How it works: source, collect, check, store, deliver",
         "Animated pipeline: public job boards (Greenhouse, Lever, Ashby) are collected with "
         "Python, checked with dbt tests and pytest, stored in DuckDB and Parquet, and delivered "
-        f"through GitHub and Hugging Face. {d.companies:,} job boards, about "
-        f"{d.minutes:.0f} minutes, every morning.",
+        f"through {deliver_to}. {d.companies:,} job boards, about {d.minutes:.0f} minutes, "
+        "once a day.",
     )
     xs = [100, 300, 500, 700, 900]
     for i in range(len(xs)):
@@ -183,40 +205,39 @@ def pipeline(d: ReadmeData) -> str:
         b = (i * 1.0 + 0.3) / PIPE_LOOP * 100
         c.css.append(
             f".s{i}{{animation:sk{i} {PIPE_LOOP}s linear infinite}}"
-            f"@keyframes sk{i}{{0%,{a:.1f}%{{stroke:{BORDER}}}{b:.1f}%,100%{{stroke:{TEAL}}}}}"
+            f"@keyframes sk{i}{{0%,{a:.1f}%{{stroke:{LINE}}}{b:.1f}%,100%{{stroke:{ACCENT}}}}}"
         )
     c.css.append(
         ".dot{animation:mv 1.6s linear infinite}@keyframes mv{from{transform:translateX(0)}"
-        "to{transform:translateX(50px)}}"
+        "to{transform:translateX(30px)}}"
     )
     c.css.append(start_on_final_frame(len(xs) * 1.0 + 0.3))
     c.css.append(final_state_css(0, ".dot{transform:none!important}"))
-    for i, (label, caption, icons) in enumerate(STAGES):
+    for i, (label, caption, icons) in enumerate(steps):
         x = xs[i]
-        c.add(f'<rect class="st s{i}" x="{x - 78}" y="36" width="156" height="136" rx="18" '
-              f'fill="{PANEL}" stroke="{TEAL}" stroke-width="3"/>')  # fmt: skip
+        c.add(card(x - 78, 40, 156, 136, stroke=ACCENT, sw=3, cls=f"st s{i}"))
         if not icons:  # the three sources: a simple list glyph
             for j in range(3):
                 c.add(
-                    f'<rect x="{x - 42}" y="{70 + j * 26}" width="84" height="13" rx="6" fill="{BODY}"/>'
+                    f'<rect x="{x - 42}" y="{74 + j * 26}" width="84" height="13" rx="6" fill="{MUTED}"/>'
                 )
         elif label == "Check":
-            c.add(icon("pytest", x - 56, 84, 42))
-            c.add(c.text(x + 30, 116, "dbt", size=ROW, font="monob", fill=BODY, anchor="middle"))
+            c.add(icon("pytest", x - 56, 88, 42))
+            c.add(c.text(x + 30, 120, "dbt", size=ROW, font="sansb", anchor="middle"))
         else:
             n = len(icons)
             size = 42 if n <= 2 else 36
             total = n * size + (n - 1) * 10
             for j, name in enumerate(icons):
-                c.add(icon(name, x - total / 2 + j * (size + 10), 104 - size / 2, size))
-        c.add(c.text(x, 222, label, size=H2, font="sansb", anchor="middle"))
-        c.add(c.text(x, 264, caption, size=ROW, fill=QUIET, anchor="middle"))
+                c.add(icon(name, x - total / 2 + j * (size + 10), 108 - size / 2, size))
+        c.add(c.text(x, 226, label, size=H2, font="sansb", anchor="middle"))
+        c.add(c.text(x, 268, caption, size=ROW, fill=MUTED, anchor="middle"))
         if i < len(xs) - 1:
             c.add(
-                f'<line x1="{x + 80}" y1="104" x2="{x + 120}" y2="104" stroke="{BORDER}" stroke-width="3"/>'
+                f'<line x1="{x + 80}" y1="108" x2="{x + 120}" y2="108" stroke="{LINE}" stroke-width="3"/>'
             )
-            c.add(f'<circle class="dot" cx="{x + 78}" cy="104" r="6" fill="{TEAL}"/>')
-    c.add(c.text(500, 350, f"{d.companies:,} boards · about {d.minutes:.0f} min · daily at 07:41 UTC",
+            c.add(f'<circle class="dot" cx="{x + 85}" cy="108" r="6" fill="{GOOD}"/>')
+    c.add(c.text(500, 350, f"{d.companies:,} boards · about {d.minutes:.0f} min · once a day",
                  size=ROW + 2, fill=BODY, anchor="middle"))  # fmt: skip
     return c.render()
 
@@ -242,11 +263,13 @@ def maintenance_loop(d: ReadmeData) -> str:
     attempts = d.runs[-14:]
     ing = d.last_run.get("ingest") or {}
     ok, total = int(ing.get("boards_ok") or 0), int(ing.get("boards") or d.companies)
+    bad_total = sum(r.get("status") != "published" for r in d.runs)
     c = Canvas(
         1000,
-        380,
+        400,
         "Maintenance loop: daily runs, a real incident, fixed, data keeps arriving",
-        f"Animated: one square per pipeline run ({len(d.runs)} so far). "
+        f"Animated: one square per pipeline run, the latest {len(attempts)} of {len(d.runs)}; "
+        f"{bad_total} held or failed so far. "
         + (f"Incident {inc.date}: {inc.plain} Fix: {inc.fix_plain} " if inc else "")
         + f"Latest run ({d.run_date}): {ok:,} of {total:,} job boards read.",
     )
@@ -254,31 +277,37 @@ def maintenance_loop(d: ReadmeData) -> str:
     size, gap = 44, 14
     width = len(attempts) * size + (len(attempts) - 1) * gap
     x0 = 500 - width / 2
+    prev_bad = False
     for i, r in enumerate(attempts):
-        color = TEAL if r.get("status") == "published" else AMBER
+        bad = r.get("status") != "published"
+        x = x0 + i * (size + gap)
         hl = run_id is not None and r.get("actions_run_id") == run_id
-        stroke = f' stroke="{TEXT}" stroke-width="3"' if hl else ""
-        c.add(f'<rect x="{x0 + i * (size + gap):.1f}" y="36" width="{size}" height="{size}" '
-              f'rx="8" fill="{color}"{stroke}/>')  # fmt: skip
+        stroke = f' stroke="{INK}" stroke-width="3"' if hl else ""
+        c.add(f'<rect x="{x:.1f}" y="40" width="{size}" height="{size}" rx="8" '
+              f'fill="{LOOK if bad else GOOD}"{stroke}/>')  # fmt: skip
+        if bad and not prev_bad:  # direct label under the first square of each amber stretch
+            c.add(c.text(x, 120, "held or failed", size=ROW, fill=BODY))
+        prev_bad = bad
     b1 = [
-        c.text(500, 190, "A fresh run every morning.", size=H1, font="sansb", anchor="middle"),
-        c.text(500, 246, f"{len(d.runs)} runs so far · amber = held or failed", size=ROW,
-               font="mono", fill=QUIET, anchor="middle"),
+        c.text(500, 206, "A fresh run every day.", size=H1, font="sansb", anchor="middle"),
+        c.text(500, 262, f"{len(d.runs)} runs so far, {bad_total} held or failed", size=ROW,
+               fill=MUTED, anchor="middle"),
     ]  # fmt: skip
     b2: list[str] = []
     b3: list[str] = []
     if inc:
-        b2.append(c.text(500, 180, _wrap(inc.title, 44, 1)[0], size=H2, font="sansb", fill=AMBER,
-                         anchor="middle"))  # fmt: skip
+        title = _wrap(inc.title, 44, 1)[0]
+        b2.append(f'<circle cx="{500 - len(title) * 8.4 - 26:.0f}" cy="194" r="10" fill="{LOOK}"/>')
+        b2.append(c.text(500, 206, title, size=H2, font="sansb", anchor="middle"))
         for j, line in enumerate(_wrap(_first_sentence(inc.plain), 54)):
-            b2.append(c.text(500, 236 + j * 44, line, size=ROW, fill=BODY, anchor="middle"))
-        b3.append(c.text(500, 180, "Fixed the same day.", size=H2, font="sansb", fill=TEAL,
+            b2.append(c.text(500, 260 + j * 44, line, size=ROW, fill=BODY, anchor="middle"))
+        b3.append(c.text(500, 206, "Fixed the same day.", size=H2, font="sansb", fill=ACCENT,
                          anchor="middle"))  # fmt: skip
         for j, line in enumerate(_wrap(_first_sentence(inc.fix_plain), 54)):
-            b3.append(c.text(500, 236 + j * 44, line, size=ROW, fill=BODY, anchor="middle"))
+            b3.append(c.text(500, 260 + j * 44, line, size=ROW, fill=BODY, anchor="middle"))
     b4 = [
-        c.text(500, 230, f"{ok:,} of {total:,}", size=96, font="sansb", fill=TEAL, anchor="middle"),
-        c.text(500, 296, f"job boards read in the latest run · {d.run_date}", size=ROW + 2,
+        c.text(500, 250, f"{ok:,} of {total:,}", size=92, font="sansb", fill=ACCENT, anchor="middle"),
+        c.text(500, 316, f"job boards read in the latest run · {d.run_date}", size=ROW + 2,
                anchor="middle"),
     ]  # fmt: skip
     c.add(f'<g class="beat b1">{"".join(b1)}</g>')
@@ -300,7 +329,7 @@ def data_roles(d: ReadmeData) -> str:
     top = max((int(r["open_roles"]) for r in rows), default=1) or 1
     c = Canvas(
         1000,
-        470,
+        480,
         "Open data roles today",
         "Bar chart, open roles on "
         + d.run_date
@@ -311,19 +340,19 @@ def data_roles(d: ReadmeData) -> str:
             for r in rows
         ),
     )
-    c.add(c.text(40, 64, "Open data roles today", size=H1, font="sansb"))
-    c.add(c.text(960, 64, "median pay", size=ROW, fill=QUIET, anchor="end"))
+    c.add(c.text(40, 70, "Open data roles today", size=H1, font="sansb"))
+    c.add(c.text(960, 70, "median pay", size=ROW, fill=MUTED, anchor="end"))
     for i, r in enumerate(rows):
-        y = 104 + i * 78
+        y = 108 + i * 78
         width = max(6.0, 300 * int(r["open_roles"]) / top)
-        c.add(c.text(40, y + 38, ROLE_LABELS[r["role_family"]], size=ROW, fill=BODY))
-        c.add(f'<rect class="bar g{i}" x="340" y="{y + 14}" width="{width:.1f}" height="32" rx="4" '
-              f'fill="{TEAL}"/>')  # fmt: skip
-        c.add(c.text(340 + width + 14, y + 40, f"{int(r['open_roles']):,}", size=ROW, font="monob"))
-        c.add(c.text(960, y + 40, fmt_usd_k(r["median_salary_usd"]), size=ROW, font="mono",
-                     fill=QUIET, anchor="end"))  # fmt: skip
-    c.add(c.text(40, 446, f"US roles, middle of the published yearly range · {d.run_date}",
-                 size=ROW, fill=QUIET))  # fmt: skip
+        c.add(c.text(40, y + 40, ROLE_LABELS[r["role_family"]], size=ROW, fill=BODY))
+        c.add(f'<rect class="bar g{i}" x="340" y="{y + 14}" width="{width:.1f}" height="34" rx="6" '
+              f'fill="{GOOD}"/>')  # fmt: skip
+        c.add(c.text(340 + width + 14, y + 42, f"{int(r['open_roles']):,}", size=ROW, font="sansb"))
+        c.add(c.text(960, y + 42, fmt_usd_k(r["median_salary_usd"]), size=ROW, font="sansm",
+                     fill=INK, anchor="end"))  # fmt: skip
+    c.add(c.text(40, 450, f"US roles, middle of the published yearly range · {d.run_date}",
+                 size=ROW, fill=MUTED))  # fmt: skip
     c.css.append(
         ".bar{transform-box:fill-box;transform-origin:left center}"
         + "".join(
@@ -340,13 +369,14 @@ def data_roles(d: ReadmeData) -> str:
 
 # ---- dbt lineage -----------------------------------------------------------------------
 
-LAYERS = [("Raw inputs", ("source", "seed")), ("Cleaned", ("staging",)),
-          ("History", ("intermediate",)), ("Published", ("marts",))]  # fmt: skip
+LAYERS = [("Raw inputs", ("source", "seed"), "inputs"), ("Cleaned", ("staging",), "models"),
+          ("History", ("intermediate",), "models"), ("Published", ("marts",), "models")]  # fmt: skip
 
 
 def lineage(manifest: dict[str, Any]) -> str:
-    nodes: dict[str, dict[str, Any]] = {}
-    for uid, n in {**manifest.get("nodes", {}), **manifest.get("sources", {})}.items():
+    """The dbt project as four layers, each with its real number of inputs or models."""
+    counts = [0] * len(LAYERS)
+    for n in {**manifest.get("nodes", {}), **manifest.get("sources", {})}.values():
         rt = n.get("resource_type")
         if rt not in ("model", "seed", "source"):
             continue
@@ -354,65 +384,36 @@ def lineage(manifest: dict[str, Any]) -> str:
             layer = n.get("fqn", ["", ""])[1] if len(n.get("fqn", [])) > 2 else "marts"
         else:
             layer = rt
-        name = n.get("name", uid)
-        for p in ("stg_", "int_", "mart_"):
-            name = name.removeprefix(p)
-        if rt == "source":
-            name = f"{name} (raw)"
-        nodes[uid] = {
-            "name": name,
-            "layer": layer,
-            "deps": n.get("depends_on", {}).get("nodes", []),
-        }
-    cols: list[list[str]] = [[] for _ in LAYERS]
-    for uid, n in sorted(nodes.items(), key=lambda kv: kv[1]["name"]):
-        for i, (_, kinds) in enumerate(LAYERS):
-            if n["layer"] in kinds:
-                cols[i].append(uid)
-    box_w, box_h, gap_y, col_gap = 420, 66, 22, 110
-    w = 60 * 2 + len(cols) * box_w + (len(cols) - 1) * col_gap
-    max_rows = max(len(col) for col in cols)
-    h = 150 + max_rows * (box_h + gap_y) + 40
+        for i, (_, kinds, _) in enumerate(LAYERS):
+            if layer in kinds:
+                counts[i] += 1
+    tests = sum(1 for n in manifest.get("nodes", {}).values() if n.get("resource_type") == "test")
     c = Canvas(
-        w,
-        h,
+        1000,
+        480,
         "dbt model lineage",
-        "Graph of the dbt project: raw inputs (bronze files and seed tables) feed cleaned "
-        "staging models, then history models, then the published marts.",
-    )
-    pos: dict[str, tuple[float, float]] = {}
-    for i, col in enumerate(cols):
-        x = 60 + i * (box_w + col_gap)
-        c.add(c.text(x, 80, LAYERS[i][0], size=44, font="sansb"))
-        top = 130 + (max_rows - len(col)) * (box_h + gap_y) / 2
-        for j, uid in enumerate(col):
-            y = top + j * (box_h + gap_y)
-            pos[uid] = (x, y)
-    edges = []
-    for uid, n in nodes.items():
-        if uid not in pos:
-            continue
-        x2, y2 = pos[uid]
-        for dep in n["deps"]:
-            if dep in pos:
-                x1, y1 = pos[dep]
-                sx, sy, ex, ey = x1 + box_w, y1 + box_h / 2, x2, y2 + box_h / 2
-                mx = (sx + ex) / 2
-                edges.append(f'<path class="edge" d="M{sx:.0f} {sy:.0f} C {mx:.0f} {sy:.0f}, '
-                             f'{mx:.0f} {ey:.0f}, {ex:.0f} {ey:.0f}" stroke="{BORDER}" '
-                             'stroke-width="3" fill="none"/>')  # fmt: skip
-    c.add("".join(edges))
-    for uid, (bx, by) in pos.items():
-        n = nodes[uid]
-        stroke = TEAL if n["layer"] == "marts" else BORDER
-        c.add(f'<rect x="{bx}" y="{by}" width="{box_w}" height="{box_h}" rx="10" fill="{PANEL}" '
-              f'stroke="{stroke}" stroke-width="2"/>')  # fmt: skip
-        c.add(c.text(bx + 18, by + 44, n["name"], size=30, font="mono", fill=TEXT))
-    c.css.append(
-        ".edge{stroke-dasharray:8 10;animation:fl 2s linear infinite}"
-        "@keyframes fl{to{stroke-dashoffset:-36}}"
-        "@media (prefers-reduced-motion: reduce){*{animation:none!important}}"
-    )
+        "The dbt project in four layers: "
+        + ", then ".join(f"{counts[i]} {unit} in {name.lower()}" for i, (name, _, unit) in
+                         enumerate(LAYERS))
+        + f". {tests} data tests run on every build.",
+    )  # fmt: skip
+    c.add(c.text(40, 70, "Raw data to published tables, in 4 layers", size=H1, font="sansb"))
+    box_w, gap = 200, 40
+    for i, (name, _, unit) in enumerate(LAYERS):
+        x = 40 + i * (box_w + gap)
+        last = i == len(LAYERS) - 1
+        c.add(card(x, 110, box_w, 280, stroke=ACCENT if last else LINE, sw=3 if last else 2))
+        c.add(c.text(x + 20, 160, name, size=ROW, font="sansb"))
+        c.add(c.text(x + 24, 236, str(counts[i]), size=64, font="sansb", fill=ACCENT))
+        c.add(c.text(x + 24, 280, unit, size=ROW, fill=BODY))
+        for j in range(min(counts[i], 8)):
+            c.add(f'<rect x="{x + 24 + j * 20}" y="318" width="14" height="40" rx="4" '
+                  f'fill="{GOOD if last else SOFT}"/>')  # fmt: skip
+        if not last:
+            ax = x + box_w + 8
+            c.add(f'<path d="M{ax} 250 l14 0 m-7 -8 l8 8 l-8 8" fill="none" stroke="{MUTED}" '
+                  'stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>')  # fmt: skip
+    c.add(c.text(40, 446, f"{tests} data tests run on every build", size=ROW, fill=MUTED))
     return c.render()
 
 

@@ -14,9 +14,9 @@ from playwright.sync_api import sync_playwright
 
 CSS = """
 @page { size: A4; margin: 18mm 16mm; }
-body { font-family: 'Instrument Sans', system-ui, sans-serif; color: #1a2624; font-size: 11pt;
+body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #1a2624; font-size: 11pt;
        line-height: 1.5; }
-h1 { font-size: 20pt; color: #0B1416; border-bottom: 3px solid #2FBFAE; padding-bottom: 6px; }
+h1 { font-size: 20pt; color: #0B1416; border-bottom: 3px solid #0B7468; padding-bottom: 6px; }
 h2 { font-size: 14pt; color: #0B1416; margin-top: 20px; }
 strong { color: #0B1416; }
 code { font-family: 'IBM Plex Mono', monospace; font-size: 9.5pt; background: #eef3f2;
@@ -28,8 +28,8 @@ li { margin: 3px 0; }
 def main(src: Path, dst: Path) -> None:
     fonts = Path("src/jobpipe/site/assets/fonts").resolve()
     faces = (
-        f"@font-face{{font-family:'Instrument Sans';src:url(file://{fonts}/instrument-sans-latin-400-normal.woff2)}}"
-        f"@font-face{{font-family:'Instrument Sans';font-weight:600;src:url(file://{fonts}/instrument-sans-latin-600-normal.woff2)}}"
+        f"@font-face{{font-family:'Plus Jakarta Sans';src:url(file://{fonts}/plus-jakarta-sans-latin-400-normal.woff2)}}"
+        f"@font-face{{font-family:'Plus Jakarta Sans';font-weight:700;src:url(file://{fonts}/plus-jakarta-sans-latin-700-normal.woff2)}}"
         f"@font-face{{font-family:'IBM Plex Mono';src:url(file://{fonts}/ibm-plex-mono-latin-400-normal.woff2)}}"
     )
     body = markdown.markdown(src.read_text(encoding="utf-8"), extensions=["tables"])

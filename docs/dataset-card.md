@@ -79,7 +79,7 @@ The full contract (types, keys, guarantees, versioning policy) is in [docs/data-
 1. Each company's public job board is read once a day through the official job-board API (Greenhouse Job Board API, Lever Postings API, Ashby Posting API), with per-host rate limits.
 2. Job descriptions are read in memory only, to extract salary and remote hints, and are never stored.
 3. dbt models deduplicate, classify titles (versioned taxonomy), parse locations, annualise salaries and convert them to USD at the ECB reference rate, and track each posting's history.
-4. Quality gates (data tests, row-count and null-rate guards, a single-posting spot check) decide whether a day is published. A doubtful day is held back instead.
+4. Quality gates (data tests, row-count and null-rate guards, and a spot check that re-reads a random sample of postings from a second address) decide whether a day is published. A doubtful day is held back instead.
 
 ## Known limitations
 
@@ -90,7 +90,7 @@ The full contract (types, keys, guarantees, versioning policy) is in [docs/data-
 
 ## Personal data and opt-out
 
-The dataset contains no personal data: no recruiter or hiring-manager names, emails or phone numbers, and no description text. Companies can ask for their postings to be removed by emailing hello@siddharthkumar.com; removal happens within 24 hours.
+The dataset contains no personal data: no recruiter or hiring-manager names, emails or phone numbers, and no description text. Companies can ask for their postings to be removed by emailing [hello@steadydata.co](mailto:hello@steadydata.co); removal happens within 24 hours.
 
 ## License and citation
 
@@ -98,4 +98,4 @@ CC BY 4.0 for the compiled dataset. Each posting belongs to the company that pub
 
 > Siddharth Kumar. *US tech job postings (daily)*. https://github.com/siddharthkumarx/job-postings-pipeline
 
-Maintained by Siddharth Kumar · https://siddharthkumar.com
+Built and maintained by Siddharth Kumar, Founder of SteadyData · [steadydata.co](https://steadydata.co)

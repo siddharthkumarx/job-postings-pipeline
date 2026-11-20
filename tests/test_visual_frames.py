@@ -23,7 +23,7 @@ from jobpipe.visuals import build as visuals
 
 playwright = pytest.importorskip("playwright.sync_api")
 
-TEAL_RGB = "rgb(47, 191, 174)"
+ACCENT_RGB = "rgb(11, 116, 104)"
 
 STATE_JS = """
 () => {
@@ -94,7 +94,7 @@ def _assert_final(name: str, state: dict[str, Any]) -> None:
     for ratio in state["bars"]:
         assert ratio == pytest.approx(1.0, abs=0.02), f"{name}: bar not full width {state['bars']}"
     for stroke in state["strokes"]:
-        assert stroke == TEAL_RGB, f"{name}: stage outline not lit {state['strokes']}"
+        assert stroke == ACCENT_RGB, f"{name}: stage outline not lit {state['strokes']}"
     joined = " ".join(state["text"])
     assert _expected_number(name) in joined, f"{name}: result number missing from {joined!r}"
 

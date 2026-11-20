@@ -2,7 +2,7 @@
 
 # US tech hiring data, checked every day
 
-Every open job at 1,500 US tech companies, collected each morning from their public job boards and delivered as one clean table you can download, filter and chart.
+**Every open job at 1,500 US tech companies, collected every day from their public job boards and delivered as one clean table you can download, filter and chart.**
 
 [![Last run](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsiddharthkumarx%2Fjob-postings-pipeline%2Fmain%2Fpublic%2Fbadges%2Flast-run.json)](public/runs.jsonl) [![Days running](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsiddharthkumarx%2Fjob-postings-pipeline%2Fmain%2Fpublic%2Fbadges%2Fdays-running.json)](public/status.json) [![Missed runs](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsiddharthkumarx%2Fjob-postings-pipeline%2Fmain%2Fpublic%2Fbadges%2Fmissed-runs.json)](public/status.json) [![Rows today](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsiddharthkumarx%2Fjob-postings-pipeline%2Fmain%2Fpublic%2Fbadges%2Frows-today.json)](public/summary/providers.csv) [![Tests](https://github.com/siddharthkumarx/job-postings-pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/siddharthkumarx/job-postings-pipeline/actions/workflows/ci.yml)
 
@@ -32,30 +32,30 @@ Compared with the run of 2026-11-19:
 
 ## Why you can trust this data
 
-- **Checked against a second source.** Every run re-reads 30 random jobs one by one from a second official address at the job board and compares the title and location. Latest run (2026-11-20): 30 of 30 matched.
+- **Spot-checked against a second source.** Every run re-reads a sample of 30 random jobs one by one from a second official address at the job board and compares the title and location. Latest run (2026-11-20): 30 of 30 matched.
 - **Doubtful values are held back, not guessed.** In the latest run, 97 salary figures that looked wrong (far outside any normal yearly pay once converted) were left empty instead of published, and 13 malformed job ads were set aside. If a whole run looks wrong, it is not published at all and yesterday's data stays up until it is fixed.
-- **Nothing missing.** 1,493 of 1,500 company job boards were read in the latest run. A job only counts as closed after it is missing on two days in a row, so one bad day cannot wipe out real openings.
+- **Nothing silently missing.** 1,493 of 1,500 company job boards were read in the latest run; a board that could not be read keeps its open jobs until it is read again. A job only counts as closed after it is missing on two days in a row, so one bad day cannot wipe out real openings.
 - **Polite collection.** One request per company per day, plus the 30 spot checks (1,531 requests in the latest run), a short pause between requests, no logins, and only the official public job-board feeds that the companies use for their own career pages.
-- **Tested every day.** The latest run passed all 91 automatic data checks. Missed or held days are counted in public: see the badges above and the [run log](public/runs.jsonl).
+- **Daily runs delivered: 17 of 17.** The latest run passed all 91 automatic data checks. Missed or held days are counted in public: see the badges above and the [run log](public/runs.jsonl).
 
 ## How it works
 
-![Animation of the pipeline: source (3 job boards), collect (Python), check (dbt and pytest), store (DuckDB), deliver (GitHub, Hugging Face); 1,500 job boards in about 9 minutes every morning](assets/pipeline.svg)
+![Animation of the pipeline: source (3 job boards), collect (Python), check (dbt and pytest), store (DuckDB), deliver (GitHub); 1,500 job boards in about 9 minutes, once a day](assets/pipeline.svg)
 
-1. **Collect.** Each morning at 07:41 UTC, the pipeline reads the public job board of every tracked company: 779 on Greenhouse, 669 on Ashby and 52 on Lever.
+1. **Collect.** Once a day, the pipeline reads the public job board of every tracked company: 779 on Greenhouse, 669 on Ashby and 52 on Lever.
 2. **Check.** Every job is cleaned and tested. Titles become role types (for example "data engineer"), locations become city and state, and salaries become yearly US dollars.
 3. **Store.** Each day's raw data is kept, so history (when a job opened, when it closed, when its salary changed) can always be rebuilt.
 4. **Deliver.** The clean table, the [dashboard](https://siddharthkumar.com/job-postings-pipeline/) and a monthly download are refreshed. A full run takes about 9 minutes.
 
 ![Bar chart of open data roles today: ml engineer 1,514, data engineer 481, data analyst 289, analytics engineer 120](assets/data-roles.svg)
 
-![Screenshot of the live dashboard: 1,500 companies tracked and open roles by role family, data roles, salary bands and days open](assets/dashboard.png)
+![The live dashboard: companies tracked, open roles, daily runs delivered, hiring trends, role families, data roles, salary bands and days open](assets/dashboard.png)
 
 ## What broke and how I fixed it
 
 Every pipeline breaks sometimes. What matters is that problems are caught before bad data reaches you, fixed quickly and written down. Real incidents from the [incident log](docs/incidents.md):
 
-![Animation: one square per daily run, amber for a held or failed run; a real incident, its fix the same day, and every job board read in the latest run](assets/maintenance-loop.svg)
+![Animation: one square per daily run, amber for a held or failed run; a real incident and its fix the same day; then the job boards read in the latest run](assets/maintenance-loop.svg)
 
 - **2026-11-04: A saved copy of the database was missing a table.** The nightly saved copy of the database was taken a moment too early, so it could miss the newest changes. Every copy is now completed and checked before it is saved. A bad copy is never used; the data is rebuilt from the raw daily files instead.
 - **2026-11-04: Locations made only of dashes stopped the data model.** A few job ads gave their location as just a dash. The step that reads locations did not expect that, so the run was held back and nothing wrong was published. Empty locations are now handled. The same day's data was re-processed and published.
@@ -71,33 +71,35 @@ Every pipeline breaks sometimes. What matters is that problems are caught before
 
 ## Want this for your own sites?
 
-I build and run pipelines like this one for clients: job boards, competitor career pages, marketplaces, price lists and other public data.
+SteadyData builds custom data feeds like this one for your own target sites: job boards, competitor career pages, marketplaces, price lists and other public data.
 
-- **Free sample first.** You get 20 to 50 real rows from your own target sites before you pay anything.
-- **Fixed price.** A clear quote after the sample, with no hourly surprises.
-- **Data on schedule.** Daily, weekly or one-off, delivered as CSV, Excel, Google Sheets or straight into your database.
+- **Free sample first.** Up to 1,000 real rows from your own target sites within 48 hours, before you pay anything.
+- **Fixed quote.** After the sample you get a fixed quote, with no hourly billing.
+- **Data on schedule.** Delivered daily or weekly as Excel, CSV, JSON or Google Sheets.
 
-**Contact:** [hello@siddharthkumar.com](mailto:hello@siddharthkumar.com) · [siddharthkumar.com](https://siddharthkumar.com)
+No sales calls needed. Everything by email.
+
+**[Get a free sample →](https://steadydata.co/contact/)** · [How SteadyData works →](https://steadydata.co) · [hello@steadydata.co](mailto:hello@steadydata.co)
 
 ## FAQ
 
 **How fresh is the data?**
-It is collected every morning at 07:41 UTC. The latest run was on 2026-11-20. The badges at the top always show the last run and any missed days.
+Every company's job board is read once a day. The latest run was on 2026-11-20, and daily runs delivered so far: 17 of 17. The badges at the top always show the last run and any missed days. The run is scheduled for 07:41 UTC, but GitHub's scheduler has started it late: over the last 14 days, 6.6 to 10.1 hours late (median 8.3 hours), so new data usually arrives in the afternoon UTC. Every one of those days was still delivered.
 
 **What happens when a site changes?**
-The daily checks notice it, that day's data is held back instead of published, and I get an alert. I fix the collector, usually the same day, and the incident goes in the public log above.
+The daily checks notice it: that day's data is held back instead of published, yesterday's data stays up, and I get an alert. I fix the collector, usually the same day, and the incident goes in the public log above.
 
 **Which formats can I get?**
-CSV, Excel, Google Sheets, JSON, Parquet (a compact file format that data tools read quickly), or a direct load into your database. This project publishes CSV summaries and a monthly Parquet file.
+For a custom feed: Excel, CSV, JSON or Google Sheets, delivered daily or weekly. This project itself publishes CSV summaries and a monthly Parquet file (a compact file format that data tools read quickly).
 
 **Can you track my competitors' sites?**
-Yes, if the information is publicly visible without logging in. Send me the list of sites and I will check what is possible and send a free sample.
+Yes, if the information is publicly visible without logging in. Email the list of sites to [hello@steadydata.co](mailto:hello@steadydata.co). SteadyData checks what can be collected and how often, then sends a free sample.
 
 **Is it legal and polite?**
 This project reads only public pages and official public feeds, follows each site's published rate limits, collects no personal data and links back to every original posting. See [Data use and compliance](#data-use-and-compliance).
 
 **How does pricing work?**
-Either a fixed monthly price for a running pipeline or a one-time price for a single delivery. You get a quote after the free sample, once both of us know exactly what the data looks like.
+Custom feeds get a fixed quote after the free sample, once both sides know exactly what the data looks like. Monitoring plans are listed on [steadydata.co/pricing](https://steadydata.co/pricing/).
 
 ## Data dictionary
 
@@ -205,10 +207,10 @@ uv run jobpipe site --duckdb data/fixtures/warehouse.duckdb --public data/fixtur
 - `robots.txt` and rate limits are respected: at most one request per company per day, a pause between requests, and Lever at no more than one request per second as its `robots.txt` asks.
 - No personal data: recruiter or hiring-manager names, emails and phone numbers are never collected or stored.
 - No job descriptions or images are republished. Descriptions are read once, in memory, only to find the salary and remote hints, and are then discarded. Every row links back to the original posting.
-- **Opt-out:** email [hello@siddharthkumar.com](mailto:hello@siddharthkumar.com) and your company's postings are removed within 24 hours.
+- **Opt-out:** email [hello@steadydata.co](mailto:hello@steadydata.co) and your company's postings are removed within 24 hours.
 
 ## License
 
 The code is released under the [MIT License](LICENSE). The published dataset is factual job metadata compiled from public postings, shared under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Each posting belongs to the company that published it and is linked at its source. Citation details are in [CITATION.cff](CITATION.cff); the dataset card is in [docs/dataset-card.md](docs/dataset-card.md).
 
-Built and maintained by Siddharth Kumar · [siddharthkumar.com](https://siddharthkumar.com)
+Built and maintained by Siddharth Kumar, Founder of SteadyData · [steadydata.co](https://steadydata.co)

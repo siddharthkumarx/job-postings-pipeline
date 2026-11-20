@@ -1,8 +1,13 @@
 """Shared pieces for the README visuals: colours, embedded font subsets, text helpers.
 
 A README SVG is loaded as an image, so it cannot fetch fonts or run scripts. Each SVG
-therefore embeds WOFF2 subsets (only the glyphs it uses, base64) of Instrument Sans and
-IBM Plex Mono (both SIL OFL 1.1), and animates with CSS only.
+therefore embeds WOFF2 subsets (only the glyphs it uses, base64) of Plus Jakarta Sans
+(text, tabular numbers) and IBM Plex Mono (IDs and code only), both SIL OFL 1.1, and
+animates with CSS only.
+
+Colours are the light system v1 (docs/decisions.md D-018): text is always ink, body,
+muted or accent (contrast >= 4.5:1 on every surface used here); GOOD and LOOK colour
+marks only, never text, and every LOOK mark carries a direct text label.
 """
 
 from __future__ import annotations
@@ -15,20 +20,22 @@ from pathlib import Path
 
 FONT_DIR = Path(__file__).resolve().parents[1] / "site" / "assets" / "fonts"
 FONTS = {
-    "sans": ("Instrument Sans", "instrument-sans-latin-400-normal.woff2", 400),
-    "sansb": ("Instrument Sans", "instrument-sans-latin-600-normal.woff2", 600),
+    "sans": ("Plus Jakarta Sans", "plus-jakarta-sans-latin-400-normal.woff2", 400),
+    "sansm": ("Plus Jakarta Sans", "plus-jakarta-sans-latin-600-normal.woff2", 600),
+    "sansb": ("Plus Jakarta Sans", "plus-jakarta-sans-latin-700-normal.woff2", 700),
     "mono": ("IBM Plex Mono", "ibm-plex-mono-latin-400-normal.woff2", 400),
-    "monob": ("IBM Plex Mono", "ibm-plex-mono-latin-500-normal.woff2", 500),
 }
 
-BG = "#0B1416"
-PANEL = "#0F1C1E"
-BORDER = "#1D3331"
-TEXT = "#EAF2F0"
-BODY = "#C9D8D5"
-QUIET = "#7E9996"
-TEAL = "#2FBFAE"
-AMBER = "#E9A93C"
+PAGE = "#FFFFFF"  # cards
+ALT = "#F3F8F7"  # the visual's own background (an "alt section")
+LINE = "#E2EAE8"  # card borders, connectors
+INK = "#0B1416"  # headings
+BODY = "#3D4B49"  # body text
+MUTED = "#5F716E"  # small / muted text
+ACCENT = "#0B7468"  # accent text and links
+SOFT = "#E3F3F0"  # accent soft fill
+GOOD = "#0E8A7D"  # data: good / verified (marks only)
+LOOK = "#D98E14"  # data: change / look here (marks only, always labelled)
 
 ICON_DIR = Path(__file__).parent / "icons"
 
@@ -39,7 +46,7 @@ def subset_woff2(path: Path, text: str) -> str:
 
     opts = subset.Options()
     opts.flavor = "woff2"
-    opts.layout_features = ["kern", "liga"]
+    opts.layout_features = ["kern", "liga", "tnum"]
     opts.name_IDs = ["*"]
     opts.notdef_outline = True
     font = subset.load_font(str(path), opts)
@@ -72,7 +79,7 @@ class Canvas:
         *,
         size: float,
         font: str = "sans",
-        fill: str = TEXT,
+        fill: str = INK,
         anchor: str = "start",
         cls: str = "",
         extra: str = "",
@@ -94,19 +101,35 @@ class Canvas:
                 f"@font-face{{font-family:'{family}';font-weight:{weight};"
                 f"src:url(data:font/woff2;base64,{b64}) format('woff2');}}"
             )
-        style = "".join(faces) + "".join(self.css)
+        style = (
+            "".join(faces)
+            + "text{font-variant-numeric:tabular-nums;font-feature-settings:'tnum'}"
+            + "".join(self.css)
+        )
         return (
             f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {self.w} {self.h}" '
             f'width="{self.w}" height="{self.h}" role="img" aria-labelledby="t d">'
             f'<title id="t">{escape(self.title)}</title><desc id="d">{escape(self.desc)}</desc>'
             f"<style>{style}</style>"
-            f'<rect width="{self.w}" height="{self.h}" rx="16" fill="{BG}"/>'
-            + "".join(self.parts)
-            + "</svg>"
+            f'<rect x="1" y="1" width="{self.w - 2}" height="{self.h - 2}" rx="14" fill="{ALT}" '
+            f'stroke="{LINE}" stroke-width="2"/>' + "".join(self.parts) + "</svg>"
         )
 
 
-def icon(name: str, x: float, y: float, size: float, fill: str = BODY, cls: str = "") -> str:
+def card(
+    x: float, y: float, w: float, h: float, *, stroke: str = LINE, sw: float = 2, cls: str = ""
+) -> str:
+    """A white card with the light border and a soft shadow."""
+    c = f' class="{cls}"' if cls else ""
+    return (
+        f'<rect x="{x:.1f}" y="{y + 3:.1f}" width="{w:.1f}" height="{h:.1f}" rx="14" '
+        f'fill="{INK}" opacity="0.05"/>'
+        f'<rect{c} x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="14" '
+        f'fill="{PAGE}" stroke="{stroke}" stroke-width="{sw}"/>'
+    )
+
+
+def icon(name: str, x: float, y: float, size: float, fill: str = INK, cls: str = "") -> str:
     """A Simple Icons glyph (CC0) scaled into a size x size box at (x, y)."""
     svg = (ICON_DIR / f"{name}.svg").read_text()
     start = svg.index(' d="') + 4
@@ -166,7 +189,7 @@ def final_state_css(n_beats: int = 0, extra: str = "") -> str:
         + beats
         + last
         + ".row{opacity:1!important}.bar{transform:none!important}"
-        + f".st{{stroke:{TEAL}!important}}"
+        + f".st{{stroke:{ACCENT}!important}}"
         + extra
         + "}"
     )
