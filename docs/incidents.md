@@ -2,6 +2,16 @@
 
 What broke, the impact, and the fix, newest first. Every entry has the same fields. The two "In plain words" lines are what the README shows, so keep them short and free of jargon. The other fields are for engineers.
 
+### 2026-11-21 · The count of closed roles was always 0
+
+- **Run / check:** daily runs 2026-11-04 to 2026-11-21 (`public/runs.jsonl`, `closed_postings`)
+- **In plain words:** Every daily run reported 0 roles closed, even though about 1,000 roles close each day. The open-role count was right; only the closed count was wrong, in the README and on the dashboard.
+- **Fix in plain words:** A role is still counted as closed once it is missing two days in a row, and it is now counted on that second day. The next daily run shows the real number.
+- **Symptom:** `closed_postings = 0` in every run from 2026-11-04 to 2026-11-21 while open postings fell and about 1,000 postings arrived per run (20 Nov open 64,204; 21 Nov open 64,062 with 879 new, so 1,021 net closings). The README said "0 roles closed" and the dashboard's newest new-vs-closed bar was always 0; older bars were shifted one run early.
+- **Root cause:** `int_posting_lifecycle` sets `closed_on` to the first successful board fetch after `last_seen`, but only once a second successful fetch also misses the posting. A closing is therefore known one run after its `closed_on`, and every "closed in this run" count (`guards.collect`, `publish.changes_today`, the dashboard flows) filtered on `closed_on = <run date>`, which can never match on the newest run.
+- **Fix:** New column `close_confirmed_on` (the second missed successful fetch) in `int_posting_lifecycle`, `gold.fct_job_postings` and `mart_data_roles`, the contracts and the data dictionary. All per-run counts use it; the lifecycle marts (days open, weekly velocity, days-open bands) keep `closed_on`. A flow check (open today = open in the previous run + new + first fetch + reopened − closed) runs every day and writes a note to `runs.jsonl` when it does not balance. `runs.jsonl` also gets `reopened_postings`, `first_fetch_postings` and `open_previous`.
+- **Follow-up:** Tests in `tests/test_pipeline.py` (written first; they failed with `[0, 0, 0, 0, 0, 0]` closings) check on the synthetic runs that each closing is counted once, in the run that confirms it, in `runs.jsonl`, the README changes and the dashboard; that a failed board fetch never confirms a closing; that a returning posting is reopened and not counted again; and that the flow check balances. Re-run on the 21 Nov warehouse snapshot: 1,053 closings confirmed on 21 Nov (1,093 on 20 Nov, 1,196 on 19 Nov), and the flow check balances on the last five run dates. Earlier lines of `runs.jsonl` stay as written (append-only, D-015).
+
 ### 2026-11-04 · A saved copy of the database was missing a table
 
 - **Run / check:** site-screenshots-001

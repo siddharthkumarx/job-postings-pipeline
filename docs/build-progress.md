@@ -26,3 +26,4 @@ Status: `todo` · `doing` · `done` · `blocked`.
 | 19 | CI: ruff, mypy, pytest, dbt build on fixtures, gitleaks, pip-audit, 50 MB file guard | done | green since run 5; golden fixtures added |
 | 20 | First real runs; fix incidents; record in docs/incidents.md | done | 2026-11-04: failed → held → published (9.7 min), re-run from snapshot published (9.4 min); 2 incidents fixed |
 | 21 | README + animated SVGs from real run data (owner's rules of 2026-11-04) | done | generated README (`templates/README.md.j2`), 6 SVGs, dashboard PNG, social preview, LinkedIn video, dataset card, CITATION, LICENSE, explainer (private); D-016 |
+| 22 | Fix: closed roles counted in the run that confirms them (`close_confirmed_on`) + daily flow check | done | closed count was 0 in every run 2026-11-04 to 2026-11-21; docs/incidents.md 2026-11-21 |
