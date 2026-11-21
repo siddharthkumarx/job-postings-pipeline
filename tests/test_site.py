@@ -77,6 +77,7 @@ def test_render_has_no_external_scripts_and_escapes() -> None:
         "https://github.com/siddharthkumarx/job-postings-pipeline/blob/main/public/runs.jsonl",
         "https://steadydata.co",
         "https://steadydata.co/contact/",
+        "https://siddharthkumar.com/job-postings-pipeline/",  # canonical
     }
     assert "Built by SteadyData" in html and "Get a free sample" in html
     assert "Built and maintained by Siddharth Kumar, Founder of SteadyData" in html
@@ -84,6 +85,18 @@ def test_render_has_no_external_scripts_and_escapes() -> None:
     assert "<!--" not in html
     assert 'lang="en"' in html and 'name="viewport"' in html and 'name="description"' in html
     assert "Acme &lt;script&gt;" in html
+
+
+def test_head_has_icon_set_and_link_preview() -> None:
+    html = build.render(_data(), {"days_running": 3})
+    assert '<link rel="icon" href="assets/favicon.ico" sizes="32x32">' in html
+    assert '<link rel="manifest" href="assets/site.webmanifest">' in html
+    assert 'stop-color="#5FE8D6"' in html  # the SteadyData mark in the top bar
+    assert "data:image/svg+xml" not in html
+    url = "https://siddharthkumar.com/job-postings-pipeline/"
+    assert f'<meta property="og:image" content="{url}assets/og.png">' in html
+    for name in ("favicon.ico", "icon.svg", "apple-touch-icon.png", "site.webmanifest", "og.png"):
+        assert (build.ASSETS / name).exists()
 
 
 def test_headlines_use_tracked_count_not_boards_read() -> None:
