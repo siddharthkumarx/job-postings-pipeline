@@ -37,7 +37,16 @@ models:
         data_tests: [unique, not_null]
 
   - name: int_posting_lifecycle
-    description: First/last seen, closed (2 consecutive successful-fetch absences), reopen count, days open.
+    description: >
+      First/last seen, closed (2 consecutive successful-fetch absences), reopen count, days open.
+      closed_on is the first missed run, close_confirmed_on the second (the run that counts it).
+    data_tests:
+      - expression_is_true:
+          arguments:
+            expression: "(closed_on is null) = (close_confirmed_on is null)"
+      - expression_is_true:
+          arguments:
+            expression: "close_confirmed_on is null or close_confirmed_on > closed_on"
     columns:
       - name: posting_key
         data_tests: [unique, not_null]

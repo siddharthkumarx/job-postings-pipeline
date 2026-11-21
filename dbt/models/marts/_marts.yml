@@ -17,6 +17,12 @@ models:
   - expression_is_true:
       arguments:
         expression: closed_on is null or closed_on > last_seen
+  - expression_is_true:
+      arguments:
+        expression: (closed_on is null) = (close_confirmed_on is null)
+  - expression_is_true:
+      arguments:
+        expression: close_confirmed_on is null or close_confirmed_on > closed_on
   columns:
   - name: posting_key
     data_type: varchar
@@ -228,6 +234,9 @@ models:
   - name: closed_on
     data_type: date
     description: first missing run date once closed (2 consecutive successful-fetch absences), else null
+  - name: close_confirmed_on
+    data_type: date
+    description: run date of the second successful-fetch absence, the run that counts the closing; null while open
   - name: is_open
     data_type: boolean
     description: listed on the latest run
@@ -599,6 +608,9 @@ models:
   - name: closed_on
     data_type: date
     description: first missing run date once closed (2 consecutive successful-fetch absences), else null
+  - name: close_confirmed_on
+    data_type: date
+    description: run date of the second successful-fetch absence, the run that counts the closing; null while open
   - name: is_open
     data_type: boolean
     description: listed on the latest run

@@ -26,7 +26,7 @@ Open jobs at {{ companies | num }} US tech companies, collected every day from t
 
 ## Dataset summary
 
-- **One row per job posting ever seen.** Each row has the current attributes of the posting (title, role family, seniority, location, remote type, salary range), its lifecycle (first seen, last seen, closed on, days open) and a link to the original posting.
+- **One row per job posting ever seen.** Each row has the current attributes of the posting (title, role family, seniority, location, remote type, salary range), its lifecycle (first seen, last seen, first day missing, day counted as closed, days open) and a link to the original posting.
 - **Files:** one Parquet file per month, `data/job_postings_YYYY-MM.parquet`, containing every posting seen during that month. It is refreshed every day of the month.
 - **Coverage:** {{ by_provider.greenhouse | num }} companies on Greenhouse, {{ by_provider.ashby | num }} on Ashby and {{ by_provider.lever | num }} on Lever. How they were chosen is in [docs/sources.md](https://github.com/{{ cfg.public_repo }}/blob/{{ cfg.branch }}/docs/sources.md).
 

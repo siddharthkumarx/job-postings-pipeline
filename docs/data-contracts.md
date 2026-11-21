@@ -54,6 +54,7 @@ One row per posting ever seen. Primary key `posting_key`.
 | first_seen | DATE | first run date listed |
 | last_seen | DATE | last run date listed |
 | closed_on | DATE | first missing run date once closed (2 consecutive successful-fetch absences), else null |
+| close_confirmed_on | DATE | run date of the second successful-fetch absence, the run that counts the closing; null while open |
 | is_open | BOOLEAN | listed on the latest run |
 | days_open | INTEGER | see D-011 |
 | left_censored | BOOLEAN | already open on the first run of the pipeline |

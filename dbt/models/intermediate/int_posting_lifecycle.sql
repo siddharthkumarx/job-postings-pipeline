@@ -2,6 +2,9 @@
   Posting lifecycle (docs/decisions.md D-011): first/last seen, closed after missing from
   2 consecutive runs in which its board was fetched OK, reopen count, days open,
   left censoring (already open on the board's first successful fetch).
+  closed_on is the first of those two runs (the first day it was missing);
+  close_confirmed_on is the second, the run that counts the closing. Every
+  "closed in this run" count uses close_confirmed_on.
 #}
 with daily as (
     select posting_key, company_id, run_date from {{ ref('int_postings_daily') }}
@@ -41,7 +44,10 @@ after_last as (
 ),
 
 closing as (
-    select posting_key, min(run_date) as closed_on
+    select
+        posting_key,
+        min(run_date) filter (where nth_absence = 1) as closed_on,
+        min(run_date) filter (where nth_absence = 2) as close_confirmed_on
     from after_last
     group by 1
     having max(nth_absence) >= 2
@@ -88,6 +94,7 @@ select
     s.last_seen,
     s.runs_listed,
     c.closed_on,
+    c.close_confirmed_on,
     c.closed_on is null as is_open,
     case
         when c.closed_on is not null then datediff('day', s.first_seen, s.last_seen) + 1

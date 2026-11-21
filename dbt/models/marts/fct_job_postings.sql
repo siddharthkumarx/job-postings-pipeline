@@ -78,6 +78,7 @@ select
     lc.first_seen,
     lc.last_seen,
     lc.closed_on,
+    lc.close_confirmed_on,
     lc.is_open,
     cast(lc.days_open as integer) as days_open,
     lc.left_censored,

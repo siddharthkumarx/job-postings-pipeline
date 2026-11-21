@@ -48,6 +48,7 @@ def _example(name: str, value: Any) -> str:
     if value is None or value == "":
         return {
             "closed_on": "empty while the job is open",
+            "close_confirmed_on": "empty while the job is open",
         }.get(name, "empty")
     if isinstance(value, bool):
         return "true" if value else "false"
@@ -97,7 +98,10 @@ PLAIN_MEANINGS = {
     "published_at": "When the company published or last updated the posting",
     "first_seen": "First day the job was seen",
     "last_seen": "Last day the job was seen",
-    "closed_on": "Day the job was counted as closed (missing two days in a row)",
+    "closed_on": "First day the job was missing (counted as closed once it is missing two "
+    "days in a row)",
+    "close_confirmed_on": "Day the job was counted as closed: the second day in a row it was "
+    "missing",
     "is_open": "Whether the job was open in the latest run",
     "days_open": "Days the job has been open so far, or was open in total",
     "left_censored": "Yes if the job was already open on the first day it was tracked",

@@ -118,6 +118,8 @@ MODEL_TESTS: dict[str, list[Any]] = {
         expr("salary_min is null or salary_min <= salary_max"),
         expr("last_seen >= first_seen"),
         expr("closed_on is null or closed_on > last_seen"),
+        expr("(closed_on is null) = (close_confirmed_on is null)"),
+        expr("close_confirmed_on is null or close_confirmed_on > closed_on"),
     ],
     "mart_weekly_open_roles": [
         combo(["week_start", "company_id", "role_family", "country_code", "state_code"])

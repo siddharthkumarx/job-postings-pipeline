@@ -26,7 +26,7 @@ Open jobs at 1,500 US tech companies, collected every day from their public Gree
 
 ## Dataset summary
 
-- **One row per job posting ever seen.** Each row has the current attributes of the posting (title, role family, seniority, location, remote type, salary range), its lifecycle (first seen, last seen, closed on, days open) and a link to the original posting.
+- **One row per job posting ever seen.** Each row has the current attributes of the posting (title, role family, seniority, location, remote type, salary range), its lifecycle (first seen, last seen, first day missing, day counted as closed, days open) and a link to the original posting.
 - **Files:** one Parquet file per month, `data/job_postings_YYYY-MM.parquet`, containing every posting seen during that month. It is refreshed every day of the month.
 - **Coverage:** 779 companies on Greenhouse, 669 on Ashby and 52 on Lever. How they were chosen is in [docs/sources.md](https://github.com/siddharthkumarx/job-postings-pipeline/blob/main/docs/sources.md).
 
@@ -65,7 +65,8 @@ Open jobs at 1,500 US tech companies, collected every day from their public Gree
 | `published_at` | date and time (UTC) | When the company published or last updated the posting |
 | `first_seen` | date | First day the job was seen |
 | `last_seen` | date | Last day the job was seen |
-| `closed_on` | date | Day the job was counted as closed (missing two days in a row) |
+| `closed_on` | date | First day the job was missing (counted as closed once it is missing two days in a row) |
+| `close_confirmed_on` | date | Day the job was counted as closed: the second day in a row it was missing |
 | `is_open` | yes / no | Whether the job was open in the latest run |
 | `days_open` | whole number | Days the job has been open so far, or was open in total |
 | `left_censored` | yes / no | Yes if the job was already open on the first day it was tracked |
