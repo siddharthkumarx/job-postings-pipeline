@@ -143,6 +143,15 @@ def _finish(
     entry["duration_s"] = round(time.monotonic() - t0, 1)
     publish.append_run(paths.public_dir / "runs.jsonl", entry)
     publish.write_status(paths.public_dir, today)
+    if status == "published" and (paths.site_dir / "index.html").exists():
+        # The dashboard was first built before this run was logged; build it again so its
+        # status line and run count include this run. A failure keeps the first build.
+        try:
+            from jobpipe.site import build as site_build
+
+            site_build.build(paths.duckdb, paths.public_dir, paths.site_dir)
+        except Exception as exc:
+            log.warning("dashboard re-render skipped: %s: %s", type(exc).__name__, exc)
     return Outcome(status, entry)
 
 

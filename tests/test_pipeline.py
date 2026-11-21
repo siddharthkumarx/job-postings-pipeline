@@ -73,7 +73,10 @@ def test_daily_runs_restore_state_and_publish(tmp_path: Path, env: tuple[FakeGit
     assert st["days_running"] == 10  # 2026-10-26 .. 2026-11-04
     assert st["missed_runs"] == 10 - 5  # calendar days without a published run
     assert (tmp_path / "public" / "summary" / "salary_bands.csv").exists()
-    assert (tmp_path / "run5" / "site" / "index.html").exists()
+    page = (tmp_path / "run5" / "site" / "index.html").read_text()
+    # The dashboard's status line names this run, not the one before it.
+    assert f"Latest run {fixtures.RUN_DATES[-1].isoformat()}: published" in page
+    assert (tmp_path / "run5" / "site" / "assets" / "site.css").exists()
 
     # state: warehouse snapshot and bronze for every run date (held day included)
     assert gh.find("state", "warehouse.duckdb.gz") is not None
