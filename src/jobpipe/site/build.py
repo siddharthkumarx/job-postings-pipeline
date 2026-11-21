@@ -107,6 +107,7 @@ def gather(duckdb_path: Path) -> dict[str, Any]:
                 avg(case when remote_type = 'remote' then 1.0 else 0 end) filter (where is_open)
             from gold.fct_job_postings""",
         )[0]
+        d["tracked"] = q(con, "select count(*) from gold.dim_company")[0][0]
         d["daily"] = q(
             con,
             """select run_date, count(*) from history.int_postings_daily
@@ -215,14 +216,20 @@ def _kpi(label_: str, value: str, sub: str = "") -> str:
 
 def render(d: dict[str, Any], st: dict[str, Any], runs: list[dict[str, Any]] | None = None) -> str:
     latest: date | None = d["latest"]
-    companies, open_roles, us_share, data_open, salary_share, remote_share = d["kpi"]
+    boards_read, open_roles, us_share, data_open, salary_share, remote_share = d["kpi"]
+    # Headlines use the tracked count; boards read in the latest run is a quality figure.
+    companies = st.get("companies_tracked") or d.get("tracked") or boards_read
     days = [(str(r[0]), float(r[1])) for r in d["daily"]]
     flows_new = [(str(r[0]), float(r[1])) for r in d["flows"]]
     flows_closed = [(str(r[0]), float(r[2])) for r in d["flows"]]
 
     kpis = "".join(
         [
-            _kpi("Companies tracked", c.fmt_int(companies), "boards fetched OK"),
+            _kpi(
+                "Companies tracked",
+                c.fmt_int(companies),
+                f"{c.fmt_int(boards_read)} boards read in the latest run",
+            ),
             _kpi("Open roles", c.fmt_int(open_roles), f"latest run {latest}"),
             _kpi("Open roles in the US", c.fmt_pct(us_share), "share of open roles"),
             _kpi("Open data roles", c.fmt_int(data_open), "DE · AE · DA · MLE"),

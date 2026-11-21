@@ -47,7 +47,8 @@ def _data() -> dict[str, object]:
     d = date(2026, 11, 4)
     return {
         "latest": d,
-        "kpi": (1500, 60000, 0.82, 4000, 0.55, 0.2),
+        "kpi": (1493, 60000, 0.82, 4000, 0.55, 0.2),
+        "tracked": 1500,
         "daily": [(d, 60000)],
         "flows": [(d, 0, 0)],
         "families": [("software_engineer", 20000), ("data_engineer", 1500)],
@@ -83,3 +84,12 @@ def test_render_has_no_external_scripts_and_escapes() -> None:
     assert "<!--" not in html
     assert 'lang="en"' in html and 'name="viewport"' in html and 'name="description"' in html
     assert "Acme &lt;script&gt;" in html
+
+
+def test_headlines_use_tracked_count_not_boards_read() -> None:
+    html = build.render(_data(), {"companies_tracked": 1500, "days_running": 3})
+    assert "Every open job at 1,500 US tech companies" in html
+    assert "1,493 boards read in the latest run" in html
+    assert "at 1,493" not in html
+    # without status.json the warehouse's tracked count is used
+    assert "Every open job at 1,500 US tech" in build.render(_data(), {})
