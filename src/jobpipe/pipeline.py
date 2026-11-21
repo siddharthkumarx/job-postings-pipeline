@@ -178,12 +178,18 @@ def build_and_gate(
                 "open_postings": stats.open_postings,
                 "new_postings": stats.new_postings,
                 "closed_postings": stats.closed_postings,
+                "reopened_postings": stats.reopened_postings,
+                "first_fetch_postings": stats.first_fetch_postings,
+                "open_previous": stats.open_previous,
                 "us_share": round(stats.us_share, 4),
                 "salary_share": round(stats.salary_share, 4),
                 "companies": stats.boards_total,
             }
         )
         reasons += guards.evaluate(stats, st.get("last_good_stats"))
+        note = stats.flow_note()  # a note, not a hold: the run itself is still sound
+        if note:
+            notes.append(note)
     entry["hold_reasons"] = reasons
     if reasons and not force:
         return "held"

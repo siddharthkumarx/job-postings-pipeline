@@ -3,7 +3,8 @@
 Six run dates over two weeks exercise: new postings, a posting that closes
 (absent from 2 successful fetches), one absent once only (stays open), one that
 reopens, a title change and a salary change (SCD2), a failed board fetch that
-must not count as an absence, several salary currencies/periods and locations.
+must not count as an absence (nor confirm a closing), several salary
+currencies/periods and locations.
 """
 
 from __future__ import annotations
@@ -118,6 +119,18 @@ def postings_for(d: date) -> list[Posting]:
                 api_salary_period="year",
             )
         )
+        if i <= 2:  # missed on day 3, board fails on day 4: only day 5 confirms the closing
+            out.append(
+                _p(
+                    "lever",
+                    "beta-robotics",
+                    "a3",
+                    "Embedded Software Engineer",
+                    d,
+                    location_raw="Pittsburgh, PA",
+                    country_hint="US",
+                )
+            )
         if i not in (1, 2):  # absent twice (days 1-2) then back: closes would be wrong -> reopens
             out.append(
                 _p(

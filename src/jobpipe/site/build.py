@@ -118,7 +118,8 @@ def gather(duckdb_path: Path) -> dict[str, Any]:
             """select c.run_date,
                  (select count(*) from gold.fct_job_postings f
                    where f.first_seen = c.run_date and not f.left_censored),
-                 (select count(*) from gold.fct_job_postings f where f.closed_on = c.run_date)
+                 (select count(*) from gold.fct_job_postings f
+                   where f.close_confirmed_on = c.run_date)
                from history.int_run_calendar c order by 1""",
         )
         d["families"] = q(
@@ -264,8 +265,9 @@ def render(d: dict[str, Any], st: dict[str, Any], runs: list[dict[str, Any]] | N
             numeric={1, 2},
         )
         + '<p class="section-note">A role counts as closed after it is missing from two runs in a'
-        " row in which its board was fetched successfully. Roles already open on a board's first"
-        " run are not counted as new.</p></div></div>"
+        " row in which its board was fetched successfully, and it is counted on the day of the"
+        " second run. Roles already open on a board's first run are not counted as new.</p>"
+        "</div></div>"
     )
 
     fam_rows = [(label(f), float(n), c.fmt_int(n)) for f, n in d["families"]]

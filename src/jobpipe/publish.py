@@ -292,7 +292,7 @@ def changes_today(con: Any) -> list[dict[str, Any]]:
     totals = con.execute(
         """select
              count(*) filter (where first_seen = ? and not left_censored),
-             count(*) filter (where closed_on = ?)
+             count(*) filter (where close_confirmed_on = ?)
            from gold.fct_job_postings""",
         [latest, latest],
     ).fetchone()
@@ -308,7 +308,7 @@ def changes_today(con: Any) -> list[dict[str, Any]]:
         out.append({"kind": "most_new", "company": company, "count": int(n), "detail": ""})
     for company, n in con.execute(
         """select company_name, count(*) from gold.fct_job_postings
-           where closed_on = ? group by 1 order by 2 desc, 1 limit 2""",
+           where close_confirmed_on = ? group by 1 order by 2 desc, 1 limit 2""",
         [latest],
     ).fetchall():
         out.append({"kind": "most_closed", "company": company, "count": int(n), "detail": ""})
