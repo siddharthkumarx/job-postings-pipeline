@@ -1,22 +1,22 @@
 [
   {
     "role_family": "ml_engineer",
-    "open_roles": 1513,
+    "open_roles": 1505,
     "median_salary_usd": 225000.0
   },
   {
     "role_family": "data_engineer",
-    "open_roles": 487,
+    "open_roles": 477,
     "median_salary_usd": 180000.0
   },
   {
     "role_family": "data_analyst",
-    "open_roles": 290,
-    "median_salary_usd": 149268.0
+    "open_roles": 282,
+    "median_salary_usd": 149900.0
   },
   {
     "role_family": "analytics_engineer",
-    "open_roles": 118,
-    "median_salary_usd": 184611.0
+    "open_roles": 110,
+    "median_salary_usd": 187475.0
   }
 ]

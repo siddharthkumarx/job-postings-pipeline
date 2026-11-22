@@ -1,8 +1,10 @@
 kind,company,count,detail
-new_total,,879,2026-11-20
-closed_total,,0,2026-11-20
-most_new,SpaceX,51,
-most_new,Anduril Industries,39,
-most_new,Esri,39,
-salary_changed,,172,
-title_changed,,160,
+new_total,,75,2026-11-21
+closed_total,,802,2026-11-21
+most_new,SpaceX,24,
+most_new,Varda Space Industries,7,
+most_new,CoreWeave,6,
+most_closed,Anduril Industries,43,
+most_closed,Esri,43,
+salary_changed,,4,
+title_changed,,17,
