@@ -1,5 +1,7 @@
 // Render assets/social-preview.png (1280x640) and media/linkedin-hero.mp4 (1080x1080, 10 s, H.264)
 // from the generated SVGs. Usage: node scripts/render_media.js   (needs playwright + ffmpeg)
+// Canvas rule: every image's outermost background is #F3F8F7; cards inside are #FFFFFF with
+// border #E2EAE8, radius 14px. scripts/check_canvas.js checks every committed image.
 const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
@@ -18,18 +20,19 @@ const status = JSON.parse(fs.readFileSync(path.join(root, 'public/status.json'),
     @font-face{font-family:PJS;font-weight:600;src:url(file://${fonts}/plus-jakarta-sans-latin-600-normal.woff2)}
     @font-face{font-family:PJS;font-weight:700;src:url(file://${fonts}/plus-jakarta-sans-latin-700-normal.woff2)}
     *{box-sizing:border-box}
-    body{margin:0;width:1280px;height:640px;background:#FFFFFF;font-family:PJS;color:#3D4B49;font-variant-numeric:tabular-nums;display:flex;flex-direction:column}
-    main{flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 96px}
-    .brand{display:flex;align-items:center;gap:16px;color:#0B1416;font-weight:700;font-size:30px;margin-bottom:40px}
-    h1{font-size:76px;font-weight:700;line-height:1.06;letter-spacing:-0.02em;margin:0 0 28px;color:#0B1416}
+    body{margin:0;width:1280px;height:640px;background:#F3F8F7;font-family:PJS;color:#3D4B49;font-variant-numeric:tabular-nums;display:flex;flex-direction:column;padding:40px 40px 0}
+    main{flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 56px;background:#FFFFFF;border:1px solid #E2EAE8;border-radius:14px}
+    .brand{display:flex;align-items:center;gap:16px;color:#0B1416;font-weight:700;font-size:30px;margin-bottom:34px}
+    h1{font-size:72px;font-weight:700;line-height:1.06;letter-spacing:-0.02em;margin:0 0 28px;color:#0B1416}
     h1 span{color:#0B7468}
-    p{font-size:34px;margin:0;max-width:980px}
-    footer{background:#F3F8F7;border-top:2px solid #E2EAE8;padding:26px 96px;font-size:26px;color:#3D4B49;display:flex;justify-content:space-between}
+    p{font-size:32px;margin:0;max-width:900px}
+    footer{padding:30px 56px 34px;font-size:26px;color:#3D4B49;display:flex;justify-content:space-between}
     footer b{color:#0B1416;font-weight:600}`;
   const page = await browser.newPage({ viewport: { width: 1280, height: 640 } });
   const social = path.join(root, 'data', 'social.html');
   fs.mkdirSync(path.dirname(social), { recursive: true });
-  const mark = '<svg width="52" height="52" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0B7468"/><rect x="8" y="16" width="4" height="9" rx="1.5" fill="#FFFFFF"/><rect x="14" y="11" width="4" height="14" rx="1.5" fill="#FFFFFF"/><rect x="20" y="7" width="4" height="18" rx="1.5" fill="#FFFFFF"/></svg>';
+  // the SteadyData mark, as on the dashboard (src/jobpipe/site/build.py MARK)
+  const mark = '<svg width="46" height="52" viewBox="10 7 44 50" aria-hidden="true"><defs><linearGradient id="sdm" x1="49" x2="15" y1="12" y2="52" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1A9486"/><stop offset="1" stop-color="#5FE8D6"/></linearGradient></defs><path fill="none" stroke="url(#sdm)" stroke-linejoin="round" stroke-width="8" d="M41 14H22l-6.5 6.5v5L22 32h20l6.5 6.5v5L42 50H23"/><path fill="#D98E14" fill-rule="evenodd" d="M40.4 14a6.6 6.6 0 1 0 13.2 0 6.6 6.6 0 1 0-13.2 0m4.1 0a2.5 2.5 0 1 1 5 0 2.5 2.5 0 1 1-5 0"/><path fill="#5FE8D6" fill-rule="evenodd" d="M10.4 50a6.6 6.6 0 1 0 13.2 0 6.6 6.6 0 1 0-13.2 0m4.1 0a2.5 2.5 0 1 1 5 0 2.5 2.5 0 1 1-5 0"/></svg>';
   fs.writeFileSync(social, `<html><head><style>${css}</style></head><body><main>
     <div class="brand">${mark}US tech hiring data</div>
     <h1>US tech hiring data,<br><span>checked every day.</span></h1>
