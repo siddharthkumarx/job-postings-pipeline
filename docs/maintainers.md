@@ -50,6 +50,13 @@ engineering: layers, incremental loads, history, tests and data contracts.
 ### Dashboard look (light system v1, D-018)
 Page `#FFFFFF`; alt sections `#F3F8F7`; cards `#FFFFFF` with border `#E2EAE8`, radius 14px, soft shadow. Headings `#0B1416`; body `#3D4B49`; small/muted `#5F716E`. Accent (buttons, links) `#0B7468`, hover `#095E55`, soft `#E3F3F0`. Data: `#0E8A7D` = good / verified; `#D98E14` = change / look here, always with a direct label (marks only, never text). Fonts: Plus Jakarta Sans (text, tabular numbers) and IBM Plex Mono (IDs and code only), self-hosted. No 3D, glow or dark sections; motion only where it explains. No external scripts; text contrast ≥ 4.5:1; works from 360 to 1920 px; respects reduced motion; aim for Lighthouse 100. GitHub Pages turns on only after the public publish. Until then, check with Playwright screenshots at 360, 768 and 1440 px.
 
+### Canvas rule (owner decision, 2026-11-22)
+Every image's outermost background is `#F3F8F7`: never pure white `#FFFFFF`, never dark `#0B1416`, never transparent with dark text. Cards inside stay `#FFFFFF` with border `#E2EAE8`, radius 14px. A screenshot of a white page is shown framed: the page as a card (radius 14, border `#E2EAE8`) on about 40 px of `#F3F8F7`.
+- `scripts/render_media.js` draws the social preview on the canvas (text in a white card, footer on the canvas). `scripts/screenshots.py` frames every shot, `dashboard-top.png` (the README's `assets/dashboard.png`) included; `--raw` gives the bare page.
+- `src/jobpipe/site/assets/og.png` is the steadydata.co case-study picture, copied from `assets/img/og/case-studies-job-postings-pipeline.png` there (rendered by its `_dev/render_assets.js`, already on the canvas).
+- Exceptions: the dashboard page itself (`#FFFFFF` with `#F3F8F7` bands), the favicon and app-icon tiles in `src/jobpipe/site/assets/`, and the tool logos in `src/jobpipe/visuals/icons/` drawn inside the README visuals.
+- `node scripts/check_canvas.js` (run by `tests/test_canvas_rule.py`) checks every edge pixel of every tracked PNG and the first `<rect>` fill of every SVG, and fails on anything else outside the exceptions.
+
 ### README and visuals (owner's rules, 2026-11-04)
 - `README.md` is generated: edit `templates/README.md.j2` (and `templates/readme.yml` for the public URLs), never README.md itself. Every daily run re-renders it with `jobpipe readme`, together with `docs/dataset-card.md` and `assets/*.svg`.
 - Readers are clients first (recruiters, HR-tech teams, analysts, data hiring managers), engineers second. Use plain words, short sentences and no jargon above the "For engineers" section. Keep the section order fixed (the test in `tests/test_readme.py` enforces it).
