@@ -1,10 +1,10 @@
 kind,company,count,detail
-new_total,,519,2026-11-22
-closed_total,,54,2026-11-22
-most_new,SpaceX,17,
-most_new,Anduril Industries,16,
-most_new,Rubrik Job Board,15,
-most_closed,Varda Space Industries,8,
-most_closed,The Flex,5,
-salary_changed,,67,
-title_changed,,103,
+new_total,,954,2026-11-23
+closed_total,,693,2026-11-23
+most_new,SpaceX,31,
+most_new,OpenAI,25,
+most_new,Anduril Industries,23,
+most_closed,Anduril Industries,27,
+most_closed,Databricks,14,
+salary_changed,,181,
+title_changed,,206,

@@ -11,7 +11,7 @@ week_start,role_family,open_roles,new_roles,closed_roles
 2026-11-16,data_analyst,282,24,37
 2026-11-16,data_engineer,475,40,47
 2026-11-16,ml_engineer,1497,70,96
-2026-11-23,analytics_engineer,108,0,0
-2026-11-23,data_analyst,277,6,0
-2026-11-23,data_engineer,467,4,0
-2026-11-23,ml_engineer,1496,8,0
+2026-11-23,analytics_engineer,109,6,2
+2026-11-23,data_analyst,270,6,11
+2026-11-23,data_engineer,463,9,9
+2026-11-23,ml_engineer,1492,27,9
