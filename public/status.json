@@ -1,18 +1,18 @@
 {
   "first_run": "2026-11-04",
-  "last_run": "2026-11-24",
+  "last_run": "2026-11-25",
   "last_status": "published",
-  "last_published": "2026-11-24",
-  "days_running": 21,
-  "runs_published": 21,
+  "last_published": "2026-11-25",
+  "days_running": 22,
+  "runs_published": 22,
   "runs_held": 0,
   "runs_failed": 0,
   "missed_runs": 0,
-  "attempts": 28,
+  "attempts": 29,
   "failed_attempts": 1,
   "held_attempts": 1,
-  "jobs_tracked": 64175,
-  "rows_today": 62915,
+  "jobs_tracked": 64072,
+  "rows_today": 62954,
   "companies_tracked": 1500,
-  "updated_at": "2026-11-24T19:13:05+00:00"
+  "updated_at": "2026-11-25T18:19:29+00:00"
 }

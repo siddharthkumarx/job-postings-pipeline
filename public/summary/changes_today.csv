@@ -1,10 +1,10 @@
 kind,company,count,detail
-new_total,,954,2026-11-23
-closed_total,,693,2026-11-23
+new_total,,896,2026-11-24
+closed_total,,1075,2026-11-24
+most_new,Anduril Industries,46,
 most_new,SpaceX,31,
-most_new,OpenAI,25,
-most_new,Anduril Industries,23,
-most_closed,Anduril Industries,27,
-most_closed,Databricks,14,
-salary_changed,,181,
-title_changed,,206,
+most_new,Relativity Space,15,
+most_closed,Anduril Industries,39,
+most_closed,SpaceX,34,
+salary_changed,,101,
+title_changed,,137,

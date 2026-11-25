@@ -1,4 +1,4 @@
-![Animation: open tech jobs are spread across 1,500 company job boards; one daily run collects them into one table (real rows: SpaceX, Anduril Industries, Databricks); result: 64,175 open jobs at 1,500 US tech companies, checked every day](assets/hero.svg)
+![Animation: open tech jobs are spread across 1,500 company job boards; one daily run collects them into one table (real rows: SpaceX, Anduril Industries, Databricks); result: 64,072 open jobs at 1,500 US tech companies, checked every day](assets/hero.svg)
 
 # US tech hiring data, checked every day
 
@@ -10,7 +10,7 @@
 
 ## What you get
 
-One row per open job: company, job title, location, remote or on-site, salary range when the company publishes one, the date it was first seen and a link to the original posting. Here are 5 real rows from the run of 2026-11-24:
+One row per open job: company, job title, location, remote or on-site, salary range when the company publishes one, the date it was first seen and a link to the original posting. Here are 5 real rows from the run of 2026-11-25:
 
 | Company | Job title | Location | Work type | Salary (per year) | First seen |
 |---|---|---|---|---|---|
@@ -20,23 +20,23 @@ One row per open job: company, job title, location, remote or on-site, salary ra
 | OpenAI | [Machine Learning Engineer, Monetization AI/ML](https://jobs.ashbyhq.com/openai/80f9f564-d789-47bc-91c3-3babf5a1a33d) | San Francisco, CA | On-site | $381,000 to $555,000 | 2026-11-04 |
 | Stripe | [Software Engineer, Data Warehouse Analytics](https://stripe.com/jobs/search?gh_jid=8411927) | Seattle, WA | On-site | $174,595 to $235,200 | 2026-11-23 |
 
-The full table has 64,175 rows today. The download includes every field listed in the [data dictionary](#data-dictionary).
+The full table has 64,072 rows today. The download includes every field listed in the [data dictionary](#data-dictionary).
 
 ### What changed today
 
-Compared with the run of 2026-11-23:
+Compared with the run of 2026-11-24:
 
-- **954 new roles** opened, most at SpaceX (31), OpenAI (25), Anduril Industries (23).
-- **693 roles closed**, most at Anduril Industries (27), Databricks (14).
-- **181 salary ranges** and **206 job titles** were edited by the companies.
+- **896 new roles** opened, most at Anduril Industries (46), SpaceX (31), Relativity Space (15).
+- **1,075 roles closed**, most at Anduril Industries (39), SpaceX (34).
+- **101 salary ranges** and **137 job titles** were edited by the companies.
 
 ## Why you can trust this data
 
-- **Spot-checked against a second source.** Every run re-reads a sample of 30 random jobs one by one from a second official address at the job board and compares the title and location. Latest run (2026-11-24): 30 of 30 matched.
-- **Doubtful values are held back, not guessed.** In the latest run, 102 salary figures that looked wrong (far outside any normal yearly pay once converted) were left empty instead of published, and 11 malformed job ads were set aside. If a whole run looks wrong, it is not published at all and yesterday's data stays up until it is fixed.
-- **Nothing silently missing.** 1,490 of 1,500 company job boards were read in the latest run; a board that could not be read keeps its open jobs until it is read again. A job only counts as closed after it is missing on two days in a row, so one bad day cannot wipe out real openings.
+- **Spot-checked against a second source.** Every run re-reads a sample of 30 random jobs one by one from a second official address at the job board and compares the title and location. Latest run (2026-11-25): 30 of 30 matched.
+- **Doubtful values are held back, not guessed.** In the latest run, 110 salary figures that looked wrong (far outside any normal yearly pay once converted) were left empty instead of published, and 11 malformed job ads were set aside. If a whole run looks wrong, it is not published at all and yesterday's data stays up until it is fixed.
+- **Nothing silently missing.** 1,489 of 1,500 company job boards were read in the latest run; a board that could not be read keeps its open jobs until it is read again. A job only counts as closed after it is missing on two days in a row, so one bad day cannot wipe out real openings.
 - **Polite collection.** One request per company per day, plus the 30 spot checks (1,530 requests in the latest run), a short pause between requests, no logins, and only the official public job-board feeds that the companies use for their own career pages.
-- **Daily runs delivered: 21 of 21.** The latest run passed all 95 automatic data checks. Missed or held days are counted in public: see the badges above and the [run log](public/runs.jsonl).
+- **Daily runs delivered: 22 of 22.** The latest run passed all 95 automatic data checks. Missed or held days are counted in public: see the badges above and the [run log](public/runs.jsonl).
 
 ## How it works
 
@@ -47,7 +47,7 @@ Compared with the run of 2026-11-23:
 3. **Store.** Each day's raw data is kept, so history (when a job opened, when it closed, when its salary changed) can always be rebuilt.
 4. **Deliver.** The clean table, the [dashboard](https://siddharthkumar.com/job-postings-pipeline/) and a monthly download are refreshed. A full run takes about 9 minutes.
 
-![Bar chart of open data roles today: ml engineer 1,520, data engineer 475, data analyst 276, analytics engineer 115](assets/data-roles.svg)
+![Bar chart of open data roles today: ml engineer 1,515, data engineer 471, data analyst 276, analytics engineer 114](assets/data-roles.svg)
 
 ![The live dashboard: companies tracked, open roles, daily runs delivered, hiring trends, role families, data roles, salary bands and days open](assets/dashboard.png)
 
@@ -85,7 +85,7 @@ No sales calls needed. Everything by email.
 ## FAQ
 
 **How fresh is the data?**
-Every company's job board is read once a day. The latest run was on 2026-11-24, and daily runs delivered so far: 21 of 21. The badges at the top always show the last run and any missed days. The run is scheduled for 07:41 UTC, but GitHub's scheduler has started it late: over the last 14 days, 6.8 to 11.8 hours late (median 8.6 hours), so new data usually arrives in the afternoon UTC. Every one of those days was still delivered.
+Every company's job board is read once a day. The latest run was on 2026-11-25, and daily runs delivered so far: 22 of 22. The badges at the top always show the last run and any missed days. The run is scheduled for 07:41 UTC, but GitHub's scheduler has started it late: over the last 14 days, 6.8 to 11.8 hours late (median 8.8 hours), so new data usually arrives in the afternoon UTC. Every one of those days was still delivered.
 
 **What happens when a site changes?**
 The daily checks notice it: that day's data is held back instead of published, yesterday's data stays up, and I get an alert. I fix the collector, usually the same day, and the incident goes in the public log above.
@@ -104,7 +104,7 @@ Custom feeds get a fixed quote after the free sample, once both sides know exact
 
 ## Data dictionary
 
-One row per job posting ever seen. The examples are real values from the run of 2026-11-24.
+One row per job posting ever seen. The examples are real values from the run of 2026-11-25.
 
 | Field | Type | Meaning | Example |
 |---|---|---|---|
@@ -138,11 +138,11 @@ One row per job posting ever seen. The examples are real values from the run of 
 | `job_url` | text | Link to the original posting | [link](https://boards.greenhouse.io/spacex/jobs/8579126002?gh_jid=8579126002) |
 | `published_at` | date and time (UTC) | When the company published or last updated the posting | 2026-06-09 21:04:05+00:00 |
 | `first_seen` | date | First day the job was seen | 2026-11-04 |
-| `last_seen` | date | Last day the job was seen | 2026-11-24 |
+| `last_seen` | date | Last day the job was seen | 2026-11-25 |
 | `closed_on` | date | First day the job was missing (counted as closed once it is missing two days in a row) | empty while the job is open |
 | `close_confirmed_on` | date | Day the job was counted as closed: the second day in a row it was missing | empty while the job is open |
 | `is_open` | yes / no | Whether the job was open in the latest run | true |
-| `days_open` | whole number | Days the job has been open so far, or was open in total | 21 |
+| `days_open` | whole number | Days the job has been open so far, or was open in total | 22 |
 | `left_censored` | yes / no | Yes if the job was already open on the first day it was tracked | true |
 | `version_count` | whole number | How many times the title, location or salary changed, plus one | 1 |
 | `taxonomy_version` | text | Version of the rules used for role type and level | 2026-11-03 |
