@@ -524,6 +524,7 @@ def render(d: dict[str, Any], st: dict[str, Any], runs: list[dict[str, Any]] | N
 </main>
 <footer><div class="wrap">
 <p>Numbers come from daily pipeline runs; held or missed days are counted in the <a href="{REPO_URL}/blob/main/public/runs.jsonl">run log</a>. Code and method: <a href="{REPO_URL}">GitHub</a>.</p>
+<p>License: code under the <a href="{REPO_URL}/blob/main/LICENSE">PolyForm Noncommercial License 1.0.0</a>; data under <a href="{REPO_URL}/blob/main/LICENSE-DATA.md">CC BY-NC 4.0</a>, with attribution to SteadyData. For commercial use, email <a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a>.</p>
 <p class="author">Built and maintained by Siddharth Kumar, Founder of SteadyData · <a href="{STEADYDATA}">steadydata.co</a></p>
 </div></footer>
 </body>

@@ -77,6 +77,8 @@ def test_render_has_no_external_scripts_and_escapes() -> None:
         "https://github.com/siddharthkumarx/job-postings-pipeline/releases",
         "https://github.com/siddharthkumarx/job-postings-pipeline/tree/main/public",
         "https://github.com/siddharthkumarx/job-postings-pipeline/blob/main/public/runs.jsonl",
+        "https://github.com/siddharthkumarx/job-postings-pipeline/blob/main/LICENSE",
+        "https://github.com/siddharthkumarx/job-postings-pipeline/blob/main/LICENSE-DATA.md",
         "https://steadydata.co",
         "https://steadydata.co/contact/",
         "https://siddharthkumar.com/job-postings-pipeline/",  # canonical
