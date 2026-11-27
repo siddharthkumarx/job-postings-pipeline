@@ -110,7 +110,7 @@ The Pydantic model `jobpipe.models.Posting` (schema_version 1) is the only shape
   - open postings must not change by more than ±35 %;
   - boards fetched OK ≥ 90 % of tracked boards;
   - null rate thresholds: `title` 0 %, `job_url` 0 %, `company` 0 %, `location_raw` ≤ 10 %, `role_family` (not null; `other` ≤ 40 %), `country` unknown ≤ 25 %.
-- A held run keeps the last good marts published, appends `status: held` with reasons to `runs.jsonl`, and opens or updates a `pipeline-alert` issue. Its bronze is still stored, because it is raw truth. `jobpipe release-hold --date D` lets a human accept a held run, for example a genuine mass closing.
+- A held run keeps the last good marts published, appends `status: held` with reasons to `runs.jsonl`, and opens or updates a `pipeline-alert` issue. Its bronze is still stored, because it is raw truth, and the next run loads it before its own day (every unpublished day since the last published snapshot, once each, in date order), so a closing confirmed on a held day is confirmed once, on that day. `jobpipe release-hold --date D` lets a human accept a held run, for example a genuine mass closing.
 - Contracts: public marts use dbt `contract: {enforced: true}` with declared column types; a breaking change needs a new model version (see `docs/data-contracts.md`).
 
 ## D-013 Dashboard

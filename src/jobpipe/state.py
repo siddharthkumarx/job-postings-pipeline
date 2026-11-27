@@ -239,6 +239,12 @@ def pull_bronze(gh: GitHubReleases, data_dir: Path, d: date) -> bool:
     return ok
 
 
+def drop_bronze_local(data_dir: Path, d: date) -> None:
+    """Remove one run date's local bronze tables (for example after a partial download)."""
+    for table in BRONZE_ASSETS:
+        bronze_local(data_dir, table, d).unlink(missing_ok=True)
+
+
 def bronze_dates(gh: GitHubReleases, months: list[str]) -> list[date]:
     """Run dates with a postings asset in the given ``YYYY-MM`` months."""
     out: list[date] = []

@@ -86,6 +86,43 @@ def restore(gh: state.GitHubReleases, paths: Paths, before: date) -> tuple[dict[
     return {"bronze_dates": [d.isoformat() for d in dates]}, True
 
 
+def unpublished_dates(gh: state.GitHubReleases, st: dict[str, Any], before: date) -> list[date]:
+    """Stored bronze days after the last published snapshot, before ``before``, oldest first.
+
+    These are the held runs (and runs that failed after storing bronze): their bronze is in
+    the releases, but the snapshot never loaded them because only published runs upload one.
+    """
+    loaded = set(st.get("bronze_dates", []))
+    last = st.get("last_good_run") or max(loaded, default=None)
+    since = date.fromisoformat(last) if last else PIPELINE_START - timedelta(days=1)
+    return [
+        d
+        for d in state.bronze_dates(gh, _months(since, before))
+        if since < d < before and d.isoformat() not in loaded
+    ]
+
+
+def load_unpublished(
+    gh: state.GitHubReleases, paths: Paths, st: dict[str, Any], before: date, notes: list[str]
+) -> list[date]:
+    """Download every unpublished day since the snapshot, once each, in date order.
+
+    The days join this build's window and ``st["bronze_dates"]``, so the next snapshot lists
+    them and they are never loaded twice. Returns the days loaded.
+    """
+    loaded: list[date] = []
+    for d in unpublished_dates(gh, st, before):
+        if state.pull_bronze(gh, paths.data_dir, d):
+            loaded.append(d)
+        else:  # never build on half a day: absences would count without the board log
+            state.drop_bronze_local(paths.data_dir, d)
+            notes.append(f"bronze for {d} incomplete; not loaded")
+    if loaded:
+        notes.append("loaded unpublished days " + ", ".join(d.isoformat() for d in loaded))
+        st["bronze_dates"] = sorted({*st.get("bronze_dates", []), *(d.isoformat() for d in loaded)})
+    return loaded
+
+
 def _fx(gh: state.GitHubReleases | None, paths: Paths, notes: list[str]) -> None:
     try:
         info = fx.fetch(paths.data_dir)
@@ -236,6 +273,9 @@ def daily(
         st, full_refresh = restore(gh, paths, run_date)
         if full_refresh:
             notes.append(f"rebuilt warehouse from {len(st.get('bronze_dates', []))} bronze dates")
+            catch_up: list[date] = []
+        else:
+            catch_up = load_unpublished(gh, paths, st, run_date, notes)
         manifest = ingest.run(run_date, boards_csv=paths.boards_csv, data_dir=paths.data_dir)
         entry["ingest"] = {
             k: manifest[k]
@@ -248,9 +288,8 @@ def daily(
         ]
         _fx(gh, paths, notes)
         state.push_bronze(gh, paths.data_dir, run_date)
-        status = build_and_gate(
-            paths, run_date, st, full_refresh, _vars(run_date, run_date), entry, notes, gh
-        )
+        window = _vars(min([*catch_up, run_date]), run_date)
+        status = build_and_gate(paths, run_date, st, full_refresh, window, entry, notes, gh)
     except Exception as exc:
         entry["error"] = f"{type(exc).__name__}: {exc}"[:500]
         entry["traceback"] = traceback.format_exc()[-2000:]
@@ -280,6 +319,7 @@ def backfill(
     try:
         gh = gh or state.GitHubReleases()
         st, full_refresh = restore(gh, paths, d_from)
+        catch_up = [] if full_refresh else load_unpublished(gh, paths, st, d_from, notes)
         found: list[str] = []
         missing: list[str] = []
         d = d_from
@@ -292,8 +332,9 @@ def backfill(
         last = date.fromisoformat(found[-1])
         entry["run_date"] = last.isoformat()
         st["bronze_dates"] = sorted({*st.get("bronze_dates", []), *found})
+        window = _vars(min([*catch_up, d_from]), d_to)
         status = build_and_gate(
-            paths, last, st, full_refresh, _vars(d_from, d_to), entry, notes, gh, force=force
+            paths, last, st, full_refresh, window, entry, notes, gh, force=force
         )
     except Exception as exc:
         entry["error"] = f"{type(exc).__name__}: {exc}"[:500]
