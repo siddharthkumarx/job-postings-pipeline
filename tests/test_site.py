@@ -1,5 +1,7 @@
+import json
 import re
 from datetime import date
+from pathlib import Path
 
 import pytest
 
@@ -97,6 +99,46 @@ def test_head_has_icon_set_and_link_preview() -> None:
     assert f'<meta property="og:image" content="{url}assets/og.png">' in html
     for name in ("favicon.ico", "icon.svg", "apple-touch-icon.png", "site.webmanifest", "og.png"):
         assert (build.ASSETS / name).exists()
+
+
+def test_pages_artifact_works_under_the_project_path(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Dry run of what the daily workflow uploads to GitHub Pages (PAGES_ENABLED=true).
+
+    `publish_all` builds `site/` exactly as a published run does (dashboard plus dbt docs).
+    Pages serves it under /job-postings-pipeline/, so every local link must be relative and
+    point at a file inside the artifact.
+    """
+    from jobpipe import pipeline
+
+    monkeypatch.delenv("HF_TOKEN", raising=False)
+    paths = pipeline.Paths(
+        data_dir=tmp_path / "data", public_dir=tmp_path / "public", site_dir=tmp_path / "site",
+        seeds_dir=tmp_path / "seeds", duckdb=tmp_path / "data" / "warehouse.duckdb",
+    )  # fmt: skip
+    assert pipeline.offline_build(paths).success
+    notes: list[str] = []
+    pipeline.publish_all(paths, date(2026, 11, 4), None, notes)
+    assert "dbt docs generation failed" not in notes, notes
+
+    site = paths.site_dir
+    assert (site / "index.html").is_file() and (site / ".nojekyll").is_file()
+    assert (site / "dbt-docs" / "index.html").is_file()
+    refs: list[tuple[Path, str]] = []
+    html = (site / "index.html").read_text(encoding="utf-8")
+    refs += [(site, r) for r in re.findall(r'(?:src|href)="([^"]+)"', html)]
+    css = (site / "assets" / "site.css").read_text(encoding="utf-8")
+    refs += [(site / "assets", r) for r in re.findall(r'url\("?([^")]+)"?\)', css)]
+    manifest = json.loads((site / "assets" / "site.webmanifest").read_text(encoding="utf-8"))
+    refs += [(site / "assets", i["src"]) for i in manifest["icons"]]
+    local = [(base, r) for base, r in refs if not re.match(r"(https?:|mailto:|#|data:)", r)]
+    assert len(local) >= 10, local
+    for base, ref in local:
+        assert not ref.startswith("/"), f"root-relative link breaks under the project path: {ref}"
+        target = (base / ref.split("#")[0]).resolve()
+        assert target.is_file() and target.is_relative_to(site.resolve()), ref
+    assert not [p for p in site.rglob("*") if p.is_symlink()]  # upload-pages-artifact refuses
 
 
 def test_headlines_use_tracked_count_not_boards_read() -> None:
