@@ -4,23 +4,27 @@
 
 **Every open job at {{ companies | num }} US tech companies, collected every day from their public job boards and delivered as one clean table you can download, filter and chart.**
 
-[![Last run]({{ badge('last-run') }})](public/runs.jsonl) [![Days running]({{ badge('days-running') }})](public/status.json) [![Missed runs]({{ badge('missed-runs') }})](public/status.json) [![Rows today]({{ badge('rows-today') }})](public/summary/providers.csv) [![Tests](https://github.com/{{ cfg.public_repo }}/actions/workflows/ci.yml/badge.svg)](https://github.com/{{ cfg.public_repo }}/actions/workflows/ci.yml) [![Code license: PolyForm Noncommercial 1.0.0](https://img.shields.io/badge/code%20license-PolyForm%20Noncommercial%201.0.0-0B7468)](LICENSE) [![Data license: CC BY-NC 4.0](https://img.shields.io/badge/data%20license-CC%20BY--NC%204.0-0B7468)](LICENSE-DATA.md)
+[![Last run]({{ badge('last-run') }})](public/runs.jsonl) [![Days running]({{ badge('days-running') }})](public/status.json) [![Missed runs]({{ badge('missed-runs') }})](public/status.json) [![Open roles]({{ badge('jobs-tracked') }})](public/status.json) [![Tests](https://github.com/{{ cfg.public_repo }}/actions/workflows/ci.yml/badge.svg)](https://github.com/{{ cfg.public_repo }}/actions/workflows/ci.yml) [![Code license: PolyForm Noncommercial 1.0.0](https://img.shields.io/badge/code%20license-PolyForm%20Noncommercial%201.0.0-0B7468)](LICENSE) [![Data license: CC BY-NC 4.0](https://img.shields.io/badge/data%20license-CC%20BY--NC%204.0-0B7468)](LICENSE-DATA.md)
 
 **[Live dashboard]({{ cfg.dashboard_url }})** · **[Download the data](https://github.com/{{ cfg.public_repo }}/releases/latest)**{% if cfg.google_sheet_url %} · **[Open the Google Sheet]({{ cfg.google_sheet_url }})**{% endif %}
 
 ## What you get
 
-One row per open job: company, job title, location, remote or on-site, salary range when the company publishes one, the date it was first seen and a link to the original posting. Here are {{ sample | length }} real rows from the run of {{ run_date }}:
+One row per job: company, job title, location, remote or on-site, salary range when the company publishes one, the date it was first seen and a link to the original posting. Here are {{ sample | length }} real rows from the run of {{ run_date }}:
 
 | Company | Job title | Location | Work type | Salary (per year) | First seen |
 |---|---|---|---|---|---|
 {% for r in sample -%}
 | {{ r.company_name }} | [{{ r.title | short(48) }}]({{ r.job_url }}) | {{ r.location }} | {{ r.remote_type | worktype }} | {{ r | salary }} | {{ r.first_seen }} |
 {% endfor %}
-The full table has {{ open_jobs | num }} rows today. The download includes every field listed in the [data dictionary](#data-dictionary).
+The latest run counts {{ open_jobs | num }} open roles. The download keeps closed jobs too, one row per job ever seen, with every field listed in the [data dictionary](#data-dictionary).
 
 ### What changed today
 
+{% if open_line -%}
+Open roles on {{ run_date }}: {{ open_line }}.
+
+{% endif -%}
 {% if first_day -%}
 The latest run ({{ run_date }}) is the first day of data, so there is nothing to compare yet. From the next run on, this list shows the roles that opened, the roles that closed and the salaries that changed since the day before.
 {%- else -%}

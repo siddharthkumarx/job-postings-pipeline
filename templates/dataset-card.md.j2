@@ -22,7 +22,7 @@ configs:
 
 # US tech job postings (daily)
 
-Open jobs at {{ companies | num }} US tech companies, collected every day from their public Greenhouse, Lever and Ashby job boards by the source-available pipeline [{{ cfg.public_repo }}](https://github.com/{{ cfg.public_repo }}). The latest run, on {{ run_date }}, listed {{ open_jobs | num }} open postings.
+Open jobs at {{ companies | num }} US tech companies, collected every day from their public Greenhouse, Lever and Ashby job boards by the source-available pipeline [{{ cfg.public_repo }}](https://github.com/{{ cfg.public_repo }}). The latest run, on {{ run_date }}, counts {{ open_jobs | num }} open roles{% if open_line %}: {{ open_line }}{% endif %}.
 
 ## Dataset summary
 

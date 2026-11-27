@@ -229,12 +229,67 @@ def write_status(public_dir: Path, today: date | None = None) -> dict[str, Any]:
         "missed-runs": _badge(
             "missed runs", str(st["missed_runs"]), "0E8A7D" if st["missed_runs"] == 0 else "D98E14"
         ),
-        "jobs-tracked": _badge("jobs tracked", f"{jobs:,}" if jobs else "n/a", "0E8A7D"),
-        "rows-today": _badge("rows today", f"{rows:,}" if rows else "n/a", "0E8A7D"),
+        # File names stay (public URLs); labels name what the number is (D-020).
+        "jobs-tracked": _badge("open roles", f"{jobs:,}" if jobs else "n/a", "0E8A7D"),
+        "rows-today": _badge("listed today", f"{rows:,}" if rows else "n/a", "0E8A7D"),
     }
     for name, payload in items.items():
         (badges / f"{name}.json").write_text(json.dumps(payload) + "\n")
     return st
+
+
+# ---- open roles: one definition, and how it splits (D-020) --------------------------------
+
+# "Open roles" always means gold.fct_job_postings.is_open on the latest run. It splits into
+# three parts that add up exactly:
+#   listed today       listed in the latest run (history.int_postings_daily)
+#   missing once       not listed, its board was read OK today: the first miss, closed only
+#                      after a second (D-011)
+#   on unread boards   not listed, its board was not read OK today: a failed read is never a
+#                      miss, so the posting keeps its open state
+OPEN_ROLES_SQL = """
+with latest as (select max(run_date) as d from history.int_run_calendar),
+listed as (
+    select distinct p.posting_key from history.int_postings_daily as p, latest
+    where p.run_date = latest.d
+),
+read_ok as (
+    select distinct b.company_id from silver.stg_board_runs as b, latest
+    where b.run_date = latest.d and b.status = 'ok'
+),
+f as (
+    select l.posting_key is not null as is_listed, r.company_id is not null as board_read
+    from gold.fct_job_postings as p
+    left join listed as l using (posting_key)
+    left join read_ok as r using (company_id)
+    where p.is_open
+)
+select
+    (select d from latest),
+    count(*),
+    count(*) filter (where is_listed),
+    count(*) filter (where not is_listed and board_read),
+    count(*) filter (where not is_listed and not board_read),
+    (select count(*) from gold.dim_company),
+    (select count(*) from gold.dim_company where company_id in (select company_id from read_ok))
+from f
+"""
+OPEN_ROLES_KEYS = (
+    "run_date", "open_roles", "listed_today", "missing_once", "on_unread_boards", "boards",
+    "boards_read",
+)  # fmt: skip
+
+
+def open_roles(con: Any) -> dict[str, Any]:
+    """Open roles on the latest run and the parts they add up to (see OPEN_ROLES_SQL)."""
+    row = con.execute(OPEN_ROLES_SQL).fetchone()
+    assert row is not None
+    out: dict[str, Any] = dict(zip(OPEN_ROLES_KEYS, row, strict=True))
+    out["run_date"] = str(out["run_date"]) if out["run_date"] else ""
+    for k in OPEN_ROLES_KEYS[1:]:
+        out[k] = int(out[k] or 0)
+    out["boards_unread"] = out["boards"] - out["boards_read"]
+    return out
 
 
 # ---- extracts for the README and the visuals (all from the warehouse) --------------------
@@ -347,6 +402,7 @@ def readme_extracts(duckdb_path: Path, public_dir: Path) -> dict[str, Any]:
         row = cur.fetchone()
         example = dict(zip(cols, row, strict=True)) if row else {}
         changes = changes_today(con)
+        open_now = open_roles(con)
         q = con.execute(
             """with today as (
                  select d.*, f.salary_min_usd_annual as pub_salary
@@ -391,4 +447,5 @@ def readme_extracts(duckdb_path: Path, public_dir: Path) -> dict[str, Any]:
     (summary / "example_posting.json").write_text(json.dumps(example, indent=2, default=str) + "\n")
     (summary / "data_roles.json").write_text(json.dumps(data_roles, indent=2) + "\n")
     (summary / "quality.json").write_text(json.dumps(quality, indent=2) + "\n")
+    (summary / "open_roles.json").write_text(json.dumps(open_now, indent=2) + "\n")
     return {"sample": len(sample), "changes": len(changes), "example": bool(example)}

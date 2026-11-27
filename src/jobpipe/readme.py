@@ -150,6 +150,7 @@ def context(d: ReadmeData, cfg: dict[str, Any]) -> dict[str, Any]:
         "badge": badge,
         "companies": d.companies,
         "open_jobs": d.open_jobs,
+        "open_line": d.open_line,
         "run_date": d.run_date,
         "minutes": d.minutes,
         "sample": d.sample,
@@ -184,7 +185,7 @@ def context(d: ReadmeData, cfg: dict[str, Any]) -> dict[str, Any]:
         "hero_alt": (
             f"Animation: open tech jobs are spread across {d.companies:,} company job boards; "
             f"one daily run collects them into one table (real rows: {sample_names}); result: "
-            f"{d.open_jobs:,} open jobs at {d.companies:,} US tech companies, checked every day"
+            f"{d.open_jobs:,} open roles at {d.companies:,} US tech companies, checked every day"
         ),
         "pipeline_alt": (
             "Animation of the pipeline: source (3 job boards), collect (Python), check (dbt "

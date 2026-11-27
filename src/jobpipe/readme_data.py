@@ -48,6 +48,7 @@ class ReadmeData:
     providers: list[dict[str, str]]
     incidents: list[Incident]
     boards_by_provider: dict[str, int]
+    open_breakdown: dict[str, Any] = field(default_factory=dict)
 
     @property
     def companies(self) -> int:
@@ -56,6 +57,14 @@ class ReadmeData:
     @property
     def open_jobs(self) -> int:
         return int(self.status.get("jobs_tracked") or 0)
+
+    @property
+    def open_line(self) -> str:
+        """Reconciliation line, only when it belongs to the same run as ``open_jobs``."""
+        b = self.open_breakdown
+        if not b or int(b.get("open_roles", -1)) != self.open_jobs:
+            return ""
+        return open_roles_line(b)
 
     @property
     def run_date(self) -> str:
@@ -120,6 +129,22 @@ def schedule_note(runs: list[dict[str, Any]], last: int = 14) -> dict[str, Any]:
     }
 
 
+def open_roles_line(b: dict[str, Any]) -> str:
+    """The reconciliation line shown next to every "open roles" headline (D-020).
+
+    ``b`` is ``publish.open_roles()`` (or ``public/summary/open_roles.json``); an empty dict
+    gives an empty string, so a missing file leaves the line out.
+    """
+    if not b or "open_roles" not in b:
+        return ""
+    n = int(b["boards_unread"])
+    return (
+        f"{int(b['open_roles']):,} open = {int(b['listed_today']):,} listed today"
+        f" + {int(b['missing_once']):,} missing once (closed after a 2nd miss)"
+        f" + {int(b['on_unread_boards']):,} on {n:,} board{'' if n == 1 else 's'} not read today"
+    )
+
+
 def _csv(path: Path) -> list[dict[str, str]]:
     if not path.exists():
         return []
@@ -179,6 +204,7 @@ def load(root: Path = Path(".")) -> ReadmeData:
         providers=_csv(public / "summary" / "providers.csv"),
         incidents=parse_incidents(root / "docs" / "incidents.md"),
         boards_by_provider=by_provider,
+        open_breakdown=_json(public / "summary" / "open_roles.json", {}),
     )
 
 

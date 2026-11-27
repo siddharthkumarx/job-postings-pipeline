@@ -96,9 +96,9 @@ def hero(d: ReadmeData, square: bool = False) -> str:
     c = Canvas(
         w,
         h,
-        f"{d.open_jobs:,} open jobs at {d.companies:,} US tech companies, checked every day",
+        f"{d.open_jobs:,} open roles at {d.companies:,} US tech companies, checked every day",
         f"Animated: open tech jobs are spread across {d.companies:,} company job boards; one "
-        f"daily run collects them into a single table; result: {d.open_jobs:,} open jobs at "
+        f"daily run collects them into a single table; result: {d.open_jobs:,} open roles at "
         f"{d.companies:,} US tech companies (latest run {d.run_date}).",
     )
     cx = w / 2
@@ -125,7 +125,7 @@ def hero(d: ReadmeData, square: bool = False) -> str:
         b3 = [
             card(60, 60, 880, 340),
             c.text(cx, 230, f"{d.open_jobs:,}", size=132, font="sansb", fill=ACCENT, anchor="middle"),
-            c.text(cx, 300, f"open jobs at {d.companies:,} US tech companies", size=42, anchor="middle"),
+            c.text(cx, 300, f"open roles at {d.companies:,} US tech companies", size=42, anchor="middle"),
             c.text(cx, 356, f"checked every day · latest run {d.run_date}", size=ROW, fill=MUTED,
                    anchor="middle"),
         ]  # fmt: skip
@@ -155,7 +155,7 @@ def hero(d: ReadmeData, square: bool = False) -> str:
         b3 = [
             card(90, 300, 900, 520),
             c.text(cx, 540, f"{d.open_jobs:,}", size=190, font="sansb", fill=ACCENT, anchor="middle"),
-            c.text(cx, 630, "open jobs at", size=56, anchor="middle"),
+            c.text(cx, 630, "open roles at", size=56, anchor="middle"),
             c.text(cx, 700, f"{d.companies:,} US tech companies", size=56, anchor="middle"),
             c.text(cx, 780, f"checked every day · {d.run_date}", size=40, fill=MUTED, anchor="middle"),
         ]  # fmt: skip

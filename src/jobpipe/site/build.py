@@ -13,7 +13,8 @@ from html import escape
 from pathlib import Path
 from typing import Any
 
-from jobpipe.readme_data import schedule_note
+from jobpipe.publish import open_roles
+from jobpipe.readme_data import open_roles_line, schedule_note
 from jobpipe.site import charts as c
 
 ASSETS = Path(__file__).parent / "assets"
@@ -94,10 +95,12 @@ def gather(duckdb_path: Path) -> dict[str, Any]:
     try:
         latest = q(con, "select max(run_date) from history.int_run_calendar")[0][0]
         d: dict[str, Any] = {"latest": latest}
-        d["kpi"] = q(
+        # "Open roles" is fct_job_postings.is_open everywhere on the page (D-020); this is the
+        # same count split into its parts, shown under the headline figures.
+        d["open"] = open_roles(con)
+        d["kpi"] = (d["open"]["boards_read"],) + q(
             con,
             """select
-                (select count(*) from gold.dim_company where last_fetch_status = 'ok'),
                 count(*) filter (where is_open),
                 avg(case when country_code = 'US' then 1.0 else 0 end) filter (where is_open),
                 count(*) filter (where is_open and role_family in ('data_engineer',
@@ -129,8 +132,9 @@ def gather(duckdb_path: Path) -> dict[str, Any]:
         )
         d["providers"] = q(
             con,
+            # every tracked board, so the bars add up to the open-roles figure
             """select provider, count(*), sum(open_postings) from gold.dim_company
-               where last_fetch_status = 'ok' group by 1 order by 1""",
+               group by 1 order by 1""",
         )
         d["data_by_family"] = q(
             con,
@@ -199,8 +203,7 @@ def gather(duckdb_path: Path) -> dict[str, Any]:
         d["companies"] = q(
             con,
             """select company_name, provider, open_postings, open_us_postings
-               from gold.dim_company where last_fetch_status = 'ok'
-               order by open_postings desc, company_name limit 25""",
+               from gold.dim_company order by open_postings desc, company_name limit 25""",
         )
     finally:
         con.close()
@@ -217,7 +220,14 @@ def _kpi(label_: str, value: str, sub: str = "") -> str:
 
 def render(d: dict[str, Any], st: dict[str, Any], runs: list[dict[str, Any]] | None = None) -> str:
     latest: date | None = d["latest"]
-    boards_read, open_roles, us_share, data_open, salary_share, remote_share = d["kpi"]
+    boards_read, open_now, us_share, data_open, salary_share, remote_share = d["kpi"]
+    breakdown = d.get("open") or {}
+    recon = open_roles_line(breakdown) if breakdown.get("open_roles") == open_now else ""
+    recon_html = (
+        f'<p class="section-note recon" style="margin-top:14px">Open roles: {escape(recon)}.</p>'
+        if recon
+        else ""
+    )
     # Headlines use the tracked count; boards read in the latest run is a quality figure.
     companies = st.get("companies_tracked") or d.get("tracked") or boards_read
     days = [(str(r[0]), float(r[1])) for r in d["daily"]]
@@ -231,7 +241,7 @@ def render(d: dict[str, Any], st: dict[str, Any], runs: list[dict[str, Any]] | N
                 c.fmt_int(companies),
                 f"{c.fmt_int(boards_read)} boards read in the latest run",
             ),
-            _kpi("Open roles", c.fmt_int(open_roles), f"latest run {latest}"),
+            _kpi("Open roles", c.fmt_int(open_now), f"latest run {latest}"),
             _kpi("Open roles in the US", c.fmt_pct(us_share), "share of open roles"),
             _kpi("Open data roles", c.fmt_int(data_open), "DE · AE · DA · MLE"),
             _kpi("US roles with salary", c.fmt_pct(salary_share), "pay published"),
@@ -245,11 +255,12 @@ def render(d: dict[str, Any], st: dict[str, Any], runs: list[dict[str, Any]] | N
 
     trends = (
         '<div class="grid">'
-        f'<div class="panel">{c.line([("Open roles", days, "good")], caption="Open roles per run")}'
+        '<div class="panel">'
+        + c.line([("Listed", days, "good")], caption="Postings listed per run")
         + c.table(
-            ["Run date", "Open roles"],
+            ["Run date", "Postings listed"],
             [(x, c.fmt_int(y)) for x, y in days],
-            caption="Table: open roles per run",
+            caption="Table: postings listed per run",
             numeric={1},
         )
         + "</div>"
@@ -310,7 +321,7 @@ def render(d: dict[str, Any], st: dict[str, Any], runs: list[dict[str, Any]] | N
         '<div class="panel">'
         + c.line(
             [(label(f), data_daily.get(f, []), series_tones[f])],
-            caption=f"{label(f)}: open roles per run",
+            caption=f"{label(f)}: postings listed per run",
             height=140,
         )
         + "</div>"
@@ -397,9 +408,11 @@ def render(d: dict[str, Any], st: dict[str, Any], runs: list[dict[str, Any]] | N
             '<p class="empty">No closed roles with a known opening date yet: roles already'
             " open on the first run are excluded, so this fills in as runs accumulate.</p>"
         )
+    aged = sum(int(n) for _, n in d["age_bands"])
     age = c.columns(
         [(b, float(n), c.fmt_int(n)) for b, n in d["age_bands"]],
-        caption=f"Age of open roles by provider publish date (median {c.fmt_int(d['age_median'])} days)",
+        caption=f"Age of open roles by provider publish date (median {c.fmt_int(d['age_median'])}"
+        f" days, n={aged:,} with a publish date)",
     )
     days_section = (
         f'<div class="grid"><div class="panel">{days_open}</div>'
@@ -502,8 +515,8 @@ def render(d: dict[str, Any], st: dict[str, Any], runs: list[dict[str, Any]] | N
 <nav class="sections" aria-label="Sections"><div class="wrap"><ul>{nav}</ul></div></nav>
 <main id="main">
 <section id="overview" class="wrap" aria-labelledby="h-overview"><h2 id="h-overview" class="skip">Overview</h2><ul class="kpis" role="list">{kpis}</ul>
-<p class="section-note" style="margin-top:14px">Remote share of open roles: {c.fmt_pct(remote_share)}.</p></section>
-<div class="band"><section id="trends" class="wrap" aria-labelledby="h-trends"><h2 id="h-trends">Hiring trends</h2><p class="section-note">Every point is one daily run.</p>{trends}</section></div>
+{recon_html}<p class="section-note" style="margin-top:14px">Remote share of open roles: {c.fmt_pct(remote_share)}.</p></section>
+<div class="band"><section id="trends" class="wrap" aria-labelledby="h-trends"><h2 id="h-trends">Hiring trends</h2><p class="section-note">Every point is one daily run. Postings listed are the ones a run saw on the boards it read; open roles also keep postings missing once and postings on boards not read that day.</p>{trends}</section></div>
 <section id="families" class="wrap" aria-labelledby="h-families"><h2 id="h-families">Role families</h2><p class="section-note">Titles are mapped to role families by a versioned rule table (taxonomy {escape(str(d.get("taxonomy", "2026-11-03")))}).</p>{families}</section>
 <div class="band"><section id="data-roles" class="wrap" aria-labelledby="h-data"><h2 id="h-data">Data roles</h2><p class="section-note">Data engineers, analytics engineers, data analysts and ML engineers.</p>{data_section}</section></div>
 <section id="salary" class="wrap" aria-labelledby="h-salary"><h2 id="h-salary">Salary bands</h2>{salary_section}</section>
