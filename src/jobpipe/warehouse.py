@@ -29,7 +29,7 @@ def release_duckdb() -> None:
     from dbt.adapters.duckdb.connections import DuckDBConnectionManager
 
     with DuckDBConnectionManager._LOCK:
-        env = DuckDBConnectionManager._ENV
+        env: Any = DuckDBConnectionManager._ENV
         DuckDBConnectionManager._ENV = None
         if env is not None:
             env.close()
