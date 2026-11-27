@@ -103,16 +103,23 @@ def unpublished_dates(gh: state.GitHubReleases, st: dict[str, Any], before: date
 
 
 def load_unpublished(
-    gh: state.GitHubReleases, paths: Paths, st: dict[str, Any], before: date, notes: list[str]
+    gh: state.GitHubReleases,
+    paths: Paths,
+    st: dict[str, Any],
+    before: date,
+    notes: list[str],
+    *,
+    fx: bool = True,
 ) -> list[date]:
     """Download every unpublished day since the snapshot, once each, in date order.
 
     The days join this build's window and ``st["bronze_dates"]``, so the next snapshot lists
-    them and they are never loaded twice. Returns the days loaded.
+    them and they are never loaded twice. ``fx=False`` keeps the FX file this run fetched.
+    Returns the days loaded.
     """
     loaded: list[date] = []
     for d in unpublished_dates(gh, st, before):
-        if state.pull_bronze(gh, paths.data_dir, d):
+        if state.pull_bronze(gh, paths.data_dir, d, fx=fx):
             loaded.append(d)
         else:  # never build on half a day: absences would count without the board log
             state.drop_bronze_local(paths.data_dir, d)
@@ -241,7 +248,13 @@ def build_and_gate(
         return "held"
     assert stats is not None
     publish_all(paths, run_date, gh, notes)
-    loaded = sorted({*st.get("bronze_dates", []), run_date.isoformat()})
+    # A day without postings (every board failed) leaves no rows in silver.stg_postings, so the
+    # snapshot must not list it: validate_warehouse would refuse every later upload.
+    loaded = [
+        d
+        for d in sorted({*st.get("bronze_dates", []), run_date.isoformat()})
+        if state.bronze_postings_rows(paths.data_dir, date.fromisoformat(d)) != 0
+    ]
     new_state = {
         "last_good_run": run_date.isoformat(),
         "last_good_stats": stats.as_dict(),
@@ -273,9 +286,6 @@ def daily(
         st, full_refresh = restore(gh, paths, run_date)
         if full_refresh:
             notes.append(f"rebuilt warehouse from {len(st.get('bronze_dates', []))} bronze dates")
-            catch_up: list[date] = []
-        else:
-            catch_up = load_unpublished(gh, paths, st, run_date, notes)
         manifest = ingest.run(run_date, boards_csv=paths.boards_csv, data_dir=paths.data_dir)
         entry["ingest"] = {
             k: manifest[k]
@@ -288,6 +298,11 @@ def daily(
         ]
         _fx(gh, paths, notes)
         state.push_bronze(gh, paths.data_dir, run_date)
+        # Catch up on held days only once today's bronze is stored: the APIs cannot show the
+        # past, so a failed download must never cost today's data. Keep today's FX file.
+        catch_up = (
+            [] if full_refresh else load_unpublished(gh, paths, st, run_date, notes, fx=False)
+        )
         window = _vars(min([*catch_up, run_date]), run_date)
         status = build_and_gate(paths, run_date, st, full_refresh, window, entry, notes, gh)
     except Exception as exc:

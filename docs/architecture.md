@@ -61,17 +61,19 @@ any name, email or phone number.
 
 ## Daily run (`jobpipe run --date D`)
 
-1. **restore state**: download `warehouse.duckdb.gz` and `state/state.json` from the `state` Release. If absent or unreadable, `jobpipe rebuild` downloads every bronze asset and replays it. Then download the bronze of every unpublished day since that snapshot (held runs, or runs that failed after storing bronze), once each, oldest first (`pipeline.load_unpublished`).
+1. **restore state**: download `warehouse.duckdb.gz` and `state/state.json` from the `state` Release. If absent or unreadable, `jobpipe rebuild` downloads every bronze asset and replays it.
 2. **ingest**: fetch all boards with the polite client (`docs/decisions.md` D-002), write bronze for D, upload bronze assets (replacing any earlier upload for D, so the run is idempotent).
 3. **fx**: fetch ECB reference rates, write the bronze fx file.
-4. **dbt build**: `dbt build --vars '{run_from: F, run_to: D}'`, where F is the oldest unpublished day loaded in step 1 (or D). Incremental models delete and re-insert the run dates in range; history and marts recompute from silver, so a run after a hold ends with the same tables as clean days.
-5. **guards**: row-count change vs the last good run, null rates on key columns, share of boards fetched OK. A failure marks the run **held**.
-6. **publish** (only if not held): export public tables, summary CSVs, `status.json`, monthly dataset asset, optional HF upload, dbt docs, dashboard.
-7. **persist**: append to `public/runs.jsonl` (always), commit `public/`, upload the warehouse snapshot (only when published, so state is always the last good build). Its `state.json` lists every bronze date it holds, held days included, so no day is loaded twice.
-8. **alert**: a failed or held run opens or updates a GitHub issue labelled `pipeline-alert`.
+4. **catch up** (only when a snapshot was restored; a rebuild already has every day): download the bronze of every unpublished day since the snapshot (held runs, or runs that failed after storing bronze), once each, oldest first (`pipeline.load_unpublished`). It runs after D's bronze is stored, so a failed download never loses D, and it keeps D's fx file.
+5. **dbt build**: `dbt build --vars '{run_from: F, run_to: D}'`, where F is the oldest day loaded in step 4 (or D). Incremental models delete and re-insert the run dates in range; history and marts recompute from silver, so a run after a hold ends with the same tables as clean days.
+6. **guards**: row-count change vs the last good run, null rates on key columns, share of boards fetched OK. A failure marks the run **held**.
+7. **publish** (only if not held): export public tables, summary CSVs, `status.json`, monthly dataset asset, optional HF upload, dbt docs, dashboard.
+8. **persist**: append to `public/runs.jsonl` (always), commit `public/`, upload the warehouse snapshot (only when published, so state is always the last good build). Its `state.json` lists every bronze date it holds, held days included, so no day is loaded twice. A day without any postings (every board failed) is not listed, because it leaves no rows in silver to validate.
+9. **alert**: a failed or held run opens or updates a GitHub issue labelled `pipeline-alert`.
 
 `jobpipe backfill --from A --to B` re-processes stored bronze snapshots for that
-date range: it downloads them, re-runs dbt for the range and republishes. The
+date range: it first loads any unpublished days between the snapshot and A (as
+step 4 does), then downloads the range, re-runs dbt for it and republishes. The
 APIs show only currently open postings, so days that were never fetched cannot
 be backfilled; they are counted as missed runs.
 

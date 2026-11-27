@@ -220,8 +220,11 @@ def push_bronze(gh: GitHubReleases, data_dir: Path, d: date) -> list[str]:
     return names
 
 
-def pull_bronze(gh: GitHubReleases, data_dir: Path, d: date) -> bool:
-    """Download one run date's bronze; True if all tables were present."""
+def pull_bronze(gh: GitHubReleases, data_dir: Path, d: date, *, fx: bool = True) -> bool:
+    """Download one run date's bronze; True if all tables were present.
+
+    ``fx=False`` keeps the local FX file (for example one fetched by this run).
+    """
     rel = gh.release(bronze_tag(d))
     if rel is None:
         return False
@@ -233,10 +236,18 @@ def pull_bronze(gh: GitHubReleases, data_dir: Path, d: date) -> bool:
             ok = False
             continue
         gh.download(a, bronze_local(data_dir, table, d))
-    fx = assets.get(f"fx_{d.isoformat()}.parquet")
-    if fx is not None:
-        gh.download(fx, data_dir / "bronze" / "fx" / "ecb_eurofxref.parquet")
+    fx_asset = assets.get(f"fx_{d.isoformat()}.parquet")
+    if fx and fx_asset is not None:
+        gh.download(fx_asset, data_dir / "bronze" / "fx" / "ecb_eurofxref.parquet")
     return ok
+
+
+def bronze_postings_rows(data_dir: Path, d: date) -> int | None:
+    """Rows in one run date's local postings file; None when it is not on disk."""
+    import pyarrow.parquet as pq
+
+    path = bronze_local(data_dir, "postings", d)
+    return int(pq.read_metadata(path).num_rows) if path.exists() else None
 
 
 def drop_bronze_local(data_dir: Path, d: date) -> None:

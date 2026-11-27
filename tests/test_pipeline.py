@@ -6,7 +6,8 @@ from pathlib import Path
 import httpx
 import pytest
 
-from jobpipe import fixtures, fx, guards, ingest, pipeline, publish, state
+from jobpipe import fixtures, fx, guards, ingest, pipeline, publish, state, warehouse
+from jobpipe.models import BoardRun, Posting
 from tests.test_state import FakeGitHub
 
 EVALUATE = guards.evaluate  # the real gate, before any test wraps it
@@ -213,9 +214,13 @@ def _tables(db: Path) -> dict[str, list[tuple[object, ...]]]:
 
 
 def _sequence(
-    root: Path, seeds: Path, hold: set[date] | None, monkeypatch: pytest.MonkeyPatch
+    root: Path,
+    seeds: Path,
+    hold: set[date] | None,
+    monkeypatch: pytest.MonkeyPatch,
+    days: list[date] | None = None,
 ) -> tuple[list[pipeline.Outcome], pipeline.Paths, state.GitHubReleases]:
-    """Run every fixture day in order on a fresh fake GitHub.
+    """Run the fixture days (all, or ``days``) in order on a fresh fake GitHub.
 
     ``hold=None`` publishes every day (clean days); otherwise the dates in ``hold`` are held
     on top of the normal guards (the Lever failure on 11-03 holds that day by itself).
@@ -232,7 +237,7 @@ def _sequence(
         "o/r", "t", transport=httpx.MockTransport(FakeGitHub().handler), retries=0
     )
     outcomes, paths = [], None
-    for n, d in enumerate(fixtures.RUN_DATES):
+    for n, d in enumerate(days or fixtures.RUN_DATES):
         paths = pipeline.Paths(
             data_dir=root / f"run{n}" / "data", public_dir=root / "public",
             site_dir=root / f"run{n}" / "site", seeds_dir=seeds,
@@ -299,9 +304,14 @@ def test_every_unpublished_day_is_loaded_once_in_date_order(
     pulled: list[date] = []
     pull = state.pull_bronze
 
-    def spy(gh: state.GitHubReleases, data_dir: Path, day: date) -> bool:
+    def spy(gh: state.GitHubReleases, data_dir: Path, day: date, *, fx: bool = True) -> bool:
+        assert not fx  # the catch-up keeps the FX file today's run fetched
+        # ... and runs only after today's (later) bronze is on disk
+        later = [p for p in (data_dir / "bronze" / "postings").glob("run_date=*")
+                 if p.name > f"run_date={day.isoformat()}"]  # fmt: skip
+        assert later, "catch-up ran before today's ingest"
         pulled.append(day)
-        return pull(gh, data_dir, day)
+        return pull(gh, data_dir, day, fx=fx)
 
     monkeypatch.setattr(state, "pull_bronze", spy)
     _, clean_paths, _ = _sequence(tmp_path / "clean", seeds, None, monkeypatch)
@@ -316,6 +326,66 @@ def test_every_unpublished_day_is_loaded_once_in_date_order(
     # published run loads both held days, once each, oldest first
     assert pulled == [d[3], d[3], d[4]]
     assert "loaded unpublished days 2026-11-02, 2026-11-03" in held[5].entry["notes"]
+
+
+def test_release_hold_loads_the_held_days_before_its_range(
+    tmp_path: Path, env: tuple[FakeGitHub, Path], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    _, seeds = env
+    d = fixtures.RUN_DATES
+    # published, published, held, held; then a human releases the second hold
+    held, held_paths, gh = _sequence(tmp_path / "held", seeds, {d[2], d[3]}, monkeypatch, d[:4])
+    assert [o.status for o in held] == ["published"] * 2 + ["held"] * 2
+    paths = pipeline.Paths(
+        data_dir=tmp_path / "release" / "data", public_dir=held_paths.public_dir,
+        site_dir=tmp_path / "release" / "site", seeds_dir=seeds,
+        duckdb=tmp_path / "release" / "data" / "warehouse.duckdb",
+    )  # fmt: skip
+    out = pipeline.backfill(d[3], d[3], paths, gh, force=True)
+    assert out.status == "published", out.entry
+    assert "loaded unpublished days 2026-10-28" in out.entry["notes"]
+    # the same tables as one clean build of those four days
+    clean = tmp_path / "clean"
+    fixtures.write(clean / "data", clean / "seeds", dates=d[:4])
+    res = warehouse.run_dbt(
+        ["build"], data_dir=clean / "data", duckdb_path=clean / "w.duckdb",
+        seeds_dir=clean / "seeds",
+    )  # fmt: skip
+    assert res.success, res.failures
+    assert _tables(paths.duckdb) == _tables(clean / "w.duckdb")
+    st = state.pull_warehouse(gh, tmp_path / "check" / "warehouse.duckdb")
+    assert st is not None and st["bronze_dates"] == [x.isoformat() for x in d[:4]]
+
+
+def test_held_day_without_postings_does_not_block_later_snapshots(
+    tmp_path: Path, env: tuple[FakeGitHub, Path], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    _, seeds = env
+    d = fixtures.RUN_DATES
+    postings_for, board_runs_for = fixtures.postings_for, fixtures.board_runs_for
+
+    def no_postings(day: date) -> list[Posting]:
+        return [] if day == d[1] else postings_for(day)
+
+    def all_failed(day: date) -> list[BoardRun]:
+        runs = board_runs_for(day)
+        if day != d[1]:
+            return runs
+        return [r.model_copy(update={"status": "error", "http_status": 503}) for r in runs]
+
+    # every board fails on 10-27, so its bronze has no postings at all and the run is held
+    monkeypatch.setattr(fixtures, "postings_for", no_postings)
+    monkeypatch.setattr(fixtures, "board_runs_for", all_failed)
+    out, _, gh = _sequence(tmp_path / "run", seeds, set(), monkeypatch, d[:4])
+    assert [o.status for o in out] == ["published", "held", "published", "published"], [
+        o.entry.get("error") for o in out
+    ]
+    assert "loaded unpublished days 2026-10-27" in out[2].entry["notes"]
+    # the empty day leaves no rows to validate, so the snapshot does not list it; the next run
+    # restores that snapshot instead of failing or rebuilding, and does not load the day again
+    st = state.pull_warehouse(gh, tmp_path / "check" / "warehouse.duckdb")
+    assert st is not None and st["bronze_dates"] == [d[0].isoformat(), *map(str, d[2:4])]
+    assert not [n for n in out[3].entry["notes"] if "rebuilt" in n or "unpublished" in n]
 
 
 def test_unpublished_days_skip_loaded_and_incomplete_days(tmp_path: Path) -> None:
