@@ -1,5 +1,5 @@
 ---
-license: cc-by-4.0
+license: cc-by-nc-4.0
 pretty_name: US tech job postings (daily)
 language:
 - en
@@ -22,7 +22,7 @@ configs:
 
 # US tech job postings (daily)
 
-Open jobs at {{ companies | num }} US tech companies, collected every day from their public Greenhouse, Lever and Ashby job boards by the open-source pipeline [{{ cfg.public_repo }}](https://github.com/{{ cfg.public_repo }}). The latest run, on {{ run_date }}, listed {{ open_jobs | num }} open postings.
+Open jobs at {{ companies | num }} US tech companies, collected every day from their public Greenhouse, Lever and Ashby job boards by the source-available pipeline [{{ cfg.public_repo }}](https://github.com/{{ cfg.public_repo }}). The latest run, on {{ run_date }}, listed {{ open_jobs | num }} open postings.
 
 ## Dataset summary
 
@@ -59,7 +59,7 @@ The dataset contains no personal data: no recruiter or hiring-manager names, ema
 
 ## License and citation
 
-CC BY 4.0 for the compiled dataset. Each posting belongs to the company that published it and is linked at its source. Please cite with the metadata in [CITATION.cff](https://github.com/{{ cfg.public_repo }}/blob/{{ cfg.branch }}/CITATION.cff):
+The compiled dataset is licensed under [CC BY-NC 4.0](https://github.com/{{ cfg.public_repo }}/blob/{{ cfg.branch }}/LICENSE-DATA.md), with attribution to {{ cfg.brand }}; the pipeline code under the [PolyForm Noncommercial License 1.0.0](https://github.com/{{ cfg.public_repo }}/blob/{{ cfg.branch }}/LICENSE). For commercial use, email [{{ cfg.contact_email }}](mailto:{{ cfg.contact_email }}). Earlier terms: [license history](https://github.com/{{ cfg.public_repo }}/blob/{{ cfg.branch }}/LICENSE-HISTORY.md). Each posting belongs to the company that published it and is linked at its source. Please cite with the metadata in [CITATION.cff](https://github.com/{{ cfg.public_repo }}/blob/{{ cfg.branch }}/CITATION.cff):
 
 > {{ cfg.owner }}. *US tech job postings (daily)*. https://github.com/{{ cfg.public_repo }}
 

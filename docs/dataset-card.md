@@ -1,5 +1,5 @@
 ---
-license: cc-by-4.0
+license: cc-by-nc-4.0
 pretty_name: US tech job postings (daily)
 language:
 - en
@@ -22,7 +22,7 @@ configs:
 
 # US tech job postings (daily)
 
-Open jobs at 1,500 US tech companies, collected every day from their public Greenhouse, Lever and Ashby job boards by the open-source pipeline [siddharthkumarx/job-postings-pipeline](https://github.com/siddharthkumarx/job-postings-pipeline). The latest run, on 2026-11-26, listed 63,712 open postings.
+Open jobs at 1,500 US tech companies, collected every day from their public Greenhouse, Lever and Ashby job boards by the source-available pipeline [siddharthkumarx/job-postings-pipeline](https://github.com/siddharthkumarx/job-postings-pipeline). The latest run, on 2026-11-26, listed 63,712 open postings.
 
 ## Dataset summary
 
@@ -95,7 +95,7 @@ The dataset contains no personal data: no recruiter or hiring-manager names, ema
 
 ## License and citation
 
-CC BY-NC 4.0 for the compiled dataset (LICENSE-DATA.md); earlier terms in LICENSE-HISTORY.md. Each posting belongs to the company that published it and is linked at its source. Please cite with the metadata in [CITATION.cff](https://github.com/siddharthkumarx/job-postings-pipeline/blob/main/CITATION.cff):
+The compiled dataset is licensed under [CC BY-NC 4.0](https://github.com/siddharthkumarx/job-postings-pipeline/blob/main/LICENSE-DATA.md), with attribution to SteadyData; the pipeline code under the [PolyForm Noncommercial License 1.0.0](https://github.com/siddharthkumarx/job-postings-pipeline/blob/main/LICENSE). For commercial use, email [hello@steadydata.co](mailto:hello@steadydata.co). Earlier terms: [license history](https://github.com/siddharthkumarx/job-postings-pipeline/blob/main/LICENSE-HISTORY.md). Each posting belongs to the company that published it and is linked at its source. Please cite with the metadata in [CITATION.cff](https://github.com/siddharthkumarx/job-postings-pipeline/blob/main/CITATION.cff):
 
 > Siddharth Kumar. *US tech job postings (daily)*. https://github.com/siddharthkumarx/job-postings-pipeline
 

@@ -4,7 +4,7 @@
 
 **Every open job at {{ companies | num }} US tech companies, collected every day from their public job boards and delivered as one clean table you can download, filter and chart.**
 
-[![Last run]({{ badge('last-run') }})](public/runs.jsonl) [![Days running]({{ badge('days-running') }})](public/status.json) [![Missed runs]({{ badge('missed-runs') }})](public/status.json) [![Rows today]({{ badge('rows-today') }})](public/summary/providers.csv) [![Tests](https://github.com/{{ cfg.public_repo }}/actions/workflows/ci.yml/badge.svg)](https://github.com/{{ cfg.public_repo }}/actions/workflows/ci.yml)
+[![Last run]({{ badge('last-run') }})](public/runs.jsonl) [![Days running]({{ badge('days-running') }})](public/status.json) [![Missed runs]({{ badge('missed-runs') }})](public/status.json) [![Rows today]({{ badge('rows-today') }})](public/summary/providers.csv) [![Tests](https://github.com/{{ cfg.public_repo }}/actions/workflows/ci.yml/badge.svg)](https://github.com/{{ cfg.public_repo }}/actions/workflows/ci.yml) [![Code license: PolyForm Noncommercial 1.0.0](https://img.shields.io/badge/code%20license-PolyForm%20Noncommercial%201.0.0-0B7468)](LICENSE) [![Data license: CC BY-NC 4.0](https://img.shields.io/badge/data%20license-CC%20BY--NC%204.0-0B7468)](LICENSE-DATA.md)
 
 **[Live dashboard]({{ cfg.dashboard_url }})** · **[Download the data](https://github.com/{{ cfg.public_repo }}/releases/latest)**{% if cfg.google_sheet_url %} · **[Open the Google Sheet]({{ cfg.google_sheet_url }})**{% endif %}
 
@@ -176,6 +176,6 @@ uv run jobpipe site --duckdb data/fixtures/warehouse.duckdb --public data/fixtur
 
 ## License
 
-The code is released under the [MIT License](LICENSE). The published dataset is factual job metadata compiled from public postings, shared under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Each posting belongs to the company that published it and is linked at its source. Citation details are in [CITATION.cff](CITATION.cff); the dataset card is in [docs/dataset-card.md](docs/dataset-card.md).
+The code is released under the [PolyForm Noncommercial License 1.0.0](LICENSE). The published dataset is factual job metadata compiled from public postings, shared under [CC BY-NC 4.0](LICENSE-DATA.md) with attribution to {{ cfg.brand }}. Free to read, learn from and use for non-commercial purposes; for commercial use or a managed feed, contact {{ cfg.contact_email }}. Earlier terms: [license history](LICENSE-HISTORY.md). Each posting belongs to the company that published it and is linked at its source. Citation details are in [CITATION.cff](CITATION.cff); the dataset card is in [docs/dataset-card.md](docs/dataset-card.md).
 
 Built and maintained by {{ cfg.owner }}, {{ cfg.owner_title }} · [{{ cfg.brand_site }}]({{ cfg.brand_url }})

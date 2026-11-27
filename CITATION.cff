@@ -34,5 +34,5 @@ references:
       - family-names: Kumar
         given-names: Siddharth
         affiliation: "SteadyData"
-    license: CC-BY-4.0
+    license: CC-BY-NC-4.0
     url: "https://github.com/siddharthkumarx/job-postings-pipeline/releases/latest"

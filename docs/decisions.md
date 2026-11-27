@@ -151,7 +151,7 @@ Selection runs in `jobpipe.recon.select` over `checks/results/recon-verify-001/v
 **Dashboard image.** `assets/dashboard.png` is the top of the real dashboard at 2×. The daily workflow refreshes it on Mondays (or when it is missing) rather than every day, because installing a browser costs about a minute of Actions time per run on a 2,000-minute monthly budget.
 
 **Added beyond the brief** (what a top data or scraping portfolio repo usually has):
-- `LICENSE` (MIT) and a data licence note: CC BY 4.0 for the compiled metadata, since each posting belongs to its company and is linked.
+- `LICENSE` and a data licence note for the compiled metadata, since each posting belongs to its company and is linked (current terms in D-019; the first terms are in `LICENSE-HISTORY.md`).
 - `CITATION.cff` and a Hugging Face-style dataset card (`docs/dataset-card.md`, rendered every run and uploaded as the HF README).
 - `SECURITY.md` with a contact and the opt-out promise, plus a "Data removal request" issue template.
 - An internal link checker in CI (`scripts/check_links.py`).
@@ -182,4 +182,10 @@ Not added on purpose: Dependabot. It would open pull requests and spend CI minut
 - **Fonts.** Plus Jakarta Sans (400/600/700, tabular numbers) for all text, IBM Plex Mono 400 only for IDs and code. Instrument Sans and Plex Mono 500 are removed. The SVGs embed base64 WOFF2 subsets that keep the `tnum` feature.
 - **Visuals.** One idea each; in the 1000-px viewBox headings ≥ 36 px and row text ≥ 30 px. `dbt-lineage.svg` is now four layer cards with the real number of inputs and models per layer and the number of dbt tests, read from dbt's manifest, instead of a 2,130-px graph with small labels. The pipeline visual shows the Hugging Face logo only once a run note says the upload happened (today it is skipped while `HF_TOKEN` is unset). The video plays the hero from its first beat and holds the final frame; the SVGs themselves still start on the final frame for still previews.
 - **Schedule honesty.** The daily cron is 07:41 UTC, but GitHub's scheduler started the run 6.6 to 10.1 hours late on each of the 14 days from 7 to 20 November 2026 (median 8.3 h; Actions API `created_at`, matching `started_at` in `public/runs.jsonl`). Every day was still delivered. The README and dashboard therefore say "Daily runs delivered: X of Y", state the measured delay from the run log, and no longer say "every morning at 07:41 UTC". There is no on-time counter; if one is added, it starts from the first on-time trigger and is labelled with that date.
+
+## D-019 Noncommercial licences (2026-11-27, owner's decision)
+
+- **Code:** PolyForm Noncommercial License 1.0.0 (`LICENSE`, SPDX `PolyForm-Noncommercial-1.0.0`). **Data:** CC BY-NC 4.0 with attribution to SteadyData (`LICENSE-DATA.md`, SPDX `CC-BY-NC-4.0`, Hugging Face `cc-by-nc-4.0`). Commercial use or a managed feed: hello@steadydata.co. The earlier terms and the commit where they ended are only in `LICENSE-HISTORY.md`.
+- **Where it shows:** README licence section and two licence badges, `CITATION.cff` (software and dataset reference), the dataset card (front matter and text), `pyproject.toml`, `assets/LICENSES.md` and the dashboard footer. README and dataset card are generated, so the wording lives in `templates/README.md.j2` and `templates/dataset-card.md.j2`; editing only the rendered files would be undone by the next daily run.
+- The pipeline is called source-available, not open source, because a noncommercial licence is not an open-source licence. `tests/test_licenses.py` fails if an old licence name appears anywhere else.
 
