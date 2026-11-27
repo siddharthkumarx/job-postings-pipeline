@@ -28,3 +28,4 @@ Status: `todo` · `doing` · `done` · `blocked`.
 | 21 | README + animated SVGs from real run data (owner's rules of 2026-11-04) | done | generated README (`templates/README.md.j2`), 6 SVGs, dashboard PNG, social preview, LinkedIn video, dataset card, CITATION, LICENSE, explainer (private); D-016 |
 | 22 | Fix: closed roles counted in the run that confirms them (`close_confirmed_on`) + daily flow check | done | closed count was 0 in every run 2026-11-04 to 2026-11-21; docs/incidents.md 2026-11-21 |
 | 23 | Fix: the run after a hold loads every unpublished day since the snapshot, once each, in date order | done | golden test: published → held → published equals clean days; docs/incidents.md 2026-11-27 |
+| 24 | Fix: one number, one name for "open roles" (dashboard, README, dataset card, hero, badges) + reconciliation line | done | D-020; `tests/test_open_roles.py` |

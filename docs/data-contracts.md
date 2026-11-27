@@ -55,7 +55,7 @@ One row per posting ever seen. Primary key `posting_key`.
 | last_seen | DATE | last run date listed |
 | closed_on | DATE | first missing run date once closed (2 consecutive successful-fetch absences), else null |
 | close_confirmed_on | DATE | run date of the second successful-fetch absence, the run that counts the closing; null while open |
-| is_open | BOOLEAN | listed on the latest run |
+| is_open | BOOLEAN | open on the latest run: not closed (D-011), so listed, missing once, or on a board not read OK that run; the count is "open roles" (D-020) |
 | days_open | INTEGER | see D-011 |
 | left_censored | BOOLEAN | already open on the first run of the pipeline |
 | version_count | INTEGER | number of SCD2 versions (title/location/salary changes + 1) |

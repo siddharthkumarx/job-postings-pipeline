@@ -1,16 +1,16 @@
-![Animation: open tech jobs are spread across 1,500 company job boards; one daily run collects them into one table (real rows: SpaceX, Anduril Industries, Databricks); result: 63,282 open jobs at 1,500 US tech companies, checked every day](assets/hero.svg)
+![Animation: open tech jobs are spread across 1,500 company job boards; one daily run collects them into one table (real rows: SpaceX, Anduril Industries, Databricks); result: 63,282 open roles at 1,500 US tech companies, checked every day](assets/hero.svg)
 
 # US tech hiring data, checked every day
 
 **Every open job at 1,500 US tech companies, collected every day from their public job boards and delivered as one clean table you can download, filter and chart.**
 
-[![Last run](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsiddharthkumarx%2Fjob-postings-pipeline%2Fmain%2Fpublic%2Fbadges%2Flast-run.json)](public/runs.jsonl) [![Days running](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsiddharthkumarx%2Fjob-postings-pipeline%2Fmain%2Fpublic%2Fbadges%2Fdays-running.json)](public/status.json) [![Missed runs](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsiddharthkumarx%2Fjob-postings-pipeline%2Fmain%2Fpublic%2Fbadges%2Fmissed-runs.json)](public/status.json) [![Rows today](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsiddharthkumarx%2Fjob-postings-pipeline%2Fmain%2Fpublic%2Fbadges%2Frows-today.json)](public/summary/providers.csv) [![Tests](https://github.com/siddharthkumarx/job-postings-pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/siddharthkumarx/job-postings-pipeline/actions/workflows/ci.yml) [![Code license: PolyForm Noncommercial 1.0.0](https://img.shields.io/badge/code%20license-PolyForm%20Noncommercial%201.0.0-0B7468)](LICENSE) [![Data license: CC BY-NC 4.0](https://img.shields.io/badge/data%20license-CC%20BY--NC%204.0-0B7468)](LICENSE-DATA.md)
+[![Last run](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsiddharthkumarx%2Fjob-postings-pipeline%2Fmain%2Fpublic%2Fbadges%2Flast-run.json)](public/runs.jsonl) [![Days running](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsiddharthkumarx%2Fjob-postings-pipeline%2Fmain%2Fpublic%2Fbadges%2Fdays-running.json)](public/status.json) [![Missed runs](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsiddharthkumarx%2Fjob-postings-pipeline%2Fmain%2Fpublic%2Fbadges%2Fmissed-runs.json)](public/status.json) [![Open roles](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsiddharthkumarx%2Fjob-postings-pipeline%2Fmain%2Fpublic%2Fbadges%2Fjobs-tracked.json)](public/status.json) [![Tests](https://github.com/siddharthkumarx/job-postings-pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/siddharthkumarx/job-postings-pipeline/actions/workflows/ci.yml) [![Code license: PolyForm Noncommercial 1.0.0](https://img.shields.io/badge/code%20license-PolyForm%20Noncommercial%201.0.0-0B7468)](LICENSE) [![Data license: CC BY-NC 4.0](https://img.shields.io/badge/data%20license-CC%20BY--NC%204.0-0B7468)](LICENSE-DATA.md)
 
 **[Live dashboard](https://siddharthkumar.com/job-postings-pipeline/)** · **[Download the data](https://github.com/siddharthkumarx/job-postings-pipeline/releases/latest)**
 
 ## What you get
 
-One row per open job: company, job title, location, remote or on-site, salary range when the company publishes one, the date it was first seen and a link to the original posting. Here are 5 real rows from the run of 2026-11-27:
+One row per job: company, job title, location, remote or on-site, salary range when the company publishes one, the date it was first seen and a link to the original posting. Here are 5 real rows from the run of 2026-11-27:
 
 | Company | Job title | Location | Work type | Salary (per year) | First seen |
 |---|---|---|---|---|---|
@@ -20,7 +20,7 @@ One row per open job: company, job title, location, remote or on-site, salary ra
 | OpenAI | [Machine Learning Engineer, Monetization AI/ML](https://jobs.ashbyhq.com/openai/80f9f564-d789-47bc-91c3-3babf5a1a33d) | San Francisco, CA | On-site | $381,000 to $555,000 | 2026-11-04 |
 | Stripe | [Software Engineer, Data Warehouse Analytics](https://stripe.com/jobs/search?gh_jid=8411927) | Seattle, WA | On-site | $174,595 to $235,200 | 2026-11-23 |
 
-The full table has 63,282 rows today. The download includes every field listed in the [data dictionary](#data-dictionary).
+The latest run counts 63,282 open roles. The download keeps closed jobs too, one row per job ever seen, with every field listed in the [data dictionary](#data-dictionary).
 
 ### What changed today
 

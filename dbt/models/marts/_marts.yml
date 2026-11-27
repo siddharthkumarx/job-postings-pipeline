@@ -239,7 +239,8 @@ models:
     description: run date of the second successful-fetch absence, the run that counts the closing; null while open
   - name: is_open
     data_type: boolean
-    description: listed on the latest run
+    description: 'open on the latest run: not closed (D-011), so listed, missing once, or on a board not read OK that run;
+      the count is "open roles" (D-020)'
     data_tests:
     - not_null
   - name: days_open
@@ -613,7 +614,8 @@ models:
     description: run date of the second successful-fetch absence, the run that counts the closing; null while open
   - name: is_open
     data_type: boolean
-    description: listed on the latest run
+    description: 'open on the latest run: not closed (D-011), so listed, missing once, or on a board not read OK that run;
+      the count is "open roles" (D-020)'
   - name: days_open
     data_type: integer
     description: see D-011
