@@ -18,6 +18,23 @@ class DbtResult:
     counts: dict[str, int]
 
 
+def release_duckdb() -> None:
+    """Close the DuckDB database dbt-duckdb keeps open after an invocation.
+
+    dbt-duckdb holds one database instance per process (``DuckDBConnectionManager._ENV``)
+    after ``dbtRunner.invoke`` returns. On Windows that instance locks the file, so the
+    warehouse snapshot could not be read for upload. Closing it also writes the WAL into the
+    file; the next invocation opens a fresh instance.
+    """
+    from dbt.adapters.duckdb.connections import DuckDBConnectionManager
+
+    with DuckDBConnectionManager._LOCK:
+        env = DuckDBConnectionManager._ENV
+        DuckDBConnectionManager._ENV = None
+        if env is not None:
+            env.close()
+
+
 def run_dbt(
     args: list[str],
     *,
@@ -35,7 +52,10 @@ def run_dbt(
     cli = [*args, "--project-dir", str(DBT_DIR), "--profiles-dir", str(DBT_DIR)]
     if vars_:
         cli += ["--vars", json.dumps(vars_)]
-    res = dbtRunner().invoke(cli)
+    try:
+        res = dbtRunner().invoke(cli)
+    finally:
+        release_duckdb()
     failures: list[str] = []
     counts: dict[str, int] = {}
     results = getattr(res.result, "results", None) or []

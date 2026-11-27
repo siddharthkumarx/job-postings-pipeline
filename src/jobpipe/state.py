@@ -270,8 +270,9 @@ REQUIRED_TABLES = [
 def checkpoint(duckdb_path: Path) -> None:
     """Flush the write-ahead log into the database file so a file copy is complete.
 
-    dbt keeps its DuckDB connection open in this process; a connection to the same file
-    shares that database instance, so FORCE CHECKPOINT writes everything dbt committed.
+    ``warehouse.run_dbt`` closes dbt's DuckDB instance after every invocation; if one is
+    still open in this process, a connection to the same file shares it, so FORCE
+    CHECKPOINT writes everything dbt committed either way.
     """
     import duckdb
 
