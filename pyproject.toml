@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Daily hiring-data pipeline for US tech companies from official public job-board APIs, loaded into a DuckDB + dbt warehouse. Built and maintained by Siddharth Kumar, Founder of SteadyData · steadydata.co"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
-license = "MIT"
+license = "PolyForm-Noncommercial-1.0.0"
 authors = [{ name = "Siddharth Kumar", email = "hello@steadydata.co" }]
 dependencies = [
     "brotli>=1.2,<2",

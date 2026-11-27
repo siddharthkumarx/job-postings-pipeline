@@ -16,7 +16,7 @@ authors:
     email: hello@steadydata.co
 repository-code: "https://github.com/siddharthkumarx/job-postings-pipeline"
 url: "https://siddharthkumar.com/job-postings-pipeline/"
-license: MIT
+license: PolyForm-Noncommercial-1.0.0
 version: 0.1.0
 date-released: 2026-11-04
 keywords:

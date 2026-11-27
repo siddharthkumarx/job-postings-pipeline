@@ -213,6 +213,6 @@ uv run jobpipe site --duckdb data/fixtures/warehouse.duckdb --public data/fixtur
 
 ## License
 
-The code is released under the [MIT License](LICENSE). The published dataset is factual job metadata compiled from public postings, shared under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Each posting belongs to the company that published it and is linked at its source. Citation details are in [CITATION.cff](CITATION.cff); the dataset card is in [docs/dataset-card.md](docs/dataset-card.md).
+The code is released under the [PolyForm Noncommercial License 1.0.0](LICENSE). The published dataset is factual job metadata compiled from public postings, shared under [CC BY-NC 4.0](LICENSE-DATA.md) with attribution to SteadyData. Free to read, learn from and use for non-commercial purposes; for commercial use or a managed feed, contact hello@steadydata.co. Earlier terms: [license history](LICENSE-HISTORY.md). Each posting belongs to the company that published it and is linked at its source. Citation details are in [CITATION.cff](CITATION.cff); the dataset card is in [docs/dataset-card.md](docs/dataset-card.md).
 
 Built and maintained by Siddharth Kumar, Founder of SteadyData · [steadydata.co](https://steadydata.co)

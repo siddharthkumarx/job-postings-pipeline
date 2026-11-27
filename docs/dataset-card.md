@@ -95,7 +95,7 @@ The dataset contains no personal data: no recruiter or hiring-manager names, ema
 
 ## License and citation
 
-CC BY 4.0 for the compiled dataset. Each posting belongs to the company that published it and is linked at its source. Please cite with the metadata in [CITATION.cff](https://github.com/siddharthkumarx/job-postings-pipeline/blob/main/CITATION.cff):
+CC BY-NC 4.0 for the compiled dataset (LICENSE-DATA.md); earlier terms in LICENSE-HISTORY.md. Each posting belongs to the company that published it and is linked at its source. Please cite with the metadata in [CITATION.cff](https://github.com/siddharthkumarx/job-postings-pipeline/blob/main/CITATION.cff):
 
 > Siddharth Kumar. *US tech job postings (daily)*. https://github.com/siddharthkumarx/job-postings-pipeline
 
