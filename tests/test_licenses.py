@@ -14,7 +14,7 @@ from tests.test_site import _data
 ROOT = Path(__file__).resolve().parents[1]
 CODE = "PolyForm Noncommercial License 1.0.0"
 DATA = "CC BY-NC 4.0"
-# Names of the earlier terms; split so that this file does not match itself.
+# Names of the earlier terms (this file is skipped by the scan, since it names them too).
 OLD = re.compile(
     "|".join(
         [
@@ -28,7 +28,7 @@ OLD = re.compile(
     ),
     re.IGNORECASE,
 )
-SKIP = {"LICENSE-HISTORY.md", "uv.lock"}
+SKIP = {"LICENSE-HISTORY.md", "uv.lock", "tests/test_licenses.py"}
 TEXT = {".md", ".j2", ".py", ".js", ".yml", ".yaml", ".cff", ".toml", ".txt", ".html", ".css",
         ".json", ".jsonl", ".csv", ".svg", ""}  # fmt: skip
 
