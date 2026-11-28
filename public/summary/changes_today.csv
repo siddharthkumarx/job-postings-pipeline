@@ -1,10 +1,10 @@
 kind,company,count,detail
-new_total,,104,2026-11-26
-closed_total,,555,2026-11-26
-most_new,Databricks,9,
-most_new,Braze,7,
-most_new,Everpure,5,
-most_closed,SpaceX,26,
-most_closed,Anduril Industries,24,
-salary_changed,,14,
-title_changed,,41,
+new_total,,51,2026-11-27
+closed_total,,145,2026-11-27
+most_new,Stripe,6,
+most_new,CLEAR - Corporate,5,
+most_new,Terac,4,
+most_closed,Databricks,5,
+most_closed,Decagon,5,
+salary_changed,,12,
+title_changed,,15,

@@ -9,11 +9,11 @@ analytics_engineer,junior,onsite,1,0,
 analytics_engineer,manager,onsite,1,1,195000.0
 analytics_engineer,manager,remote,1,1,270990.0
 analytics_engineer,mid,hybrid,11,11,144750.0
-analytics_engineer,mid,onsite,13,12,181250.0
+analytics_engineer,mid,onsite,12,11,180000.0
 analytics_engineer,mid,remote,12,9,165000.0
 analytics_engineer,mid,unknown,1,0,
 analytics_engineer,senior,hybrid,22,18,194850.0
-analytics_engineer,senior,onsite,13,10,193250.0
+analytics_engineer,senior,onsite,14,11,191500.0
 analytics_engineer,senior,remote,10,9,150000.0
 analytics_engineer,senior,unknown,1,0,
 analytics_engineer,staff_principal,hybrid,12,10,222500.0
@@ -27,7 +27,7 @@ data_analyst,junior,hybrid,3,3,101000.0
 data_analyst,junior,onsite,3,2,128147.0
 data_analyst,junior,remote,4,3,84852.0
 data_analyst,junior,unknown,1,0,
-data_analyst,manager,hybrid,11,9,147500.0
+data_analyst,manager,hybrid,10,8,147500.0
 data_analyst,manager,onsite,4,4,172250.0
 data_analyst,manager,remote,7,5,170000.0
 data_analyst,mid,hybrid,26,18,118127.0
@@ -60,7 +60,7 @@ data_engineer,mid,remote,23,16,147500.0
 data_engineer,mid,unknown,7,1,157000.0
 data_engineer,senior,hybrid,44,35,193300.0
 data_engineer,senior,onsite,84,57,172500.0
-data_engineer,senior,remote,56,36,178750.0
+data_engineer,senior,remote,55,35,177500.0
 data_engineer,senior,unknown,6,2,201250.0
 data_engineer,staff_principal,hybrid,31,26,223750.0
 data_engineer,staff_principal,onsite,34,22,203250.0
@@ -84,7 +84,7 @@ ml_engineer,mid,hybrid,190,133,208500.0
 ml_engineer,mid,onsite,244,155,212500.0
 ml_engineer,mid,remote,72,39,195000.0
 ml_engineer,mid,unknown,18,7,202500.0
-ml_engineer,senior,hybrid,151,110,214130.0
+ml_engineer,senior,hybrid,150,110,214130.0
 ml_engineer,senior,onsite,166,117,225000.0
 ml_engineer,senior,remote,128,84,202500.0
 ml_engineer,senior,unknown,14,8,214500.0
